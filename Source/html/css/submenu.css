@@ -1,0 +1,15 @@
+.bg-top {background:url(./base/bgLine-sub.png);background-repeat: repeat-x;}
+
+/* notice */
+.notice {height:150px; overflow:hidden;}
+.notice .info-news, .notice .recommend-recruit, .notice .recommend-human,.notice .vertical-line{float:left;}
+.notice .vertical-line{background-image:url(./base/notice-line-sub.png);width:2px;height:317px;}
+
+/* notice- news - news */
+.notice .info-news .news{height:105px;}
+
+/* notice- news - recruit , human resource */
+.notice .banner{height:105px;}
+
+/* preview common */
+.preview-container .preview-list{height: 105px;}

@@ -1,0 +1,12 @@
+﻿.wyswig-editor {margin:10px 0px;width:777px;}
+
+.wyswig-editor .wyswig-tool{padding:5px;border:1px solid #b5b5b5; background:#f7f7f7;overflow:hidden;height:22px;}
+.wyswig-editor .wyswig-tool .toolbox{float:left; padding:0 3px;}
+.wyswig-editor .wyswig-tool .toolbox .font-size{width:76px;}
+.wyswig-editor .wyswig-tool .toolbox .font-type{width:76px;}
+.wyswig-editor .wyswig-tool .toolbox select{height:21px;font-size:12px;border:1px solid #b5b5b5;}
+.wyswig-editor .wyswig-tool .toolbox img{padding:0px;margin:0px;float:left;cursor:pointer;}
+
+.wyswig-editor .wyswig-textarea{border:1px solid #b5b5b5;border-top:none;}
+.wyswig-editor .wyswig-textarea textarea{width:773px;height:500px;border:none;} 
+.wyswig-editor .wyswig-textarea iframe#TEditor{width:773px;height:500px;border:0px;} 

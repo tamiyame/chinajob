@@ -1,0 +1,31 @@
+.bg-top {background:url(../images/base/bgLine-sub.png);background-repeat: repeat-x;}
+
+/* notice */
+.notice {height:150px; overflow:hidden;}
+.notice .info-news, .notice .recommend-recruit, .notice .recommend-human,.notice .vertical-line{float:left;}
+.notice .vertical-line{background-image:url(../images/base/notice-line-sub.png);width:2px;height:317px;}
+
+/* notice- news - news */
+.notice .info-news .news{height:105px;}
+
+/* notice- news - recruit , human resource */
+.notice .banner{height:105px;}
+
+/* preview common */
+.preview-container .preview-list{height: 105px;}
+
+.sidemenu-main{overflow:hidden;margin-top:28px;}
+.sidemenu-main .sidemenu{float:left;margin-left:5px;width:130px;}
+.sidemenu-main .sidemenu .side-logo{margin-bottom:14px;margin-top: 7px;}
+.sidemenu-main .main{margin-left:165px;}
+.sidemenu-main .contents{margin-top:13px;font-size:12px;color:#454545;}
+
+/*side menu*/
+.sidemenu .line{border-top:2px solid #b5b5b5;width:100%;background:none;}
+.sidemenu .link-item{margin-top:23px;}
+.sidemenu .link-item ul{}
+.sidemenu .link-item li{padding:3px;border-bottom:1px solid #dfdfdf;}
+.sidemenu .link-item li a{font-size:12px;color:#808080;font-weight:bold;}
+.sidemenu .quick-icon {margin-top:23px;}
+.sidemenu .quick-icon li{padding:1px 0px;}
+.sidemenu .banner li{padding:1px 0px;}
