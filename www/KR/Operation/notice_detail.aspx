@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
                         <div class="title">
-                            <div class="operation-title-freeboard"></div>
+                            <div class="operation-title-notice"></div>
                         </div>
                         <div class="contents">
                             <div class="board-detail">
