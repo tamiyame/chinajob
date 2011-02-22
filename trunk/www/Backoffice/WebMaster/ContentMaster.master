@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Backoffice/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="ContentMaster.master.cs" Inherits="Backoffice_WebMaster_ContentMaster" %>
+<%@ Import Namespace="Com.Library.DB.Menu"%>
+<%@ Import Namespace="System.Collections.Generic" %>
+<asp:Content ID="Content4" ContentPlaceHolderID="Menu" Runat="Server">menu2</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/backoffice/css/admin-promote.css" />
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/css/editor.css" />
+    <asp:ContentPlaceHolder id="Header" runat="server"/> 
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Side" Runat="Server">
+    <div class="sideMenu">
+<%
+    List<TopMenuEntity> lstTopMenu = null;
+    CountryCode = Request.QueryString["CountryNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["CountryNo"]);
+
+    TopMenuGetListArguments arg = new TopMenuGetListArguments();
+    arg.CountryNo = 1;
+    TopMenuGetList list = new TopMenuGetList();
+    list.SetArguments(arg);
+    list.Execute();
+    lstTopMenu = list.GetRecords();
+%>
+        <ul>
+<% foreach (TopMenuEntity item in lstTopMenu) { %>
+            <li><a href="/backoffice/Content/Content.aspx?CountryNo=<%=CountryCode %>&TopMenuNo=<%=item.TopMenuNo %>"><%=item.TopMenuName %></a></li>
+<% } %>
+        </ul>
+    </div>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+    <asp:ContentPlaceHolder id="Content" runat="server"/> 
+</asp:Content>
+

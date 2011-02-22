@@ -1,0 +1,19 @@
+﻿.main .title .expo-info-title-hello{background:url('../images/expoInfo/expo-title-hello.png');width:268px;height:25px;}
+.main .title .expo-info-title-info{background:url('../images/expoInfo/expo-title-info.png');width:260px;height:25px;}
+.main .title .expo-info-title-event{background:url('../images/expoInfo/expo-title-event.png');width:218px;height:25px;}
+.main .contents{margin-top:30px;margin-bottom:190px;font-size:9pt;line-height:18px;font-family:dotum,'돋움';}
+.main .contents .article p,
+.main .contents .article font,
+.main .contents .article b,
+.main .contents .article div,
+.main .contents .article span,
+.main .contents .article h1,
+.main .contents .article h2,
+.main .contents .article h3,
+.main .contents .article h4,
+.main .contents .article h5,
+.main .contents .article h6,
+.main .contents .article h7,
+.main .contents .article h8,
+.main .contents .article h9
+{font-size:9pt;}

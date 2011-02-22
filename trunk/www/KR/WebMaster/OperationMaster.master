@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="OperationMaster.master.cs" Inherits="KR_WebMaster_OperationMaster" %>
+<%@ Register TagPrefix="UC" TagName="LeftBanner" Src="/UserControls/Common/LeftBanner.ascx" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/operation.css" />
+<asp:ContentPlaceHolder id="Header" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+                <div class="sidemenu-main">
+					<div class="sidemenu">
+						<div class="side-logo icon icon-expoinfo-logo"></div>
+						<div class="line"></div>
+
+						<div class="link-item">
+							<ul>
+								<li><a href="<%=this.GetURL("/operation/notice_list.aspx")%>">공지사항</a></li>
+								<li><a href="<%=this.GetURL("/operation/qna_list.aspx")%>">질문답변</a></li>
+								<li><a href="<%=this.GetURL("/operation/freeboard_list.aspx")%>">자유게시판</a></li>
+							</ul>
+						</div>
+<UC:LeftBanner id="LeftBanner" runat="server" />
+					</div>
+					<div class="main">
+<asp:ContentPlaceHolder id="Content" runat="server" />
+					</div>
+				</div>
+</asp:Content>
+

@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="BaseMaster.master.cs" Inherits="Backoffice_WebMaster_BaseMaster" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<link rel="stylesheet" type="text/css" href="/ImgSrv/backoffice/css/tab.css" />
+<link rel="stylesheet" type="text/css" href="/ImgSrv/kr/css/icon.css" />
+<link rel="stylesheet" type="text/css" href="/ImgSrv/backoffice/css/admin.css" />
+<asp:ContentPlaceHolder id="Header" runat="server" />
+<!--[if IE 6]>
+		<link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.ie6.css" />
+		<script src="/js/DD_belatedPNG.js"></script>
+		<script>
+		  DD_belatedPNG.fix('.icon');		  
+		</script>
+<![endif]-->
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+<div class="bg-top">
+    <div class="admin_box">
+        <div class="admin_top">
+            <div class="logo"><a href="javascript:;" class="icon-admin icon-admin-logo"></a></div>
+            <div class="tool"><a href="javascript:;" class="icon-admin icon-logout"></a></div>
+            <div class="menu <asp:ContentPlaceHolder id="Menu" runat="server" />">
+                <ul>
+                    <li class="menu1 icon-admin icon-tab-off" onclick="location.replace('/backoffice/Operation/board_list.aspx')">운영센터</li>
+                    <li class="menu2 icon-admin icon-tab-off" onclick="location.replace('/backoffice/Content/Content.aspx')">컨텐츠</li>
+                    <!--<li class="menu3 icon-admin icon-tab-off" onclick="location.replace('/backoffice/Content/join.aspx')">진행현황</li>-->
+                    <li class="menu4 icon-admin icon-tab-off" onclick="location.replace('/backoffice/User/company.aspx')">회원정보</li>
+                    <li class="menu5 icon-admin icon-tab-off" onclick="location.replace('/backoffice/Banner/banner_list.aspx')">배너관리</li>
+                    <li class="menu6 icon-admin icon-tab-off" onclick="location.replace('/backoffice/Backup/Backup.aspx')">백업</li>                    
+                    <li class="menu7 icon-admin icon-tab-off" onclick="location.replace('/backoffice/Setting/Schedule.aspx')">설정</li>
+                </ul>
+            </div>
+        </div>
+        <div class="admin_contents">
+            <div class="side"> 
+                <asp:ContentPlaceHolder id="Side" runat="server" />              
+            </div>
+            <div class="main">
+                <asp:ContentPlaceHolder id="Content" runat="server" />
+            </div>
+        </div>    
+    </div>
+</div>
+</asp:Content>
+

@@ -1,0 +1,179 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+alter PROCEDURE [dbo].[TSP_RecruitGetInfo]																
+(
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+
+,	@CountryNo	int
+,	@RecruitNo	int	
+,	@CompanyNo	int
+,	@JoinType	tinyint = null	OUTPUT
+,	@JobFairValue	tinyint = null	OUTPUT
+,	@JobFairRecruiter	nvarchar(2000)	= NULL	OUTPUT
+,	@Category1No	int	= NULL	OUTPUT
+,	@Category2No	int	= NULL	OUTPUT
+,	@CategoryEtcValue	nvarchar(40) = null output
+,	@Career	tinyint	= NULL	OUTPUT
+,	@RecruitCount	int	= NULL	OUTPUT
+,	@Gender	tinyint	= NULL	OUTPUT
+,	@AgeType tinyint = null output
+,	@AgeCategory	int	= NULL	OUTPUT
+,	@AgeEtcValue	nvarchar(20)	= NULL	OUTPUT
+,	@AcademicAbility	tinyint	= NULL	OUTPUT
+,	@Major	tinyint	= NULL	OUTPUT
+,	@MajorEtcValue	nvarchar(40)	= NULL	OUTPUT
+,	@ChineseLevel	tinyint	= NULL	OUTPUT
+,	@EnglishLevel	tinyint	= NULL	OUTPUT
+,	@JapanessLevel	tinyint	= NULL	OUTPUT
+,	@ETCLanguageName	nvarchar(40)	= NULL	OUTPUT
+,	@ETCLanguageLevel	tinyint	= NULL	OUTPUT
+,	@MainWork	nvarchar(200)	= NULL	OUTPUT
+,	@CityCategory	int	= NULL	OUTPUT
+,	@AreaCategory	int	= NULL	OUTPUT
+,	@RecruitAddressDetail	nvarchar(600)	= NULL	OUTPUT
+,	@RecruitDate	smalldatetime = null	OUTPUT
+,	@EtcEligibilityRule	nvarchar(MAX)	= NULL	OUTPUT
+,	@PayCategory	int	= NULL	OUTPUT
+,	@ContactPeriod	tinyint	= NULL	OUTPUT
+,	@WorkingHoursType	tinyint	= NULL	OUTPUT
+,	@WorkingHours	nvarchar(40)	= NULL	OUTPUT
+,	@BenefitsInsurance	tinyint	= NULL	OUTPUT
+,	@BenefitsInsuranceEtcValue	nvarchar(40)	= NULL	OUTPUT
+,	@BenefitsRoomAndBoard	tinyint	= NULL	OUTPUT
+,	@BenefitsRoomAndBoardEtcValue	nvarchar(40)	= NULL	OUTPUT
+,	@BenefitsSeverancePay	tinyint	= NULL	OUTPUT
+,	@BenefitsSeverancePayEtcValue	nvarchar(40)	= NULL	OUTPUT
+,	@BenefitsVacation	tinyint	= NULL	OUTPUT
+,	@BenefitsVacationEtcValue	nvarchar(40)	= NULL	OUTPUT
+,	@BenefitsETC	nvarchar(400)	= NULL	OUTPUT
+,	@RegistryTime	datetime	= NULL	OUTPUT
+,	@ParticipateCount	int	= NULL	OUTPUT
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+	If ( @FrkTranCount < 1 )
+	Begin
+		Set @FrkErrorCode = -1
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Else If ( @FrkTranCount > 1 )
+	Begin
+		Set @FrkErrorCode = -2
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+End
+Else
+Begin
+	If ( @FrkTranCount <> 0 )
+	Begin
+		Set @FrkErrorCode = -3
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Begin Tran
+End
+
+-- Implementation
+
+SELECT
+	@CompanyNo = CompanyNo
+,	@JoinType = JoinType
+,	@JobFairValue = JobFairValue
+,	@JobFairRecruiter = JobFairRecruiter
+,	@Category1No = Category1No
+,	@Category2No = Category2No
+,	@CategoryEtcValue = CategoryEtcValue
+,	@Career = Career
+,	@RecruitCount = RecruitCount
+,	@Gender = Gender
+,	@AgeType = AgeType
+,	@AgeCategory = AgeCategory
+,	@AgeEtcValue = AgeEtcValue
+,	@AcademicAbility = AcademicAbility
+,	@Major = Major
+,	@MajorEtcValue = MajorEtcValue
+,	@ChineseLevel = ChineseLevel
+,	@EnglishLevel = EnglishLevel
+,	@JapanessLevel = JapanessLevel
+,	@ETCLanguageName = ETCLanguageName
+,	@ETCLanguageLevel = ETCLanguageLevel
+,	@MainWork = MainWork
+,	@CityCategory = CityCategory
+,	@AreaCategory = AreaCategory
+,	@RecruitAddressDetail = RecruitAddressDetail
+,	@RecruitDate = RecruitDate
+,	@EtcEligibilityRule = EtcEligibilityRule
+,	@PayCategory = PayCategory
+,	@ContactPeriod = ContactPeriod
+,	@WorkingHoursType = WorkingHoursType
+,	@WorkingHours = WorkingHours
+,	@BenefitsInsurance = BenefitsInsurance
+,	@BenefitsInsuranceEtcValue = BenefitsInsuranceEtcValue
+,	@BenefitsRoomAndBoard = BenefitsRoomAndBoard
+,	@BenefitsRoomAndBoardEtcValue = BenefitsRoomAndBoardEtcValue
+,	@BenefitsSeverancePay = BenefitsSeverancePay
+,	@BenefitsVacation = BenefitsVacation
+,	@BenefitsVacationEtcValue = BenefitsVacationEtcValue
+,	@BenefitsETC = BenefitsETC
+,	@RegistryTime = RegistryTime
+FROM
+	dbo.TB_Recruit WITH (NOLOCK)
+WHERE
+	CountryNo = @CountryNo
+AND	RecruitNo = @RecruitNo
+AND	CompanyNo = @CompanyNo
+
+
+-- Frk Error Check
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+-- End
+
+COMPLETE:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Commit Tran
+		End
+	End
+	SET @ErrorCode = 0
+	SET @ErrorMessage = ''
+	return 0
+ERROR:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Rollback Tran
+		End
+	End
+	SET @ErrorCode = @FrkErrorCode
+	SET @ErrorMessage = @FrkErrorMessage
+	return @FrkErrorCode

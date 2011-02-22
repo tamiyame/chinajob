@@ -1,0 +1,107 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+CREATE PROCEDURE [dbo].[TSP_BannerGetList]
+(
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+
+,	@PageNo	int	= 1	
+,	@PageSize	tinyint	= 10	
+,	@CntRow	int	= NULL	OUTPUT
+,	@CntTotal	int	= NULL	OUTPUT
+,	@CountryNo	int	= 0	
+,	@BannerType	tinyint	= 0	
+,	@IsOperation int = 0
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+	If ( @FrkTranCount < 1 )
+	Begin
+		Set @FrkErrorCode = -1
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Else If ( @FrkTranCount > 1 )
+	Begin
+		Set @FrkErrorCode = -2
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+End
+Else
+Begin
+	If ( @FrkTranCount <> 0 )
+	Begin
+		Set @FrkErrorCode = -3
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Begin Tran
+End
+
+-- Implementation
+-- 전체목록 , 관리 모드 일때
+IF ( @CountryNo = 0 and @BannerType = 0)
+Begin
+	SELECT * FROM TB_Banner ORDER BY OrderNo
+End
+-- 메인페이지 용도
+ELSE IF( @IsOperation = 0)
+Begin
+	SELECT * FROM TB_Banner WHERE @CountryNo = CountryNo AND @BannerType = BannerType ORDER BY  IsView desc,OrderNo desc
+End
+ELSE
+Begin
+	SELECT TOP(5) * FROM TB_Banner WHERE @CountryNo = CountryNo AND @BannerType = BannerType AND IsView=1 ORDER BY OrderNo desc
+End
+
+-- Frk Error Check
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+-- End
+
+COMPLETE:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Commit Tran
+		End
+	End
+	SET @ErrorCode = 0
+	SET @ErrorMessage = ''
+	return 0
+ERROR:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Rollback Tran
+		End
+	End
+	SET @ErrorCode = @FrkErrorCode
+	SET @ErrorMessage = @FrkErrorMessage
+	return @FrkErrorCode

@@ -1,0 +1,26 @@
+﻿.main .title .participation-title-interviewer{background:url('../images/participation/participation-title-interviewer.png');width:292px;height:25px;}
+.main .title .participation-title-recruit-lib{background:url('../images/participation/participation-title-recruit-lib.png');width:290px;height:25px;}
+.main .title .participation-title-recruit{background:url('../images/participation/participation-title-recruit.png');width:386px;height:25px;}
+.main .title .participation-title-request{background:url('../images/participation/participation-title-request.png');width:277px;height:25px;}
+.main .contents{margin-bottom:190px;}
+
+/*company-popup*/
+.popup {padding:20px;position:absolute;}
+.popup table.company-popup{width:777px;height:344px;}
+.popup table.company-popup tr{}
+.popup table.company-popup tr.top{border-bottom: 1px solid #DBDBDB;border-top: 1px solid #DBDBDB;background:#f7f7f7;}
+.popup table.company-popup tr.top td.col1{}
+.popup table.company-popup tr.top td.col2{text-align:right;}
+.popup table.company-popup tr.data{}
+.popup table.company-popup td{}
+.popup table.company-popup table.company-summary{}
+.popup table.company-popup table.company-summary td{border:none;}
+.popup table.company-popup table.company-summary td.company-image{}
+.popup table.company-popup table.company-summary td.company-image img{width:325px;height:115px;}
+.popup table.company-popup table.company-summary td.company-desc{width:327px;}
+
+.popup table.company-popup table.company-detail{}
+.popup table.company-popup table.company-detail td.col1{}
+.popup table.company-popup table.company-detail td.col2{}
+.popup table.company-popup table.company-detail td.col3{}
+.popup table.company-popup table.company-detail td.col4{}

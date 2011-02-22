@@ -1,0 +1,83 @@
+﻿/* global */
+*{margin:0px; padding:0px;background-repeat: no-repeat;font-family:dotum,simsun, '宋体';font-size:11px;}
+
+body{background:url(../images/admin_side_bg.png);background-repeat: repeat-y;}
+
+ul,li{list-style:none;}
+a,a:hover,a:link,a:visited{text-decoration: none;color:#464646;}
+
+select.w7,input.w7{width:126px;}
+select.w6,input.w6{width:47px;}
+select.w5,input.w5{width:95px;}
+select.w4,input.w4{width:506px;}
+select.w3,input.w3{width:252px;}
+select.w2,input.w2{width:163px;}
+select.w1,input.w1{width:68px;}
+input.radio,input.checkbox{border:none;}
+
+table {border-collapse:collapse;}
+td {}
+td {border-bottom:1px solid #dbdbdb;}
+td.label{width:95px;padding-left:15px;color:#7d7d7d;}
+td.input{}
+tr.bottom td{border-bottom:2px solid #dbdbdb;}
+tr.hidden td{border-bottom:2px solid #dbdbdb;}
+tr.radio td{padding:1px;}
+td.input td{padding:2px;border-bottom:none;}
+td.input td label{padding-right:10px;color:#7d7d7d}
+td.input td.description{padding-left:25px;color:#999999;}
+
+.line, .icon-admin{font-size:0.0001em;display:inline-block;background:url('../images/admin-icon.png');} /*for ie6*/
+.bg-top {background:url(../images/admin_bg.png);background-repeat: repeat-x;}
+.hide{display:none;}
+.show{display:block;}
+/*.guide {position:absolute; background:url(../images/base/guide_bg.jpg);z-index:5;opacity:0.2;width:950px;height:1827px;}*/
+
+/* icon */
+.icon-admin-logo{background-position:-0px -0px; width:97px; height:16px;}
+.icon-logout{background-position:-0px -18px; width:51px; height:18px;}
+.icon-tab-off{background-position:-104px -2px; width:90px; height:31px;}
+.icon-tab-on{background-position:-205px -2px; width:90px; height:31px;}
+.icon-update{background-position:-305px -1px; width:122px; height:25px;}
+.icon-approve{background-position:-0px -38px; width:67px; height:16px;}
+
+
+/* tab */
+.menu1 li.menu1,.menu2 li.menu2,.menu3 li.menu3,.menu4 li.menu4,.menu5 li.menu5,
+.menu6 li.menu6,.menu7 li.menu7
+{background-position:-205px -2px;color:#212e40 !important;}
+
+
+.admin_box{width:1067px;}
+
+/* admin top*/
+.admin_top { height:71px; overflow:hidden;}
+.admin_top .logo{float:left; padding-top:10px; padding-left:20px;}
+.admin_top .tool{float:left; padding-top:10px; padding-left:10px;}
+.admin_top .menu{float:right; padding-right:17px;}
+.admin_top .menu ul{}
+.admin_top .menu li{cursor:pointer; float:left;margin-top:8px; text-align:center;padding-top:10px;font-weight:bold;font-size:12px;color:#aab1be;}
+
+/* admin content */
+
+.admin_contents{overflow:hidden;}
+.admin_contents .side{height:100%;width:176px;float:left;}
+.admin_contents .side .sideMenu{padding:17px 19px;}
+.admin_contents .side .sideMenu ul{margin-bottom:20px;}
+.admin_contents .side .sideMenu li{list-style-position:inside;list-style-image:url('../images/list-icon.png');font-size:12px;color:#535353;margin:5px 0;}
+.admin_contents .side .sideMenu li ul{margin-left:15px;}
+.admin_contents .side .sideMenu li ul li{font-size:11px;color:#7d7d7d;}
+.admin_contents .side .sideMenu li ul li a{font-size:11px;color:#7d7d7d;}
+.admin_contents .side .sideMenu li a{font-size:12px;}
+
+.admin_contents .side .sideTool{background:#f9f9fa;border-top:solid 1px #d1d2d4; padding:10px 0px 3px;}
+.admin_contents .side .sideTool ul{}
+.admin_contents .side .sideTool li{text-align:center;}
+
+.admin_contents .main{float:left;padding:18px 44px;}
+
+/* desc */
+div.title{font-weight:bold;font-size:12px;margin-bottom:5px;}
+div.desc{font-size:11px;color:#999999;margin-bottom:32px;}
+
+

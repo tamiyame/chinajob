@@ -1,0 +1,145 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+alter PROCEDURE [dbo].[TSP_ArticleGetInfo]
+(
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+
+,	@BoardNo	int
+,	@ArticleNo	int
+
+, 	@ArticleNo_parent	int = null output
+,	@ArticleGroupNo	int = null output
+,	@OrderNo	smallint = null output
+,	@LevelNo	tinyint = null output
+,	@BoardCategoryNo	int = null output
+,	@BoardSubCategoryNo	int = null output
+,	@UserNo	int = null output
+,	@UserID	varchar(24) = null output
+,	@UserName nvarchar(50) = null output
+,	@UserIP	varchar(20) = null output
+,	@ArticleTitle	nvarchar(500) = null  output
+,	@SomeContent	nvarchar(2000) = null output
+,	@ArticleContent	nvarchar(max) = null output
+,	@ReadCount	int = null output
+,	@DateCreated	DATETIME	= null output
+,	@CommentCreate	int	= null output
+,	@CommentRemove	int	= null output
+,	@MaxCommentNo	int	= null output
+,	@Status	tinyint = null output
+
+,	@_AddReadCount	tinyint = null
+
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+	If ( @FrkTranCount < 1 )
+	Begin
+		Set @FrkErrorCode = -1
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Else If ( @FrkTranCount > 1 )
+	Begin
+		Set @FrkErrorCode = -2
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+End
+Else
+Begin
+	If ( @FrkTranCount <> 0 )
+	Begin
+		Set @FrkErrorCode = -3
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Begin Tran
+End
+
+-- Implementation
+
+SET @_AddReadCount = IsNull( @_AddReadCount, 0 )
+
+UPDATE
+	TB_Article
+SET
+	 	@ArticleNo_parent	= ArticleNo_parent
+	,	@ArticleGroupNo	= ArticleGroupNo
+	,	@OrderNo	= OrderNo
+	,	@LevelNo	= LevelNo
+	,	@BoardCategoryNo	= BoardCategoryNo
+	,	@BoardSubCategoryNo	= BoardSubCategoryNo
+	,	@UserNo	= UserNo
+	,	@UserID	= UserID
+	,	@UserName	= UserName
+	,	@UserIP	= UserIP
+	,	@ArticleTitle	= ArticleTitle
+	,	@SomeContent	= SomeContent
+	,	@ArticleContent	= ArticleContent
+	,	@ReadCount	= ReadCount = CASE WHEN @_AddReadCount = 0 THEN ReadCount ELSE ReadCount + 1 END
+	,	@DateCreated	= DateCreated
+	,	@CommentCreate	= CommentCreate
+	,	@CommentRemove	= CommentRemove
+	,	@MaxCommentNo	= MaxCommentNo
+	,	@Status	= Status
+WHERE
+	BoardNo = @BoardNo
+AND	ArticleNo = @ArticleNo
+
+
+
+-- Frk Error Check
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+-- End
+
+COMPLETE:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Commit Tran
+		End
+	End
+	SET @ErrorCode = 0
+	SET @ErrorMessage = ''
+	return 0
+ERROR:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Rollback Tran
+		End
+	End
+	SET @ErrorCode = @FrkErrorCode
+	SET @ErrorMessage = @FrkErrorMessage
+	return @FrkErrorCode
+
+
+

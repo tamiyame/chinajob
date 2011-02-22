@@ -1,0 +1,26 @@
+TB_ArrayCategory : 지역
+TB_Article : 게시물
+TB_ArticleComment : 뎃글
+TB_Board : 게시판
+TB_BoardCategory : 게시판 카테고리
+TB_BoardSubCategory : 게시판 서브 카테고리
+TB_BusinessCategory : 
+TB_Category1 : 업종 대분류
+TB_Category2 : 업종 중분류
+TB_CityCategory : 도시
+TB_Company : 회사
+TB_CompanyDetail : 회사 상세정보
+TB_CountryCode :  나라 ( 1 : 한국  2 : 중국   3 : 미국 )
+TB_CurrencyCode : 통화 코드 ( 1 : 원화 :   2 : 중국돈   3 : 달러 )
+TB_PageSet : 페이지 디자인
+TB_Participate : 면접 신청
+TB_PayCategory : 월급기준 리스트
+TB_Recruit : 회사 소개서
+TB_RecruitStatic : 회사소개 통계
+TB_Resume : 이력서 기본정보
+TB_ResumeAcademicAbility : 이력서 학력 상세정보
+TB_ResumeCareer : 이력서 경력 상세 정보
+TB_ResumeDetail : 이력서 상세정보
+TB_ResumeLanguage : 이력서 외국어 상세 정보
+TB_ResumeLicense : 이력서 자격/면허 상세 정보
+TB_User : 회원

@@ -1,0 +1,19 @@
+/*
+#DEFINE LastCheck()
+{
+SELECT		@FrkRowCount = @@ROWCOUNT
+,		@FrkErrorCode = @@ERROR
+
+}
+
+#DEFINE CommenErrorCheck($IF, $ErrorCode, $ErrorText)
+{
+IF ( $IF )
+BEGIN
+	Set @FrkErrorCode = $ErrorCode
+	Set @FrkErrorMessage = $ErrorText
+goto ERROR
+END
+}
+
+*/

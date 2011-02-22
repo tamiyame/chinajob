@@ -1,0 +1,24 @@
+﻿.new-human .preview-list .info-boxes .info-box .profile-text .name-birth{line-height:14px;}
+.icon-folder-on{background-position:-260px -102px; width:194px; height:32px;}
+.icon-folder-off{background-position:-260px -137px; width:194px; height:32px;}
+.icon-quick-free-human{background-position:-200px -308px; width:131px; height:56px;}
+.icon-quick-free-recruit{background-position:-200px -251px; width:131px; height:55px;}
+.icon-quick-free-human{background-position:-200px -308px; width:131px; height:55px;}
+.icon-quick-free-explain{background-position:-200px -365px; width:131px; height:55px;}
+.tab {margin-left:-1px;}
+.tab ul{list-style-type:none;}
+.header {height:89px;overflow:hidden;}
+.header .menu .main-menu li ul.ie6fix{width:220px;margin-left:-16px;}
+.header .menu .main-menu li ul.middle{margin-left:-73px;}
+.header .menu .main-menu li ul.middle2{margin-left:-60px;}
+.tab li{float:left;padding-right:2px; font-size:11px; color:#7d7d7d;font-weight:bold;text-align:center;cursor:pointer;}
+.tab li div{margin-top:13px;}
+.tab li.select{margin-top:0px !important;top:1px !important;}
+.tab li.last{float:left;padding-right:0px;}
+.content .login .tab{width:392px;height:32px;}
+.header .menu .global-menu li.national a{margin-top: -4px;margin-left:4px;}
+
+
+.recruit-list td.col3 a,.recruit-list td.col4 a,.recruit-list td.col5 a,.recruit-list td.col6 a{top:-8px;}
+table.board-list tr.search td table td.search_button a{top:-6px;}
+.board-reply .reply-list table.reply-table td.col3 span{margin-right:3px;}

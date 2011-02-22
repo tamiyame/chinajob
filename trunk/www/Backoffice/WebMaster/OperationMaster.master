@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Backoffice/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="OperationMaster.master.cs" Inherits="Backoffice_WebMaster_OperationMaster" %>
+<%@ Import Namespace="Com.Library.DB.Board"%>
+<%@ Import Namespace="System.Collections.Generic" %>
+<asp:Content ID="Content4" ContentPlaceHolderID="Menu" Runat="Server">menu1</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/backoffice/css/admin-promote.css" />
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/operation.css" />
+    <asp:ContentPlaceHolder id="Header" runat="server"/> 
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Side" Runat="Server">
+    <div class="sideMenu">
+<%
+    List<BoardEntity> lstBoardMenu = null;
+    CountryCode = Request.QueryString["CountryNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["CountryNo"]);
+
+    BoardGetListArguments arg = new BoardGetListArguments();
+    BoardGetList list = new BoardGetList();
+    list.SetArguments(arg);
+    list.Execute();
+    lstBoardMenu = list.GetRecords();
+%>
+        <ul>
+<% foreach (BoardEntity item in lstBoardMenu)
+   { %>
+            <li><a href="/backoffice/Operation/board_list.aspx?CountryNo=<%=CountryCode %>&BoardNo=<%=item.BoardNo %>"><%=item.BoardName %></a></li>
+<% } %>
+        </ul>
+    </div>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+    <asp:ContentPlaceHolder id="Content" runat="server"/> 
+</asp:Content>
+

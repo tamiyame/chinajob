@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="InfoMaster.master.cs" Inherits="KR_WebMaster_InfoMaster" %>
+<%@ Register TagPrefix="UC" TagName="LeftBanner" Src="/UserControls/Common/LeftBanner.ascx" %>
+<%@ Import Namespace="Com.Library.DB.Menu" %>
+<%@ Import Namespace="System.Collections.Generic" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<asp:ContentPlaceHolder id="Header" runat="server" />
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/expoInfo.css" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+<%
+    TopMenuEntity TopMenuInfo = null;
+    short TopMenuNo = Request.QueryString["TopMenuNo"] == null ? (short)1 : Convert.ToInt16(Request.QueryString["TopMenuNo"]);
+    TopMenuGetInfoArguments topMenuArg = new TopMenuGetInfoArguments();
+    topMenuArg.CountryNo = this.CountryCode;
+    topMenuArg.TopMenuNo = TopMenuNo;
+
+    TopMenuGetInfo topMenu = new TopMenuGetInfo();
+    topMenu.SetArguments(topMenuArg);
+    topMenu.ExecuteNonQuery();
+    TopMenuInfo = topMenu.GetOutput();
+
+
+    List<SubMenuEntity> lstSubMenu = null;
+    SubMenuGetListArguments subMenuArg = new SubMenuGetListArguments();
+    subMenuArg.TopMenuNo = TopMenuNo;
+    SubMenuGetList subMenu = new SubMenuGetList();
+    subMenu.SetArguments(subMenuArg);
+    subMenu.Execute();
+    lstSubMenu = subMenu.GetRecords();
+ %>
+                <div class="sidemenu-main">
+					<div class="sidemenu">
+						<div class="side-logo">
+						    <img src="<%=TopMenuInfo.TopImageUrl%>" />
+						</div>
+						<div class="line"></div>
+						<div class="link-item">
+							<ul>
+<%  foreach (SubMenuEntity item in lstSubMenu) { %>
+								<li><a href="<%=this.GetURL("/info/info.aspx?TopMenuNo=" + item.TopMenuNo.ToString() + "&SubMenuNo=" + item.SubMenuNo.ToString())%>"><%=item.SubMenuName %></a></li>
+<% } %>
+							</ul>
+						</div>
+<UC:LeftBanner id="LeftBanner" runat="server" />
+					</div>
+					<div class="main">
+<asp:ContentPlaceHolder id="Content" runat="server" />
+					</div>
+				</div>
+</asp:Content>
+

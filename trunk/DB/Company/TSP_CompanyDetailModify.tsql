@@ -1,0 +1,144 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+alter PROCEDURE [dbo].[TSP_CompanyDetailModify]
+(
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+
+,	@CompanyNo	int	
+,	@KRName	nvarchar(100)	= NULL	
+,	@CNName	nvarchar(100)	= NULL	
+,	@ENGName	nvarchar(100)	= NULL	
+,	@CompanyImage	varchar(200)	= NULL	
+,	@PermitNo	nvarchar(100)	= NULL	
+,	@PermitImage	varchar(200)	= NULL	
+,	@Email	nvarchar(100)	= NULL
+,	@BusinessCategoryNo	int	= NULL
+,	@BusinessCategoryEtc	nvarchar(50)	= NULL
+,	@PresidentName	nvarchar(60)	= NULL	
+,	@CapitalType	tinyint	 = NULL
+,	@FoundYear	nvarchar(16)	= NULL	
+,	@EmployeeCount	int	= NULL	
+,	@Capital	bigint	= NULL	
+,	@CapitalCurrencyNo	int	= NULL	
+,	@Turnover	bigint	= NULL	
+,	@TurnoverCurrencyNo	int	= NULL	
+,	@CompanyDescrition	nvarchar(MAX)	= NULL	
+,	@RecruiterName	nvarchar(60)	= NULL	
+,	@PhoneNo	varchar(30)	= NULL	
+,	@FaxNo	varchar(30)	= NULL	
+,	@HeadAddress	nvarchar(400)	= NULL	
+,	@EmploymentAddress	nvarchar(400)	= NULL	
+,	@HomepageURL	varchar(100)	= NULL	
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+	If ( @FrkTranCount < 1 )
+	Begin
+		Set @FrkErrorCode = -1
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Else If ( @FrkTranCount > 1 )
+	Begin
+		Set @FrkErrorCode = -2
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+End
+Else
+Begin
+	If ( @FrkTranCount <> 0 )
+	Begin
+		Set @FrkErrorCode = -3
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Begin Tran
+End
+
+-- Implementation
+
+
+UPDATE
+	dbo.TB_CompanyDetail
+SET
+	CompanyNo = IsNull( @CompanyNo, CompanyNo )
+,	KRName = IsNull( @KRName, KRName )
+,	CNName = IsNull( @CNName, CNName )
+,	ENGName = IsNull( @ENGName, ENGName )
+,	CompanyImage = IsNull( @CompanyImage, CompanyImage )
+,	PermitNo = IsNull( @PermitNo, PermitNo )
+,	Email = IsNull( @Email, Email )
+,	BusinessCategoryNo = IsNull( @BusinessCategoryNo, BusinessCategoryNo )
+,	BusinessCategoryEtc = IsNull( @BusinessCategoryEtc, BusinessCategoryEtc )
+,	PresidentName = IsNull( @PresidentName, PresidentName )
+,	CapitalType = IsNull( @CapitalType, CapitalType )
+,	FoundYear = IsNull( @FoundYear, FoundYear )
+,	EmployeeCount = IsNull( @EmployeeCount, EmployeeCount )
+,	Capital = IsNull( @Capital, Capital )
+,	CapitalCurrencyNo = IsNull( @CapitalCurrencyNo, CapitalCurrencyNo )
+,	Turnover = IsNull( @Turnover, Turnover )
+,	TurnoverCurrencyNo = IsNull( @TurnoverCurrencyNo, TurnoverCurrencyNo )
+,	CompanyDescrition = IsNull( @CompanyDescrition, CompanyDescrition )
+,	RecruiterName = IsNull( @RecruiterName, RecruiterName )
+,	PhoneNo = IsNull( @PhoneNo, PhoneNo )
+,	FaxNo = IsNull( @FaxNo, FaxNo )
+,	HeadAddress = IsNull( @HeadAddress, HeadAddress )
+,	EmploymentAddress = IsNull( @EmploymentAddress, EmploymentAddress )
+,	HomepageURL = IsNull( @HomepageURL, HomepageURL )
+,	PermitImage = IsNull( @PermitImage, PermitImage )
+WHERE
+	CompanyNo = @CompanyNo
+
+
+-- Frk Error Check
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+-- End
+
+COMPLETE:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Commit Tran
+		End
+	End
+	SET @ErrorCode = 0
+	SET @ErrorMessage = ''
+	return 0
+ERROR:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Rollback Tran
+		End
+	End
+	SET @ErrorCode = @FrkErrorCode
+	SET @ErrorMessage = @FrkErrorMessage
+	return @FrkErrorCode
