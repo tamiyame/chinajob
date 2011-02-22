@@ -6,7 +6,7 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-CREATE PROCEDURE [dbo].[TSP_UserGetList]
+alter PROCEDURE [dbo].[TSP_UserGetList]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
@@ -15,7 +15,6 @@ CREATE PROCEDURE [dbo].[TSP_UserGetList]
 ,	@PageNo			int	= 1	
 ,	@PageSize		tinyint	= 10	
 
-,	@CountryNo		int = NULL
 ,	@Status			tinyint = NULL
 
 ,	@CntRow			int	= NULL	OUTPUT
@@ -67,68 +66,12 @@ DECLARE @SkipPage INT
 SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
 SET	@Status = IsNull( @Status, 1 )
 
-IF ( @PageNo = 1 )
+IF ( @Status Is Not Null )
 BEGIN
-	SELECT	Top( @PageSize )
-		CountryNo
-	,	UserNo
-	,	UserID
-	,	UserPWD
-	,	ImageUrl
-	,	KRName
-	,	CNName
-	,	ENGName
-	,	Gender
-	,	Birthday
-	,	Email
-	,	KRPhoneNo
-	,	CNPhoneNo
-	,	ResidanceCountry
-	,	HomepageUrl
-	,	DateCreated
-	,	DateLastLogin
-	,	DatePrevLogin
-	,	Status
-	FROM
-		dbo.TB_User with ( nolock )
-	WHERE
-		CountryNo = @CountryNo
-	AND	Status = @Status
-	ORDER BY
-		CountryNo DESC, UserNo DESC
-		
-	SELECT
-		@FrkErrorCode = @@ERROR
-	,	@FrkRowCount = @@RowCount
-	SET @CntRow = @FrkRowCount		
-END
-ELSE
-BEGIN
-	SELECT	Top( @PageSize )
-		CountryNo
-	,	UserNo
-	,	UserID
-	,	UserPWD
-	,	ImageUrl
-	,	KRName
-	,	CNName
-	,	ENGName
-	,	Gender
-	,	Birthday
-	,	Email
-	,	KRPhoneNo
-	,	CNPhoneNo
-	,	ResidanceCountry
-	,	HomepageUrl
-	,	DateCreated
-	,	DateLastLogin
-	,	DatePrevLogin
-	,	Status
-	FROM
-	(
-		SELECT
-			CountryNo
-		,	UserNo
+	IF ( @PageNo = 1 )
+	BEGIN
+		SELECT	Top( @PageSize )
+			UserNo
 		,	UserID
 		,	UserPWD
 		,	ImageUrl
@@ -146,32 +89,183 @@ BEGIN
 		,	DateLastLogin
 		,	DatePrevLogin
 		,	Status
-		,	ROW_NUMBER() OVER ( ORDER BY
-			CountryNo DESC, UserNo DESC
-		) AS ROWNUM
 		FROM
 			dbo.TB_User with ( nolock )
 		WHERE
-			CountryNo = @CountryNo
-		AND	Status = @Status
-	)	A
-	WHERE
-		ROWNUM > @SkipPage
-	AND	ROWNUM <= @SkipPage + @PageSize
+			Status = @Status
+		ORDER BY
+			UserNo DESC
+			
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount		
+	END
+	ELSE
+	BEGIN
+		SELECT	Top( @PageSize )
+			UserNo
+		,	UserID
+		,	UserPWD
+		,	ImageUrl
+		,	KRName
+		,	CNName
+		,	ENGName
+		,	Gender
+		,	Birthday
+		,	Email
+		,	KRPhoneNo
+		,	CNPhoneNo
+		,	ResidanceCountry
+		,	HomepageUrl
+		,	DateCreated
+		,	DateLastLogin
+		,	DatePrevLogin
+		,	Status
+		FROM
+		(
+			SELECT
+				UserNo
+			,	UserID
+			,	UserPWD
+			,	ImageUrl
+			,	KRName
+			,	CNName
+			,	ENGName
+			,	Gender
+			,	Birthday
+			,	Email
+			,	KRPhoneNo
+			,	CNPhoneNo
+			,	ResidanceCountry
+			,	HomepageUrl
+			,	DateCreated
+			,	DateLastLogin
+			,	DatePrevLogin
+			,	Status
+			,	ROW_NUMBER() OVER ( ORDER BY
+				UserNo DESC
+			) AS ROWNUM
+			FROM
+				dbo.TB_User with ( nolock )
+			WHERE
+				Status = @Status
+		)	A
+		WHERE
+			ROWNUM > @SkipPage
+		AND	ROWNUM <= @SkipPage + @PageSize
+
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount	
+	END
 
 	SELECT
-		@FrkErrorCode = @@ERROR
-	,	@FrkRowCount = @@RowCount
-	SET @CntRow = @FrkRowCount	
+		@CntTotal = Count( * )
+	FROM
+		dbo.TB_User with ( nolock )
+	WHERE
+		Status = @Status
 END
+ELSE
+BEGIN
+	IF ( @PageNo = 1 )
+	BEGIN
+		SELECT	Top( @PageSize )
+			UserNo
+		,	UserID
+		,	UserPWD
+		,	ImageUrl
+		,	KRName
+		,	CNName
+		,	ENGName
+		,	Gender
+		,	Birthday
+		,	Email
+		,	KRPhoneNo
+		,	CNPhoneNo
+		,	ResidanceCountry
+		,	HomepageUrl
+		,	DateCreated
+		,	DateLastLogin
+		,	DatePrevLogin
+		,	Status
+		FROM
+			dbo.TB_User with ( nolock )
+		ORDER BY
+			UserNo DESC
+			
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount		
+	END
+	ELSE
+	BEGIN
+		SELECT	Top( @PageSize )
+			UserNo
+		,	UserID
+		,	UserPWD
+		,	ImageUrl
+		,	KRName
+		,	CNName
+		,	ENGName
+		,	Gender
+		,	Birthday
+		,	Email
+		,	KRPhoneNo
+		,	CNPhoneNo
+		,	ResidanceCountry
+		,	HomepageUrl
+		,	DateCreated
+		,	DateLastLogin
+		,	DatePrevLogin
+		,	Status
+		FROM
+		(
+			SELECT
+				UserNo
+			,	UserID
+			,	UserPWD
+			,	ImageUrl
+			,	KRName
+			,	CNName
+			,	ENGName
+			,	Gender
+			,	Birthday
+			,	Email
+			,	KRPhoneNo
+			,	CNPhoneNo
+			,	ResidanceCountry
+			,	HomepageUrl
+			,	DateCreated
+			,	DateLastLogin
+			,	DatePrevLogin
+			,	Status
+			,	ROW_NUMBER() OVER ( ORDER BY
+				UserNo DESC
+			) AS ROWNUM
+			FROM
+				dbo.TB_User with ( nolock )
+		)	A
+		WHERE
+			ROWNUM > @SkipPage
+		AND	ROWNUM <= @SkipPage + @PageSize
 
-SELECT
-	@CntTotal = Count( * )
-FROM
-	dbo.TB_User with ( nolock )
-WHERE
-	CountryNo = @CountryNo
-AND	Status = @Status
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount	
+	END
+
+	SELECT
+		@CntTotal = Count( * )
+	FROM
+		dbo.TB_User with ( nolock )
+	WHERE
+		Status = @Status
+END
 
 -- Frk Error Check
 SELECT
