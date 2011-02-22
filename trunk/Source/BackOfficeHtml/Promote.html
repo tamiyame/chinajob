@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="./css/admin.css" />
+    <link rel="stylesheet" type="text/css" href="./css/admin-promote.css" />
+    <title>홍보물 관리</title>
+</head>
+<body>
+    <div class="bg-top">
+    <div class="admin_box">
+        <div class="admin_top">
+            <div class="logo"><a href="javascript:;" class="icon icon-admin-logo"></a></div>
+            <div class="tool"><a href="javascript:;" class="icon icon-logout"></a></div>
+            <div class="menu menu1">
+                <ul>
+                    <li class="menu1 icon icon-tab-off">홍보</li>
+                    <li class="menu2 icon icon-tab-off">박람회</li>
+                    <li class="menu3 icon icon-tab-off">진행현황</li>
+                    <li class="menu4 icon icon-tab-off">회원정보</li>
+                    <li class="menu5 icon icon-tab-off">설정</li>                    
+                </ul>
+            </div>
+        </div>
+        <div class="admin_contents">
+            <div class="side">        
+                <div class="sideMenu">        
+                    <ul>
+                        <li><a href="javascript:;">박람회 소개</a></li>
+                        <li><a href="javascript:;">참가안내</a></li>
+                        <li><a href="javascript:;">교통정보</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main">
+                <div class="title">박람회 소개</div>
+                <div class="desc">홍보관련 문구 수정</div>
+
+                <div class="promote">    
+                    <table class="promote-input-table">
+                        <tr>
+                            <td>서브메뉴</td>
+                            <td>
+                                <select name="promote_type">
+                                    <option value="1">인삿말</option>
+                                    <option value="2">박람회소개</option>
+                                    <option value="3">행사구성</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>언어</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td><input type="radio" id="promote_lang" value=1/></td>
+                                        <td><label for="promote_lang">한국어</label>&nbsp;</td>
+                                        <td><input type="radio" id="promote_lang" value=2/></td>
+                                        <td><label for="promote_lang">중국어</label>&nbsp;</td>
+                                        <td><input type="radio" id="promote_lang" value=3/></td>
+                                        <td><label for="promote_lang">영어</label></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>제목</td>
+                            <td><input type="text" name="title" /></td>
+                        </tr>
+                        <tr>
+                            <td>타이틀이미지</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td><img src="/imgsrv/kr/images/expoInfo/expo-title-event.png"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="file" name="title_image" /></td>
+                                    </tr>
+                                </table>                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>내용 입력란</td>
+                            <td><textarea cols="100" rows="30" name="text"></textarea></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+</body>
+</html>

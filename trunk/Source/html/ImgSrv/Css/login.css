@@ -1,0 +1,20 @@
+﻿ .content .login{width:389px;margin:0 auto;margin-top:54px;margin-bottom:110px;}
+ .content .login .login-desc{background:url('../images/login/login-desc.png');width:317px;height:31px;margin-bottom:30px;}
+ .content .login .idfind-desc{background:url('../images/login/id-find.png');background-repeat:no-repeat;}
+ .content .login .pwfind-desc{background:url('../images/login/pw-find.png');background-repeat:no-repeat;}
+ 
+ .content .login .tab{width:389px;height:32px;}
+ 
+ .content .login .loginform{border: 1px solid #ababab;padding-top:42px;}
+ .content .login .loginform table{margin:0 auto;color:#7d7d7d;height:72px;}
+ .content .login .loginform .tool{margin:26px 29px; padding-bottom:29px;text-align:center;border-bottom:2px solid #dbdbdb;color:#999999;}
+ .content .login .loginform .tool .id-find{margin-right:40px;}
+ .content .login .loginform .tool a{color:#bebebe;}
+ .content .login .loginform .join-btn{text-align:center;margin-bottom:37px;}
+ 
+ .content .login td{border:none;}
+ .content .login .login-input{height:23px;width:190px;}
+ 
+ .content .login label{margin-right:10px;}
+ 
+  
