@@ -1,0 +1,8 @@
+/*
+#DEFINE ParameterInit()
+{
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+}
+*/

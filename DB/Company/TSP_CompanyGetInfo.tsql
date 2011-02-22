@@ -1,0 +1,134 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+alter PROCEDURE [dbo].[TSP_CompanyGetInfo]
+(
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+
+,	@CompanyNo	int = null	OUTPUT--IN
+,	@CompanyID	varchar(24) = null	OUTPUT--IN
+,	@Password	binary	= null OUTPUT
+,	@CountryNo	int	= null OUTPUT
+,	@RegistyTime	datetime = null	OUTPUT
+,	@Status	tinyint	= null OUTPUT
+,	@Approval tinyint = null output
+,	@RecruitCount int = null output
+,	@ParticipateCount int = null output
+,	@DateLastLogin datetime = null output
+,	@DatePrevLogin datetime = null output
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+	If ( @FrkTranCount < 1 )
+	Begin
+		Set @FrkErrorCode = -1
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Else If ( @FrkTranCount > 1 )
+	Begin
+		Set @FrkErrorCode = -2
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+End
+Else
+Begin
+	If ( @FrkTranCount <> 0 )
+	Begin
+		Set @FrkErrorCode = -3
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Begin Tran
+End
+
+-- Implementation
+
+
+if ( @CompanyNo Is Not Null )
+BEGIN
+	SELECT
+		@CompanyID = CompanyID
+	,	@Password = Password
+	,	@CountryNo = CountryNo
+	,	@RegistyTime = RegistyTime
+	,	@Status = Status
+	,	@Approval = Approval
+	,	@RecruitCount = RecruitCount
+	,	@ParticipateCount = ParticipateCount
+	,	@DateLastLogin = DateLastLogin
+	,	@DatePrevLogin = DatePrevLogin
+	FROM
+		dbo.TB_Company WITH (NOLOCK)
+	WHERE
+		@CompanyNo = CompanyNo
+End Else If ( @CompanyID Is Not Null )
+BEGIN
+	SELECT
+		@CompanyNo = CompanyNo
+	,	@Password = Password
+	,	@CountryNo = CountryNo
+	,	@RegistyTime = RegistyTime
+	,	@Status = Status
+	,	@Approval = Approval
+	,	@RecruitCount = RecruitCount
+	,	@ParticipateCount = ParticipateCount
+	,	@DateLastLogin = DateLastLogin
+	,	@DatePrevLogin = DatePrevLogin
+	FROM
+		dbo.TB_Company WITH (NOLOCK)
+	WHERE
+		@CompanyID = CompanyID
+END
+
+-- Frk Error Check
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+-- End
+
+COMPLETE:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Commit Tran
+		End
+	End
+	SET @ErrorCode = 0
+	SET @ErrorMessage = ''
+	return 0
+ERROR:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Rollback Tran
+		End
+	End
+	SET @ErrorCode = @FrkErrorCode
+	SET @ErrorMessage = @FrkErrorMessage
+	return @FrkErrorCode

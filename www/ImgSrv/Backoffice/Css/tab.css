@@ -1,0 +1,8 @@
+﻿/* tab */
+.tab {height:32px;padding-left:9px;}
+.tab ul{list-style-type:none;}
+.tab li{float:left;padding-right:3px; font-size:11px; color:#7d7d7d;font-weight:bold;text-align:center;cursor:pointer;}
+.tab li div{margin-top:13px;font-size:12px;}
+.tab li.select{margin-top:1px !important; color:#323232;}
+.tab li.last{float:left;padding-right:0px;}
+.tab-content{border-top:solid 1px #abadac;}

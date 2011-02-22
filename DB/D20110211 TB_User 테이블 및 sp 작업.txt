@@ -1,0 +1,14 @@
+TB_User 테이블 생성 및 SP 추가 작업
+
+1. 테이블 생성 --- 완료
+2. TSP_UserLogin SP 수정--- 완료
+3. TSP_UserCreate SP 생성--- 완료
+4. TSP_UserGetList SP 생성--- 완료
+5. TSP_UserGetInfo SP 생성--- 완료
+6. TSP_UserModify SP 생성--- 완료
+
+---> sp 다 받으셈!
+
+
+지금 시간... 2011년 2월 12일 오전 4시 25분
+오늘 늦은 저녁 부터 이력서 관련 Table 생성 및 sp 작업 시작 예정임...

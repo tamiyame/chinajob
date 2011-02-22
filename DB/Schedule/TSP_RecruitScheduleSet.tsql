@@ -1,0 +1,159 @@
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+CREATE PROCEDURE dbo.TSP_RecruitScheduleSet
+(
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+
+,	@ImageUrl	varchar(200)	= NULL	
+,	@Title	nvarchar(100)	= NULL	
+,	@CompanyJoinType	tinyint	= NULL	
+,	@CompanyJoin_Start	datetime	= NULL	
+,	@CompanyJoin_End	datetime	= NULL	
+,	@UserJoinType	tinyint	= NULL	
+,	@UserJoin_Start	datetime	= NULL	
+,	@UserJoin_End	datetime	= NULL	
+,	@RecruitType	tinyint	= NULL	
+,	@Recruit_Start	datetime	= NULL	
+,	@Recruit_End	datetime	= NULL	
+,	@ParticipateType	tinyint	= NULL	
+,	@Participate_Start	datetime	= NULL	
+,	@Participate_End	datetime	= NULL	
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+	If ( @FrkTranCount < 1 )
+	Begin
+		Set @FrkErrorCode = -1
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Else If ( @FrkTranCount > 1 )
+	Begin
+		Set @FrkErrorCode = -2
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+End
+Else
+Begin
+	If ( @FrkTranCount <> 0 )
+	Begin
+		Set @FrkErrorCode = -3
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Begin Tran
+End
+
+-- Implementation
+
+UPDATE
+	dbo.TB_RecruitSchedule
+SET
+	ImageUrl = IsNull( @ImageUrl, ImageUrl )
+,	Title = IsNull( @Title, Title )
+,	CompanyJoinType = IsNull( @CompanyJoinType, CompanyJoinType )
+,	CompanyJoin_Start = IsNull( @CompanyJoin_Start, CompanyJoin_Start )
+,	CompanyJoin_End = IsNull( @CompanyJoin_End, CompanyJoin_End )
+,	UserJoinType = IsNull( @UserJoinType, UserJoinType )
+,	UserJoin_Start = IsNull( @UserJoin_Start, UserJoin_Start )
+,	UserJoin_End = IsNull( @UserJoin_End, UserJoin_End )
+,	RecruitType = IsNull( @RecruitType, RecruitType )
+,	Recruit_Start = IsNull( @Recruit_Start, Recruit_Start )
+,	Recruit_End = IsNull( @Recruit_End, Recruit_End )
+,	ParticipateType = IsNull( @ParticipateType, ParticipateType )
+,	Participate_Start = IsNull( @Participate_Start, Participate_Start )
+,	Participate_End = IsNull( @Participate_End, Participate_End )
+
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+IF ( @FrkRowCount = 0 )
+BEGIN
+
+	INSERT	TB_RecruitSchedule
+	(
+		ImageUrl
+	,	Title
+	,	CompanyJoinType
+	,	CompanyJoin_Start
+	,	CompanyJoin_End
+	,	UserJoinType
+	,	UserJoin_Start
+	,	UserJoin_End
+	,	RecruitType
+	,	Recruit_Start
+	,	Recruit_End
+	,	ParticipateType
+	,	Participate_Start
+	,	Participate_End
+	)
+	SELECT
+		@ImageUrl
+	,	@Title
+	,	@CompanyJoinType
+	,	@CompanyJoin_Start
+	,	@CompanyJoin_End
+	,	@UserJoinType
+	,	@UserJoin_Start
+	,	@UserJoin_End
+	,	@RecruitType
+	,	@Recruit_Start
+	,	@Recruit_End
+	,	@ParticipateType
+	,	@Participate_Start
+	,	@Participate_End
+	SELECT
+		@FrkErrorCode = @@ERROR
+	,	@FrkRowCount = @@RowCount
+
+END
+
+
+
+
+-- End
+
+COMPLETE:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Commit Tran
+		End
+	End
+	SET @ErrorCode = 0
+	SET @ErrorMessage = ''
+	return 0
+ERROR:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Rollback Tran
+		End
+	End
+	SET @ErrorCode = @FrkErrorCode
+	SET @ErrorMessage = @FrkErrorMessage
+	return @FrkErrorCode
+GO

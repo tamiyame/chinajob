@@ -1,0 +1,135 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+CREATE PROCEDURE [dbo].[TSP_BusinessCategoryGetList]
+(
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+
+,	@CountryNo int
+,	@PageNo	int	= 1	
+,	@PageSize	tinyint	= 10	
+,	@CntRow	int	= NULL	OUTPUT
+,	@CntTotal	int	= NULL	OUTPUT
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+	If ( @FrkTranCount < 1 )
+	Begin
+		Set @FrkErrorCode = -1
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Else If ( @FrkTranCount > 1 )
+	Begin
+		Set @FrkErrorCode = -2
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+End
+Else
+Begin
+	If ( @FrkTranCount <> 0 )
+	Begin
+		Set @FrkErrorCode = -3
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Begin Tran
+End
+
+-- Implementation
+
+DECLARE @SkipPage INT
+SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
+
+IF ( @PageNo = 1 )
+BEGIN
+	SELECT	Top( @PageSize )
+		BusinessCategoryNo
+	,	CountryNo
+	,	CategoryName
+	FROM
+		dbo.TB_BusinessCategory with ( nolock )
+	WHERE
+		CountryNo = @CountryNo
+	ORDER BY
+		CountryNo asc, BusinessCategoryNo asc
+END
+ELSE
+BEGIN
+	SELECT	Top( @PageSize )
+		BusinessCategoryNo
+	,	CountryNo
+	,	CategoryName
+	FROM
+	(
+		SELECT
+			BusinessCategoryNo
+		,	CountryNo
+		,	CategoryName
+		,	ROW_NUMBER() OVER ( ORDER BY
+			CountryNo asc, BusinessCategoryNo asc
+		) AS ROWNUM
+		FROM
+			dbo.TB_BusinessCategory with ( nolock )
+		WHERE
+			CountryNo = @CountryNo
+	)	A
+	WHERE
+		ROWNUM > @SkipPage
+	AND	ROWNUM <= @SkipPage + @PageSize
+	
+END
+
+
+
+-- Frk Error Check
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+-- End
+
+COMPLETE:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Commit Tran
+		End
+	End
+	SET @ErrorCode = 0
+	SET @ErrorMessage = ''
+	return 0
+ERROR:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Rollback Tran
+		End
+	End
+	SET @ErrorCode = @FrkErrorCode
+	SET @ErrorMessage = @FrkErrorMessage
+	return @FrkErrorCode

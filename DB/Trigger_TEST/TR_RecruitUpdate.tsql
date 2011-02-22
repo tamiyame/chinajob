@@ -1,0 +1,50 @@
+-- TB_Recruit 테이블에 Update 시 TB_RecruitSearch 테이블에 필요 Data Update 해주는 Trigger 세팅
+CREATE TRIGGER TR_RecruitUpdate ON dbo.TB_Recruit
+FOR UPDATE
+AS
+
+DECLARE @CompanyNo INT
+,	@RecruitNo INT
+,	@CountryNo INT
+,	@JobFairValue TINYINT
+,	@Category1No INT
+,	@Category2No INT
+,	@CityCategory INT
+,	@AreaCategory INT
+,	@Career TINYINT
+,	@Gender TINYINT
+,	@AgeCategory INT
+
+SELECT
+	@CompanyNo = CompanyNo
+,	@RecruitNo = RecruitNo
+,	@CountryNo = CountryNo
+,	@JobFairValue = JobFairValue
+,	@Category1No = Category1No
+,	@Category2No = Category2No
+,	@CityCategory = CityCategory
+,	@AreaCategory = AreaCategory
+,	@Career = Career
+,	@Gender = Gender
+,	@AgeCategory = AgeCategory
+FROM
+	INSERTED
+
+IF NOT EXISTS (SELECT CompanyNo FROM dbo.TB_RecruitSearch WITH(NOLOCK) WHERE CompanyNo = @CompanyNo AND CountryNo = @CountryNo AND RecruitNo = @RecruitNo )
+BEGIN
+	UPDATE
+		dbo.TB_RecruitSearch
+	SET
+		JobFairValue = IsNull( @JobFairValue, JobFairValue )
+	,	Category1No = IsNull( @Category1No, Category1No )
+	,	Category2No = IsNull( @Category2No, Category2No )
+	,	CityCategory = IsNull( @CityCategory, CityCategory )
+	,	AreaCategory = IsNull( @AreaCategory, AreaCategory )
+	,	Career = IsNull( @Career, Career )
+	,	Gender = IsNull( @Gender, Gender )
+	,	AgeCategory = IsNull( @AgeCategory, AgeCategory )
+	WHERE
+		CountryNo = @CountryNo
+	AND	RecruitNo = @RecruitNo
+	AND	CompanyNo = @CompanyNo
+END

@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C003CA86-D2F3-4617-A93D-598FF01D0A14}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Com.Library</RootNamespace>
+    <AssemblyName>Library</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions.Design">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cookie\WebCookie.cs" />
+    <Compile Include="DB\Banner\Arguments\BannerCreateArguments.cs" />
+    <Compile Include="DB\Banner\Arguments\BannerGetInfoArguments.cs" />
+    <Compile Include="DB\Banner\Arguments\BannerGetListArguments.cs" />
+    <Compile Include="DB\Banner\Arguments\BannerModifyArguments.cs" />
+    <Compile Include="DB\Banner\Arguments\BannerRemoveArguments.cs" />
+    <Compile Include="DB\Banner\DataAccess\BannerCreate.cs" />
+    <Compile Include="DB\Banner\DataAccess\BannerGetInfo.cs" />
+    <Compile Include="DB\Banner\DataAccess\BannerGetList.cs" />
+    <Compile Include="DB\Banner\DataAccess\BannerModify.cs" />
+    <Compile Include="DB\Banner\DataAccess\BannerRemove.cs" />
+    <Compile Include="DB\Banner\Entity\BannerEntity.cs" />
+    <Compile Include="DB\Board\Arguments\ArticleCommentCreateArguments.cs" />
+    <Compile Include="DB\Board\Arguments\ArticleCommentGetListArguments.cs" />
+    <Compile Include="DB\Board\Arguments\ArticleCommentRemoveArguments.cs" />
+    <Compile Include="DB\Board\Arguments\ArticleCreateArguments.cs" />
+    <Compile Include="DB\Board\Arguments\ArticleGetInfoArguments.cs" />
+    <Compile Include="DB\Board\Arguments\ArticleGetListArguments.cs" />
+    <Compile Include="DB\Board\Arguments\ArticleModifyArguments.cs" />
+    <Compile Include="DB\Board\Arguments\ArticleRemoveArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardCategoryCreateArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardCategoryGetListArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardCategoryModifyArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardCategoryRemoveArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardCreateArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardGetInfoArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardGetListArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardModifyArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardSubCategoryCreateArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardSubCategoryGetListArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardSubCategoryModifyArguments.cs" />
+    <Compile Include="DB\Board\Arguments\BoardSubCategoryRemoveArguments.cs" />
+    <Compile Include="DB\Board\DataAccess\ArticleCommentCreate.cs" />
+    <Compile Include="DB\Board\DataAccess\ArticleCommentGetList.cs" />
+    <Compile Include="DB\Board\DataAccess\ArticleCommentRemove.cs" />
+    <Compile Include="DB\Board\DataAccess\ArticleCreate.cs" />
+    <Compile Include="DB\Board\DataAccess\ArticleGetInfo.cs" />
+    <Compile Include="DB\Board\DataAccess\ArticleGetList.cs" />
+    <Compile Include="DB\Board\DataAccess\ArticleModify.cs" />
+    <Compile Include="DB\Board\DataAccess\ArticleRemove.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardCategoryCreate.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardCategoryGetList.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardCategoryModify.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardCategoryRemove.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardCreate.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardGetInfo.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardGetList.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardModify.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardSubCategoryCreate.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardSubCategoryGetList.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardSubCategoryModify.cs" />
+    <Compile Include="DB\Board\DataAccess\BoardSubCategoryRemove.cs" />
+    <Compile Include="DB\Board\Entity\ArticleCommentEntity.cs" />
+    <Compile Include="DB\Board\Entity\ArticleEntity.cs" />
+    <Compile Include="DB\Board\Entity\BoardCategoryEntity.cs" />
+    <Compile Include="DB\Board\Entity\BoardEntity.cs" />
+    <Compile Include="DB\Board\Entity\BoardSubCategoryEntity.cs" />
+    <Compile Include="DB\Category\Arguments\CategoryCreateArguments.cs" />
+    <Compile Include="DB\Category\Arguments\CategoryGetInfoArguments.cs" />
+    <Compile Include="DB\Category\Arguments\CategoryGetListArguments.cs" />
+    <Compile Include="DB\Category\Arguments\CategoryRemoveArguments.cs" />
+    <Compile Include="DB\Category\Arguments\SubCategoryCreateArguments.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DB\Category\Arguments\SubCategoryGetInfoArguments.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DB\Category\Arguments\SubCategoryGetListArguments.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DB\Category\Arguments\SubCategoryRemoveArguments.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DB\Category\DataAccess\ArrayCategoryCreate.cs" />
+    <Compile Include="DB\Category\DataAccess\ArrayCategoryGetInfo.cs" />
+    <Compile Include="DB\Category\DataAccess\ArrayCategoryGetList.cs" />
+    <Compile Include="DB\Category\DataAccess\ArrayCategoryModify.cs" />
+    <Compile Include="DB\Category\DataAccess\BusinessCategoryCreate.cs" />
+    <Compile Include="DB\Category\DataAccess\BusinessCategoryGetInfo.cs" />
+    <Compile Include="DB\Category\DataAccess\BusinessCategoryGetList.cs" />
+    <Compile Include="DB\Category\DataAccess\BusinessCategoryModify.cs" />
+    <Compile Include="DB\Category\DataAccess\BusinessCategoryRemove.cs" />
+    <Compile Include="DB\Category\DataAccess\Category1Create.cs" />
+    <Compile Include="DB\Category\DataAccess\Category1GetInfo.cs" />
+    <Compile Include="DB\Category\DataAccess\Category1GetList.cs" />
+    <Compile Include="DB\Category\DataAccess\Category1Modify.cs" />
+    <Compile Include="DB\Category\DataAccess\Category1Remove.cs" />
+    <Compile Include="DB\Category\DataAccess\Category2Create.cs" />
+    <Compile Include="DB\Category\DataAccess\Category2GetInfo.cs" />
+    <Compile Include="DB\Category\DataAccess\Category2GetList.cs" />
+    <Compile Include="DB\Category\DataAccess\Category2Modify.cs" />
+    <Compile Include="DB\Category\DataAccess\Category2Remove.cs" />
+    <Compile Include="DB\Category\DataAccess\CategoryCreate.cs" />
+    <Compile Include="DB\Category\DataAccess\CategoryGetInfo.cs" />
+    <Compile Include="DB\Category\DataAccess\CategoryGetList.cs" />
+    <Compile Include="DB\Category\DataAccess\CategoryRemove.cs" />
+    <Compile Include="DB\Category\DataAccess\CityCategoryCreate.cs" />
+    <Compile Include="DB\Category\DataAccess\CityCategoryGetInfo.cs" />
+    <Compile Include="DB\Category\DataAccess\CityCategoryGetList.cs" />
+    <Compile Include="DB\Category\DataAccess\CityCategoryModify.cs" />
+    <Compile Include="DB\Category\DataAccess\SubCategoryCreate.cs" />
+    <Compile Include="DB\Category\DataAccess\SubCategoryGetInfo.cs" />
+    <Compile Include="DB\Category\DataAccess\SubCategoryGetList.cs" />
+    <Compile Include="DB\Category\DataAccess\SubCategoryRemove.cs" />
+    <Compile Include="DB\Category\Entity\ArrayCategoryEntity.cs" />
+    <Compile Include="DB\Category\Entity\BusinessCategoryEntity.cs" />
+    <Compile Include="DB\Category\Entity\Category1Entity.cs" />
+    <Compile Include="DB\Category\Entity\Category2Entity.cs" />
+    <Compile Include="DB\Category\Entity\CategoryEntity.cs" />
+    <Compile Include="DB\Category\Entity\CityCategoryEntity.cs" />
+    <Compile Include="DB\Category\Entity\SubCategoryEntity.cs" />
+    <Compile Include="DB\Company\Arguments\CompanyCreateArguments.cs" />
+    <Compile Include="DB\Company\Arguments\CompanyDetailGetInfoArguments.cs" />
+    <Compile Include="DB\Company\Arguments\CompanyDetailModifyArguments.cs" />
+    <Compile Include="DB\Company\Arguments\CompanyGetInfoArguments.cs" />
+    <Compile Include="DB\Company\Arguments\CompanyGetListArguments.cs" />
+    <Compile Include="DB\Company\Arguments\CompanyLoginArguments.cs" />
+    <Compile Include="DB\Company\Arguments\CompanyModifyArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitCreateArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitGetInfoArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitGetListArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitMasterCreateArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitMasterGetInfoArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitMasterGetListArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitMasterModifyArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitMasterRemoveArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitModifyArguments.cs" />
+    <Compile Include="DB\Company\DataAccess\CompanyCreate.cs" />
+    <Compile Include="DB\Company\DataAccess\CompanyDetailGetInfo.cs" />
+    <Compile Include="DB\Company\DataAccess\CompanyDetailModify.cs" />
+    <Compile Include="DB\Company\DataAccess\CompanyGetInfo.cs" />
+    <Compile Include="DB\Company\DataAccess\CompanyGetList.cs" />
+    <Compile Include="DB\Company\DataAccess\CompanyLogin.cs" />
+    <Compile Include="DB\Company\DataAccess\CompanyModify.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitCreate.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitGetInfo.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitGetList.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitMasterCreate.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitMasterGetInfo.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitMasterGetList.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitMasterModify.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitMasterRemove.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitModify.cs" />
+    <Compile Include="DB\Company\Entity\CompanyAllEntity.cs" />
+    <Compile Include="DB\Company\Entity\CompanyDetailEntity.cs" />
+    <Compile Include="DB\Company\Entity\CompanyEntity.cs" />
+    <Compile Include="DB\Company\Entity\RecruitEntity.cs" />
+    <Compile Include="DB\Company\Entity\RecruitMasterEntity.cs" />
+    <Compile Include="DB\ConnectionString.cs" />
+    <Compile Include="DB\Menu\Arguments\SubMenuCreateArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\SubMenuGetInfoArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\SubMenuGetListArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\SubMenuModifyArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\SubMenuRemoveArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\TopMenuCreateArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\TopMenuGetInfoArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\TopMenuGetListArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\TopMenuModifyArguments.cs" />
+    <Compile Include="DB\Menu\Arguments\TopMenuRemoveArguments.cs" />
+    <Compile Include="DB\Menu\DataAccess\SubMenuGetInfo.cs" />
+    <Compile Include="DB\Menu\DataAccess\TopMenuGetInfo.cs" />
+    <Compile Include="DB\Menu\DataAccess\TopMenuGetList.cs" />
+    <Compile Include="DB\Menu\DataAccess\SubMenuCreate.cs" />
+    <Compile Include="DB\Menu\DataAccess\SubMenuGetList.cs" />
+    <Compile Include="DB\Menu\DataAccess\SubMenuModify.cs" />
+    <Compile Include="DB\Menu\DataAccess\SubMenuRemove.cs" />
+    <Compile Include="DB\Menu\DataAccess\TopMenuCreate.cs" />
+    <Compile Include="DB\Menu\DataAccess\TopMenuModify.cs" />
+    <Compile Include="DB\Menu\DataAccess\TopMenuRemove.cs" />
+    <Compile Include="DB\Menu\Entity\SubMenuEntity.cs" />
+    <Compile Include="DB\Menu\Entity\TopMenuEntity.cs" />
+    <Compile Include="DB\Schedule\Arguments\RecruitScheduleSetArguments.cs" />
+    <Compile Include="DB\Schedule\DataAccess\RecruitScheduleGetInfo.cs" />
+    <Compile Include="DB\Schedule\DataAccess\RecruitScheduleSet.cs" />
+    <Compile Include="DB\Schedule\Entity\RecruitScheduleEntity.cs" />
+    <Compile Include="DB\User\Arguments\AcademicAbilityCreateArguments.cs" />
+    <Compile Include="DB\User\Arguments\ResumeCareerCreateArguments.cs" />
+    <Compile Include="DB\User\Arguments\ResumeCreateArguments.cs" />
+    <Compile Include="DB\User\Arguments\ResumeDetailCreateArguments.cs" />
+    <Compile Include="DB\User\Arguments\ResumeGetInfoArguments.cs" />
+    <Compile Include="DB\User\Arguments\ResumeLanguageCreateArguments.cs" />
+    <Compile Include="DB\User\Arguments\ResumeLicenceCreateArguments.cs" />
+    <Compile Include="DB\User\Arguments\UserCreateArguments.cs" />
+    <Compile Include="DB\User\Arguments\UserGetInfoArguments.cs" />
+    <Compile Include="DB\User\Arguments\UserGetListArguments.cs" />
+    <Compile Include="DB\User\Arguments\UserLoginArguments.cs" />
+    <Compile Include="DB\User\Arguments\UserModifyArguments.cs" />
+    <Compile Include="DB\User\DataAccess\AcademicAbilityCreate.cs" />
+    <Compile Include="DB\User\DataAccess\ResumeCareerCreate.cs" />
+    <Compile Include="DB\User\DataAccess\ResumeCreate.cs" />
+    <Compile Include="DB\User\DataAccess\ResumeDetailCreate.cs" />
+    <Compile Include="DB\User\DataAccess\ResumeGetInfo.cs" />
+    <Compile Include="DB\User\DataAccess\ResumeLanguageCreate.cs" />
+    <Compile Include="DB\User\DataAccess\ResumeLicenceCreate.cs" />
+    <Compile Include="DB\User\DataAccess\UserCreate.cs" />
+    <Compile Include="DB\User\DataAccess\UserGetInfo.cs" />
+    <Compile Include="DB\User\DataAccess\UserGetList.cs" />
+    <Compile Include="DB\User\DataAccess\UserLogin.cs" />
+    <Compile Include="DB\User\DataAccess\UserModify.cs" />
+    <Compile Include="DB\User\Entity\Resume.cs" />
+    <Compile Include="DB\User\Entity\UserEntity.cs" />
+    <Compile Include="Page\WebPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\WebMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\WebUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.csproj">
+      <Project>{F314E0B8-D9C4-404C-8EFE-4DBD55532280}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

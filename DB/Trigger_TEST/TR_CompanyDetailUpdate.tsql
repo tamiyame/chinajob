@@ -1,0 +1,36 @@
+-- TB_CompanyDetail 테이블에 Update 시 TB_RecruitSearch 테이블에 필요 Data Update 해주는 Trigger 세팅
+CREATE TRIGGER TR_CompanyDetailUPDATE ON dbo.TB_CompanyDetail
+FOR UPDATE
+AS
+
+DECLARE  @CompanyNo INT
+,	@KRName NVARCHAR(50)
+,	@CNName NVARCHAR(50)
+,	@ENGName NVARCHAR(50)
+,	@CapitalType TINYINT
+
+-- TB_CompanyDetail Table 에서 얻어와야 하는 정보
+
+SELECT
+	@CompanyNo
+,	@KRName
+,	@CNName
+,	@ENGName
+,	@CapitalType
+FROM
+	INSERTED
+
+IF NOT EXISTS (SELECT CompanyNo FROM dbo.TB_RecruitSearch WITH(NOLOCK) WHERE CompanyNo = @CompanyNo )
+BEGIN
+
+	UPDATE
+		dbo.TB_RecruitSearch
+	SET
+		KRName = IsNull( @KRName, KRName )
+	,	CNName = IsNull( @CNName, CNName )
+	,	ENGName = IsNull( @ENGName,ENGName )
+	,	CapitalType = IsNull(@CDapitalType, CapitalType)
+	WHERE
+		CompanyNo = @CompanyNo
+
+END

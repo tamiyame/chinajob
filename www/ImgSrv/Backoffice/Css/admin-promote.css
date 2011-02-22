@@ -1,0 +1,9 @@
+﻿ .promote{}
+ .promote .promote-input-table{width:777px;}
+ .promote .promote-input-table tr{height:33px;} 
+ .promote .promote-input-table input{width:90%;}
+ .promote .promote-input-table td.col1{color:#050505;}  
+ .promote .promote-input-table td.col1 select{width:76px;}  
+ .promote .promote-input-table td table td{border:none;} 
+ .promote .promote-input-table tr.noboarder td{border:none;text-align:center;} 
+ 

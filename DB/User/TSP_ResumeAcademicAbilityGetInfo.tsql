@@ -1,0 +1,108 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+CREATE PROCEDURE [dbo].[TSP_ResumeAcademicAbilityGetInfo]
+(
+	@IsTransaction	tinyint			= 0
+,	@ErrorCode		int				= 0		OUTPUT
+,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
+
+,	@CountryNo	int	
+,	@ResumeNo	int	
+,	@SchoolName	nvarchar(100)	OUTPUT
+,	@SchoolStartDate	datetime	OUTPUT
+,	@SchoolEndDate	datetime	OUTPUT
+,	@SchoolStatus	tinyint	OUTPUT
+,	@MajorMinor	nvarchar(200)	= NULL	OUTPUT
+,	@SchoolCountryNo	int	= NULL	OUTPUT
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+	If ( @FrkTranCount < 1 )
+	Begin
+		Set @FrkErrorCode = -1
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Else If ( @FrkTranCount > 1 )
+	Begin
+		Set @FrkErrorCode = -2
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+End
+Else
+Begin
+	If ( @FrkTranCount <> 0 )
+	Begin
+		Set @FrkErrorCode = -3
+		Set @FrkErrorMessage = 'Transaction.'
+		goto ERROR
+	End
+	Begin Tran
+End
+
+-- Implementation
+
+SELECT
+	@SchoolName = SchoolName
+,	@SchoolStartDate = SchoolStartDate
+,	@SchoolEndDate = SchoolEndDate
+,	@SchoolStatus = SchoolStatus
+,	@MajorMinor = MajorMinor
+,	@SchoolCountryNo = SchoolCountryNo
+FROM
+	dbo.TB_ResumeAcademicAbility WITH (NOLOCK)
+WHERE
+	@CountryNo = CountryNo
+AND	@ResumeNo = ResumeNo
+
+
+-- Frk Error Check
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+-- End
+
+COMPLETE:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Commit Tran
+		End
+	End
+	SET @ErrorCode = 0
+	SET @ErrorMessage = ''
+	return 0
+ERROR:
+	If ( @IsTransaction <> 0 )
+	Begin
+		If ( @@TRANCOUNT = 1 )
+		Begin
+			Rollback Tran
+		End
+	End
+	SET @ErrorCode = @FrkErrorCode
+	SET @ErrorMessage = @FrkErrorMessage
+	return @FrkErrorCode

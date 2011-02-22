@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Backoffice/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="UserMaster.master.cs" Inherits="Backoffice_WebMaster_UserMaster" %>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="Menu" Runat="Server">menu4</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/backoffice/css/admin-user.css" />
+    <asp:ContentPlaceHolder id="Header" runat="server"/> 
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Side" Runat="Server">
+    <div class="sideMenu">
+        <ul>
+            <li><a href="/backoffice/User/company.aspx">기업회원</a></li>
+            <li><a href="/backoffice/User/user.aspx">개인회원</a></li>
+        </ul>
+    </div>
+    <div class="sideTool">
+        <ul>
+            <li><a href="javascript:;" class="icon-admin icon-update"></a></li>
+        </ul>
+    </div>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+    <asp:ContentPlaceHolder id="Content" runat="server"/> 
+</asp:Content>
+

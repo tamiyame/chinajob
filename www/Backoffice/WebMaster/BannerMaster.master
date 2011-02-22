@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Backoffice/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="BannerMaster.master.cs" Inherits="Backoffice_WebMaster_BannerMaster" %>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="Menu" Runat="Server">menu5</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+    <asp:ContentPlaceHolder id="Header" runat="server"/> 
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Side" Runat="Server">
+    <div class="sideMenu">
+        <ul>
+            <li>배너관리(한국어)
+                <ul class="submenu">
+                    <li><a href="./banner_list.aspx?BannerType=1&Country=1">채용</a></li>
+                    <li><a href="./banner_list.aspx?BannerType=2&Country=1">인재</a></li>
+                </ul>
+            </li>
+            <li>배너관리(중국어)
+                <ul>
+                    <li><a href="./banner_list.aspx?BannerType=1&Country=2">채용</a></li>
+                    <li><a href="./banner_list.aspx?BannerType=2&Country=2">인재</a></li>
+                </ul>
+            </li>
+            <li>배너관리(영어)
+                <ul>
+                    <li><a href="./banner_list.aspx?BannerType=1&Country=3">채용</a></li>
+                    <li><a href="./banner_list.aspx?BannerType=2&Country=3">인재</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+    <asp:ContentPlaceHolder id="Content" runat="server"/> 
+</asp:Content>
+

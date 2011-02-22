@@ -1,0 +1,86 @@
+-- TB_Recruit 테이블에 Insert 시 TB_RecruitSearch 테이블에 필요 Data Insert 해주는 Trigger 세팅
+CREATE TRIGGER TR_RecruitInsert ON dbo.TB_Recruit
+FOR INSERT
+AS
+
+DECLARE @CompanyNo INT
+,	@RecruitNo INT
+,	@CountryNo INT
+,	@JobFairValue TINYINT
+,	@Category1No INT
+,	@Category2No INT
+,	@CityCategory INT
+,	@AreaCategory INT
+,	@Career TINYINT
+,	@Gender TINYINT
+,	@AgeCategory INT
+
+-- TB_CompanyDetail Table 에서 얻어와야 하는 정보
+,	@KRName NVARCHAR(50)
+,	@CNName NVARCHAR(50)
+,	@ENGName NVARCHAR(50)
+,	@CapitalType TINYINT
+
+SELECT
+	@CompanyNo = CompanyNo
+,	@RecruitNo = RecruitNo
+,	@CountryNo = CountryNo
+,	@JobFairValue = JobFairValue
+,	@Category1No = Category1No
+,	@Category2No = Category2No
+,	@CityCategory = CityCategory
+,	@AreaCategory = AreaCategory
+,	@Career = Career
+,	@Gender = Gender
+,	@AgeCategory = AgeCategory
+FROM
+	INSERTED
+
+IF NOT EXISTS (SELECT CompanyNo FROM dbo.TB_RecruitSearch WITH(NOLOCK) WHERE CompanyNo = @CompanyNo AND CountryNo = @CountryNo AND RecruitNo = @RecruitNo )
+BEGIN
+	-- 해당 CompnayNo, CountryNo, RecruitNo 값기준으로 Search Data가 없으므로 추가로 필요한 Data TB_CompanyDetail Table 에서 뽑아오고 
+	SELECT
+		@KRName = KRName
+	,	@CNName = CNName
+	,	@ENGName = ENGName
+	,	@CapitalType = CapitalType
+	FROM
+		dbo.TB_CompanyDetail WITH(NOLOCK)
+	WHERE
+		CompanyNo = @CompanyNo
+		
+	INSERT INTO dbo.TB_RecruitSearch (
+		CompanyNo
+	,	CountryNo
+	,	RecruitNo
+	,	KRName
+	,	CNName
+	,	ENGName
+	,	CapitalType
+	,	JobFairValue
+	,	Category1
+	,	Category2
+	,	CityCategory
+	,	AreaCategory
+	,	Career
+	,	Gender
+	,	AgeCategory
+	)
+	VALUES (
+		@CompanyNo
+	,	@CountryNo
+	,	@RecruitNo
+	,	@KRName
+	,	@CNName
+	,	@ENGName
+	,	@CapitalType
+	,	@JobFairValue
+	,	@Category1
+	,	@Category2
+	,	@CityCategory
+	,	@AreaCategory
+	,	@Career
+	,	@Gender
+	,	@AgeCategory
+	)
+END

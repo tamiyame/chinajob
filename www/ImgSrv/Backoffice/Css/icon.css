@@ -1,0 +1,32 @@
+﻿
+/* common icon */
+.line, .icon-common{font-size:0.0001em;display:inline-block;background:url('../images/icon.png');} /*for ie6*/
+.hide{display:none;}
+.show{display:block;}
+
+/* icon */
+.icon-folder-on{background-position:-261px -102px; width:193px; height:32px;}
+.icon-folder-off{background-position:-261px -137px; width:193px; height:32px;}
+.icon-folder-big-on{background-position:-200px -179px; width:250px; height:32px;}
+.icon-folder-big-off{background-position:-200px -215px; width:250px; height:32px;}
+.icon-board-confirm{background-position:-483px -26px;width:68px;height:30px;}
+.icon-board-cancle{background-position:-558px -26px;width:65px;height:30px;}
+.icon-board-confirm-simple{background-position:-628px -26px;width:65px;height:30px;}
+.icon-board-icon-next{background-position:-635px -11px;width:6px;height:9px;}
+.icon-board-icon-prev{background-position:-628px -11px;width:6px;height:9px;}
+.icon-board-search{background-position:-644px -4px;width:32px;height:21px;}
+.icon-board-delete{background-position:-696px -58px;width:65px;height:30px;}
+.icon-board-modify{background-position:-628px -58px;width:65px;height:30px;}
+.icon-board-list{background-position:-696px -26px;width:65px;height:30px;}
+.icon-logo-reply{background-position:-685px -6px;width:22px;height:12px;}
+.icon-reply-confirm{background-position:-524px -102px;width:66px;height:51px;}
+.icon-reply-opinion{background-position:-715px -6px;width:22px;height:12px;}
+
+/* tab */
+.tab {height:32px;padding-left:9px;}
+.tab ul{list-style-type:none;}
+.tab li{float:left;padding-right:3px; font-size:11px; color:#7d7d7d;font-weight:bold;text-align:center;cursor:pointer;}
+.tab li div{margin-top:13px;font-size:12px;}
+.tab li.select{margin-top:1px !important; color:#323232;}
+.tab li.last{float:left;padding-right:0px;}
+.tab-content{border-top:solid 1px #abadac;}
