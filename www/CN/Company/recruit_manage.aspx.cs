@@ -16,7 +16,7 @@ using Site.Web.Page;
 using Com.Library.DB.Company;
 using Com.Library.DB.Category;
 
-public partial class CN_Recruit_recruit_manage : SitePage
+public partial class CN_Company_recruit_manage : SitePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
