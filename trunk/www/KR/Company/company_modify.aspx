@@ -22,7 +22,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">로고이미지<span class="require">*</span></td>
+							<td class="label">로고이미지</td>
 							<td class="input">
 								<table>
 								    <tr>
@@ -58,7 +58,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사업자등록번호<span class="require">*</span></td>
+							<td class="label">사업자등록번호</td>
 							<td class="input">
 								<%=CompanyDetailInfo.PermitNo %>
 							</td>
@@ -312,15 +312,12 @@ jQuery(function()
         CreateInit : function()
         {
              $("select:[name=jobType]").change(function(){
-                if($(this).val()=='33')
+                if($(this).val()=='42')
                     $("input:[name=jobType_etc]").show();
                 else
                     $("input:[name=jobType_etc]").hide();
             }).change();
         
-            $("input:[name=companyNo]").bind("keypress", function() {
-                PermitNo = "";
-            });
             $("input:[name=companyID]").bind("keypress", function() {
                 CompanyID = "";
             });
@@ -385,7 +382,7 @@ jQuery(function()
                 }
                 else
                 {
-                    PermitNo = $("input:[name=companyNo]").val();
+                    //PermitNo = $("input:[name=companyNo]").val();
                     $("#spCompanyNo").html("등록가능한 사업자등록번호입니다.");
                 }
             },
@@ -499,11 +496,6 @@ jQuery(function()
                 return false;
             }
             
-            if(companyNo == "" )
-            {
-                alert( "사업자등록번호를 입력하셔야합니다.");
-                return false;
-            }
             
             if ( password != "" )
             {
@@ -526,7 +518,7 @@ jQuery(function()
                 return false;
             }
             
-            if ( jobType == "33" )
+            if ( jobType == "42" )
             {
                 if ( jobType_etc == "" )
                 {
