@@ -21,20 +21,26 @@ public partial class KR_Company_company_modify : SitePage
     public List<CategoryEntity> BusinessCategoryList = null;
     public CompanyEntity CompanyInfo = null;
     public CompanyDetailEntity CompanyDetailInfo = null;
+    public int CompanyNo_Admin = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!this.WebCookies.IsLogin)
-        {
-            Response.Clear();
-            Response.Write("<script language='javascript'>;location.href='" + GetURL("/home") + "'; alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
-            Response.End();
-        }
+        CompanyNo_Admin = Request.QueryString["CompanyNo"] == null ? 0 : Convert.ToInt32(Request.QueryString["CompanyNo"]);
 
-        if (!this.WebCookies.isCompany)
+        if (CompanyNo_Admin == 0)
         {
-            Response.Clear();
-            Response.Write("<script language='javascript'>;location.href='" + GetURL("/home") + "'; alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.Company_User) + "');</script>");
-            Response.End();
+            if (!this.WebCookies.IsLogin)
+            {
+                Response.Clear();
+                Response.Write("<script language='javascript'>;location.href='" + GetURL("/home") + "'; alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
+                Response.End();
+            }
+
+            if (!this.WebCookies.isCompany)
+            {
+                Response.Clear();
+                Response.Write("<script language='javascript'>;location.href='" + GetURL("/home") + "'; alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.Company_User) + "');</script>");
+                Response.End();
+            }
         }
 
         CategoryGetList list = new CategoryGetList();
@@ -44,11 +50,21 @@ public partial class KR_Company_company_modify : SitePage
         list.Execute();
         BusinessCategoryList = list.GetRecords();
 
+
         CompanyGetInfoArguments infoArg = new CompanyGetInfoArguments();
-        infoArg.CompanyNo = this.WebCookies.UserNo;
+        
 
         CompanyDetailGetInfoArguments detailnfoArg = new CompanyDetailGetInfoArguments();
-        detailnfoArg.CompanyNo = this.WebCookies.UserNo;
+        if (CompanyNo_Admin == 0)
+        {
+            infoArg.CompanyNo = this.WebCookies.UserNo;
+            detailnfoArg.CompanyNo = this.WebCookies.UserNo;
+        }
+        else
+        {
+            infoArg.CompanyNo = CompanyNo_Admin;
+            detailnfoArg.CompanyNo = CompanyNo_Admin;
+        }
 
         CompanyGetInfo info = new CompanyGetInfo();
         info.SetArguments(infoArg);
@@ -64,6 +80,11 @@ public partial class KR_Company_company_modify : SitePage
 
     protected override void OnPreRender(EventArgs e)
     {
+        if (CompanyNo_Admin != 0)
+        {
+            Response.Write("<script>alert('관리자로 들어오면 수정할 수 없습니다.');</script>");
+            return;
+        }
         string koreaName, chinaName, englishName;
         string CompanyNo, CompanyID, Password;
         string Email, JobType, jobType_etc, Representative, Company_type, build_date;
