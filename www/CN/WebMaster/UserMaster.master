@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="UserMaster.master.cs" Inherits="KR_WebMaster_UserMaster" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/CN/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="UserMaster.master.cs" Inherits="CN_WebMaster_UserMaster" %>
 <%@ Register TagPrefix="UC" TagName="LeftBanner" Src="~/UserControls/Common/LeftBanner.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <asp:ContentPlaceHolder id="Header" runat="server" />

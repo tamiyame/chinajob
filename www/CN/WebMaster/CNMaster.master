@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="CNMaster.master.cs" Inherits="CN_WebMaster_CNMaster" %>
+<%@ Import Namespace="Com.Library.DB.Company" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<title id="siteTitle" runat="server" >2011 중국취업박람회</title>
+<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/icon.css" />
+<asp:ContentPlaceHolder id="Header" runat="server" />
+<!--[if IE 6]>
+		<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/base.ie6.css" />
+		<script src="/js/DD_belatedPNG.js"></script>
+		<script>
+		  DD_belatedPNG.fix('.icon');		  
+		</script>
+<![endif]-->
+<script language="javascript" type="text/javascript">
+var CountryCode = "<%=this.CountryCode %>";
+var CountryLink = "<%=this.CountryLink %>";
+function GetURL(url)
+{
+    return CountryLink + url;
+}
+</script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+        <div>
+			<div class="content">		
+				<div class="guide"></div>
+			</div>
+		</div>
+		<div class="bg-top">			
+			<div class="content">				
+				<div class="header">
+                    <div class="logo">
+                        <a href="<%=this.GetURL("/home")%>"><img src="/ImgSrv/cn/images/base/logo.png" alt="" border=0/></a>
+                    </div>
+                    <div class="menu">
+<% if (!this.WebCookies.IsLogin) { %>
+	                    <!-- 로그인 안했을때 -->
+	                    <div class="global-menu">
+		                    <ul>
+			                    <li><a class="icon icon-login" href="<%=this.GetURL("/login/login.aspx")%>"></a></li>
+			                    <li class="bar"></li>
+			                    <li><a href="<%=this.GetURL("/login/find_id.aspx")%>">아이디/비번찾기</a></li>
+			                    <li class="bar"></li>
+			                    <li><a href="<%=this.GetURL("/login/join_select.aspx")%>">회원가입</a></li>
+			                    <li class="national">
+			                        <a class="icon icon-national-kr" href="javascript:;"></a>
+			                        <a class="icon icon-national-cn" href="javascript:alert('준비중입니다');"></a>
+			                    </li>
+		                    </ul>
+	                    </div>
+<% } else { %>
+<%      if (!this.WebCookies.isCompany) { %>
+<%          if (this.WebCookies.IsAdmin) { %>
+                        <!-- 관리자 -->
+                        <div class="global-menu">
+		                    <ul>
+		                        <li><b>관리자</b>님</li>
+		                        <li class="bar"></li>
+			                    <li><a href="/Backoffice/">관리하기</a></li>
+			                    <li class="bar"></li>
+			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>
+		                        <li class="national">
+			                        <a class="icon icon-national-kr" href="javascript:;"></a>
+			                        <a class="icon icon-national-cn" href="javascript:alert('준비중입니다');"></a>
+			                    </li>
+		                    </ul>
+	                    </div>
+<%          } else { %>
+
+                        <!-- 개인회원 로그인 -->
+	                    <div class="global-menu">
+		                    <ul>
+			                    <li><b><%=this.WebCookies.UserID %></b>님</li>
+			                    <li class="bar"></li>
+			                    <li><a href="<%=this.GetURL("/user/human_modify.aspx")%>">개인정보관리</a></li>
+			                    <li class="bar"></li>
+			                    <li><a href="javascript:;">이력서관리</a></li>
+			                    <li class="bar"></li>
+			                    <li><a href="javascript:;">지원관리<span class="highlight"><span class="underline">0</span>건</span></a></li>
+			                    <li class="bar"></li>
+			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(); return false;"></a></li>
+			                    <li class="national">
+			                        <a class="icon icon-national-kr" href="javascript:;"></a>
+			                        <a class="icon icon-national-cn" href="javascript:alert('준비중입니다');"></a>
+			                    </li>
+		                    </ul>
+	                    </div>
+<%          } %>
+<%      } else { %>
+<%
+    CompanyGetInfo company = new CompanyGetInfo();
+    CompanyGetInfoArguments companyArg = new CompanyGetInfoArguments();
+    companyArg.CompanyNo = this.WebCookies.UserNo;
+    company.SetArguments(companyArg);
+    company.ExecuteNonQuery();
+    CompanyEntity companyInfo = company.GetOutput();            
+%>
+	                    <!-- 기업회원 로그인 --> 
+	                    <div class="global-menu">
+		                    <ul>
+			                    <li><b><%=this.WebCookies.UserName.Split('|')[this.WebCookies.CountryNo == 0 ? 0 : this.WebCookies.CountryNo-1 ]%></b>님</li>
+			                    <li class="bar"></li>
+			                    <li><a href="<%=this.GetURL("/company/company_modify.aspx")%>">기업정보관리</a></li>
+			                    <li class="bar"></li>								
+			                    <li><a href="<%=this.GetURL("/recruit/recruit_regist_list.aspx")%>">채용관리<span class="highlight"><span class="underline"><%=companyInfo.RecruitCount%></span>건</span></a></li>
+			                    <li class="bar"></li>
+			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>			                    
+			                    <li class="national">
+			                        <a class="icon icon-national-kr" href="javascript:;"></a>
+			                        <a class="icon icon-national-cn" href="javascript:alert('준비중입니다');"></a>
+			                    </li>
+		                    </ul>
+	                    </div>
+<%      } %>
+<% } %>
+	                    <div class="main-menu">
+		                    <ul>
+			                    <li class="first">
+			                        <a class="icon icon-menu-expo main-label" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenuNo=1")%>"></a>
+			                        <ul class="submenu ie6fix">
+			                            <li><a class="icon icon-menu-sub-hello" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenuNo=1")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-expo-info" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenu=2")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-intro" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenuNo=3")%>"></a></li>
+			                        </ul>
+			                    </li>			                    
+			                    <li>
+			                        <a class="icon icon-menu-info main-label" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=2&SubMenuNo=1")%>"></a>
+			                        <ul class="submenu middle ie6fix">
+			                            <li><a class="icon icon-menu-sub-judge" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=2&SubMenuNo=1")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-recruit-info" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=2&SubMenuNo=2")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-recruit-explain" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=2&SubMenuNo=3")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-join" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=2&SubMenuNo=4")%>"></a></li>			                            
+			                        </ul>
+			                    </li>
+			                    <li>
+			                        <a class="icon icon-menu-recruit main-label" href="javascript:;"></a>
+			                        <ul class="submenu middle2 ie6fix">
+			                            <li><a class="icon icon-menu-sub-recruit-china" href="javascript:;"></a></li>
+			                            <li><a class="icon icon-menu-sub-job-type" href="javascript:;"></a></li>
+			                            <li><a class="icon icon-menu-sub-national-type" href="javascript:;"></a></li>
+			                        </ul>
+			                    </li>
+			                    <li>
+			                        <a class="icon icon-menu-human main-label" href="javascript:;"></a>
+			                        <ul class="submenu">
+			                            <li><a class="icon icon-menu-sub-human" href="javascript:;"></a></li>
+			                        </ul>
+			                    </li>			                    
+			                    <li>
+			                        <a class="icon icon-menu-operation main-label" href="<%=this.GetURL("/operation/notice_list.aspx")%>"></a>
+			                        <ul class="submenu middle ie6fix">
+			                            <li><a class="icon icon-menu-sub-notice" href="<%=this.GetURL("/operation/notice_list.aspx")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-qna" href="<%=this.GetURL("/operation/qna_list.aspx")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-free" href="<%=this.GetURL("/operation/freeboard_list.aspx")%>"></a></li>
+			                        </ul>
+			                    </li>
+			                    <li class="last">
+			                        <a class="icon icon-menu-contact main-label" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=3&SubMenuNo=1")%>"></a>
+			                        <ul class="submenu">
+			                            <li><a class="icon icon-menu-sub-road" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=3&SubMenuNo=1")%>"></a></li>
+			                        </ul>
+			                    </li>
+		                    </ul>
+	                    </div>						
+                    </div>
+				</div>
+<asp:ContentPlaceHolder id="Content" runat="server" />
+                <div class="expo-sponsor">
+					<div class="expo-folder ">
+						<img src="/ImgSrv/cn/images/base/expo-sponser-folder.png" border="0"/>
+					</div>
+					<div class="expo-content hide">
+						<img src="/ImgSrv/cn/images/base/expo-sponser.png" usemap="#sponsorLink" border="0"/>
+						<map name="sponsorLink">
+							<area shape="rect" coords="27,49,179,107" href="javascript:site.go('gnb');">
+							<area shape="rect" coords="476,48,628,106" href="javascript:site.go('ksi');">
+							<area shape="rect" coords="641,49,793,107" href="javascript:site.go('fesco');">
+							<area shape="rect" coords="28,174,180,232" href="javascript:site.go('sh');">
+							<area shape="rect" coords="210,174,362,232" href="javascript:site.go('kotra');">
+							<area shape="rect" coords="395,174,547,232" href="javascript:site.go('51job');">
+							<area shape="rect" coords="578,174,730,232" href="javascript:site.go('hkg');">
+							<area shape="rect" coords="762,174,914,232" href="javascript:site.go('shk');">
+							<area shape="rect" coords="27,305,179,363" href="javascript:site.go('exc');">
+						</map>
+					</div>
+				</div>
+            </div>
+		</div>
+		<div class="bg-bottom">
+	        <div class="content">
+		        <div class="footer">
+			        <img src="/ImgSrv/cn/images/base/footer.png" usemap="#footerLink" border="0"/>
+			        <map name="footerLink">
+				        <area shape="rect" coords="847,16,893,30" href="javascript:site.go('sitemap');">
+				        <area shape="rect" coords="905,16,941,30" href="mailto:help@chinajobgo.com">
+				        <area shape="rect" coords="0,62,99,75" href="javascript:site.go('ksi');">
+				        <area shape="rect" coords="120,62,235,75" href="javascript:site.go('globaljob');">
+				        <area shape="rect" coords="777,62,852,75" href="javascript:site.go('chinajob');">
+			        </map>
+		        </div>
+	        </div>
+        </div>
+</asp:Content>
+

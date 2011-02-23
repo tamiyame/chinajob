@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="OperationMaster.master.cs" Inherits="KR_WebMaster_OperationMaster" %>
-<%@ Register TagPrefix="UC" TagName="LeftBanner" Src="/UserControls/Common/LeftBanner.ascx" %>
+<%@ Register TagPrefix="UC" TagName="LeftBanner" Src="~/UserControls/Common/LeftBanner.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/operation.css" />
 <asp:ContentPlaceHolder id="Header" runat="server" />
