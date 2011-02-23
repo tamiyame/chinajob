@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="RecruitMaster.master.cs" Inherits="KR_WebMaster_RecruitMaster" %>
-<%@ Register TagPrefix="UC" TagName="LeftBanner" Src="/UserControls/Common/LeftBanner.ascx" %>
+<%@ Register TagPrefix="UC" TagName="LeftBanner" Src="~/UserControls/Common/LeftBanner.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <asp:ContentPlaceHolder id="Header" runat="server" />
 </asp:Content>

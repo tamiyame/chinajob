@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="UserMaster.master.cs" Inherits="KR_WebMaster_UserMaster" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/CN/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="RecruitMaster.master.cs" Inherits="CN_WebMaster_RecruitMaster" %>
 <%@ Register TagPrefix="UC" TagName="LeftBanner" Src="~/UserControls/Common/LeftBanner.ascx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <asp:ContentPlaceHolder id="Header" runat="server" />
@@ -6,11 +6,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
                 <div class="sidemenu-main">
 					<div class="sidemenu">
-						<div class="side-logo icon icon-user-info"></div>
+						<div class="side-logo icon icon-recruit-info"></div>
 						<div class="line"></div>
 						<div class="link-item">
 							<ul>
-								<li><a href="javascript:;">중국인재정보</a></li>
+								<li><a href="javascript:;">중국채용정보</a></li>
+								<li><a href="javascript:;">직종별</a></li>
+								<li><a href="javascript:;">지역별</a></li>
 							</ul>
 						</div>
 <UC:LeftBanner id="LeftBanner" runat="server" />
@@ -19,5 +21,6 @@
 <asp:ContentPlaceHolder id="Content" runat="server" />
 					</div>
 				</div>
+
 </asp:Content>
 

@@ -1,0 +1,132 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/CN/WebMaster/CNMaster.master" AutoEventWireup="false" CodeFile="SiteMaster.master.cs" Inherits="CN_WebMaster_SiteMaster" %>
+<%@ Import Namespace="Com.Library.DB.Board" %>
+<%@ Import Namespace="Com.Library.DB.Banner" %>
+<%@ Import Namespace="Com.Framework.Data" %>
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="Site.Web.Util" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/sidemenu.css" />
+<asp:ContentPlaceHolder id="Header" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+<%
+    ListData<BannerEntity, OutputEntity> BannerList_Human;
+    ListData<BannerEntity, OutputEntity> BannerList_Company;
+    {
+        BannerGetList list = new BannerGetList();
+        list.SetArguments(
+            new BannerGetListArguments()
+            {
+                BannerType = 1, //채용
+                CountryNo = this.CountryCode,
+                IsOperation = 1
+            }
+        );
+        List<BannerEntity> record = list.Execute();
+        OutputEntity outputdata = list.GetOutput();
+        BannerList_Company = new ListData<BannerEntity, OutputEntity>(record, outputdata);
+    }
+    {
+        BannerGetList list = new BannerGetList();
+        list.SetArguments(
+            new BannerGetListArguments()
+            {
+                BannerType = 2, //인재
+                CountryNo = this.CountryCode,
+                IsOperation = 1
+            }
+        );
+        List<BannerEntity> record = list.Execute();
+        OutputEntity outputdata = list.GetOutput();
+        BannerList_Human = new ListData<BannerEntity, OutputEntity>(record, outputdata);
+    }
+    ListData<ArticleEntity, OutputEntity> ArticleList;
+    {
+        ArticleGetListArguments arg = new ArticleGetListArguments();
+        arg.PageNo = 1;
+        arg.PageSize = 3;
+        arg.BoardNo = 2;
+        ArticleGetList list = new ArticleGetList();
+        list.SetArguments(arg);
+        List<ArticleEntity> record = list.Execute();
+        OutputEntity outputdata = list.GetOutput();
+        ArticleList = new ListData<ArticleEntity, OutputEntity>(record, outputdata);
+    }    
+ %>
+                <div class="notice"> 
+					<div class="vertical-line"></div>
+					<div class="info-news">						
+						<div class="news">
+							<div class="more">
+								<a href="<%=this.GetURL("/operation/notice_list.aspx")%>" class="icon icon-more"></a>
+							</div>
+							<div class="list">
+								<ul>
+<% foreach (ArticleEntity item in ArticleList.Record)
+   { %>
+									<li><a href="<%=this.GetURL("/operation/notice_detail.aspx?PageNo=1&ArticleNo=" + item.ArticleNo.ToString())%>"><%=Message.strCut(item.ArticleTitle, 15)%></a></li>
+<% } %>
+								</ul>
+							</div>
+						</div>
+						<div class="expo-news">
+							<div class="text">
+								
+							</div>
+							<div class="more">
+								<a href="javascript:;" class="icon icon-more-smth"></a>
+							</div>
+						</div>
+					</div>					
+					<div class="vertical-line"></div>
+					<div class="recommend-human banner-container">
+						<div class="banner"> 
+<% foreach (BannerEntity item in BannerList_Human.Record)
+   { %>
+							<img style="width:354px;height:105px;cursor:pointer" src="<%=item.SmallImageUrl %>" onclick="location.href='<%=item.Link %>'; return false;"/>
+<% } %>	
+						</div>
+						<div class="action">
+							<a class="icon icon-view" href="javascript:;"></a>
+						</div>
+						<div class="navigation">
+							<ul class="pager">
+<% {
+       int seq = 0; foreach (BannerEntity item in BannerList_Human.Record)
+       { 
+   %>
+                            <li><a href="<%=item.Link %>">0<%=++seq%></a></li>							
+<% }
+   } %>								
+							</ul>
+						</div>
+					</div>
+					<div class="vertical-line"></div>
+					<div class="recommend-recruit banner-container">					
+						<div class="banner">
+<% foreach (BannerEntity item in BannerList_Company.Record)
+   { %>
+							<img style="width:354px;height:105px;cursor:pointer" src="<%=item.SmallImageUrl %>" onclick="location.href='<%=item.Link %>'; return false;"/>
+<% } %>
+                        </div>	
+						<div class="action">
+							<a class="icon icon-apply" href="javascript:;"></a>
+						</div>					
+						<div class="navigation">
+							<ul class="pager">
+<% {
+       int seq = 0; foreach (BannerEntity item in BannerList_Company.Record)
+       { 
+   %>
+                            <li><a href="<%=item.Link %>">0<%=++seq%></a></li>							
+<% }
+   } %>							
+							</ul>
+						</div>
+					</div>
+					<div class="vertical-line"></div>
+				</div>
+<asp:ContentPlaceHolder id="Content" runat="server" />
+
+</asp:Content>
+

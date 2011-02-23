@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="InfoMaster.master.cs" Inherits="KR_WebMaster_InfoMaster" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/CN/WebMaster/SiteMaster.master" AutoEventWireup="false" CodeFile="InfoMaster.master.cs" Inherits="CN_WebMaster_InfoMaster" %>
 <%@ Register TagPrefix="UC" TagName="LeftBanner" Src="~/UserControls/Common/LeftBanner.ascx" %>
 <%@ Import Namespace="Com.Library.DB.Menu" %>
 <%@ Import Namespace="System.Collections.Generic" %>
@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <asp:ContentPlaceHolder id="Header" runat="server" />
-    <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/expoInfo.css" />
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/expoInfo.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <%
