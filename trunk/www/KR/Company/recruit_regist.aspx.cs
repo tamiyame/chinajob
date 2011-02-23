@@ -17,7 +17,7 @@ using Site.Web.Util;
 using Com.Library.DB.Company;
 using Com.Library.DB.Category;
 
-public partial class CN_Recruit_recruit_regist : SitePage
+public partial class KR_Company_recruit_regist : SitePage
 {
     public List<CategoryEntity> Category1List = null;
     public List<CategoryEntity> CityCategoryList = null;
@@ -186,7 +186,7 @@ public partial class CN_Recruit_recruit_regist : SitePage
                 create.SetArguments(arg);
                 create.ExecuteNonQuery();
                 Response.Clear();
-                Response.Write("<script language='javascript'>location.href='" + this.GetURL("/recruit/recruit_regist_list.aspx") + "';alert('" + Message.Msg(CountryNo, k_MsgType.Write_Confirm) + ".');</script>");
+                Response.Write("<script language='javascript'>location.href='" + this.GetURL("/company/recruit_regist_list.aspx") + "';alert('" + Message.Msg(CountryNo, k_MsgType.Write_Confirm) + ".');</script>");
             }
             else
             {
@@ -243,7 +243,7 @@ public partial class CN_Recruit_recruit_regist : SitePage
                 modify.SetArguments(arg);
                 modify.ExecuteNonQuery();
                 Response.Clear();
-                Response.Write("<script language='javascript'>location.href='" + this.GetURL("/recruit/recruit_regist_list.aspx") + "';alert('" + Message.Msg(CountryNo, k_MsgType.Modify_Confirm) + "');</script>");
+                Response.Write("<script language='javascript'>location.href='" + this.GetURL("/company/recruit_regist_list.aspx") + "';alert('" + Message.Msg(CountryNo, k_MsgType.Modify_Confirm) + "');</script>");
             }
         }
         else

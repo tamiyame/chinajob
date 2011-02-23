@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/SiteMaster.master" AutoEventWireup="true" CodeFile="recruit_manage.aspx.cs" Inherits="CN_Recruit_recruit_manage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="true" CodeFile="recruit_manage.aspx.cs" Inherits="KR_Company_recruit_manage" %>
 
 <%@ Import Namespace="Com.Library.DB.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/recruit.css" />
+<link rel="stylesheet" type="text/css" href="/ImgSrv/KR/Css/recruit.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <div class="center">

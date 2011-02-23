@@ -49,7 +49,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사업자등록번호</td>
+							<td class="label">사업자등록번호<span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -334,6 +334,9 @@ jQuery(function()
             }).change();
         
  
+            $("input:[name=companyNo]").bind("keypress", function() {
+                PermitNo = "";
+            });
             $("input:[name=companyID]").bind("keypress", function() {
                 CompanyID = "";
             });
@@ -341,6 +344,11 @@ jQuery(function()
                 Email = "";
             });
             
+            $("#aCompanyNo").click(function()
+            {
+                $.IsPermitNo();
+                return false;
+            });
             
             $("#aCompanyID").click(function()
             {
@@ -483,6 +491,11 @@ jQuery(function()
                     company_type = $(this).val();
             });
             
+            if ( PermitNo == "" )
+            {
+                alert( "사업자등록번호 중복체크를 해주세요");
+                return false;
+            }
             
             if ( CompanyID == "" )
             {
@@ -526,7 +539,7 @@ jQuery(function()
                 alert( "기업명은 1개이상 입력하셔야합니다.");
                 return false;
             }
-            
+
             if ( companyID == "" )
             {
                 alert( "아이디를 입력하세요");

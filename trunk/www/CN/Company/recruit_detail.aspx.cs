@@ -15,7 +15,7 @@ using Site.Web.Page;
 using Com.Library.DB.Company;
 using Com.Library.DB.Category;
 
-public partial class KR_Recruit_recruit_detail : SitePage
+public partial class CN_Company_recruit_detail : SitePage
 {
     public CompanyEntity CompanyInfo = null;
     public CompanyDetailEntity CompanyDetailInfo = null;

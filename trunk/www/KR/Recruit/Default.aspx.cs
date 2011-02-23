@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -12,19 +11,10 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
-using Site.Web.Page;
-using Com.Library.DB.Company;
-using Com.Library.DB.Category;
-
-public partial class KR_Recruit_recruit_manage : SitePage
+public partial class KR_Recruit_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-      
-    }
 
-    protected override void OnPreRender(EventArgs e)
-    {
-        base.OnPreRender(e);
     }
 }
