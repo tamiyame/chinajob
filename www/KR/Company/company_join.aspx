@@ -16,7 +16,7 @@
 					<br />
 					<table>
 						<tr>
-							<td class="label">로고이미지<span class="require">*</span></td>
+							<td class="label">로고이미지</td>
 							<td class="input">
 								<table>
 									<tr>
@@ -49,7 +49,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사업자등록번호<span class="require">*</span></td>
+							<td class="label">사업자등록번호</td>
 							<td class="input">
 								<table>
 									<tr>
@@ -327,16 +327,13 @@ jQuery(function()
         CreateInit : function()
         {   
             $("select:[name=jobType]").change(function(){
-                if($(this).val()=='33')
+                if($(this).val()=='42')
                     $("input:[name=jobType_etc]").show();
                 else
                     $("input:[name=jobType_etc]").hide();
             }).change();
         
-        
-            $("input:[name=companyNo]").bind("keypress", function() {
-                PermitNo = "";
-            });
+ 
             $("input:[name=companyID]").bind("keypress", function() {
                 CompanyID = "";
             });
@@ -344,11 +341,6 @@ jQuery(function()
                 Email = "";
             });
             
-            $("#aCompanyNo").click(function()
-            {
-                $.IsPermitNo();
-                return false;
-            });
             
             $("#aCompanyID").click(function()
             {
@@ -491,11 +483,6 @@ jQuery(function()
                     company_type = $(this).val();
             });
             
-            if ( PermitNo == "" )
-            {
-                alert( "사업자등록번호 중복체크를 해주세요");
-                return false;
-            }
             
             if ( CompanyID == "" )
             {
@@ -532,28 +519,11 @@ jQuery(function()
             fax = $("input:[name=fax]").val();
             address = $("input:[name=address]").val();
             homepage = $("input:[name=homepage]").val();
-
-            if ( $("input:[name=logo]").val() == "" )
-            {
-                alert( "기업 로고 이미지를 첨부하세요" );
-                return false;
-            }
             
-            if ( $("input:[name=fiPermit]").val() == "" )
-            {
-                alert( "사업자등록증 사본 이미지을 첨부하세요" );
-                return false;
-            }
             
             if (koreaName=="" && chinaName == "" && englishName == "" )
             {
                 alert( "기업명은 1개이상 입력하셔야합니다.");
-                return false;
-            }
-            
-            if(companyNo == "" )
-            {
-                alert( "사업자등록번호를 입력하셔야합니다.");
                 return false;
             }
             
@@ -594,7 +564,7 @@ jQuery(function()
                 return false;
             }
             
-            if ( jobType == "33" )
+            if ( jobType == "42" )
             {
                 if ( jobType_etc == "" )
                 {
