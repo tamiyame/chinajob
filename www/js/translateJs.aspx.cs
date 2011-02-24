@@ -16,6 +16,7 @@ public partial class js_translateJs : System.Web.UI.Page
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
+		Request.ContentType = "application/x-javascript";
 		rptTranslateData.DataSource = TranslateHelper.GetList();
 		rptTranslateData.DataBind();
 	}

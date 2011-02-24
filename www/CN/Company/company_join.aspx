@@ -127,7 +127,7 @@
 <% if (BusinessCategoryList != null) { %>
 <% foreach (CategoryEntity item in BusinessCategoryList)
    { %>
-												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName %></option>
+												<option value="<%=item.CategoryNo %>"><%=item.CategoryCNName %></option>
 <% } %>
 <% } %>
 											</select>
