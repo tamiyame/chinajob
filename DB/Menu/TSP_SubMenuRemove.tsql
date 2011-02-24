@@ -11,7 +11,7 @@ CREATE PROCEDURE [dbo].[TSP_SubMenuRemove]
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
-
+,	@CountryNo	int					= null
 ,	@TopMenuNo	smallint	
 ,	@SubMenuNo	smallint	
 )
@@ -56,11 +56,13 @@ Begin
 End
 
 -- Implementation
+SET @CountryNo = isnull( @CountryNo, 1 )
 
 DELETE
 	dbo.TB_SubMenu
 WHERE
-	@TopMenuNo = TopMenuNo
+	@CountryNo = @CountryNo
+AND	@TopMenuNo = TopMenuNo
 AND	@SubMenuNo = SubMenuNo
 
 	

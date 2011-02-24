@@ -16,6 +16,7 @@ namespace Com.Library.DB.Menu
 
         protected override void ParameterInitialize()
         {
+            AddParameter("CountryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("TopMenuNo", SqlDbType.SmallInt, 2, SqlDataInOut.Input);
             AddParameter("SubMenuNo", SqlDbType.SmallInt, 2, SqlDataInOut.Input);
         }

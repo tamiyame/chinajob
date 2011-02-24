@@ -12,6 +12,7 @@ CREATE PROCEDURE [dbo].[TSP_SubMenuCreate]
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
+,	@CountryNo	int
 ,	@TopMenuNo	smallint	
 ,	@OrderNo	smallint	
 ,	@SubMenuName	nvarchar(100)	= NULL	
@@ -60,10 +61,11 @@ Begin
 End
 
 -- Implementation
-
+SET @CountryNo = isnull( @CountryNo, 1 )
 INSERT	TB_SubMenu
 (
-	TopMenuNo
+	CountryNo
+,	TopMenuNo
 ,	OrderNo
 ,	SubMenuName
 ,	SubImageUrl
@@ -71,7 +73,8 @@ INSERT	TB_SubMenu
 ,	Status
 )
 SELECT
-	@TopMenuNo
+	@CountryNo
+,	@TopMenuNo
 ,	@OrderNo
 ,	@SubMenuName
 ,	@SubImageUrl

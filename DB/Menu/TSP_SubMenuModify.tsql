@@ -12,6 +12,7 @@ alter PROCEDURE [dbo].[TSP_SubMenuModify]
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
+,	@CountryNo	int					= null
 ,	@TopMenuNo	smallint
 ,	@SubMenuNo	smallint	
 ,	@OrderNo	smallint			= NULL
@@ -62,7 +63,7 @@ End
 
 -- Implementation
 
-
+SET @CountryNo = isnull( @CountryNo, 1 )
 UPDATE
 	dbo.TB_SubMenu
 SET
@@ -72,7 +73,8 @@ SET
 ,	CenterContent = IsNull( @CenterContent, CenterContent )
 ,	Status = IsNull( @Status, Status )
 WHERE
-	TopMenuNo	= @TopMenuNo
+	CountryNo	= @CountryNo
+AND	TopMenuNo	= @TopMenuNo
 AND	SubMenuNo	= @SubMenuNo
 
 

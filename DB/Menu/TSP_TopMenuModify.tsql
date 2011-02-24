@@ -59,7 +59,7 @@ End
 
 -- Implementation
 
-
+SET @CountryNo = 1
 UPDATE
 	dbo.TB_TopMenu
 SET

@@ -31,11 +31,14 @@ public partial class Backoffice_Content_Content : SitePage
         TopMenuGetInfoArguments topInfoArg = new TopMenuGetInfoArguments();
         topInfoArg.CountryNo = CountryNo;
         topInfoArg.TopMenuNo = TopMenuNo;
+
         TopMenuGetInfo topInfo = new TopMenuGetInfo();
         topInfo.SetArguments(topInfoArg);
+        topInfo.ExecuteNonQuery();
         TopMenuInfo = topInfo.GetOutput();
 
         SubMenuGetInfoArguments subInfoArg = new SubMenuGetInfoArguments();
+        subInfoArg.CountryNo = CountryNo;
         subInfoArg.TopMenuNo = TopMenuNo;
         subInfoArg.SubMenuNo = SubMenuNo;
         SubMenuGetInfo subMenuInfo = new SubMenuGetInfo();
@@ -46,6 +49,7 @@ public partial class Backoffice_Content_Content : SitePage
 
         SubMenuGetListArguments subListArg = new SubMenuGetListArguments();
         subListArg.TopMenuNo = TopMenuNo;
+        subListArg.CountryNo = CountryNo;
         SubMenuGetList lstSubMenu = new SubMenuGetList();
         lstSubMenu.SetArguments(subListArg);
         lstSubMenu.Execute();
@@ -56,6 +60,7 @@ public partial class Backoffice_Content_Content : SitePage
             string ArticleContent = Request.Form["ArticleContent"];
             SubMenuModifyArguments modifyArg = new SubMenuModifyArguments();
             modifyArg.CenterContent = ArticleContent;
+            modifyArg.CountryNo = CountryNo;
             modifyArg.TopMenuNo = TopMenuNo;
             modifyArg.SubMenuNo = SubMenuNo;
             SubMenuModify modify = new SubMenuModify();

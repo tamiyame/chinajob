@@ -6,7 +6,7 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-CREATE PROCEDURE [dbo].[TSP_TopMenuGetInfo]
+alter PROCEDURE [dbo].[TSP_TopMenuGetInfo]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
@@ -58,6 +58,7 @@ Begin
 End
 
 -- Implementation
+SET @CountryNo = 1
 
 SELECT
 	@TopMenuName = TopMenuName

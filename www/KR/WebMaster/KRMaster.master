@@ -44,8 +44,8 @@ function GetURL(url)
 			                    <li class="bar"></li>
 			                    <li><a href="<%=this.GetURL("/login/join_select.aspx")%>">회원가입</a></li>
 			                    <li class="national">
-			                        <a class="icon icon-national-kr" href="javascript:;"></a>
-			                        <a class="icon icon-national-cn" href="javascript:alert('준비중입니다');"></a>
+			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
+			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
 			                    </li>
 		                    </ul>
 	                    </div>
@@ -61,8 +61,8 @@ function GetURL(url)
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>
 		                        <li class="national">
-			                        <a class="icon icon-national-kr" href="javascript:;"></a>
-			                        <a class="icon icon-national-cn" href="javascript:alert('준비중입니다');"></a>
+			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
+			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
 			                    </li>
 		                    </ul>
 	                    </div>
@@ -81,8 +81,8 @@ function GetURL(url)
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(); return false;"></a></li>
 			                    <li class="national">
-			                        <a class="icon icon-national-kr" href="javascript:;"></a>
-			                        <a class="icon icon-national-cn" href="javascript:alert('준비중입니다');"></a>
+			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
+			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
 			                    </li>
 		                    </ul>
 	                    </div>
@@ -107,8 +107,8 @@ function GetURL(url)
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>			                    
 			                    <li class="national">
-			                        <a class="icon icon-national-kr" href="javascript:;"></a>
-			                        <a class="icon icon-national-cn" href="javascript:alert('준비중입니다');"></a>
+			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
+			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
 			                    </li>
 		                    </ul>
 	                    </div>

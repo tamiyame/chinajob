@@ -21,6 +21,7 @@ public partial class KR_Info_Info : SitePage
         short TopMenuNo = Request.QueryString["TopMenuNo"] == null ? (short)1 : Convert.ToInt16(Request.QueryString["TopMenuNo"]);
         short SubMenuNo = Request.QueryString["SubMenuNo"] == null ? (short)1 : Convert.ToInt16(Request.QueryString["SubMenuNo"]);
         SubMenuGetInfoArguments arg = new SubMenuGetInfoArguments();
+        arg.CountryNo = WebMaster.CountryCode;
         arg.TopMenuNo = TopMenuNo;
         arg.SubMenuNo = SubMenuNo;
 

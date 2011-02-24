@@ -57,6 +57,8 @@ End
 
 -- Implementation
 
+SET @CountryNo = 1
+
 SELECT
 	CountryNo
 ,	TopMenuNo

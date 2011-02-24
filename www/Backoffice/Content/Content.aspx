@@ -5,8 +5,8 @@
 <script language="javascript" src="/js/HyperTextArea.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
-<div class="title">박람회 소개</div>
-<div class="desc">박람회 컨텐츠 관리입니다</div>
+<div class="title"><%=TopMenuInfo.TopMenuName %></div>
+<div class="desc"><%=SubMenuInfo.SubMenuName%> 관리입니다</div>
 <div class="tab">
     <ul>
         <li class="<%=CountryNo == 1 ? "select icon icon-folder-big-on" : "icon icon-folder-big-off"%> korean"
@@ -50,9 +50,9 @@ function onChange( obj )
                         <tr>
                             <td><img src="<%=SubMenuInfo.SubImageUrl%>"/></td>
                         </tr>
-                        <tr>
+                        <!--<tr>
                             <td><input type="file" name="title_image" /></td>
-                        </tr>
+                        </tr>-->
                     </table>                
                 </td>
             </tr>

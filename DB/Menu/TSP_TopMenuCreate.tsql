@@ -57,7 +57,7 @@ Begin
 End
 
 -- Implementation
-
+SET @CountryNo = 1
 INSERT	TB_TopMenu
 (
 	CountryNo
