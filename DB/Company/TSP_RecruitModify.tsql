@@ -97,6 +97,23 @@ End
 
 -- Implementation
 
+DECLARE @Category1No_Prev int
+DECLARE @Category2No_Prev int
+DECLARE @CityCategoryNo_Prev int
+DECLARE @AreaCategoryNo_Prev int
+
+SELECT
+	@Category1No_Prev = Category1No
+,	@Category2No_Prev = Category2No
+,	@CityCategoryNo_Prev = CityCategory
+,	@AreaCategoryNo_Prev = AreaCategory
+FROM
+	dbo.TB_Recruit with ( nolock )
+WHERE
+	CountryNo = @CountryNo
+AND	RecruitNo = @RecruitNo
+AND	CompanyNo = @CompanyNo
+	
 
 UPDATE
 	dbo.TB_Recruit
@@ -145,6 +162,75 @@ WHERE
 AND	RecruitNo = @RecruitNo
 AND	CompanyNo = @CompanyNo
 
+
+
+IF ( @Category1No <> @Category1No_Prev )
+BEGIN
+	UPDATE
+		TB_Category
+	SET
+		RecruitCount = IsNull( RecruitCount, 0 ) + 1
+	WHERE
+		CategoryNo = @Category1No
+	
+	UPDATE
+		TB_Category
+	SET
+		RecruitCount = IsNull( RecruitCount, 0 ) - 1
+	WHERE
+		CategoryNo = @Category1No_Prev
+END
+IF ( @Category2No <> @Category2No_Prev )
+BEGIN
+	UPDATE
+		TB_SubCategory
+	SET
+		RecruitCount = IsNull( RecruitCount, 0 ) + 1
+	WHERE
+		CategoryNo = @Category2No
+		
+		UPDATE
+		TB_SubCategory
+	SET
+		RecruitCount = IsNull( RecruitCount, 0 ) - 1
+	WHERE
+		CategoryNo = @Category2No_Prev
+END
+
+IF ( @CityCategory <> @CityCategoryNo_Prev )
+BEGIN
+	UPDATE
+		TB_Category
+	SET
+		RecruitCount = IsNull( RecruitCount, 0 ) + 1
+	WHERE
+		CategoryNo = @CityCategory
+	
+	UPDATE
+		TB_Category
+	SET
+		RecruitCount = IsNull( RecruitCount, 0 ) - 1
+	WHERE
+		CategoryNo = @CityCategoryNo_Prev
+
+END
+
+IF ( @AreaCategory <> @AreaCategoryNo_Prev )
+BEGIN
+	UPDATE
+		TB_SubCategory
+	SET
+		RecruitCount = IsNull( RecruitCount, 0 ) + 1
+	WHERE
+		CategoryNo = @AreaCategory
+		
+	UPDATE
+		TB_SubCategory
+	SET
+		RecruitCount = IsNull( RecruitCount, 0 ) - 1
+	WHERE
+		CategoryNo = @AreaCategoryNo_Prev
+END
 
 -- Frk Error Check
 SELECT
