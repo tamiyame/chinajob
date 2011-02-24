@@ -1,4 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="translateJs.aspx.cs" Inherits="js_translateJs" %>
+var contryCode_kr = 1;
+var contryCode_cn = 2;
+
 var translateData = new Array();
 <asp:Repeater ID="rptTranslateData" runat="server">
 <ItemTemplate>
@@ -19,15 +22,26 @@ function getText(contryCode, transCode)
 		}
 	});
 	
+	var retVal = "";
 	if (entity == null)
 	{
 		alert("transCode not found");
+		return retVal;
+	}
+
+	if ( contryCode == contryCode_kr )
+	{
+		retVal = entity.krText;
+	}
+	else if ( contryCode == contryCode_cn)
+	{
+		retVal = entity.cnText;
 	}
 	else
 	{
-		if ( contryCode == 1 )
-		{
-			
-		}
+		alert("contryCode not found");
+		return retVal;
 	}
+	
+	return retVal;
 }
