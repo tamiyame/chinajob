@@ -12,7 +12,7 @@
         <tr onclick="javascript:;">
             <td class="col1"><%=item.CompanyNo %></td>
             <td class="col2">기업명</td>
-            <td class="col3"><a href="/kr/Company/Company_modify.aspx?CompanyNo=<%=item.CompanyNo %>" target="_blank"><%=item.KRName != string.Empty ? item.KRName : ( item.CNName != string.Empty ? item.CNName : item.ENGName ) %></a></td>
+            <td class="col3"><a href="#" onclick="window.open('company_detail.aspx?CompanyNo=<%=item.CompanyNo %>', 'companyinfo', 'width=800, height=600, scrolling=1, scrollbars=1'); return false;" target="_blank"><%=item.KRName != string.Empty ? item.KRName : ( item.CNName != string.Empty ? item.CNName : item.ENGName ) %></a></td>
             <td class="col4">가입일</td>
             <td class="col5"><%=item.RegistyTime.ToString("yyyy-MM-dd")%></td>
             <td class="col6"><% if (item.Approval == 0) { %><a href="javascript:;" onclick="onApply(this, <%=item.CompanyNo %>); return false;" class="icon-admin icon-approve"></a><% } else { %><a>기업회원승인</a><% } %></td>
