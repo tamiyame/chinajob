@@ -9,6 +9,7 @@
     <div class="sideMenu">
         <ul>
             <li><a href="./Schedule.aspx">일정설정</a></li>
+            <li><a href="./Category1.aspx">카테고리</a></li>
         </ul>
     </div>
 </asp:Content>

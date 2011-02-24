@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/SiteMaster.master" AutoEventWireup="true" CodeFile="login_user.aspx.cs" Inherits="CN_Login_login_user" Title="제목 없음" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/SiteMaster.master" AutoEventWireup="true" CodeFile="login_user.aspx.cs" Inherits="CN_Login_login_user"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/login.css" />
