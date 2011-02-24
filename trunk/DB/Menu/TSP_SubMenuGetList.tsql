@@ -12,6 +12,7 @@ CREATE PROCEDURE [dbo].[TSP_SubMenuGetList]
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
+,	@CountryNo		int = null
 ,	@TopMenuNo		SMALLINT
 )
 as
@@ -55,6 +56,8 @@ Begin
 End
 
 -- Implementation
+SET @CountryNo = IsNull( @CountryNo, 1 )
+
 
 SELECT
 	TopMenuNo
@@ -67,7 +70,8 @@ SELECT
 FROM
 	dbo.TB_SubMenu with ( nolock )
 WHERE
-	TopMenuNo = @TopMenuNo
+	CountryNo = @CountryNo
+AND	TopMenuNo = @TopMenuNo
 and	Status = 1
 ORDER BY
 	TopMenuNo ASC, OrderNo ASC

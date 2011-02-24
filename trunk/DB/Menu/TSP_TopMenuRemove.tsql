@@ -6,7 +6,7 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-CREATE PROCEDURE [dbo].[TSP_TopMenuRemove]
+alter PROCEDURE [dbo].[TSP_TopMenuRemove]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
@@ -56,6 +56,7 @@ Begin
 End
 
 -- Implementation
+SET @CountryNo = 1
 
 DELETE
 	dbo.TB_TopMenu

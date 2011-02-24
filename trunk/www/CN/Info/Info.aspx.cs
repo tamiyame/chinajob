@@ -23,6 +23,7 @@ public partial class CN_Info_Info : SitePage
         SubMenuGetInfoArguments arg = new SubMenuGetInfoArguments();
         arg.TopMenuNo = TopMenuNo;
         arg.SubMenuNo = SubMenuNo;
+        arg.CountryNo = this.WebMaster.CountryCode;
 
         SubMenuGetInfo info = new SubMenuGetInfo();
         info.SetArguments(arg);

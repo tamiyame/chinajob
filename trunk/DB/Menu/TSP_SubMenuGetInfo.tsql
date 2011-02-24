@@ -12,6 +12,7 @@ CREATE PROCEDURE [dbo].[TSP_SubMenuGetInfo]
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
+,	@CountryNo	int = null
 ,	@TopMenuNo	smallint	
 ,	@SubMenuNo	smallint	
 ,	@OrderNo	smallint	= NULL	OUTPUT
@@ -61,6 +62,7 @@ Begin
 End
 
 -- Implementation
+SET @CountryNo = ISNULL( @CountryNo, 1 )
 
 SELECT
 	@OrderNo = OrderNo
@@ -71,8 +73,9 @@ SELECT
 FROM
 	dbo.TB_SubMenu WITH (NOLOCK)
 WHERE
-	@TopMenuNo = TopMenuNo
-AND	@SubMenuNo = SubMenuNo
+	CountryNo = @CountryNo
+AND	TopMenuNo = @TopMenuNo
+AND	SubMenuNo = @SubMenuNo
 
 
 -- Frk Error Check
