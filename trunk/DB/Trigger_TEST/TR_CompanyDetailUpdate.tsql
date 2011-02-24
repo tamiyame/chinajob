@@ -29,7 +29,7 @@ BEGIN
 		KRName = IsNull( @KRName, KRName )
 	,	CNName = IsNull( @CNName, CNName )
 	,	ENGName = IsNull( @ENGName,ENGName )
-	,	CapitalType = IsNull(@CDapitalType, CapitalType)
+	,	CapitalType = IsNull(@CapitalType, CapitalType)
 	WHERE
 		CompanyNo = @CompanyNo
 
