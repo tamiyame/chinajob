@@ -1,0 +1,27 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+CREATE TRIGGER [dbo].[TR_RecruitMasterInsert] ON [dbo].[TB_RecruitMaster]
+FOR UPDATE
+AS
+
+
+DECLARE @CompanyNo INT
+DECLARE @RecruitNo INT
+DECLARE @Status INT
+
+SELECT
+	@CompanyNo = CompanyNo
+,	@RecruitNo = RecruitNo
+,	@Status = Status
+FROM
+	INSERTED
+
+IF ( @Status = 0 )
+BEGIN
+	DELETE
+		TB_RecruitSearch
+	WHERE
+		CompanyNo = @CompanyNo
+	AND	RecruitNo = @RecruitNo
+END
