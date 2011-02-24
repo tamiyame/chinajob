@@ -1,5 +1,8 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
 -- TB_Recruit 테이블에 Insert 시 TB_RecruitSearch 테이블에 필요 Data Insert 해주는 Trigger 세팅
-CREATE TRIGGER TR_RecruitInsert ON dbo.TB_Recruit
+ALTER TRIGGER [dbo].[TR_RecruitInsert] ON [dbo].[TB_Recruit]
 FOR INSERT
 AS
 
@@ -14,11 +17,13 @@ DECLARE @CompanyNo INT
 ,	@Career TINYINT
 ,	@Gender TINYINT
 ,	@AgeCategory INT
+,	@RecruitDateDiff INT
 
 -- TB_CompanyDetail Table 에서 얻어와야 하는 정보
 ,	@KRName NVARCHAR(50)
 ,	@CNName NVARCHAR(50)
 ,	@ENGName NVARCHAR(50)
+,	@CompanyImage NVARCHAR(200)
 ,	@CapitalType TINYINT
 
 SELECT
@@ -33,6 +38,7 @@ SELECT
 ,	@Career = Career
 ,	@Gender = Gender
 ,	@AgeCategory = AgeCategory
+,	@RecruitDateDiff = datediff(d, '2011-01-01', RecruitDate)
 FROM
 	INSERTED
 
@@ -43,6 +49,7 @@ BEGIN
 		@KRName = KRName
 	,	@CNName = CNName
 	,	@ENGName = ENGName
+	,	@CompanyImage = CompanyImage
 	,	@CapitalType = CapitalType
 	FROM
 		dbo.TB_CompanyDetail WITH(NOLOCK)
@@ -56,10 +63,12 @@ BEGIN
 	,	KRName
 	,	CNName
 	,	ENGName
+	,	CompanyImage
 	,	CapitalType
 	,	JobFairValue
-	,	Category1
-	,	Category2
+	,	RecruitDateDiff
+	,	Category1No
+	,	Category2No
 	,	CityCategory
 	,	AreaCategory
 	,	Career
@@ -73,10 +82,12 @@ BEGIN
 	,	@KRName
 	,	@CNName
 	,	@ENGName
+	,	@CompanyImage
 	,	@CapitalType
 	,	@JobFairValue
-	,	@Category1
-	,	@Category2
+	,	@RecruitDateDiff
+	,	@Category1No
+	,	@Category2No
 	,	@CityCategory
 	,	@AreaCategory
 	,	@Career
@@ -84,3 +95,23 @@ BEGIN
 	,	@AgeCategory
 	)
 END
+ELSE
+BEGIN
+	UPDATE
+		dbo.TB_RecruitSearch
+	SET
+		JobFairValue = IsNull( @JobFairValue, JobFairValue )
+	,	RecruitDateDiff = IsNull( @RecruitDateDiff, RecruitDateDiff )
+	,	Category1No = IsNull( @Category1No, Category1No )
+	,	Category2No = IsNull( @Category2No, Category2No )
+	,	CityCategory = IsNull( @CityCategory, CityCategory )
+	,	AreaCategory = IsNull( @AreaCategory, AreaCategory )
+	,	Career = IsNull( @Career, Career )
+	,	Gender = IsNull( @Gender, Gender )
+	,	AgeCategory = IsNull( @AgeCategory, AgeCategory )
+	WHERE
+		CountryNo = @CountryNo
+	AND	RecruitNo = @RecruitNo
+	AND	CompanyNo = @CompanyNo
+END
+

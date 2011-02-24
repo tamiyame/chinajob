@@ -1,5 +1,8 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
 -- TB_Recruit 테이블에 Update 시 TB_RecruitSearch 테이블에 필요 Data Update 해주는 Trigger 세팅
-CREATE TRIGGER TR_RecruitUpdate ON dbo.TB_Recruit
+ALTER TRIGGER [dbo].[TR_RecruitUpdate] ON [dbo].[TB_Recruit]
 FOR UPDATE
 AS
 
@@ -7,6 +10,7 @@ DECLARE @CompanyNo INT
 ,	@RecruitNo INT
 ,	@CountryNo INT
 ,	@JobFairValue TINYINT
+,	@RecruitDateDiff INT
 ,	@Category1No INT
 ,	@Category2No INT
 ,	@CityCategory INT
@@ -20,6 +24,7 @@ SELECT
 ,	@RecruitNo = RecruitNo
 ,	@CountryNo = CountryNo
 ,	@JobFairValue = JobFairValue
+,	@RecruitDateDiff = DATEDIFF(d, '2011-01-01', RecruitDate)
 ,	@Category1No = Category1No
 ,	@Category2No = Category2No
 ,	@CityCategory = CityCategory
@@ -30,12 +35,14 @@ SELECT
 FROM
 	INSERTED
 
-IF NOT EXISTS (SELECT CompanyNo FROM dbo.TB_RecruitSearch WITH(NOLOCK) WHERE CompanyNo = @CompanyNo AND CountryNo = @CountryNo AND RecruitNo = @RecruitNo )
+IF EXISTS (SELECT CompanyNo FROM dbo.TB_RecruitSearch WITH(NOLOCK) WHERE CompanyNo = @CompanyNo AND CountryNo = @CountryNo AND RecruitNo = @RecruitNo )
 BEGIN
+
 	UPDATE
 		dbo.TB_RecruitSearch
 	SET
 		JobFairValue = IsNull( @JobFairValue, JobFairValue )
+	,	RecruitDateDiff = IsNull( @RecruitDateDiff, RecruitDateDiff )
 	,	Category1No = IsNull( @Category1No, Category1No )
 	,	Category2No = IsNull( @Category2No, Category2No )
 	,	CityCategory = IsNull( @CityCategory, CityCategory )
@@ -47,4 +54,62 @@ BEGIN
 		CountryNo = @CountryNo
 	AND	RecruitNo = @RecruitNo
 	AND	CompanyNo = @CompanyNo
+END
+ELSE
+BEGIN
+	-- TB_CompanyDetail Table 에서 얻어와야 하는 정보
+	DECLARE	@KRName NVARCHAR(50)
+	,	@CNName NVARCHAR(50)
+	,	@ENGName NVARCHAR(50)
+	,	@CompanyImage NVARCHAR(200)
+	,	@CapitalType TINYINT
+	SELECT
+		@KRName = KRName
+	,	@CNName = CNName
+	,	@ENGName = ENGName
+	,	@CompanyImage = CompanyImage
+	,	@CapitalType = CapitalType
+	FROM
+		dbo.TB_CompanyDetail WITH(NOLOCK)
+	WHERE
+		CompanyNo = @CompanyNo
+		
+	INSERT INTO dbo.TB_RecruitSearch (
+		CompanyNo
+	,	CountryNo
+	,	RecruitNo
+	,	KRName
+	,	CNName
+	,	ENGName
+	,	CompanyImage
+	,	CapitalType
+	,	JobFairValue
+	,	RecruitDateDiff
+	,	Category1No
+	,	Category2No
+	,	CityCategory
+	,	AreaCategory
+	,	Career
+	,	Gender
+	,	AgeCategory
+	)
+	VALUES (
+		@CompanyNo
+	,	@CountryNo
+	,	@RecruitNo
+	,	@KRName
+	,	@CNName
+	,	@ENGName
+	,	@CompanyImage
+	,	@CapitalType
+	,	@JobFairValue
+	,	@RecruitDateDiff
+	,	@Category1No
+	,	@Category2No
+	,	@CityCategory
+	,	@AreaCategory
+	,	@Career
+	,	@Gender
+	,	@AgeCategory
+	)
 END
