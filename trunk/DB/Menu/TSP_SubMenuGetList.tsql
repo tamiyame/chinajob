@@ -74,7 +74,7 @@ WHERE
 AND	TopMenuNo = @TopMenuNo
 and	Status = 1
 ORDER BY
-	TopMenuNo ASC, OrderNo ASC
+	CountryNo DESC, TopMenuNo ASC, OrderNo ASC
 
 
 -- Frk Error Check
