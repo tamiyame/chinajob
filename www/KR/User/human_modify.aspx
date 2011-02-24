@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="true" CodeFile="human_modify.aspx.cs" Inherits="KR_User_human_modify" Title="제목 없음" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="true" CodeFile="human_modify.aspx.cs" Inherits="KR_User_human_modify"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />

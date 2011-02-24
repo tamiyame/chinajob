@@ -45,7 +45,7 @@ function GetURL(url)
 			                    <li><a href="<%=this.GetURL("/login/join_select.aspx")%>">회원가입</a></li>
 			                    <li class="national">
 			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
-			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
+			                        <a class="icon icon-national-cn" href="#"></a>
 			                    </li>
 		                    </ul>
 	                    </div>
@@ -62,7 +62,7 @@ function GetURL(url)
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>
 		                        <li class="national">
 			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
-			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
+			                        <a class="icon icon-national-cn" href="#"></a>
 			                    </li>
 		                    </ul>
 	                    </div>
@@ -82,7 +82,7 @@ function GetURL(url)
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(); return false;"></a></li>
 			                    <li class="national">
 			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
-			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
+			                        <a class="icon icon-national-cn" href="#"></a>
 			                    </li>
 		                    </ul>
 	                    </div>
@@ -108,7 +108,7 @@ function GetURL(url)
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>			                    
 			                    <li class="national">
 			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
-			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
+			                        <a class="icon icon-national-cn" href="#"></a>
 			                    </li>
 		                    </ul>
 	                    </div>
@@ -134,11 +134,11 @@ function GetURL(url)
 			                        </ul>
 			                    </li>
 			                    <li>
-			                        <a class="icon icon-menu-recruit main-label" href="javascript:;"></a>
+			                        <a class="icon icon-menu-recruit main-label" href="<%=GetURL("/recruit/recruit_search.aspx") %>"></a>
 			                        <ul class="submenu middle2 ie6fix">
-			                            <li><a class="icon icon-menu-sub-recruit-china" href="javascript:;"></a></li>
-			                            <li><a class="icon icon-menu-sub-job-type" href="javascript:;"></a></li>
-			                            <li><a class="icon icon-menu-sub-national-type" href="javascript:;"></a></li>
+			                            <li><a class="icon icon-menu-sub-recruit-china" href="<%=GetURL("/recruit/recruit_search.aspx") %>"></a></li>
+			                            <li><a class="icon icon-menu-sub-job-type" href="<%=GetURL("/recruit/recruit_category_job.aspx") %>"></a></li>
+			                            <li><a class="icon icon-menu-sub-national-type" href="<%=GetURL("/recruit/recruit_category_city.aspx") %>"></a></li>
 			                        </ul>
 			                    </li>
 			                    <li>

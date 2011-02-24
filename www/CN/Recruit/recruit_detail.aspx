@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/RecruitMaster.master" AutoEventWireup="true" CodeFile="recruit_detail.aspx.cs" Inherits="KR_Company_recruit_detail" Title="제목 없음" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/RecruitMaster.master" AutoEventWireup="true" CodeFile="recruit_detail.aspx.cs" Inherits="CN_Recruit_recruit_detail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/recruit.css" />
+<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/recruit.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <div class="title">

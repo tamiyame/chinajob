@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="human_regist_basic.aspx.cs" Inherits="KR_User_human_regist_basic" Title="제목 없음" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="human_regist_basic.aspx.cs" Inherits="KR_User_human_regist_basic" %>
 <%@ Import Namespace="Com.Library.DB.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
