@@ -14,36 +14,36 @@
 					<div class="tab">
 						<ul>
 							<li class="icon icon-folder-off find-id">
-								<div onclick="location.href='find_id.aspx';">아이디</div>
+								<div onclick="location.href='find_id.aspx';"><%= GetText("CN_Login_find_pw.aspx_17")%></div>
 							</li>
 							<li class="last select icon icon-folder-on find-pw">
-								<div onclick="location.href='find_pw.aspx';">비밀번호</div>
+								<div onclick="location.href='find_pw.aspx';"><%= GetText("CN_Login_find_pw.aspx_20")%></div>
 							</li>													
 						</ul>						
 					</div>
 					<div class="loginform find-pw">			
 							<table>
 							    <tr>
-									<td>회원형태</td>
+									<td><%= GetText("CN_Login_find_id.aspx_27")%></td>
 									<td colspan="2">
 									    <input id="user_type_1" class="radio" type="radio" name="user_type" value="1"/>
-									    <label for="user_type_1">기업</label>
+									    <label for="user_type_1"><%= GetText("CN_Login_find_pw.aspx_30")%></label>
 									    <input id="user_type_2" class="radio" type="radio" name="user_type" value="2"/>
-									    <label for="user_type_2">개인</label>
+									    <label for="user_type_2"><%= GetText("CN_Login_find_pw.aspx_32")%></label>
 									</td>									
 								</tr>
 								<tr>
-									<td>아이디</td>
+									<td><%= GetText("CN_Login_find_id.aspx_36")%></td>
 									<td><input class="login-input" type="text" name="id"/></td>
 									<td rowspan=2><a class="icon icon-send-oper-big" href="javascript:;" onclick="jQuery.SendMail(); return false;"></a></td>
 								</tr>
 								<tr>
-									<td>이메일</td>
+									<td><%= GetText("CN_Login_find_id.aspx_41")%></td>
 									<td><input class="login-input" type="text" name="email"/></td>
 								</tr>
 							</table>
 							<div class="tool">
-								<span class="require">*</span>입력하신 이메일로 비밀번호를 발송합니다
+								<span class="require">*</span><%= GetText("CN_Login_find_pw.aspx_46")%>
 							</div>
 							<div class="join-btn">
 								<a class="icon icon-question-oper" href="<%=GetURL("/operation/freeboard_list.aspx") %>"></a>
@@ -67,20 +67,20 @@
             });
             if ( type == 0 )
             {
-                alert( "회원형태를 선택하세요");
+                alert($.translateHelper.getText("CN_Login_find_pw.aspx_70"));
                 return false;
             }
             var email = $("input:[name=email]").val();
             var userid = $("input:[name=id]").val();
             if ( userid == "" )
             {
-                alert( "아이디를 입력하세요" );
+                alert($.translateHelper.getText("CN_Login_find_pw.aspx_77"));
                 return false;
             }
             
             if ( email == "" )
             {
-                alert( "이메일을 입력하세요" );
+                alert($.translateHelper.getText("CN_Login_find_pw.aspx_83"));
                 return false;
             }
             
@@ -89,11 +89,11 @@
             {
                 if ( results )
                 {
-                    alert( "발송하였습니다.");
+                    alert($.translateHelper.getText("CN_Login_find_pw.aspx_92"));
                 }
                 else
                 {
-                    alert( "잘못된 정보를 입력하였습니다.");
+                    alert($.translateHelper.getText("CN_Login_find_pw.aspx_96"));
                 }
             },
             function(results, context, methodNames)

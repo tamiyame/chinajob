@@ -18,7 +18,7 @@
 
 			<table>
 				<tr>
-					<td class="label">참가여부<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_21")%><span class="require">*</span></td>
 					<td class="input">
 						<table>
 							<tr class="radio">
@@ -27,13 +27,13 @@
 
 								</td>
 								<td>
-									<label for="join_type_1">참가</label>
+									<label for="join_type_1"><%= GetText("CN_Company_recruit_regist.aspx_30")%></label>
 								</td>											
 								<td>
 									<input class="radio" type="radio" name="join_type" value="0" id="join_type_2" <%=RecruitInfo.JoinType == 0 ? "checked" : ""%>/>
 								</td>
 								<td>
-									<label for="join_type_2">불참</label>
+									<label for="join_type_2"><%= GetText("CN_Company_recruit_regist.aspx_36")%></label>
 
 								</td>																						
 							</tr>
@@ -41,7 +41,7 @@
 					</td>
 				</tr>
 				<tr class="join hide">
-					<td class="label">참가정보</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_44")%></td>
 					<td class="input">
 					    <input type="hidden" name="interviewers" value="<%=RecruitInfo.JobFairRecruiter %>" />
 
@@ -49,7 +49,7 @@
 							<tr class="radio">
 								<td>
 									<select name="join_count">
-										<option value="0" <%=RecruitInfo.JobFairValue == 0 ? "selected" : ""%>>참가인원</option> 
+										<option value="0" <%=RecruitInfo.JobFairValue == 0 ? "selected" : ""%>><%= GetText("CN_Company_recruit_regist.aspx_52")%></option> 
 										<option value="1" <%=RecruitInfo.JobFairValue == 1 ? "selected" : ""%>>1</option>
 										<option value="2" <%=RecruitInfo.JobFairValue == 2 ? "selected" : ""%>>2</option>
 										<option value="3" <%=RecruitInfo.JobFairValue == 3 ? "selected" : ""%>>3</option>
@@ -63,7 +63,7 @@
 									</select>
 								</td>
 								<td>
-									면접관명
+									<%= GetText("CN_Company_recruit_regist.aspx_66")%>
 								</td>											
 								<td id="interviewer">
 								</td>																					
@@ -72,7 +72,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">구인직종<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_75")%><span class="require">*</span></td>
 
 					<td class="input">
 						<table>
@@ -99,7 +99,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">경력</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_102")%></td>
 					<td class="input">
 
 						<table>
@@ -108,62 +108,62 @@
 									<input class="radio" type="radio" name="career_year" value="0" id="career_year_type_0"  <%=RecruitInfo.Career == 0 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="career_year_type_0" >무관</label>
+									<label for="career_year_type_0" ><%= GetText("CN_Company_recruit_regist.aspx_111")%></label>
 								</td>											
 								<td>
 
 									<input class="radio" type="radio" name="career_year" value="1" id="career_year_type_1"  <%=RecruitInfo.Career == 1 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="career_year_type_1">1년</label>
+									<label for="career_year_type_1">1<%= GetText("CN_Company_recruit_regist.aspx_year")%></label>
 								</td>	
 								<td>
 									<input class="radio" type="radio" name="career_year" value="2" id="career_year_type_2"  <%=RecruitInfo.Career == 2 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
 
-									<label for="career_year_type_2">2년</label>
+									<label for="career_year_type_2">2<%= GetText("CN_Company_recruit_regist.aspx_year")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="career_year" value="3" id="career_year_type_3"  <%=RecruitInfo.Career == 3 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="career_year_type_3">3년</label>
+									<label for="career_year_type_3">3<%= GetText("CN_Company_recruit_regist.aspx_year")%></label>
 								</td>
 
 								<td>
 									<input class="radio" type="radio" name="career_year" value="4" id="career_year_type_4"  <%=RecruitInfo.Career == 4 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="career_year_type_4">4년</label>
+									<label for="career_year_type_4">4<%= GetText("CN_Company_recruit_regist.aspx_year")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="career_year" value="5" id="career_year_type_5"  <%=RecruitInfo.Career == 5 ? "checked='checked'" : "" %>/>
 
 								</td>
 								<td>
-									<label for="career_year_type_5">5년</label>
+									<label for="career_year_type_5">5<%= GetText("CN_Company_recruit_regist.aspx_year")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="career_year" value="10" id="career_year_type_6"  <%=RecruitInfo.Career == 10 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
 
-									<label for="career_year_type_6">10년 이상</label>
+									<label for="career_year_type_6"><%= GetText("CN_Company_recruit_regist.aspx_over10")%></label>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">인원<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_159")%><span class="require">*</span></td>
 
 					<td class="input">
 						<table>
 							<tr><td>
 								<select class="w1" name="people_count">
 								<% for (int i = 0; i <= 10; i++) { %>
-										<option value="<%=i %>" <%=RecruitInfo.RecruitCount == i ? "selected='selected'" : "" %>><%=i %>명</option> 
+										<option value="<%=i %>" <%=RecruitInfo.RecruitCount == i ? "selected='selected'" : "" %>><%=i %><%= GetText("CN_Company_recruit_regist.aspx_166")%></option> 
 							    <% } %>
 								</select>																				
 							</td></tr>
