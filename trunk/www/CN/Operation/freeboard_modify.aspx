@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="freeboard_modify.aspx.cs" Inherits="CN_Operation_freeboard_modify" ValidateRequest="false" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="freeboard_modify.aspx.cs" Inherits="CN_Operation_freeboard_modify" ValidateRequest="false" %>
 <%@ Import Namespace="Com.Library.DB.Board" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/editor.css" />

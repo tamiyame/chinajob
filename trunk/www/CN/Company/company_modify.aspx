@@ -16,13 +16,13 @@
 					<br />
 					<table>
 					    <tr>
-							<td class="label">기업코드</td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_19") %></td>
 							<td class="input">
 								<span class="highlight"><%=CompanyInfo.CompanyNo.ToString() %></span>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">로고이미지</td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_25")%></td>
 							<td class="input">
 								<table>
 								    <tr>
@@ -30,87 +30,86 @@
 								    </tr>
 									<tr>
 										<td><input class="w3" type="File" name="logo"></input></td>
-										<td class="description">로고사이즈는 325*115px이며,JPG,GIF,PNG만 가능합니다.</td>
+										<td class="description"><%= GetText("CN_Company_company_modify.aspx_33")%></td>
 									</tr>
 								</table>								
 							</td>
 						</tr>
 						<tr>
-							<td class="label">기업명<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_39")%><span class="require">*</span></td>
 							<td class="input">
 								<table class="sub-table">
 									<tr>
-										<td class="sub-label">국문</td>
+										<td class="sub-label"><%= GetText("CN_Company_company_modify.aspx_43")%></td>
 										<td class="sub-input"><input class="w2" type="text" name="koreaName" value="<%=CompanyDetailInfo.KRName %>" /></td>
 										<td class="description" rowspan="3">
-											사업자등록증(영업집조)에 등록된 정규적인 회사명을 입력하는것을 추천하며,<br/>
-											국문,중문,영문 중 반드시 하나 이상 기입하셔야 합니다.
+											<%= GetText("CN_Company_company_modify.aspx_46")%>
 										</td>
 									</tr>
-										<td class="sub-label">중문</td>
+										<td class="sub-label"><%= GetText("CN_Company_company_modify.aspx_50")%></td>
 										<td class="sub-input"><input class="w2" type="text" name="chinaName" value="<%=CompanyDetailInfo.CNName %>"/></td>
 									</tr>
 									</tr>
-										<td class="sub-label">영문</td>
+										<td class="sub-label"><%= GetText("CN_Company_company_modify.aspx_54")%></td>
 										<td class="sub-input"><input class="w2" type="text" name="englishName" value="<%=CompanyDetailInfo.ENGName %>"/></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사업자등록번호<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_61")%><span class="require">*</span></td>
 							<td class="input">
 								<%=CompanyDetailInfo.PermitNo %>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">아이디<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_67")%><span class="require">*</span></td>
 							<td class="input">
 								<%=CompanyInfo.CompanyID%>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">비밀번호<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_73")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w2" type="text" name="password"></input></td>
-										<td class="description">영문,숫자 또는 조합 4~12자리</td>
+										<td class="description"><%= GetText("CN_Company_company_modify.aspx_78")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">비밀번호확인<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_84")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w2" type="text" name="password_confirm"></input></td>
-										<td class="description">비밀번호를 다시 한번 입력해 주세요</td>
+										<td class="description"><%= GetText("CN_Company_company_modify.aspx_89")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">이메일<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_95")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w3" type="text" name="email"  value="<%=CompanyDetailInfo.Email %>"/></td>
 										<td><a href="javascript:;" class="icon icon-duplicate-check" id="aEmail"></a></td>
-										<td class="description"><span id="spEmail">가장 자주 쓰는 이메일 하나만 입력하세요</span></td>
+										<td class="description"><span id="spEmail"><%= GetText("CN_Company_company_modify.aspx_101")%></span></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">업종<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_107")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td>
 											<select class="w3" name="jobType">
-												<option value="0">업종선택---------------------------</option> 
+												<option value="0"><%= GetText("CN_Company_company_modify.aspx_113")%>---------------------------</option> 
 <% if (BusinessCategoryList != null) { %>
 <% foreach (CategoryEntity item in BusinessCategoryList)
    { %>
@@ -127,7 +126,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">대표자명<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_130")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -137,7 +136,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">기업유형<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_140")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr class="radio">
@@ -145,25 +144,25 @@
 											<input class="radio" type="radio" name="company_type" value="135" id="company_type_1" <%=CompanyDetailInfo.CapitalType==135?"checked='checked'":"" %> />
 										</td>
 										<td>
-											<label for="company_type_1">외자</label>
+											<label for="company_type_1"><%= GetText("CN_Company_company_modify.aspx_148")%></label>
 										</td>											
 										<td>
 											<input class="radio" type="radio" name="company_type" value="136" id="company_type_2" <%=CompanyDetailInfo.CapitalType==136?"checked='checked'":"" %> />
 										</td>
 										<td>
-											<label for="company_type_2">독자</label>
+											<label for="company_type_2"><%= GetText("CN_Company_company_modify.aspx_154")%></label>
 										</td>
 										<td>
 											<input class="radio" type="radio" name="company_type" value="137" id="company_type_3" <%=CompanyDetailInfo.CapitalType==137?"checked='checked'":"" %> />
 										</td>
 										<td>
-											<label for="company_type_3">합자</label>
+											<label for="company_type_3"><%= GetText("CN_Company_company_modify.aspx_160")%></label>
 										</td>
 										<td>
 											<input class="radio" type="radio" name="company_type" value="138" id="company_type_4" <%=CompanyDetailInfo.CapitalType==138?"checked='checked'":"" %> />
 										</td>
 										<td>
-											<label for="company_type_4">기타</label>
+											<label for="company_type_4"><%= GetText("CN_Company_company_modify.aspx_166")%></label>
 										</td>
 									</tr>
 								</table>

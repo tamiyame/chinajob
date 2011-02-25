@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="freeboard_detail.aspx.cs" Inherits="CN_Operation_freeboard_detail" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="freeboard_detail.aspx.cs" Inherits="CN_Operation_freeboard_detail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 </asp:Content>

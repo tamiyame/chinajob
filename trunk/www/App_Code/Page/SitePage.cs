@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Web;
-using System.Data;
-using System.Collections.Generic;
 
 using Com.Library.Page;
 using Com.Library.DB.Schedule;
@@ -94,5 +91,10 @@ namespace Site.Web.Page
         {
             return this.WebMaster.GetURL(url);
         }
+
+		public string GetText(string transCode)
+		{
+			return WebMaster.GetText(transCode);
+		}
     }
 }

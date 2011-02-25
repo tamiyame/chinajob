@@ -16,40 +16,39 @@
 					<br />
 					<table>
 						<tr>
-							<td class="label">로고이미지</td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_19")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w3" type="File" name="logo"></input></td>
-										<td class="description">로고사이즈는 325*115px이며,JPG,GIF,PNG만 가능합니다.</td>
+										<td class="description"><%= GetText("CN_Company_company_join.aspx_24")%></td>
 									</tr>
 								</table>								
 							</td>
 						</tr>
 						<tr>
-							<td class="label">기업명<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_30")%><span class="require">*</span></td>
 							<td class="input">
 								<table class="sub-table">
 									<tr>
-										<td class="sub-label">국문</td>
+										<td class="sub-label"><%= GetText("CN_Company_company_join.aspx_34")%></td>
 										<td class="sub-input"><input class="w2" type="text" name="koreaName"/></td>
 										<td class="description" rowspan="3">
-											사업자등록증(영업집조)에 등록된 정규적인 회사명을 입력하는것을 추천하며,<br/>
-											국문,중문,영문 중 반드시 하나 이상 기입하셔야 합니다.
+											<%= GetText("CN_Company_company_join.aspx_37")%>
 										</td>
 									</tr>
-										<td class="sub-label">중문</td>
+										<td class="sub-label"><%= GetText("CN_Company_company_join.aspx_41")%></td>
 										<td class="sub-input"><input class="w2" type="text" name="chinaName"/></td>
 									</tr>
 									</tr>
-										<td class="sub-label">영문</td>
+										<td class="sub-label"><%= GetText("CN_Company_company_join.aspx_45")%></td>
 										<td class="sub-input"><input class="w2" type="text" name="englishName"/></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사업자등록번호<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_52")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -61,7 +60,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사업자등록첨부<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_64")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -71,7 +70,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">아이디<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_74")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -83,47 +82,47 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">비밀번호<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_86")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w2" type="text" name="password"></input></td>
-										<td class="description">영문,숫자 또는 조합 4~12자리</td>
+										<td class="description"><%= GetText("CN_Company_company_join.aspx_91")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">비밀번호확인<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_97")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w2" type="text" name="password_confirm"></input></td>
-										<td class="description">비밀번호를 다시 한번 입력해 주세요</td>
+										<td class="description"><%= GetText("CN_Company_company_join.aspx_102")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">이메일<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_108")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w3" type="text" name="email"></input></td>
 										<td><a href="javascript:;" class="icon icon-duplicate-check" id="aEmail"></a></td>
-										<td class="description"><span id="spEmail">가장 자주 쓰는 이메일 하나만 입력하세요</span></td>
+										<td class="description"><span id="spEmail"><%= GetText("CN_Company_company_join.aspx_114")%></span></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">업종<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_120")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td>
 											<select class="w3" name="jobType">
-												<option value="0">업종선택---------------------------</option> 
+												<option value="0"><%= GetText("CN_Company_company_join.aspx_126")%>---------------------------</option> 
 <% if (BusinessCategoryList != null) { %>
 <% foreach (CategoryEntity item in BusinessCategoryList)
    { %>
@@ -140,7 +139,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">대표자명<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_143")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -150,7 +149,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">기업유형<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_153")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr class="radio">
@@ -158,107 +157,107 @@
 											<input class="radio" type="radio" name="company_type" value="135" id="company_type_1" />
 										</td>
 										<td>
-											<label for="company_type_1">외자</label>
+											<label for="company_type_1"><%= GetText("CN_Company_company_join.aspx_161")%></label>
 										</td>											
 										<td>
 											<input class="radio" type="radio" name="company_type" value="136" id="company_type_2" />
 										</td>
 										<td>
-											<label for="company_type_2">독자</label>
+											<label for="company_type_2"><%= GetText("CN_Company_company_join.aspx_167")%></label>
 										</td>
 										<td>
 											<input class="radio" type="radio" name="company_type" value="137" id="company_type_3" />
 										</td>
 										<td>
-											<label for="company_type_3">합자</label>
+											<label for="company_type_3"><%= GetText("CN_Company_company_join.aspx_173")%></label>
 										</td>
 										<td>
 											<input class="radio" type="radio" name="company_type" value="138" id="company_type_4" />
 										</td>
 										<td>
-											<label for="company_type_4">기타</label>
+											<label for="company_type_4"><%= GetText("CN_Company_company_join.aspx_179")%></label>
 										</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">설립일<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_186")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w1" type="text" name="build_date"></input></td>
-										<td>년</td>
-										<td class="description">숫자만 입력</td>
+										<td><%= GetText("CN_Company_company_join.aspx_191")%><span class="require"></td>
+										<td class="description"><%= GetText("CN_Company_company_join.aspx_number_only")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사원수</td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_197")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w1" type="text" name="employ_count"></input></td>
-										<td>명</td>
-										<td class="description">숫자만 입력</td>
+										<td><%= GetText("CN_Company_company_join.aspx_202")%></td>
+										<td class="description"><%= GetText("CN_Company_company_join.aspx_number_only")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">자본금</td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_210")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w1" type="text" name="fund"></input></td>
 										<td>
 											<select class="w1" name="fundcurrency">
-												<option value="0">화폐단위</option> 
-												<option value="186">원화</option>
-												<option value="187">RMB</option>
-												<option value="188">달러</option>
+												<option value="0"><%= GetText("CN_Company_company_join.aspx_currencyUnit")%></option> 
+												<option value="186"><%= GetText("CN_Company_company_join.aspx_currencyUnit_krw")%></option>
+												<option value="187"><%= GetText("CN_Company_company_join.aspx_currencyUnit_rmb")%></option>
+												<option value="188"><%= GetText("CN_Company_company_join.aspx_currencyUnit_usd")%></option>
 											</select>
 										</td>
-										<td class="description">숫자만 입력</td>
+										<td class="description"><%= GetText("CN_Company_company_join.aspx_number_only")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">매출액</td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_229")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w1" type="text" name="investment"></input></td>
 										<td>
 											<select class="w1" name="investment_currency">
-												<option value="0">화폐단위</option> 
-												<option value="186">원화</option>
-												<option value="187">RMB</option>
-												<option value="188">달러</option>
+												<option value="0"><%= GetText("CN_Company_company_join.aspx_currencyUnit")%></option> 
+												<option value="186"><%= GetText("CN_Company_company_join.aspx_currencyUnit_krw")%></option>
+												<option value="187"><%= GetText("CN_Company_company_join.aspx_currencyUnit_rmb")%></option>
+												<option value="188"><%= GetText("CN_Company_company_join.aspx_currencyUnit_usd")%></option>
 											</select>
 										</td>
-										<td class="description">숫자만 입력</td>
+										<td class="description"><%= GetText("CN_Company_company_join.aspx_number_only")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">주요사업 내용<span class="require">*</span><br/>(기업소개)</td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_248")%><span class="require">*</span><br/>(<%= GetText("CN_Company_company_join.aspx_248_1")%>)</td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><textarea cols="100" rows="8" name="business_description"></textarea></td>
 									</tr>
 									<tr>
-										입력 예)재중 한인업체 및 개인의 구인/구직서비스,헤드헌팅,채용대행.
+										<%= GetText("CN_Company_company_join.aspx_255")%>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">채용담당자<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_261")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -268,7 +267,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">회사 전화번호<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_271")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -278,7 +277,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">회사 팩스번호<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_281")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -288,7 +287,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">기업본사주소<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_291")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -298,18 +297,18 @@
 							</td>
 						</tr>
 						<tr class="bottom">
-							<td class="label">홈페이지</td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_301")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w3" type="text" name="homepage"></input></td>
-										<td class="description">예)http://www.chinajobgo.com</td>
+										<td class="description"><%= GetText("CN_Company_company_join.aspx_306")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 					</table>
-					<div class="agree"><input class="checkbox" type="checkbox" name="agree"> 상기 기업소개 내용이 틀림없는 사실임을 확인합니다.</div>
+					<div class="agree"><input class="checkbox" type="checkbox" name="agree"> <%= GetText("CN_Company_company_join.aspx_312")%></div>
 					<div class="submit"><a href="#" onclick="jQuery.Submit(); return false;" class="icon icon-company-join"></a></div>
 				</div>
 <script language="javascript" type="text/javascript">
@@ -368,13 +367,13 @@ jQuery(function()
             var email = $("input:[name=email]").val();
             if ( email.indexOf("@") == -1 )
             {
-                $("#spEmail").html("이메일 형식이 아닙니다.");
+                $("#spEmail").html($.translateHelper.getText("CN_Company_company_join.aspx_emailFormatInvalid"));
                 return false;
             }
             
             if ( email.indexOf(".") == -1 )
             {
-                $("#spEmail").html("이메일 형식이 아닙니다.");
+                $("#spEmail").html($.translateHelper.getText("CN_Company_company_join.aspx_emailFormatInvalid"));
                 return false;
             }
             
@@ -382,12 +381,12 @@ jQuery(function()
             function(results, context, methodNames){
                 if ( results.CompanyNo != 0 )
                 {
-                    $("#spEmail").html("존재하는 이메일주소입니다.");
+                    $("#spEmail").html($.translateHelper.getText("CN_Company_company_join.aspx_emailExist"));
                 }
                 else
                 {
                     Email = $("input:[name=email]").val();
-                    $("#spEmail").html("등록가능한 이메일주소입니다.");
+                    $("#spEmail").html($.translateHelper.getText("CN_Company_company_join.aspx_emailValid"));
                 }
             },
             function(results, context, methodNames){
@@ -401,7 +400,7 @@ jQuery(function()
             permitNo = $("input:[name=companyNo]").val();
             if ( permitNo.length < 4 )
             {
-                $("#spCompanyNo").html("사업자등록번호를 입력하세요");
+                $("#spCompanyNo").html($.translateHelper.getText("CN_Company_company_join.aspx_companyNoEmpty"));
                 return false;
             }
             
@@ -409,12 +408,12 @@ jQuery(function()
             function(results, context, methodNames){
                 if ( results.CompanyNo != 0 )
                 {
-                    $("#spCompanyNo").html("존재하는 사업자등록번호입니다.");
+                    $("#spCompanyNo").html($.translateHelper.getText("CN_Company_company_join.aspx_companyNoExist"));
                 }
                 else
                 {
                     PermitNo = $("input:[name=companyNo]").val();
-                    $("#spCompanyNo").html("등록가능한 사업자등록번호입니다.");
+                    $("#spCompanyNo").html($.translateHelper.getText("CN_Company_company_join.aspx_companyNoValid"));
                 }
             },
             function(results, context, methodNames){
@@ -429,14 +428,14 @@ jQuery(function()
             companyID = $("input:[name=companyID]").val();
             if ( companyID.length < 4 )
             {
-                $("#spCompanyID").html("영문,숫자 또는 조합4~12자리,특수문자 불가");
+                $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_join.aspx_companyIDFormatInvalid"));
                 return false;
             }
             for ( var i = 0; i < companyID.length; i ++ )
             {
                 if ( companyID.charAt( i ) > 255 )
                 {
-                    $("#spCompanyID").html("영문,숫자 또는 조합4~12자리,특수문자 불가");
+                    $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_join.aspx_companyIDFormatInvalid"));
                     return false;
                 }
                 var b = false;
@@ -454,7 +453,7 @@ jQuery(function()
                 }
                 if ( b )
                 {
-                    $("#spCompanyID").html("아이디에 사용할수 없는 문자가 있습니다.");
+                    $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_join.aspx_companyIDHasInvalidChar"));
                     return false;
                 }
             }
@@ -462,12 +461,12 @@ jQuery(function()
             function(results, context, methodNames){
                 if ( results.CompanyNo != 0 )
                 {
-                    $("#spCompanyID").html("사용중인 아이디입니다.");
+                    $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_join.aspx_companyIDExist"));
                 }
                 else
                 {
                     CompanyID = $("input:[name=companyID]").val();
-                    $("#spCompanyID").html("등록가능한 아이디입니다.");
+                    $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_join.aspx_companyIDValid"));
                 }
             },
             function(results, context, methodNames){
@@ -493,19 +492,19 @@ jQuery(function()
             
             if ( PermitNo == "" )
             {
-                alert( "사업자등록번호 중복체크를 해주세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_companyNoMustCheckDupl"));
                 return false;
             }
             
             if ( CompanyID == "" )
             {
-                alert( "아이디 중복테크를 해주세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_companyIDMustCheckDupl"));
                 return false;
             }
             
             if ( Email == "" )
             {
-                alert( "이메일 중복 체크를 해주세요" );
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_emailMustCheckDupe") );
                 return false;
             }
             
@@ -536,44 +535,44 @@ jQuery(function()
             
             if (koreaName=="" && chinaName == "" && englishName == "" )
             {
-                alert( "기업명은 1개이상 입력하셔야합니다.");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_companyNameEmpty"));
                 return false;
             }
 
             if ( companyID == "" )
             {
-                alert( "아이디를 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_idEmpty"));
                 return false;
             }
             
             if ( companyID.length < 4 )
             {
-                alert( "아이디는 4자 이상입니다.");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_idLengthMustOver4"));
                 return false;
             }
             
             if ( password == "" )
             {
-                alert( "비밀번호를 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_passwordEmpty"));
                 return false;
             }
             
             if ( password != password_confirm )
             {
-                alert( "비밀번호확인이 틀립니다.");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_passwordCheckNotMatch"));
                 return false;
             }
             
             if ( email == "" )
             {
-                alert( "이메일을 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_emailEmpty"));
                 return false;
             }
             
             
             if ( jobType == "0" )
             {
-                alert( "업종을 선택하세요" );
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_jobTypeEmpty") );
                 return false;
             }
             
@@ -581,63 +580,63 @@ jQuery(function()
             {
                 if ( jobType_etc == "" )
                 {
-                    alert( "기타 업종을 입력하세요" );
+                    alert( $.translateHelper.getText("CN_Company_company_join.aspx_etcTypeEmpty") );
                     return false;
                 }
             }
             
             if ( company_type == "0" )
             {
-                alert("기업유형을 선택하세요");
+                alert($.translateHelper.getText("CN_Company_company_join.aspx_companyTypeEmpty"));
                 return false;
             }
             
             if ( build_date == "" )
             {
-                alert( "설립일을 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_buildDateEmpty"));
                 return false;
             }
             
             
             if ( representative == "" )
             {
-                alert( "대표자명을 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_representativeEmpty"));
                 return false;
             }
             
             if ( business_description == "" )
             {
-                alert( "주요사업 내용을입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_descriptionEmpty"));
                 return false;
             }
             
             if ( recruiting_manager == "" )
             {
-                alert( "채용담당자를 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_managerEmpty"));
                 return false;
             }
             
             if ( phone == "" )
             {
-                alert( "회사 전화번호를 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_phoneEmpty"));
                 return false;
             }
             
             if ( fax == "" )
             {
-                alert( "팩스번호를 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_faxEmpty"));
                 return false;
             }
             
             if ( address == "" )
             {
-                alert( "본사주소를 입력하세요");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_addressEmpty"));
                 return false;
             }
             
             if ( !$("input:[name=agree]").attr("checked") )
             {
-                alert( "사실확인을 하셔야합니다.");
+                alert( $.translateHelper.getText("CN_Company_company_join.aspx_agreeNotChecked"));
                 return false;
             }
             $("form:eq(0)").submit();

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/RecruitMaster.master" AutoEventWireup="true" CodeFile="recruit_detail.aspx.cs" Inherits="CN_Recruit_recruit_detail" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/RecruitMaster.master" AutoEventWireup="true" CodeFile="recruit_detail.aspx.cs" Inherits="CN_Recruit_recruit_detail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/recruit.css" />
@@ -211,7 +211,7 @@
                                                     <td class="text-2"><%=RecruitInfo.ContactPeriod%>년</td>
                                                 </tr>                         
                                                 <tr>
-                                                    <td class="label">근무시</td>
+                                                    <td class="label">근무시간</td>
                                                     <td class="text-2"><%if ( RecruitInfo.WorkingHoursType == 0 ) {  %>해당국가 노동법률 의거<% } else { %><%=RecruitInfo.WorkingHours%><% } %></td>
                                                 </tr> 
                                             </table>
