@@ -23,6 +23,7 @@ namespace Site.Web.Page
         {
             this.CountryLink = "/CN";
             this.CountryCode = 2;
+			this.CountryCode2 = Com.Library.Translate.TranslateHelper.ContryCode.CN;
             base.OnInit(e);
         }
     }

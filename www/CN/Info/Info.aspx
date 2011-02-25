@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/InfoMaster.master" AutoEventWireup="true" CodeFile="Info.aspx.cs" Inherits="CN_Info_Info" Title="sdsfsdfsdf" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/InfoMaster.master" AutoEventWireup="true" CodeFile="Info.aspx.cs" Inherits="CN_Info_Info" Title="sdsfsdfsdf" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">

@@ -29,6 +29,7 @@ namespace Site.Web.Page
         {
             this.CountryLink = "/KR";
             this.CountryCode = 1;
+			this.CountryCode2 = Com.Library.Translate.TranslateHelper.ContryCode.KR;
             base.OnInit(e);
         }
     }

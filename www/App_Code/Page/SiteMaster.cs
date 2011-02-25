@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using Com.Library.Page;
 using Com.Library.Cookie;
+using Com.Library.Translate;
 
 namespace Site.Web.Page
 {
@@ -31,12 +32,24 @@ namespace Site.Web.Page
             set { this.m_CountryCode = value; }
         }
 
+		private TranslateHelper.ContryCode m_countryCode2 = TranslateHelper.ContryCode.KR;
+		public TranslateHelper.ContryCode CountryCode2
+		{
+			get { return m_countryCode2; }
+			set { m_countryCode2 = value; }
+		}
+
         public string GetURL(string url)
         {
             return this.CountryLink + url;
         }
 
-        public new SitePage WebPage
+		public string GetText(string transCode)
+		{
+			return TranslateHelper.GetText(CountryCode2, transCode);
+		}
+		
+		public new SitePage WebPage
         {
             get
             {

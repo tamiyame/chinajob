@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/RecruitMaster.master" AutoEventWireup="true" CodeFile="recruit_regist_list.aspx.cs" Inherits="CN_Company_recruit_list" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/RecruitMaster.master" AutoEventWireup="true" CodeFile="recruit_regist_list.aspx.cs" Inherits="CN_Company_recruit_list" %>
 
 <%@ Import Namespace="Com.Library.DB.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">

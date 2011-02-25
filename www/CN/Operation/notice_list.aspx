@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="notice_list.aspx.cs" Inherits="CN_Operation_notice_list" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="notice_list.aspx.cs" Inherits="CN_Operation_notice_list" %>
 <%@ Import Namespace="Com.Library.DB.Board" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 </asp:Content>

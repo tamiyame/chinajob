@@ -1,9 +1,10 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="CNMaster.master.cs" Inherits="CN_WebMaster_CNMaster" %>
 <%@ Import Namespace="Com.Library.DB.Company" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<title id="siteTitle" runat="server" >2011 중국취업박람회</title>
+<title id="siteTitle" runat="server" ><%= this.GetText("CN_WebMaster_CNMaster.master_4") %></title>
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/icon.css" />
+<script language="javascript" type="text/javascript" src="/js/translateJs.aspx"></script>
 <asp:ContentPlaceHolder id="Header" runat="server" />
 <!--[if IE 6]>
 		<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/base.ie6.css" />
@@ -40,9 +41,9 @@ function GetURL(url)
 		                    <ul>
 			                    <li><a class="icon icon-login" href="<%=this.GetURL("/login/login.aspx")%>"></a></li>
 			                    <li class="bar"></li>
-			                    <li><a href="<%=this.GetURL("/login/find_id.aspx")%>">아이디/비번찾기</a></li>
+			                    <li><a href="<%=this.GetURL("/login/find_id.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_43") %></a></li>
 			                    <li class="bar"></li>
-			                    <li><a href="<%=this.GetURL("/login/join_select.aspx")%>">회원가입</a></li>
+			                    <li><a href="<%=this.GetURL("/login/join_select.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_45") %></a></li>
 			                    <li class="national">
 			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
 			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
@@ -55,9 +56,9 @@ function GetURL(url)
                         <!-- 관리자 -->
                         <div class="global-menu">
 		                    <ul>
-		                        <li><b>관리자</b>님</li>
+		                        <li><b><%= this.GetText("CN_WebMaster_CNMaster.master_58")%></b><%= this.GetText("CN_WebMaster_CNMaster.master_58_1")%></li>
 		                        <li class="bar"></li>
-			                    <li><a href="/Backoffice/">관리하기</a></li>
+			                    <li><a href="/Backoffice/"><%= this.GetText("CN_WebMaster_CNMaster.master_58")%></a></li>
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>
 		                        <li class="national">
@@ -71,13 +72,13 @@ function GetURL(url)
                         <!-- 개인회원 로그인 -->
 	                    <div class="global-menu">
 		                    <ul>
-			                    <li><b><%=this.WebCookies.UserID %></b>님</li>
+			                    <li><b><%=this.WebCookies.UserID %></b><%= this.GetText("CN_WebMaster_CNMaster.master_74")%></li>
 			                    <li class="bar"></li>
-			                    <li><a href="<%=this.GetURL("/user/human_modify.aspx")%>">개인정보관리</a></li>
+			                    <li><a href="<%=this.GetURL("/user/human_modify.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_76")%></a></li>
 			                    <li class="bar"></li>
-			                    <li><a href="javascript:;">이력서관리</a></li>
+			                    <li><a href="javascript:;"><%= this.GetText("CN_WebMaster_CNMaster.master_78")%></a></li>
 			                    <li class="bar"></li>
-			                    <li><a href="javascript:;">지원관리<span class="highlight"><span class="underline">0</span>건</span></a></li>
+			                    <li><a href="javascript:;"><%= this.GetText("CN_WebMaster_CNMaster.master_80")%><span class="highlight"><span class="underline">0</span><%= this.GetText("CN_WebMaster_CNMaster.master_80_1")%></span></a></li>
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(); return false;"></a></li>
 			                    <li class="national">
@@ -99,11 +100,11 @@ function GetURL(url)
 	                    <!-- 기업회원 로그인 --> 
 	                    <div class="global-menu">
 		                    <ul>
-			                    <li><b><%=this.WebCookies.UserName.Split('|')[this.WebCookies.CountryNo == 0 ? 0 : this.WebCookies.CountryNo-1 ]%></b>님</li>
+			                    <li><b><%=this.WebCookies.UserName.Split('|')[this.WebCookies.CountryNo == 0 ? 0 : this.WebCookies.CountryNo-1 ]%></b><%= this.GetText("CN_WebMaster_CNMaster.master_102")%></li>
 			                    <li class="bar"></li>
-			                    <li><a href="<%=this.GetURL("/company/company_modify.aspx")%>">기업정보관리</a></li>
+			                    <li><a href="<%=this.GetURL("/company/company_modify.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_104")%></a></li>
 			                    <li class="bar"></li>								
-			                    <li><a href="<%=this.GetURL("/company/recruit_regist_list.aspx")%>">채용관리<span class="highlight"><span class="underline"><%=companyInfo.RecruitCount%></span>건</span></a></li>
+			                    <li><a href="<%=this.GetURL("/company/recruit_regist_list.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_106")%><span class="highlight"><span class="underline"><%=companyInfo.RecruitCount%></span><%= this.GetText("CN_WebMaster_CNMaster.master_106_1")%></span></a></li>
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>			                    
 			                    <li class="national">
