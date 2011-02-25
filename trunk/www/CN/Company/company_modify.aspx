@@ -169,82 +169,82 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">설립년도<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_173")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w1" type="text" name="build_date" value="<%=CompanyDetailInfo.FoundYear %>"></td>
-										<td>년</td>
-										<td class="description">숫자만 입력</td>
+										<td><%= GetText("CN_Company_company_modify.aspx_178")%></td>
+										<td class="description"><%= GetText("CN_Company_company_modify.aspx_number_only")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사원수</td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_184")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w1" type="text" name="employ_count" value="<%=CompanyDetailInfo.EmployeeCount %>"></td>
-										<td>명</td>
-										<td class="description">숫자만 입력</td>
+										<td><%= GetText("CN_Company_company_modify.aspx_189")%></td>
+										<td class="description"><%= GetText("CN_Company_company_modify.aspx_number_only")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">자본금</td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_197")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w1" type="text" name="fund" value="<%=CompanyDetailInfo.Capital %>"></td>
 										<td>
 											<select class="w1" name="fundcurrency">
-												<option value="0" <%=CompanyDetailInfo.CapitalCurrencyNo == 0 ? "selected='selected'":"" %>>화폐단위</option>
-												<option value="186" <%=CompanyDetailInfo.CapitalCurrencyNo == 186 ? "selected='selected'":"" %>>원화</option>
-												<option value="187" <%=CompanyDetailInfo.CapitalCurrencyNo == 187 ? "selected='selected'":"" %>>RMB</option>
-												<option value="188" <%=CompanyDetailInfo.CapitalCurrencyNo == 188 ? "selected='selected'":"" %>>달러</option>
+												<option value="0" <%=CompanyDetailInfo.CapitalCurrencyNo == 0 ? "selected='selected'":"" %>><%= GetText("CN_Company_company_modify.aspx_currencyUnit")%></option>
+												<option value="186" <%=CompanyDetailInfo.CapitalCurrencyNo == 186 ? "selected='selected'":"" %>><%= GetText("CN_Company_company_modify.aspx_currencyUnit_krw")%></option>
+												<option value="187" <%=CompanyDetailInfo.CapitalCurrencyNo == 187 ? "selected='selected'":"" %>><%= GetText("CN_Company_company_modify.aspx_currencyUnit_rmb")%></option>
+												<option value="188" <%=CompanyDetailInfo.CapitalCurrencyNo == 188 ? "selected='selected'":"" %>><%= GetText("CN_Company_company_modify.aspx_currencyUnit_usd")%></option>
 											</select>
 										</td>
-										<td class="description">숫자만 입력</td>
+										<td class="description"><%= GetText("CN_Company_company_modify.aspx_number_only")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">매출액</td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_216")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w1" type="text" name="investment" value="<%=CompanyDetailInfo.Turnover %>"></td>
 										<td>
 											<select class="w1" name="investment_currency">
-												<option value="0" <%=CompanyDetailInfo.TurnoverCurrencyNo == 0 ? "selected='selected'":"" %>>화폐단위</option> 
-												<option value="186" <%=CompanyDetailInfo.TurnoverCurrencyNo == 186 ? "selected='selected'":"" %>>원화</option>
-												<option value="187" <%=CompanyDetailInfo.TurnoverCurrencyNo == 187 ? "selected='selected'":"" %>>RMB</option>
-												<option value="188" <%=CompanyDetailInfo.TurnoverCurrencyNo == 188 ? "selected='selected'":"" %>>달러</option>
+												<option value="0" <%=CompanyDetailInfo.TurnoverCurrencyNo == 0 ? "selected='selected'":"" %>><%= GetText("CN_Company_company_modify.aspx_currencyUnit")%></option> 
+												<option value="186" <%=CompanyDetailInfo.TurnoverCurrencyNo == 186 ? "selected='selected'":"" %>><%= GetText("CN_Company_company_modify.aspx_currencyUnit_krw")%></option>
+												<option value="187" <%=CompanyDetailInfo.TurnoverCurrencyNo == 187 ? "selected='selected'":"" %>><%= GetText("CN_Company_company_modify.aspx_currencyUnit_rmb")%></option>
+												<option value="188" <%=CompanyDetailInfo.TurnoverCurrencyNo == 188 ? "selected='selected'":"" %>><%= GetText("CN_Company_company_modify.aspx_currencyUnit_usd")%></option>
 											</select>
 										</td>
-										<td class="description">숫자만 입력</td>
+										<td class="description"><%= GetText("CN_Company_company_modify.aspx_number_only")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">주요사업 내용<span class="require">*</span><br/>(기업소개)</td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_235")%><span class="require">*</span><br/>(<%= GetText("CN_Company_company_modify.aspx_235_1")%>)</td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><textarea cols="100" rows="8" name="business_description"><%=CompanyDetailInfo.CompanyDescrition%></textarea></td>
 									</tr>
 									<tr>
-										입력 예)재중 한인업체 및 개인의 구인/구직서비스,헤드헌팅,채용대행.
+										<%= GetText("CN_Company_company_modify.aspx_242")%>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td class="label">채용담당자<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_248")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -254,7 +254,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">회사 전화번호<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_258")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -264,7 +264,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">회사 팩스번호<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_268")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -274,7 +274,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">기업본사주소<span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_278")%><span class="require">*</span></td>
 							<td class="input">
 								<table>
 									<tr>
@@ -284,18 +284,18 @@
 							</td>
 						</tr>
 						<tr class="bottom">
-							<td class="label">홈페이지</td>
+							<td class="label"><%= GetText("CN_Company_company_modify.aspx_288")%></td>
 							<td class="input">
 								<table>
 									<tr>
 										<td><input class="w3" type="text" name="homepage"  value="<%=CompanyDetailInfo.HomepageURL %>" /></td>
-										<td class="description">예)http://www.chinajobgo.com</td>
+										<td class="description"><%= GetText("CN_Company_company_modify.aspx_293")%></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 					</table>
-					<div class="agree"><input class="checkbox" type="checkbox" name="agree"> 상기 기업소개 내용이 틀림없는 사실임을 확인합니다.</div>
+					<div class="agree"><input class="checkbox" type="checkbox" name="agree"> <%= GetText("CN_Company_company_modify.aspx_299")%></div>
 					<div class="submit"><a href="#" onclick="jQuery.Submit(); return false;" class="icon icon-company-join"></a></div>
 				</div>
 <script language="javascript" type="text/javascript">
@@ -339,13 +339,13 @@ jQuery(function()
             var email = $("input:[name=email]").val();
             if ( email.indexOf("@") == -1 )
             {
-                $("#spEmail").html("이메일 형식이 아닙니다.");
+                $("#spEmail").html($.translateHelper.getText("CN_Company_company_modify.aspx_emailFormatInvalid"));
                 return false;
             }
             
             if ( email.indexOf(".") == -1 )
             {
-                $("#spEmail").html("이메일 형식이 아닙니다.");
+                $("#spEmail").html($.translateHelper.getText("CN_Company_company_modify.aspx_emailFormatInvalid"));
                 return false;
             }
             
@@ -353,12 +353,12 @@ jQuery(function()
             function(results, context, methodNames){
                 if ( results.CompanyNo != 0 )
                 {
-                    $("#spEmail").html("존재하는 이메일주소입니다.");
+                    $("#spEmail").html($.translateHelper.getText("CN_Company_company_modify.aspx_emailExist"));
                 }
                 else
                 {
                     Email = $("input:[name=email]").val();
-                    $("#spEmail").html("등록가능한 이메일주소입니다.");
+                    $("#spEmail").html($.translateHelper.getText("CN_Company_company_modify.aspx_emailValid"));
                 }
             },
             function(results, context, methodNames){
@@ -372,7 +372,7 @@ jQuery(function()
             permitNo = $("input:[name=companyNo]").val();
             if ( permitNo.length < 4 )
             {
-                $("#spCompanyNo").html("사업자등록번호를 입력하세요");
+                $("#spCompanyNo").html($.translateHelper.getText("CN_Company_company_modify.aspx_companyNoEmpty"));
                 return false;
             }
             
@@ -380,12 +380,12 @@ jQuery(function()
             function(results, context, methodNames){
                 if ( results.CompanyNo != 0 )
                 {
-                    $("#spCompanyNo").html("존재하는 사업자등록번호입니다.");
+                    $("#spCompanyNo").html($.translateHelper.getText("CN_Company_company_modify.aspx_companyNoExist"));
                 }
                 else
                 {
                     PermitNo = $("input:[name=companyNo]").val();
-                    $("#spCompanyNo").html("등록가능한 사업자등록번호입니다.");
+                    $("#spCompanyNo").html($.translateHelper.getText("CN_Company_company_modify.aspx_companyNoValid"));
                 }
             },
             function(results, context, methodNames){
@@ -400,14 +400,14 @@ jQuery(function()
             companyID = $("input:[name=companyID]").val();
             if ( companyID.length < 4 )
             {
-                $("#spCompanyID").html("영문,숫자 또는 조합4~12자리,특수문자 불가");
+                $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_modify.aspx_companyIDFormatInvalid"));
                 return false;
             }
             for ( var i = 0; i < companyID.length; i ++ )
             {
                 if ( companyID.charAt( i ) > 255 )
                 {
-                    $("#spCompanyID").html("영문,숫자 또는 조합4~12자리,특수문자 불가");
+                    $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_modify.aspx_companyIDFormatInvalid"));
                     return false;
                 }
                 var b = false;
@@ -425,7 +425,7 @@ jQuery(function()
                 }
                 if ( b )
                 {
-                    $("#spCompanyID").html("아이디에 사용할수 없는 문자가 있습니다.");
+                    $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_modify.aspx_companyIDHasInvalidChar"));
                     return false;
                 }
             }
@@ -433,12 +433,12 @@ jQuery(function()
             function(results, context, methodNames){
                 if ( results.CompanyNo != 0 )
                 {
-                    $("#spCompanyID").html("사용중인 아이디입니다.");
+                    $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_modify.aspx_companyIDExist"));
                 }
                 else
                 {
                     CompanyID = $("input:[name=companyID]").val();
-                    $("#spCompanyID").html("등록가능한 아이디입니다.");
+                    $("#spCompanyID").html($.translateHelper.getText("CN_Company_company_modify.aspx_companyIDValid"));
                 }
             },
             function(results, context, methodNames){
@@ -464,7 +464,7 @@ jQuery(function()
             
             if ( Email == "" )
             {
-                alert( "이메일 중복 체크를 해주세요" );
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_emailMustCheckDupe"));
                 return false;
             }
             
@@ -494,13 +494,13 @@ jQuery(function()
 
             if (koreaName=="" && chinaName == "" && englishName == "" )
             {
-                alert( "기업명은 1개이상 입력하셔야합니다.");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_companyNameEmpty"));
                 return false;
             }
             
             if(companyNo == "" )
             {
-                alert( "사업자등록번호를 입력하셔야합니다.");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_companyNoEmpty"));
                 return false;
             }
             
@@ -508,20 +508,20 @@ jQuery(function()
             {
                 if ( password != password_confirm )
                 {
-                    alert( "비밀번호확인이 틀립니다.");
+                    alert($.translateHelper.getText("CN_Company_company_modify.aspx_passwordCheckNotMatch"));
                     return false;
                 }
             }
             
             if ( email == "" )
             {
-                alert( "이메일을 입력하세요");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_emailEmpty"));
                 return false;
             }
             
             if ( jobType == "0" )
             {
-                alert( "업종을 선택하세요" );
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_jobTypeEmpty"));
                 return false;
             }
             
@@ -529,56 +529,56 @@ jQuery(function()
             {
                 if ( jobType_etc == "" )
                 {
-                    alert( "기타 업종을 입력하세요" );
+                    alert($.translateHelper.getText("CN_Company_company_modify.aspx_etcTypeEmpty"));
                     return false;
                 }
             }
             
             if ( company_type == "0" )
             {
-                alert("기업유형을 선택하세요");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_companyTypeEmpty"));
                 return false;
             }
             
             if ( representative == "" )
             {
-                alert( "설립일을 입력하세요");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_representativeEmpty"));
                 return false;
             }
             
             if ( business_description == "" )
             {
-                alert( "주요사업 내용을입력하세요");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_descriptionEmpty"));
                 return false;
             }
             
             if ( recruiting_manager == "" )
             {
-                alert( "채용담당자를 입력하세요");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_managerEmpty"));
                 return false;
             }
             
             if ( phone == "" )
             {
-                alert( "회사 전화번호를 입력하세요");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_phoneEmpty"));
                 return false;
             }
             
             if ( fax == "" )
             {
-                alert( "팩스번호를 입력하세요");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_faxEmpty"));
                 return false;
             }
             
             if ( address == "" )
             {
-                alert( "본사주소를 입력하세요");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_addressEmpty"));
                 return false;
             }
             
             if ( !$("input:[name=agree]").attr("checked") )
             {
-                alert( "사실확인을 하셔야합니다.");
+                alert($.translateHelper.getText("CN_Company_company_modify.aspx_agreeNotChecked"));
                 return false;
             }
             $("form:eq(0)").submit();
