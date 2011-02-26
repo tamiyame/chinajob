@@ -1,0 +1,2016 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+/* *******************************************************************
+** DATE :
+** Writer :
+** Memo :
+******************************************************************** */
+create PROCEDURE [dbo].[TSP_RecruitSearch]
+(
+ @IsTransaction tinyint   = 0
+, @ErrorCode  int    = 0  OUTPUT
+, @ErrorMessage nvarchar( 1000 )= '' OUTPUT
+
+,	@CountryNo	int = null
+,	@JoinType  tinyint   = null
+,	@Category1No int    = null
+,	@Category2No int    = null
+,	@CityCategory int    = null
+,	@AreaCategory int    = null
+,	@CompanyName	nvarchar(50) = null
+,	@AgeCategory int    = null
+,	@Gender   tinyint   = null
+,	@Career   tinyint   = null
+
+,	@PageNo int = 1 
+,	@PageSize tinyint = 10 
+
+,	@CntRow int = NULL OUTPUT
+,	@CntTotal int = NULL OUTPUT
+)
+as
+Set NOCOUNT ON
+
+-- Frk Default Value
+DECLARE @FrkDateNow DateTime
+DECLARE @FrkRowCount int
+DECLARE @FrkTranCount int
+DECLARE @FrkErrorCode int
+DECLARE @FrkErrorMessage nvarchar( 1000 )
+Set @FrkDateNow = GetDate()
+set @FrkTranCount = @@TRANCOUNT
+-- Frk Check
+
+
+If ( @IsTransaction = 0 )
+Begin
+ If ( @FrkTranCount < 1 )
+ Begin
+  Set @FrkErrorCode = -1
+  Set @FrkErrorMessage = 'Transaction.'
+  goto ERROR
+ End
+ Else If ( @FrkTranCount > 1 )
+ Begin
+  Set @FrkErrorCode = -2
+  Set @FrkErrorMessage = 'Transaction.'
+  goto ERROR
+ End
+End
+Else
+Begin
+ If ( @FrkTranCount <> 0 )
+ Begin
+  Set @FrkErrorCode = -3
+  Set @FrkErrorMessage = 'Transaction.'
+  goto ERROR
+ End
+ Begin Tran
+End
+
+-- Implementation
+
+DECLARE @SkipPage INT
+SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
+
+
+IF ( @JoinType Is Not Null )
+BEGIN
+	IF ( @Category1No IS Not Null )
+	BEGIN
+		IF ( @Category2No Is Not Null )
+		BEGIN
+			IF ( @PageNo = 1 )
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+					dbo.TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.JoinType = @JoinType
+				AND	S.Category1No = @Category1No
+				AND	S.Category2No = @Category2No
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				ORDER BY
+					S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+			ELSE
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+				(
+					SELECT
+						S.CompanyNo
+					,	S.CountryNo
+					,	S.RecruitNo
+					,	S.KRName
+					,	S.CNName
+					,	S.ENGName
+					,	S.CompanyImage
+					,	S.CapitalType
+					,	S.JoinType
+					,	S.JobFairValue
+					,	S.RecruitDateDiff
+					,	S.Category1No
+					,	S.Category2No
+					,	S.CityCategory
+					,	S.AreaCategory
+					,	S.Career
+					,	S.Gender
+					,	S.AgeCategory
+					,	S.RecruitDate
+					,	ROW_NUMBER() OVER ( ORDER BY
+						S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+					) AS ROWNUM
+					FROM
+						TB_RecruitSearch S with ( nolock )
+					WHERE
+						S.CountryNo = @CountryNo
+					AND	S.JoinType = @JoinType
+					AND	S.Category1No = @Category1No
+					AND	S.Category2No = @Category2No
+					AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				)	S
+				WHERE
+					ROWNUM > @SkipPage
+				AND	ROWNUM <= @SkipPage + @PageSize
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+
+			SELECT
+				@CntTotal = Count( * )
+			FROM
+				TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.JoinType = @JoinType
+			AND	S.Category1No = @Category1No
+			AND	S.Category2No = @Category2No
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+		END
+		ELSE
+		BEGIN
+			IF ( @PageNo = 1 )
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+					dbo.TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.JoinType = @JoinType
+				AND	S.Category1No = @Category1No
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				ORDER BY
+					S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+			ELSE
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+				(
+					SELECT
+						S.CompanyNo
+					,	S.CountryNo
+					,	S.RecruitNo
+					,	S.KRName
+					,	S.CNName
+					,	S.ENGName
+					,	S.CompanyImage
+					,	S.CapitalType
+					,	S.JoinType
+					,	S.JobFairValue
+					,	S.RecruitDateDiff
+					,	S.Category1No
+					,	S.Category2No
+					,	S.CityCategory
+					,	S.AreaCategory
+					,	S.Career
+					,	S.Gender
+					,	S.AgeCategory
+					,	S.RecruitDate
+					,	ROW_NUMBER() OVER ( ORDER BY
+						S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+					) AS ROWNUM
+					FROM
+						TB_RecruitSearch S with ( nolock )
+					WHERE
+						S.CountryNo = @CountryNo
+					AND	S.JoinType = @JoinType
+					AND	S.Category1No = @Category1No
+					AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				)	S
+				WHERE
+					ROWNUM > @SkipPage
+				AND	ROWNUM <= @SkipPage + @PageSize
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+
+			SELECT
+				@CntTotal = Count( * )
+			FROM
+				TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.JoinType = @JoinType
+			AND	S.Category1No = @Category1No
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+		END
+	END
+	ELSE IF ( @CityCategory Is Not Null )
+	BEGIN
+		IF ( @AreaCategory IS Not Null )
+		BEGIN
+			IF ( @PageNo = 1 )
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+					dbo.TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.JoinType = @JoinType
+				AND	S.CityCategory = @CityCategory
+				AND	S.AreaCategory = @AreaCategory
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				ORDER BY
+					S.JoinType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+			ELSE
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+				(
+					SELECT
+						S.CompanyNo
+					,	S.CountryNo
+					,	S.RecruitNo
+					,	S.KRName
+					,	S.CNName
+					,	S.ENGName
+					,	S.CompanyImage
+					,	S.CapitalType
+					,	S.JoinType
+					,	S.JobFairValue
+					,	S.RecruitDateDiff
+					,	S.Category1No
+					,	S.Category2No
+					,	S.CityCategory
+					,	S.AreaCategory
+					,	S.Career
+					,	S.Gender
+					,	S.AgeCategory
+					,	S.RecruitDate
+					,	ROW_NUMBER() OVER ( ORDER BY
+						S.JoinType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+					) AS ROWNUM
+					FROM
+						TB_RecruitSearch S with ( nolock )
+					WHERE
+						S.CountryNo = @CountryNo
+					AND	S.JoinType = @JoinType
+					AND	S.CityCategory = @CityCategory
+					AND	S.AreaCategory = @AreaCategory
+					AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				)	S
+				WHERE
+					ROWNUM > @SkipPage
+				AND	ROWNUM <= @SkipPage + @PageSize
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+
+			SELECT
+				@CntTotal = Count( * )
+			FROM
+				TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.JoinType = @JoinType
+			AND	S.CityCategory = @CityCategory
+			AND	S.AreaCategory = @AreaCategory
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+		END
+		ELSE 
+		BEGIN
+			IF ( @PageNo = 1 )
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+					dbo.TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.JoinType = @JoinType
+				AND	S.CityCategory = @CityCategory
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				ORDER BY
+					S.JoinType DESC, S.CityCategory DESC, RecruitDate DESC
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+			ELSE
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+				(
+					SELECT
+						S.CompanyNo
+					,	S.CountryNo
+					,	S.RecruitNo
+					,	S.KRName
+					,	S.CNName
+					,	S.ENGName
+					,	S.CompanyImage
+					,	S.CapitalType
+					,	S.JoinType
+					,	S.JobFairValue
+					,	S.RecruitDateDiff
+					,	S.Category1No
+					,	S.Category2No
+					,	S.CityCategory
+					,	S.AreaCategory
+					,	S.Career
+					,	S.Gender
+					,	S.AgeCategory
+					,	S.RecruitDate
+					,	ROW_NUMBER() OVER ( ORDER BY
+						S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+					) AS ROWNUM
+					FROM
+						TB_RecruitSearch S with ( nolock )
+					WHERE
+						S.CountryNo = @CountryNo
+					AND	S.JoinType = @JoinType
+					AND	S.CityCategory = @CityCategory
+					AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				)	S
+				WHERE
+					ROWNUM > @SkipPage
+				AND	ROWNUM <= @SkipPage + @PageSize
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+
+			SELECT
+				@CntTotal = Count( * )
+			FROM
+				TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.JoinType = @JoinType
+			AND	S.CityCategory = @CityCategory
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+		END
+	END
+	ELSE IF ( @Gender IS Null )
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+				dbo.TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.JoinType = @JoinType
+			AND	S.Gender = @Gender
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+			ORDER BY
+				S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+			(
+				SELECT
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				,	ROW_NUMBER() OVER ( ORDER BY
+					S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+				) AS ROWNUM
+				FROM
+					TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.JoinType = @JoinType
+				AND	S.Gender = @Gender
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+			)	S
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			TB_RecruitSearch S with ( nolock )
+		WHERE
+			S.CountryNo = @CountryNo
+		AND	S.JoinType = @JoinType
+		AND	S.Gender = @Gender
+		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+		AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+		AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+	END
+	ELSE IF ( @AgeCategory IS Null )
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+				dbo.TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.JoinType = @JoinType
+			AND	S.AgeCategory = @AgeCategory
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+			ORDER BY
+				S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+			(
+				SELECT
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				,	ROW_NUMBER() OVER ( ORDER BY
+					S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+				) AS ROWNUM
+				FROM
+					TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.JoinType = @JoinType
+				AND	S.AgeCategory = @AgeCategory
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+			)	S
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			TB_RecruitSearch S with ( nolock )
+		WHERE
+			S.CountryNo = @CountryNo
+		AND	S.JoinType = @JoinType
+		AND	S.AgeCategory = @AgeCategory
+		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+		AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+	END
+	ELSE IF ( @Career IS Null )
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+				dbo.TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.JoinType = @JoinType
+			AND	S.Career = @Career
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			ORDER BY
+				S.JoinType DESC, S.Career DESC, RecruitDate DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+			(
+				SELECT
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				,	ROW_NUMBER() OVER ( ORDER BY
+					S.JoinType DESC, S.Career DESC, RecruitDate DESC
+				) AS ROWNUM
+				FROM
+					TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.JoinType = @JoinType
+				AND	S.Career = @Career
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			)	S
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			TB_RecruitSearch S with ( nolock )
+		WHERE
+			S.CountryNo = @CountryNo
+		AND	S.JoinType = @JoinType
+		AND	S.Career = @Career
+		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+	END
+	ELSE
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+				dbo.TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.JoinType = @JoinType
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			ORDER BY
+				S.JoinType DESC, RecruitDate DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+			(
+				SELECT
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				,	ROW_NUMBER() OVER ( ORDER BY
+					S.JoinType DESC, RecruitDate DESC
+				) AS ROWNUM
+				FROM
+					TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.JoinType = @JoinType
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			)	S
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			TB_RecruitSearch S with ( nolock )
+		WHERE
+			S.CountryNo = @CountryNo
+		AND	S.JoinType = @JoinType
+		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+	END
+END
+ELSE
+BEGIN
+	IF ( @Category1No IS Not Null )
+	BEGIN
+		IF ( @Category2No Is Not Null )
+		BEGIN
+			IF ( @PageNo = 1 )
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+					dbo.TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.Category1No = @Category1No
+				AND	S.Category2No = @Category2No
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				ORDER BY
+					S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+			ELSE
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+				(
+					SELECT
+						S.CompanyNo
+					,	S.CountryNo
+					,	S.RecruitNo
+					,	S.KRName
+					,	S.CNName
+					,	S.ENGName
+					,	S.CompanyImage
+					,	S.CapitalType
+					,	S.JoinType
+					,	S.JobFairValue
+					,	S.RecruitDateDiff
+					,	S.Category1No
+					,	S.Category2No
+					,	S.CityCategory
+					,	S.AreaCategory
+					,	S.Career
+					,	S.Gender
+					,	S.AgeCategory
+					,	S.RecruitDate
+					,	ROW_NUMBER() OVER ( ORDER BY
+						S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+					) AS ROWNUM
+					FROM
+						TB_RecruitSearch S with ( nolock )
+					WHERE
+						S.CountryNo = @CountryNo
+					AND	S.Category1No = @Category1No
+					AND	S.Category2No = @Category2No
+					AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				)	S
+				WHERE
+					ROWNUM > @SkipPage
+				AND	ROWNUM <= @SkipPage + @PageSize
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+
+			SELECT
+				@CntTotal = Count( * )
+			FROM
+				TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.Category1No = @Category1No
+			AND	S.Category2No = @Category2No
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+		END
+		ELSE
+		BEGIN
+			IF ( @PageNo = 1 )
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+					dbo.TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.Category1No = @Category1No
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				ORDER BY
+					S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+			ELSE
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+				(
+					SELECT
+						S.CompanyNo
+					,	S.CountryNo
+					,	S.RecruitNo
+					,	S.KRName
+					,	S.CNName
+					,	S.ENGName
+					,	S.CompanyImage
+					,	S.CapitalType
+					,	S.JoinType
+					,	S.JobFairValue
+					,	S.RecruitDateDiff
+					,	S.Category1No
+					,	S.Category2No
+					,	S.CityCategory
+					,	S.AreaCategory
+					,	S.Career
+					,	S.Gender
+					,	S.AgeCategory
+					,	S.RecruitDate
+					,	ROW_NUMBER() OVER ( ORDER BY
+						S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+					) AS ROWNUM
+					FROM
+						TB_RecruitSearch S with ( nolock )
+					WHERE
+						S.CountryNo = @CountryNo
+					AND	S.Category1No = @Category1No
+					AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				)	S
+				WHERE
+					ROWNUM > @SkipPage
+				AND	ROWNUM <= @SkipPage + @PageSize
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+
+			SELECT
+				@CntTotal = Count( * )
+			FROM
+				TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.Category1No = @Category1No
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @CityCategory IS Null OR S.CityCategory = @CityCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AreaCategory IS Null OR S.AreaCategory = @AreaCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+		END
+	END
+	ELSE IF ( @CityCategory Is Not Null )
+	BEGIN
+		IF ( @AreaCategory IS Not Null )
+		BEGIN
+			IF ( @PageNo = 1 )
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+					dbo.TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.CityCategory = @CityCategory
+				AND	S.AreaCategory = @AreaCategory
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				ORDER BY
+					S.JoinType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+			ELSE
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+				(
+					SELECT
+						S.CompanyNo
+					,	S.CountryNo
+					,	S.RecruitNo
+					,	S.KRName
+					,	S.CNName
+					,	S.ENGName
+					,	S.CompanyImage
+					,	S.CapitalType
+					,	S.JoinType
+					,	S.JobFairValue
+					,	S.RecruitDateDiff
+					,	S.Category1No
+					,	S.Category2No
+					,	S.CityCategory
+					,	S.AreaCategory
+					,	S.Career
+					,	S.Gender
+					,	S.AgeCategory
+					,	S.RecruitDate
+					,	ROW_NUMBER() OVER ( ORDER BY
+						S.JoinType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+					) AS ROWNUM
+					FROM
+						TB_RecruitSearch S with ( nolock )
+					WHERE
+						S.CountryNo = @CountryNo
+					AND	S.CityCategory = @CityCategory
+					AND	S.AreaCategory = @AreaCategory
+					AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				)	S
+				WHERE
+					ROWNUM > @SkipPage
+				AND	ROWNUM <= @SkipPage + @PageSize
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+
+			SELECT
+				@CntTotal = Count( * )
+			FROM
+				TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.CityCategory = @CityCategory
+			AND	S.AreaCategory = @AreaCategory
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+		END
+		ELSE 
+		BEGIN
+			IF ( @PageNo = 1 )
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+					dbo.TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.CityCategory = @CityCategory
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				ORDER BY
+					S.JoinType DESC, S.CityCategory DESC, RecruitDate DESC
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+			ELSE
+			BEGIN
+				SELECT	Top( @PageSize )
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				FROM
+				(
+					SELECT
+						S.CompanyNo
+					,	S.CountryNo
+					,	S.RecruitNo
+					,	S.KRName
+					,	S.CNName
+					,	S.ENGName
+					,	S.CompanyImage
+					,	S.CapitalType
+					,	S.JoinType
+					,	S.JobFairValue
+					,	S.RecruitDateDiff
+					,	S.Category1No
+					,	S.Category2No
+					,	S.CityCategory
+					,	S.AreaCategory
+					,	S.Career
+					,	S.Gender
+					,	S.AgeCategory
+					,	S.RecruitDate
+					,	ROW_NUMBER() OVER ( ORDER BY
+						S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+					) AS ROWNUM
+					FROM
+						TB_RecruitSearch S with ( nolock )
+					WHERE
+						S.CountryNo = @CountryNo
+					AND	S.CityCategory = @CityCategory
+					AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+				)	S
+				WHERE
+					ROWNUM > @SkipPage
+				AND	ROWNUM <= @SkipPage + @PageSize
+				SELECT
+					@FrkErrorCode = @@ERROR
+				,	@FrkRowCount = @@RowCount
+				SET @CntRow = @FrkRowCount
+			END
+
+			SELECT
+				@CntTotal = Count( * )
+			FROM
+				TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.CityCategory = @CityCategory
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+		END
+	END
+	ELSE IF ( @Gender IS Null )
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+				dbo.TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.Gender = @Gender
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+			ORDER BY
+				S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+			(
+				SELECT
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				,	ROW_NUMBER() OVER ( ORDER BY
+					S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+				) AS ROWNUM
+				FROM
+					TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.Gender = @Gender
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+			)	S
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			TB_RecruitSearch S with ( nolock )
+		WHERE
+			S.CountryNo = @CountryNo
+		AND	S.Gender = @Gender
+		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+		AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
+		AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+	END
+	ELSE IF ( @AgeCategory IS Null )
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+				dbo.TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.AgeCategory = @AgeCategory
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+			ORDER BY
+				S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+			(
+				SELECT
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				,	ROW_NUMBER() OVER ( ORDER BY
+					S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+				) AS ROWNUM
+				FROM
+					TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.AgeCategory = @AgeCategory
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+			)	S
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			TB_RecruitSearch S with ( nolock )
+		WHERE
+			S.CountryNo = @CountryNo
+		AND	S.AgeCategory = @AgeCategory
+		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+		AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
+	END
+	ELSE IF ( @Career IS Null )
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+				dbo.TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	S.Career = @Career
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			ORDER BY
+				S.JoinType DESC, S.Career DESC, RecruitDate DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+			(
+				SELECT
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				,	ROW_NUMBER() OVER ( ORDER BY
+					S.JoinType DESC, S.Career DESC, RecruitDate DESC
+				) AS ROWNUM
+				FROM
+					TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	S.Career = @Career
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			)	S
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			TB_RecruitSearch S with ( nolock )
+		WHERE
+			S.CountryNo = @CountryNo
+		AND	S.Career = @Career
+		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+	END
+	ELSE
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+				dbo.TB_RecruitSearch S with ( nolock )
+			WHERE
+				S.CountryNo = @CountryNo
+			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			ORDER BY
+				S.JoinType DESC, RecruitDate DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				S.CompanyNo
+			,	S.CountryNo
+			,	S.RecruitNo
+			,	S.KRName
+			,	S.CNName
+			,	S.ENGName
+			,	S.CompanyImage
+			,	S.CapitalType
+			,	S.JoinType
+			,	S.JobFairValue
+			,	S.RecruitDateDiff
+			,	S.Category1No
+			,	S.Category2No
+			,	S.CityCategory
+			,	S.AreaCategory
+			,	S.Career
+			,	S.Gender
+			,	S.AgeCategory
+			,	S.RecruitDate
+			FROM
+			(
+				SELECT
+					S.CompanyNo
+				,	S.CountryNo
+				,	S.RecruitNo
+				,	S.KRName
+				,	S.CNName
+				,	S.ENGName
+				,	S.CompanyImage
+				,	S.CapitalType
+				,	S.JoinType
+				,	S.JobFairValue
+				,	S.RecruitDateDiff
+				,	S.Category1No
+				,	S.Category2No
+				,	S.CityCategory
+				,	S.AreaCategory
+				,	S.Career
+				,	S.Gender
+				,	S.AgeCategory
+				,	S.RecruitDate
+				,	ROW_NUMBER() OVER ( ORDER BY
+					S.JoinType DESC, RecruitDate DESC
+				) AS ROWNUM
+				FROM
+					TB_RecruitSearch S with ( nolock )
+				WHERE
+					S.CountryNo = @CountryNo
+				AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+			)	S
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			TB_RecruitSearch S with ( nolock )
+		WHERE
+			S.CountryNo = @CountryNo
+		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
+	END
+END
+
+ 
+
+-- Frk Error Check
+SELECT
+ @FrkErrorCode = @@ERROR
+, @FrkRowCount = @@RowCount
+
+-- End
+
+COMPLETE:
+ If ( @IsTransaction <> 0 )
+ Begin
+  If ( @@TRANCOUNT = 1 )
+  Begin
+   Commit Tran
+  End
+ End
+ SET @ErrorCode = 0
+ SET @ErrorMessage = ''
+ return 0
+ERROR:
+ If ( @IsTransaction <> 0 )
+ Begin
+  If ( @@TRANCOUNT = 1 )
+  Begin
+   Rollback Tran
+  End
+ End
+ SET @ErrorCode = @FrkErrorCode
+ SET @ErrorMessage = @FrkErrorMessage
+ return @FrkErrorCode
+
