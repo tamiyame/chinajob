@@ -182,6 +182,7 @@
     <Compile Include="DB\Company\Arguments\RecruitMasterModifyArguments.cs" />
     <Compile Include="DB\Company\Arguments\RecruitMasterRemoveArguments.cs" />
     <Compile Include="DB\Company\Arguments\RecruitModifyArguments.cs" />
+    <Compile Include="DB\Company\Arguments\RecruitSearchArguments.cs" />
     <Compile Include="DB\Company\DataAccess\CompanyCreate.cs" />
     <Compile Include="DB\Company\DataAccess\CompanyDetailGetInfo.cs" />
     <Compile Include="DB\Company\DataAccess\CompanyDetailModify.cs" />
@@ -198,11 +199,13 @@
     <Compile Include="DB\Company\DataAccess\RecruitMasterModify.cs" />
     <Compile Include="DB\Company\DataAccess\RecruitMasterRemove.cs" />
     <Compile Include="DB\Company\DataAccess\RecruitModify.cs" />
+    <Compile Include="DB\Company\DataAccess\RecruitSearch.cs" />
     <Compile Include="DB\Company\Entity\CompanyAllEntity.cs" />
     <Compile Include="DB\Company\Entity\CompanyDetailEntity.cs" />
     <Compile Include="DB\Company\Entity\CompanyEntity.cs" />
     <Compile Include="DB\Company\Entity\RecruitEntity.cs" />
     <Compile Include="DB\Company\Entity\RecruitMasterEntity.cs" />
+    <Compile Include="DB\Company\Entity\RecruitSearchEntity.cs" />
     <Compile Include="DB\ConnectionString.cs" />
     <Compile Include="DB\Menu\Arguments\SubMenuCreateArguments.cs" />
     <Compile Include="DB\Menu\Arguments\SubMenuGetInfoArguments.cs" />

@@ -78,6 +78,10 @@ BEGIN
 		CompanyNo = @CompanyNo
 	ORDER BY
 		CompanyNo DESC, RecruitNo DESC
+	SELECT
+		@FrkErrorCode = @@ERROR
+	,	@FrkRowCount = @@RowCount
+	SET @CntRow = @FrkRowCount
 END
 ELSE
 BEGIN
@@ -106,9 +110,18 @@ BEGIN
 	WHERE
 		ROWNUM > @SkipPage
 	AND	ROWNUM <= @SkipPage + @PageSize
-	
+	SELECT
+		@FrkErrorCode = @@ERROR
+	,	@FrkRowCount = @@RowCount
+	SET @CntRow = @FrkRowCount
 END
 
+SELECT
+	@CntTotal = Count( * )
+FROM
+	dbo.TB_RecruitMaster with ( nolock )
+WHERE
+	CompanyNo = @CompanyNo
 
 
 -- Frk Error Check
