@@ -103,7 +103,7 @@ namespace Com.Library.Translate
 				initData.Add(new TranslateEntity("CN_Company_company_join.aspx_271", "회사 전화번호", "企业电话"));
 				initData.Add(new TranslateEntity("CN_Company_company_join.aspx_281", "회사 팩스번호", "企业传真"));
 				initData.Add(new TranslateEntity("CN_Company_company_join.aspx_291", "기업본사주소", "企业总部住址"));
-				initData.Add(new TranslateEntity("CN_Company_company_join.aspx_301", "홈페이지", "网站                        "));
+				initData.Add(new TranslateEntity("CN_Company_company_join.aspx_301", "홈페이지", "网站"));
 				initData.Add(new TranslateEntity("CN_Company_company_join.aspx_306", "예)http:__www.chinajobgo.com", "例如：http:__www.chinajobgo.com"));
 				initData.Add(new TranslateEntity("CN_Company_company_join.aspx_312", "상기 기업소개 내용이 틀림없는 사실임을 확인합니다.", "确认以上企业信息属实"));
 				initData.Add(new TranslateEntity("CN_Company_company_join.aspx_emailFormatInvalid", "이메일 형식이 아닙니다.", "邮件形式不正确"));
