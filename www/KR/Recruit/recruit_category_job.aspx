@@ -16,13 +16,13 @@
                         <div class="contents">
                             <div class="tab">
                                 <ul>
-                                    <li class="select icon <%=CountryNo == 1 ? "icon-folder-big-on" : "icon-folder-big-off"%> korean">
+                                    <li class="icon <%=CountryNo == 1 ? "select icon-folder-big-on" : "icon-folder-big-off"%> korean">
                                         <div><a href="recruit_category_city.aspx?CountryNo=1">한국어</a></div>
                                     </li>
-                                    <li class="select icon <%=CountryNo == 2 ? "icon-folder-big-on" : "icon-folder-big-off"%> china">
+                                    <li class="icon <%=CountryNo == 2 ? "select icon-folder-big-on" : "icon-folder-big-off"%> china">
                                         <div><a href="recruit_category_city.aspx?CountryNo=2">中文M</a></div>
                                     </li>													
-                                    <li class="select icon <%=CountryNo == 3 ? "icon-folder-big-on" : "icon-folder-big-off"%> english">
+                                    <li class="icon <%=CountryNo == 3 ? "select icon-folder-big-on" : "icon-folder-big-off"%> english">
                                         <div><a href="recruit_category_city.aspx?CountryNo=3">english</a></div>
                                     </li>				
                                 </ul>						
@@ -30,9 +30,13 @@
                             <div class="category-detail">
                                 <div class="top"></div>
                                 <div class="board-content">
-                                    <ul class="categoryList">
-<%for (int i = 0; i < CategoryList.Count; i++) { %>   
-                                        <li class="categoryItem <%= i % 3 == 0 ? "" : "sideline"%>">
+                                <table class="category-table">
+<%for (int i = 0; i < CategoryList.Count; i++) { 
+                                if(i%3==0)
+                                {%>
+                                    <tr class="categoryList">
+                                <%} %>
+                                        <td class="categoryItem <%= i % 3 == 2 ? "" : "sideline"%>">
                                      
                                             <span class="category1"><a href="recruit_search.aspx?Country=<%=CountryNo%>&Category1=<%=CategoryList[i].CategoryNo%>"><%=GetCategoryName(CategoryList[i])%></a><span class="icon icon-board-icon-next" onclick="location.href='recruit_search.aspx?Country=<%=CountryNo%>&Category1=<%=CategoryList[i].CategoryNo%>'" style="cursor:pointer;"></span></span>
                                             <ul class="category2">
@@ -48,9 +52,15 @@
     }
 %>
                                             </ul>  
-                                        </li>
-<% } %>
-                                    </ul>
+                                        </td>
+                                <%
+                                if(i%3==2)
+                                {%>
+                                    </tr>
+                                    <tr class="category-tr-blank"><td colspan="3"></td></tr>
+                                <%} %>
+<% } %>                         </table>
+                                    
                                 </div>
                                 <div class="bottom"></div>
                             </div>	
