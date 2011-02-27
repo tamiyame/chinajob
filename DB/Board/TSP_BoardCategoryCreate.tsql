@@ -12,6 +12,8 @@ alter PROCEDURE [dbo].[TSP_BoardCategoryCreate]
 
 ,	@BoardNo		int
 ,	@CategoryName	nvarchar( 50 ) 
+,	@CategoryCNName	nvarchar( 50 )	= null
+,	@CategoryENGName	nvarchar( 50 )  = null
 )
 as
 Set NOCOUNT ON
@@ -70,6 +72,8 @@ INSERT	dbo.TB_BoardCategory
 	BoardNo
 ,	BoardCategoryNo
 ,	CategoryName
+,	CategoryCNName
+,	CategoryENGName
 ,	MaxBoardSubCategoryNo
 ,	ArticleCreate
 ,	ArticleRemove
@@ -79,6 +83,8 @@ SELECT
 	@BoardNo
 ,	@MaxBoardCategoryNo
 ,	@CategoryName
+,	@CategoryCNName
+,	@CategoryENGName
 ,	0	MaxBoardSubCategoryNo
 ,	0	ArticleCreate
 ,	0	ArticleRemove
@@ -113,4 +119,5 @@ ERROR:
 	SET @ErrorCode = @FrkErrorCode
 	SET @ErrorMessage = @FrkErrorMessage
 	return @FrkErrorCode
+
 

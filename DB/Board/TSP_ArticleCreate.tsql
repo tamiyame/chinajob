@@ -20,6 +20,8 @@ ALTER PROCEDURE [dbo].[TSP_ArticleCreate]
 ,	@UserNo			int
 ,	@UserID			varchar( 24 )
 ,	@UserName		nvarchar( 50 )
+,	@UserCNName		nvarchar( 50 )	= null
+,	@UserENGName		nvarchar( 50 )	= null
 ,	@UserIP			varchar( 20 )
 
 ,	@ArticleTitle	nvarchar( 500 )
@@ -153,6 +155,8 @@ INSERT	TB_Article
 ,	UserNo
 ,	UserID
 ,	UserName
+,	UserCNName
+,	UserENGName
 ,	UserIP
 ,	ArticleTitle
 ,	SomeContent
@@ -176,6 +180,8 @@ SELECT
 ,	@UserNo
 ,	@UserID
 ,	@UserName
+,	@UserCNName
+,	@UserENGName
 ,	@UserIP
 ,	@ArticleTitle
 ,	@SomeContent

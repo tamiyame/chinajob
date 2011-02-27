@@ -13,6 +13,8 @@ create PROCEDURE [dbo].[TSP_BoardCategoryModify]
 ,	@BoardNo		int
 ,	@BoardCategoryNo	int
 ,	@CategoryName	nvarchar( 50 ) = null
+,	@CategoryCNName	nvarchar( 50 ) = null
+,	@CategoryENGName	nvarchar( 50 ) = null
 )
 as
 Set NOCOUNT ON
@@ -61,6 +63,8 @@ UPDATE
 	TB_BoardCategory
 SET
 	CategoryName = IsNull( @CategoryName, CategoryName )
+,	CategoryCNName = IsNull( @CategoryCNName, CategoryCNName )
+,	CategoryENGName = IsNull( @CategoryENGName, CategoryENGName )
 WHERE
 	BoardNo = @BoardNo
 AND	BoardCategoryNo = @BoardCategoryNo
