@@ -205,4 +205,33 @@ public partial class KR_Recruit_recruit_search : SitePage
         return url;
     }
 
+    public string DetailViewer(int companyNo, int recruitNo)
+    {
+        string url = "recruit_detail.aspx?Country=" + CountryNo;
+        url += "&CompanyNo=" + companyNo.ToString();
+        url += "&RecruitNo=" + recruitNo.ToString();
+        url += "&PageNo=" + PageNo.ToString();
+        if (JoinType != 3)
+            url += "&jointype=" + JoinType.ToString();
+        if (Category1No != 0)
+            url += "&Category1=" + Category1No.ToString();
+        if (Category2No != 0)
+            url += "&Category2=" + Category2No.ToString();
+        if (AgeCategory != 0)
+            url += "&Age=" + AgeCategory.ToString();
+        if (CityCategory != 0)
+            url += "&City=" + CityCategory.ToString();
+        if (AreaCategory != 0)
+            url += "&Age=" + AreaCategory.ToString();
+        if (Gender != 0)
+            url += "&Gender=" + Gender.ToString();
+        if (Career != 0)
+            url += "&Career=" + Career.ToString();
+        if (CapitalType != 0)
+            url += "&CapitalType=" + CapitalType.ToString();
+        if (CompanyName.Trim() != "")
+            url += "&Name=" + Server.UrlEncode(CompanyName);
+        return url;
+    }
+
 }

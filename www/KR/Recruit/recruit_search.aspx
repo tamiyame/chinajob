@@ -244,13 +244,13 @@ jQuery(function()
             if ( Category1No != 0 )
                 url += "&Category1=" + Category1No;
             if ( Category2No != 0 )
-                url += "&Category2=" + Category1No;
+                url += "&Category2=" + Category2No;
             if ( AgeCategory != 0 )
                 url += "&Age=" + AgeCategory;
             if ( CityCategory != 0 )
                 url += "&City=" + CityCategory;
             if ( AreaCategory != 0 )
-                url += "&Age=" + AreaCategory;
+                url += "&Area=" + AreaCategory;
             if ( Gender != 0 )
                 url += "&Gender=" + Gender;
             if ( Career != 0 )
@@ -272,7 +272,7 @@ jQuery(function()
                                             <th>마감일</th>
                                         </tr>
 <% foreach(RecruitSearchEntity item in SearchList.Record) { %>
-                                        <tr>
+                                        <tr style="cursor:pointer" onclick="location.href='<%=DetailViewer(item.CompanyNo, item.RecruitNo)%>'">
                                             <td class="col1"><%=item.CompanyNo %></td>
                                             <td class="col2"><img src="<%=item.CompanyImage == string.Empty ? "/ImgSrv/kr/images/recruit/no-logo.png" : item.CompanyImage%>" /></td>
                                             <td class="col3"><%=item.KRName %><br /><%=item.CNName %><br /><%=item.ENGName %></td>
