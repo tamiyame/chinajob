@@ -111,7 +111,7 @@ function onWrite()
 {
     if ( $( "#ArticleTitle" ).val() == "" )
     {
-        alert( "<%= GetText("CN_Operation_freeboard_modify.aspx_114")%>");
+        alert( $.translateHelper.getText("CN_Operation_freeboard_modify.aspx_114"));
         return false;
     }
     
@@ -120,7 +120,7 @@ function onWrite()
     
     if ( TextEditor.html == "" )
     {
-        alert( "<%= GetText("CN_Operation_freeboard_modify.aspx_123")%>" );
+        alert( $.translateHelper.getText("CN_Operation_freeboard_modify.aspx_123") );
         return false;
     }
     
