@@ -41,11 +41,11 @@ table.board-list tr.toolbox td,table.board-list tr.search td{background:none;}
 table.board-list td{padding:0px;text-align:center;}
 table.board-list th{color:#666666;font-weight:normal;border-top:solid 2px #c8c8c8;border-bottom:solid 1px #dcdcdc;}
 table.board-list td{border-bottom:solid 1px #f3f3f3;}
-table.board-list tr td.col1{color:#999999; font-size:11px;width:114px;}
+table.board-list tr td.col1{color:#999999; font-size:12px;width:114px;}
 table.board-list tr td.col2{padding-left:0px;color:#454545; font-size:12px; text-align:left;width:467px;}
-table.board-list tr td.col2 .secret{color:#357a9e; font-size:11px;}
-table.board-list tr td.col2 .reply{color:#ff6600; font-size:11px;}
-table.board-list tr td.col2 .reply-count{color:#357a9e; font-size:11px;}
+table.board-list tr td.col2 .secret{color:#357a9e; font-size:12px;}
+table.board-list tr td.col2 .reply{color:#ff6600; font-size:12px;}
+table.board-list tr td.col2 .reply-count{color:#357a9e; font-size:12px;}
 table.board-list tr td.col3{color:#454545; font-size:12px;}
 table.board-list tr td.col4{color:#454545; font-size:10px; font-family:Tahoma;}
 
@@ -75,7 +75,7 @@ table.board-list tr.search td table td input{width:193px;height:18px;}
 .board-detail .board-content table tr.label td{border-bottom:dotted 1px #dcdad9;}
 .board-detail .board-content table tr.text{font-size:9pt;color:#5c5c5c;line-height:18px;}
 .board-detail .board-content table td{border:none;}
-.board-detail .board-content table td.col1{color:#999999;font-size:11px;width:44px;}
+.board-detail .board-content table td.col1{color:#999999;font-size:12px;width:44px;}
 .board-detail .board-content table td.col2{width:526px;color:#454545;font-size:14px;font-weight:bold;}
 .board-detail .board-content table td.col2 .secret{color:#357a9e;font-weight:normal;padding-left:5px;}
 .board-detail .board-content table td.col3{width:102px;color:#454545;}
