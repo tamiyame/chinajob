@@ -21,7 +21,7 @@ $(function(){$(".expo-sponsor .expo-folder").click();});
 								<a href="<%=this.GetURL("/operation/qna_list.aspx")%>" class="icon icon-more"></a>
 							</div>
 							<div class="industry-phone">86.10.8449.2479</div>
-							<div class="recruit-phone">86.10.8449.2479</div>
+							<div class="recruit-phone">86.10.8449.2463</div>
 						</div>
 						<div class="news">
 							<div class="more">
