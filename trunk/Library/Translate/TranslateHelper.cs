@@ -265,7 +265,9 @@ namespace Com.Library.Translate
 				initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_502", "근무지역", "办公地区"));
 				initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_520", "상세주소", "详细地址"));
 				initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_531", "채용예정시기", "计划录用时间"));
-				initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_540", "년 월 일", "年 月 日"));
+				initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_540", "년", "年"));
+                initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_540_2", "월", "月"));
+                initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_540_3", "일", "日"));
 				initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_565", "기타자격요건", "其他资格条件"));
 				initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_577", "급여", "薪资"));
 				initData.Add(new TranslateEntity("CN_Company_recruit_regist.aspx_596", "계약기간", "合同期限"));
@@ -306,6 +308,7 @@ namespace Com.Library.Translate
 				initData.Add(new TranslateEntity("CN_Login_find_id.aspx_30", "기업", "公司"));
 				initData.Add(new TranslateEntity("CN_Login_find_id.aspx_32", "개인", "个人"));
 				initData.Add(new TranslateEntity("CN_Login_find_id.aspx_36", "이메일", "邮箱"));
+                initData.Add(new TranslateEntity("CN_Login_find_id.aspx_41", "이메일", "邮箱"));
 				initData.Add(new TranslateEntity("CN_Login_find_id.aspx_42", "회원가입시,기입한 이메일을 입력하세요", "请输入在加入会员时预留的邮箱地址"));
 				initData.Add(new TranslateEntity("CN_Login_find_id.aspx_65", "회원형태를 선택하세요", "请选择会员形式"));
 				initData.Add(new TranslateEntity("CN_Login_find_id.aspx_72", "이메일을 입력하세요", "请输入邮箱"));

@@ -168,10 +168,10 @@ function GetURL(url)
 				</div>
 <asp:ContentPlaceHolder id="Content" runat="server" />
                 <div class="expo-sponsor">
-					<div class="expo-folder ">
+					<div class="expo-folder hide">
 						<img src="/ImgSrv/kr/images/base/expo-sponser-folder.png" border="0"/>
 					</div>
-					<div class="expo-content hide">
+					<div class="expo-content">
 						<img src="/ImgSrv/kr/images/base/expo-sponser.png" usemap="#sponsorLink" border="0"/>
 						<map name="sponsorLink">
 							<area shape="rect" coords="27,49,179,107" href="javascript:site.go('gnb');">

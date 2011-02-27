@@ -5,6 +5,8 @@
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/recruit.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+
+
 <asp:ScriptManagerProxy ID="px" runat="server">
     <Services>
         <asp:ServiceReference Path="~/Soap/Category.asmx"></asp:ServiceReference>
@@ -1048,11 +1050,11 @@ jQuery(function()
                 $.each(results,function(i){
                     if ( _PageLoad_CityCategory )
                     {
-                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.AreaCategory%> ? "selected='selected'" : "" ) + ">"+$.SubCategoryLangName(this)+"</option>"));
+                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.AreaCategory%> ? "selected='selected'" : "" ) + ">"+this.SubCategoryCNName+"</option>"));
                     }
                     else
                     { 
-                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'>"+ $.SubCategoryLangName(this)+"</option>"));
+                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'>"+ this.SubCategoryCNName+"</option>"));
                     }
                     
                 })
@@ -1071,11 +1073,11 @@ jQuery(function()
                 $.each(results,function(i){
                     if ( _PageLoad_Category )
                     {
-                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.Category2No%> ? "selected='selected'" : "" ) + ">" + $.SubCategoryLangName(this) + "</option>"));
+                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.Category2No%> ? "selected='selected'" : "" ) + ">" + this.SubCategoryCNName + "</option>"));
                     }
                     else
                     { 
-                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'>"+ $.SubCategoryLangName(this)+"</option>"));
+                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'>"+ this.SubCategoryCNName +"</option>"));
                     }
                 })
                 
@@ -1153,7 +1155,6 @@ jQuery(function()
 })(jQuery);
 
 </script>
-
 
 </asp:Content>
 

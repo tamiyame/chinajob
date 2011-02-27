@@ -43,7 +43,7 @@ function GetURL(url)
 			                    <li class="bar"></li>
 			                    <li><a href="<%=this.GetURL("/login/find_id.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_43") %></a></li>
 			                    <li class="bar"></li>
-			                    <li><a href="<%=this.GetURL("/login/join_select.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_45") %></a></li>
+			                    <li><a href="<%=this.GetURL("/company/company_join.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_45") %></a></li>
 			                    <li class="national">
 			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
 			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
@@ -121,7 +121,7 @@ function GetURL(url)
 			                        <a class="icon icon-menu-expo main-label" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenuNo=1")%>"></a>
 			                        <ul class="submenu ie6fix">
 			                            <li><a class="icon icon-menu-sub-hello" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenuNo=1")%>"></a></li>
-			                            <li><a class="icon icon-menu-sub-expo-info" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenu=2")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-expo-info" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenuNo=2")%>"></a></li>
 			                            <li><a class="icon icon-menu-sub-intro" href="<%=this.GetURL("/info/info.aspx?TopMenuNo=1&SubMenuNo=3")%>"></a></li>
 			                        </ul>
 			                    </li>			                    
@@ -154,10 +154,10 @@ function GetURL(url)
 				</div>
 <asp:ContentPlaceHolder id="Content" runat="server" />
                 <div class="expo-sponsor">
-					<div class="expo-folder ">
+					<div class="expo-folder  hide">
 						<img src="/ImgSrv/cn/images/base/expo-sponser-folder.png" border="0"/>
 					</div>
-					<div class="expo-content hide">
+					<div class="expo-content">
 						<img src="/ImgSrv/cn/images/base/expo-sponser.png" usemap="#sponsorLink" border="0"/>
 						<map name="sponsorLink">
 							<area shape="rect" coords="27,49,179,107" href="javascript:site.go('gnb');">

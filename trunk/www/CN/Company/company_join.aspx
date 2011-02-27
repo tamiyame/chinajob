@@ -2,9 +2,11 @@
 
 <%@ Import Namespace="Com.Library.DB.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<link rel="stylesheet" type="text/css" href="/ImgSrv/kr/css/company-join.css" />
+<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/company-join.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+
+
 <asp:ScriptManagerProxy ID="px" runat="server">
     <Services>
         <asp:ServiceReference Path="~/Soap/Company.asmx"></asp:ServiceReference>
@@ -60,7 +62,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label"><%= GetText("CN_Company_company_join.aspx_64")%><span class="require">*</span></td>
+							<td class="label"><%= GetText("CN_Company_company_join.aspx_64")%></td>
 							<td class="input">
 								<table>
 									<tr>
