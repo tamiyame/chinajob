@@ -114,9 +114,9 @@ jQuery(function()
                     $('<td class="col3" />' ).append(
                         $('<a class="icon icon-recruit-btn-korean" href="recruit_regist.aspx?CountryNo=1&RecruitNo=' + this.RecruitNo + '"></a>')
                     ).append(
-                        $('<a class="icon icon-recruit-btn-china" href="recruit_regist.aspx?CountryNo=2&RecruitNo=' + this.RecruitNo + '"></a>')
+                        $('<a class="icon icon-recruit-btn-china" href="recruit_regist_cn.aspx?CountryNo=2&RecruitNo=' + this.RecruitNo + '"></a>')
                     ).append(
-                        $('<a class="icon icon-recruit-btn-english" href="recruit_regist.aspx?CountryNo=3&RecruitNo=' + this.RecruitNo + '"></a>')
+                        $('<a class="icon icon-recruit-btn-english" href="recruit_regist_eng.aspx?CountryNo=3&RecruitNo=' + this.RecruitNo + '"></a>')
                     ).append(
                         $('<a class="icon icon-recruit-btn-delete" href="javascript:;" onclick="jQuery.RecruitRemove(this, ' + this.RecruitNo + '); return false;"></a>')
                     )
