@@ -62,6 +62,8 @@ SELECT
 	BoardNo
 ,	BoardCategoryNo
 ,	CategoryName
+,	CategoryCNName
+,	CategoryENGName
 ,	MaxBoardSubCategoryNo
 ,	ArticleCreate
 ,	ArticleRemove

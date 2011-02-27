@@ -89,6 +89,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -125,6 +127,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -149,6 +153,8 @@ BEGIN
 			,	UserNo
 			,	UserID
 			,	UserName
+			,	UserCNName
+			,	UserENGName
 			,	UserIP
 			,	ArticleTitle
 			,	SomeContent
@@ -200,6 +206,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -237,6 +245,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -261,6 +271,8 @@ BEGIN
 			,	UserNo
 			,	UserID
 			,	UserName
+			,	UserCNName
+			,	UserENGName
 			,	UserIP
 			,	ArticleTitle
 			,	SomeContent
@@ -318,6 +330,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -355,6 +369,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -379,6 +395,8 @@ BEGIN
 			,	UserNo
 			,	UserID
 			,	UserName
+			,	UserCNName
+			,	UserENGName
 			,	UserIP
 			,	ArticleTitle
 			,	SomeContent
@@ -433,6 +451,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -471,6 +491,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -495,6 +517,8 @@ BEGIN
 			,	UserNo
 			,	UserID
 			,	UserName
+			,	UserCNName
+			,	UserENGName
 			,	UserIP
 			,	ArticleTitle
 			,	SomeContent
@@ -550,6 +574,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -588,6 +614,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -612,6 +640,8 @@ BEGIN
 			,	UserNo
 			,	UserID
 			,	UserName
+			,	UserCNName
+			,	UserENGName
 			,	UserIP
 			,	ArticleTitle
 			,	SomeContent
@@ -667,6 +697,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -706,6 +738,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -730,6 +764,8 @@ BEGIN
 			,	UserNo
 			,	UserID
 			,	UserName
+			,	UserCNName
+			,	UserENGName
 			,	UserIP
 			,	ArticleTitle
 			,	SomeContent
@@ -788,6 +824,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -828,6 +866,8 @@ BEGIN
 		,	UserNo
 		,	UserID
 		,	UserName
+		,	UserCNName
+		,	UserENGName
 		,	UserIP
 		,	ArticleTitle
 		,	SomeContent
@@ -852,6 +892,8 @@ BEGIN
 			,	UserNo
 			,	UserID
 			,	UserName
+			,	UserCNName
+			,	UserENGName
 			,	UserIP
 			,	ArticleTitle
 			,	SomeContent

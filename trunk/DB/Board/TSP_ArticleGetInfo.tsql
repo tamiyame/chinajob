@@ -25,6 +25,8 @@ alter PROCEDURE [dbo].[TSP_ArticleGetInfo]
 ,	@UserNo	int = null output
 ,	@UserID	varchar(24) = null output
 ,	@UserName nvarchar(50) = null output
+,	@UserCNName nvarchar(50) = null output
+,	@UserENGName nvarchar(50) = null output
 ,	@UserIP	varchar(20) = null output
 ,	@ArticleTitle	nvarchar(500) = null  output
 ,	@SomeContent	nvarchar(2000) = null output
@@ -95,6 +97,8 @@ SET
 	,	@UserNo	= UserNo
 	,	@UserID	= UserID
 	,	@UserName	= UserName
+	,	@UserCNName	= UserCNName
+	,	@UserENGName	= UserENGName
 	,	@UserIP	= UserIP
 	,	@ArticleTitle	= ArticleTitle
 	,	@SomeContent	= SomeContent
