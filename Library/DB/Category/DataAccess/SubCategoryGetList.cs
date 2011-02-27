@@ -7,7 +7,7 @@ using Com.Library.DB;
 
 namespace Com.Library.DB.Category
 {
-    public class SubCategoryGetList : DBDataReader<SubCategoryEntity, DataEntity>
+    public class SubCategoryGetList : DBDataReader<SubCategoryEntity, OutputEntity>
     {
         public SubCategoryGetList()
             : base(new ConnectionString(), "TSP_SubCategoryGetList")

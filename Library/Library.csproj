@@ -115,6 +115,8 @@
     <Compile Include="DB\Category\Arguments\CategoryCreateArguments.cs" />
     <Compile Include="DB\Category\Arguments\CategoryGetInfoArguments.cs" />
     <Compile Include="DB\Category\Arguments\CategoryGetListArguments.cs" />
+    <Compile Include="DB\Category\Arguments\CategoryMasterGetInfoArguments.cs" />
+    <Compile Include="DB\Category\Arguments\CategoryModifyArguments.cs" />
     <Compile Include="DB\Category\Arguments\CategoryRemoveArguments.cs" />
     <Compile Include="DB\Category\Arguments\SubCategoryCreateArguments.cs">
       <SubType>Code</SubType>
@@ -125,6 +127,7 @@
     <Compile Include="DB\Category\Arguments\SubCategoryGetListArguments.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DB\Category\Arguments\SubCategoryModifyArguments.cs" />
     <Compile Include="DB\Category\Arguments\SubCategoryRemoveArguments.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -150,6 +153,8 @@
     <Compile Include="DB\Category\DataAccess\CategoryCreate.cs" />
     <Compile Include="DB\Category\DataAccess\CategoryGetInfo.cs" />
     <Compile Include="DB\Category\DataAccess\CategoryGetList.cs" />
+    <Compile Include="DB\Category\DataAccess\CategoryMasterGetInfo.cs" />
+    <Compile Include="DB\Category\DataAccess\CategoryModify.cs" />
     <Compile Include="DB\Category\DataAccess\CategoryRemove.cs" />
     <Compile Include="DB\Category\DataAccess\CityCategoryCreate.cs" />
     <Compile Include="DB\Category\DataAccess\CityCategoryGetInfo.cs" />
@@ -158,12 +163,14 @@
     <Compile Include="DB\Category\DataAccess\SubCategoryCreate.cs" />
     <Compile Include="DB\Category\DataAccess\SubCategoryGetInfo.cs" />
     <Compile Include="DB\Category\DataAccess\SubCategoryGetList.cs" />
+    <Compile Include="DB\Category\DataAccess\SubCategoryModify.cs" />
     <Compile Include="DB\Category\DataAccess\SubCategoryRemove.cs" />
     <Compile Include="DB\Category\Entity\ArrayCategoryEntity.cs" />
     <Compile Include="DB\Category\Entity\BusinessCategoryEntity.cs" />
     <Compile Include="DB\Category\Entity\Category1Entity.cs" />
     <Compile Include="DB\Category\Entity\Category2Entity.cs" />
     <Compile Include="DB\Category\Entity\CategoryEntity.cs" />
+    <Compile Include="DB\Category\Entity\CategoryMasterEntity.cs" />
     <Compile Include="DB\Category\Entity\CityCategoryEntity.cs" />
     <Compile Include="DB\Category\Entity\SubCategoryEntity.cs" />
     <Compile Include="DB\Company\Arguments\CompanyCreateArguments.cs" />
