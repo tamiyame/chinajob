@@ -18,6 +18,7 @@ namespace Com.Library.DB.Company
         {
             AddParameter("CountryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("JoinType", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
+            AddParameter("CapitalType", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
             AddParameter("Category1No", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("Category2No", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("CityCategory", SqlDbType.Int, 4, SqlDataInOut.Input);

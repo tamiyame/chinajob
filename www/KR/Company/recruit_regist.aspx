@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/RecruitMaster.master" AutoEventWireup="true" CodeFile="recruit_regist.aspx.cs" Inherits="KR_Company_recruit_regist" %>
-
 <%@ Import Namespace="Com.Library.DB.Category" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/recruit.css" />
 </asp:Content>
