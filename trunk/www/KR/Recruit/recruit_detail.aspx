@@ -11,13 +11,13 @@
                             <div class="tab">
                                 <ul>
                                     <li class="<%=CountryNo == 1 ? "select icon icon-folder-big-on" : "icon icon-folder-big-off"%> korean">
-                                        <div><a href="recruit_detail.aspx?CompanyNo=<%=CompanyNo %>&RecruitNo=<%=RecruitNo %>&CountryNo=1">한국어</a></div>
+                                        <div>한국어</div>
                                     </li>
                                     <li class="<%=CountryNo == 2 ? "select icon icon-folder-big-on" : "icon icon-folder-big-off"%> china">
-                                        <div><a href="recruit_detail.aspx?CompanyNo=<%=CompanyNo %>&RecruitNo=<%=RecruitNo %>&CountryNo=2">中文</a></div>
+                                        <div>中文</div>
                                     </li>													
                                     <li class="<%=CountryNo == 3 ? "select icon icon-folder-big-on" : "icon icon-folder-big-off"%> english">
-                                        <div><a href="recruit_detail.aspx?CompanyNo=<%=CompanyNo %>&RecruitNo=<%=RecruitNo %>&CountryNo=3">english</a></div>
+                                        <div>english</div>
                                     </li>				
                                 </ul>						
                             </div>
