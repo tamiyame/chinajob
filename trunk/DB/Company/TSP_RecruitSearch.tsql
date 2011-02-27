@@ -600,7 +600,7 @@ BEGIN
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 			END
 		END
-		ELSE IF ( @Gender IS Null )
+		ELSE IF ( @Gender IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -721,7 +721,7 @@ BEGIN
 			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
 			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 		END
-		ELSE IF ( @AgeCategory IS Null )
+		ELSE IF ( @AgeCategory IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -839,7 +839,7 @@ BEGIN
 			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
 			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 		END
-		ELSE IF ( @Career IS Null )
+		ELSE IF ( @Career IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -1577,7 +1577,7 @@ BEGIN
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 			END
 		END
-		ELSE IF ( @Gender IS Null )
+		ELSE IF ( @Gender IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -1695,7 +1695,7 @@ BEGIN
 			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
 			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 		END
-		ELSE IF ( @AgeCategory IS Null )
+		ELSE IF ( @AgeCategory IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -1810,7 +1810,7 @@ BEGIN
 			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
 			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 		END
-		ELSE IF ( @Career IS Null )
+		ELSE IF ( @Career IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -2545,7 +2545,7 @@ BEGIN
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 			END
 		END
-		ELSE IF ( @Gender IS Null )
+		ELSE IF ( @Gender IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -2663,7 +2663,7 @@ BEGIN
 			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
 			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 		END
-		ELSE IF ( @AgeCategory IS Null )
+		ELSE IF ( @AgeCategory IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -2778,7 +2778,7 @@ BEGIN
 			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
 			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 		END
-		ELSE IF ( @Career IS Null )
+		ELSE IF ( @Career IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -3498,7 +3498,7 @@ BEGIN
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 			END
 		END
-		ELSE IF ( @Gender IS Null )
+		ELSE IF ( @Gender IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -3613,7 +3613,7 @@ BEGIN
 			AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
 			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 		END
-		ELSE IF ( @AgeCategory IS Null )
+		ELSE IF ( @AgeCategory IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN
@@ -3725,7 +3725,7 @@ BEGIN
 			AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName = @CompanyName OR S.CNName = @CompanyName OR S.EngName = @CompanyName THEN 1 ELSE 0 END
 			AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 		END
-		ELSE IF ( @Career IS Null )
+		ELSE IF ( @Career IS Not Null )
 		BEGIN
 			IF ( @PageNo = 1 )
 			BEGIN

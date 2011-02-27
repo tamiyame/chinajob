@@ -14,6 +14,19 @@
                             </div>
                         </div>
                         <div class="contents">
+                            <div class="tab">
+                                <ul>
+                                    <li class="select icon <%=CountryNo == 1 ? "icon-folder-big-on" : "icon-folder-big-off"%> korean">
+                                        <div><a href="recruit_category_city.aspx?CountryNo=1">한국어</a></div>
+                                    </li>
+                                    <li class="select icon <%=CountryNo == 2 ? "icon-folder-big-on" : "icon-folder-big-off"%> china">
+                                        <div><a href="recruit_category_city.aspx?CountryNo=2">中文M</a></div>
+                                    </li>													
+                                    <li class="select icon <%=CountryNo == 3 ? "icon-folder-big-on" : "icon-folder-big-off"%> english">
+                                        <div><a href="recruit_category_city.aspx?CountryNo=3">english</a></div>
+                                    </li>				
+                                </ul>						
+                            </div>
                             <div class="category-detail">
                                 <div class="top"></div>
                                 <div class="board-content">
@@ -21,7 +34,7 @@
 <%for (int i = 0; i < CategoryList.Count; i++) { %>   
                                         <li class="categoryItem <%= i % 3 == 0 ? "" : "sideline"%>">
                                      
-                                            <span class="category1"><%=CategoryList[i].CategoryKRName %><span class="icon icon-board-icon-next" onclick="recruit_search.aspx?CategoryNo=<%=CategoryList[i].CategoryNo%>"></span></span>
+                                            <span class="category1"><a href="recruit_search.aspx?Country=<%=CountryNo%>&Category1=<%=CategoryList[i].CategoryNo%>"><%=GetCategoryName(CategoryList[i])%></a><span class="icon icon-board-icon-next" onclick="recruit_search.aspx?Cate1=<%=CategoryList[i].CategoryNo%>"></span></span>
                                             <ul class="category2">
 <%
     List<SubCategoryEntity> lstSubCategory = GetSubCategory(CategoryList[i].CategoryNo);
@@ -30,7 +43,7 @@
         if ( item.SubCategoryNo != 360 )
         {
 %>
-                                                <li><a href="recruit_search.aspx?SubCategoryNo=<%=item.SubCategoryNo %>"><%=item.SubCategoryKRName %></a><!--(<span class="number">0</span>)--></li>
+                                                <li><a href="recruit_search.aspx?Country=<%=CountryNo%>&Category1=<%=CategoryList[i].CategoryNo%>&Category2=<%=item.SubCategoryNo %>"><%=GetSubCategoryName(item)%></a><!--(<span class="number">0</span>)--></li>
 <%     } 
     }
 %>

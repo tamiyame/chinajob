@@ -21,6 +21,12 @@ namespace Com.Library.DB.Company
             set { SetValue("JoinType", value); }
         }
 
+        public byte CapitalType
+        {
+            get { return Convert.ToByte(GetValue("CapitalType", (byte)0)); }
+            set { SetValue("CapitalType", value); }
+        }
+
         public int Category1No
         {
             get { return Convert.ToInt32(GetValue("Category1No", 0)); }

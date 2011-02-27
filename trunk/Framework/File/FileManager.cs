@@ -12,7 +12,7 @@ namespace Com.Framework.File
 
         public static string UploadFor(System.Web.HttpPostedFile postFile,FileType fileType)
         {
-            string fuid = System.Guid.NewGuid().ToString();
+            string fuid = System.Guid.NewGuid().ToString("N");
             string dir = DirectoryCheck(fileType, fuid);
             string tmpFile = postFile.FileName;
             string fileExt = tmpFile.Substring(tmpFile.LastIndexOf('.'));
@@ -25,7 +25,7 @@ namespace Com.Framework.File
         public static string UploadFor(System.Web.HttpPostedFile postFile)
         {
             FileType fileType = FileType.Upload;
-            string fuid = System.Guid.NewGuid().ToString();
+            string fuid = System.Guid.NewGuid().ToString("N");
             string dir = DirectoryCheck(fileType, fuid);
             string tmpFile = postFile.FileName;
             string fileExt = tmpFile.Substring(tmpFile.LastIndexOf('.'));
