@@ -24,8 +24,14 @@
 .icon-login-big{background-position:-190px -102px; width:65px; height:63px;}
 .icon-folder-on{background-position:-261px -102px; width:193px; height:32px;}
 .icon-folder-off{background-position:-261px -137px; width:193px; height:32px;}
+.icon-folder-small-on{background-position:-334px -338px; width:150px; height:32px;}
+.icon-folder-small-off{background-position:-487px -338px; width:150px; height:32px;}
 .icon-folder-big-on{background-position:-200px -179px; width:250px; height:32px;}
 .icon-folder-big-off{background-position:-200px -215px; width:250px; height:32px;}
+
+.icon-folder-middle-on{background-position:-524px -374px; width:189px; height:32px;}
+.icon-folder-middle-off{background-position:-334px -374px; width:189px; height:32px;}
+
 .icon-recruit-info{background-position:-420px -5px; width:61px; height:17px;}
 .icon-quick-free-recruit{background-position:-201px -251px; width:130px; height:55px;}
 .icon-quick-free-human{background-position:-201px -308px; width:130px; height:55px;}
@@ -58,5 +64,25 @@
 .icon-recruit-btn-china{background-position:-472px -298px;width:50px;height:16px;}
 .icon-recruit-btn-english{background-position:-524px -298px;width:50px;height:16px;}
 .icon-national-kr{background-position:-457px -179px;width:17px;height:17px;}
-.icon-national-en{background-position:-478px -179px;width:17px;height:17px;}
-.icon-national-cn{background-position:-498px -179px;width:17px;height:17px;}
+.icon-national-cn{background-position:-478px -179px;width:17px;height:17px;}
+.icon-national-en{background-position:-498px -179px;width:17px;height:17px;}
+.icon-add-confirm{background-position:-594px -103px;width:99px;height:23px;}
+
+.icon-recruit-company{background-position:-336px -319px;width:45px;height:14px;}
+.icon-recruit-judge{background-position:-386px -319px;width:46px;height:14px;}
+.icon-recruit-condition{background-position:-437px -319px;width:45px;height:14px;}
+.icon-recruit-expo-join{background-position:-488px -319px;width:58px;height:14px;}
+.icon-recruit-expo-notjoin{background-position:-549px -319px;width:57px;height:14px;}
+.icon-recruit-modify{background-position:-610px -318px;width:28px;height:16px;}
+.icon-recruit-supply-btn{background-position:-506px -252px;width:165px;height:43px;}
+
+.icon-recruit-search-btn{background-position:-454px -209px;width:165px;height:43px;}
+
+.icon-human-regist-btn{background-position:-524px -164px;width:166px;height:43px;}
+.icon-human-interview-btn{background-position:-622px -209px;width:166px;height:43px;}
+
+.icon-human-search-btn{background-position:-502px -407px;width:166px;height:43px;}
+.icon-human-join-btn{background-position:-335px -407px;width:166px;height:43px;}
+.icon-user-info{background-position:-230px -426px;width:58px;height:16px;}
+.icon-operation-logo{background-position:-699px -103px;width:59px;height:16px;}
+
