@@ -13,8 +13,10 @@ using System.Web.UI.WebControls.WebParts;
 
 using Com.Framework.Data;
 using Com.Library.DB.Board;
-using Site.Web.Page;
+using Com.Library.DB.Schedule;
 using Com.Library.DB.Banner;
+
+using Site.Web.Page;
 
 public partial class CN_Home_Default : SitePage
 {
@@ -26,8 +28,15 @@ public partial class CN_Home_Default : SitePage
 
     public ListData<BannerEntity, OutputEntity> BannerList_Human;
     public ListData<BannerEntity, OutputEntity> BannerList_Company;
+    public PageSettingEntity PageEntity = null;
     protected void Page_Load(object sender, EventArgs e)
     {
+        {
+            PageSettingGetInfo info = new PageSettingGetInfo();
+            info.ExecuteNonQuery();
+            PageEntity = info.GetOutput();
+        }
+
         {
             ArticleGetListArguments arg = new ArticleGetListArguments();
             arg.PageNo = 1;

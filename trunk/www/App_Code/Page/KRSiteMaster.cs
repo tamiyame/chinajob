@@ -10,13 +10,15 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
-
 using Com.Library.Page;
 using Com.Library.Cookie;
+
 namespace Site.Web.Page
 {
     public class KRSiteMaster : SiteMaster
     {
+        
+
         public KRSiteMaster()
         {
             //

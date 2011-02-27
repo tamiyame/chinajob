@@ -1,7 +1,8 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="KRMaster.master.cs" Inherits="KR_WebMaster_KRMaster" %>
 <%@ Import Namespace="Com.Library.DB.Company" %>
+<%@ Import Namespace="Com.Library.DB.Schedule" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<title id="siteTitle" runat="server" >2011 중국취업박람회</title>
+<title id="siteTitle" runat="server" ><%=PageEntity.KRTitle %></title>
 <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/icon.css" />
 <asp:ContentPlaceHolder id="Header" runat="server" />
@@ -31,7 +32,7 @@ function GetURL(url)
 			<div class="content">				
 				<div class="header">
                     <div class="logo">
-                        <a href="<%=this.GetURL("/home")%>"><img src="/ImgSrv/kr/images/base/logo.png" alt="" border=0/></a>
+                        <a href="<%=this.GetURL("/home")%>"><img src="<%=PageEntity.KRLogo %>" alt="" border=0/></a>
                     </div>
                     <div class="menu">
 <% if (!this.WebCookies.IsLogin) { %>

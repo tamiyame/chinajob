@@ -12,6 +12,7 @@ using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 
 using Site.Web.Page;
+using Com.Library.DB.Schedule;
 
 public partial class KR_WebMaster_KRMaster : KRSiteMaster
 {

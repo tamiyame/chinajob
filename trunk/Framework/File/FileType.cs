@@ -12,6 +12,7 @@ namespace Com.Framework.File
         User = 3,
         Board = 4,
         Upload = 5,
-        Banner
+        Banner = 6,
+        Title = 7
     }
 }

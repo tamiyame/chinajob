@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="CNMaster.master.cs" Inherits="CN_WebMaster_CNMaster" %>
 <%@ Import Namespace="Com.Library.DB.Company" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<title id="siteTitle" runat="server" ><%= this.GetText("CN_WebMaster_CNMaster.master_4") %></title>
+<title id="siteTitle" runat="server" ><%=PageEntity.CNTitle %></title>
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/icon.css" />
 <script language="javascript" type="text/javascript" src="/js/translateJs.aspx"></script>
@@ -32,7 +32,7 @@ function GetURL(url)
 			<div class="content">				
 				<div class="header">
                     <div class="logo">
-                        <a href="<%=this.GetURL("/home")%>"><img src="/ImgSrv/cn/images/base/logo.png" alt="" border=0/></a>
+                        <a href="<%=this.GetURL("/home")%>"><img src="<%=PageEntity.CNLogo %>" alt="" border=0/></a>
                     </div>
                     <div class="menu">
 <% if (!this.WebCookies.IsLogin) { %>

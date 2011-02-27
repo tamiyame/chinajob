@@ -236,9 +236,13 @@
     <Compile Include="DB\Menu\DataAccess\TopMenuRemove.cs" />
     <Compile Include="DB\Menu\Entity\SubMenuEntity.cs" />
     <Compile Include="DB\Menu\Entity\TopMenuEntity.cs" />
+    <Compile Include="DB\Schedule\Arguments\PageSettingSetArguments.cs" />
     <Compile Include="DB\Schedule\Arguments\RecruitScheduleSetArguments.cs" />
+    <Compile Include="DB\Schedule\DataAccess\PageSettingGetInfo.cs" />
+    <Compile Include="DB\Schedule\DataAccess\PageSettingSet.cs" />
     <Compile Include="DB\Schedule\DataAccess\RecruitScheduleGetInfo.cs" />
     <Compile Include="DB\Schedule\DataAccess\RecruitScheduleSet.cs" />
+    <Compile Include="DB\Schedule\Entity\PageSettingEntity.cs" />
     <Compile Include="DB\Schedule\Entity\RecruitScheduleEntity.cs" />
     <Compile Include="DB\User\Arguments\AcademicAbilityCreateArguments.cs" />
     <Compile Include="DB\User\Arguments\ResumeCareerCreateArguments.cs" />
