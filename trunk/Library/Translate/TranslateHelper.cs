@@ -193,7 +193,7 @@ namespace Com.Library.Translate
 				initData.Add(new TranslateEntity("CN_Company_company_modify.aspx_companyIDValid", "등록가능한 아이디입니다.", "등록가능한 아이디입니다._c"));
 				initData.Add(new TranslateEntity("CN_Company_company_modify.aspx_emailMustCheckDupe", "이메일 중복 체크를 해주세요", "이메일 중복 체크를 해주세요_c"));
 				initData.Add(new TranslateEntity("CN_Company_company_modify.aspx_companyNameEmpty", "기업명은 1개이상 입력하셔야합니다.", "기업명은 1개이상 입력하셔야합니다._c"));
-				initData.Add(new TranslateEntity("CN_Company_company_modify.aspx_companyNoEmpty", "사업자등록번호를 입력하셔야합니다.", "사업자등록번호를 입력하셔야합니다._c"));
+				//initData.Add(new TranslateEntity("CN_Company_company_modify.aspx_companyNoEmpty", "사업자등록번호를 입력하셔야합니다.", "사업자등록번호를 입력하셔야합니다._c"));
 				initData.Add(new TranslateEntity("CN_Company_company_modify.aspx_passwordCheckNotMatch", "비밀번호확인이 틀립니다.", "비밀번호확인이 틀립니다._c"));
 				initData.Add(new TranslateEntity("CN_Company_company_modify.aspx_emailEmpty", "이메일을 입력하세요", "이메일을 입력하세요_c"));
 				initData.Add(new TranslateEntity("CN_Company_company_modify.aspx_jobTypeEmpty", "업종을 선택하세요", "업종을 선택하세요_c"));
