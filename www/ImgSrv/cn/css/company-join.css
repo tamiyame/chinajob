@@ -1,6 +1,6 @@
 .content .join-select{width:575px;height:233px;margin:52px auto 220px;}
 
-.content .join{font-family:'dotum'; font-size:11px; color:#7d7d7d;width:777px;margin:0 auto;line-height:15px;margin-top:29px;}
+.content .join{font-family:'dotum'; font-size:12px; color:#7d7d7d;width:777px;margin:0 auto;line-height:15px;margin-top:29px;}
 .content .join .highlight{font-weight:bold;color:#469ed9;}
 .content .join .header{background:url('../images/company-join/join-title.png');width:376px;height:23px;}
 .content .join .tab{background:url('../images/company-join/join-tab-company.png');width:777px;height:32px;margin-top:14px;margin-bottom:5px;}

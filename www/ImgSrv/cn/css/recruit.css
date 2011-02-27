@@ -10,7 +10,7 @@
 
 .main .tab-content table {width:100%;}
 .main .tab-content td,.main .tab-content label,.main .tab-content input,.main .tab-content textarea,.main .tab-content select {font-size:12px;color:#555555;}
-.main .tab-content td.label{font-size:11px;color:#7D7D7D;}
+.main .tab-content td.label{font-size:12px;color:#7D7D7D;}
 .main .tab-content td.input table{width:auto;}
 
 .main .tab-content td.vertical-top{vertical-align:top;}
@@ -20,7 +20,7 @@
 /*recruit-manage*/
 .main .recruit-manage-title{ background:url('../Images/recruit/recruit_manage_list.png');width:299px;height:24px;margin-bottom:14px;}
 .main .tab-content table.recruit-manage{}
-.main .tab-content table.recruit-manage .smallFont{font-size:11px;color:#969696;}
+.main .tab-content table.recruit-manage .smallFont{font-size:12px;color:#969696;}
 .main .tab-content table.recruit-manage .center{text-align:center;}
 .main .tab-content table.recruit-manage tr{height:33px;}
 .main .tab-content table.recruit-manage tr td{padding:0px;}
@@ -33,24 +33,24 @@
 .main .tab-content table.recruit-manage tr.recruit-paper td.col9 a,
 .main .tab-content table.recruit-manage tr.recruit-paper td.col10 a{color:#969696;}
 
-.main .tab-content table.recruit-manage tr td.col1{font-size:11px;color:#969696;width:90px;padding-left:20px;}
+.main .tab-content table.recruit-manage tr td.col1{font-size:12px;color:#969696;width:90px;padding-left:20px;}
 .main .tab-content table.recruit-manage tr td.col2{width:125px;}
 .main .tab-content table.recruit-manage tr td.col3{width:55px;}
 .main .tab-content table.recruit-manage tr td.col4{width:170px;}
 .main .tab-content table.recruit-manage tr td.col5{width:70px;}
 .main .tab-content table.recruit-manage tr td.col6{width:115px;}
 .main .tab-content table.recruit-manage tr td.col7{width:48px;}
-.main .tab-content table.recruit-manage tr td.col8{width:35px;font-size:11px;color:#969696;text-align:center;}
-.main .tab-content table.recruit-manage tr td.col9{width:35px;font-size:11px;color:#969696;text-align:center;}
-.main .tab-content table.recruit-manage tr td.col10{width:35px;font-size:11px;color:#969696;text-align:center;}
+.main .tab-content table.recruit-manage tr td.col8{width:35px;font-size:12px;color:#969696;text-align:center;}
+.main .tab-content table.recruit-manage tr td.col9{width:35px;font-size:12px;color:#969696;text-align:center;}
+.main .tab-content table.recruit-manage tr td.col10{width:35px;font-size:12px;color:#969696;text-align:center;}
 .main .tab-content table.recruit-manage tr td.col11{width:8px;}
 
-.main .tab-content table.recruit-manage tr.recruit-paper a.button{margin-top: 3px;padding-top: 4px;padding-left:1px;font-size:11px;}
+.main .tab-content table.recruit-manage tr.recruit-paper a.button{margin-top: 3px;padding-top: 4px;padding-left:1px;font-size:12px;}
 
 .main .tab-content table.recruit-manage tr.applicant{}
 
 .main .tab-content table.recruit-manage tr.applicant .name{font-weight:bold;font-size:12px;}
-.main .tab-content table.recruit-manage tr.applicant .gender-age{color:#7d7d7d;font-size:11px;}
+.main .tab-content table.recruit-manage tr.applicant .gender-age{color:#7d7d7d;font-size:12px;}
 .main .tab-content table.recruit-manage tr.applicant .bar{}
 .main .tab-content table.recruit-manage tr.applicant td.col7{color:#ff6600;}
 .main .tab-content table.recruit-manage tr.applicant td.col9{background:url('../images/recruit/recruit_bar.jpg');}
