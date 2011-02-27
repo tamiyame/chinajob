@@ -34,7 +34,7 @@
 <%for (int i = 0; i < CategoryList.Count; i++) { %>   
                                         <li class="categoryItem <%= i % 3 == 0 ? "" : "sideline"%>">
                                      
-                                            <span class="category1"><a href="recruit_search.aspx?Country=<%=CountryNo%>&City=<%=CategoryList[i].CategoryNo%>"><%=GetCategoryName(CategoryList[i])%></a><span class="icon icon-board-icon-next" onclick="recruit_search.aspx?City=<%=CategoryList[i].CategoryNo%>"></span></span>
+                                            <span class="category1"><a href="recruit_search.aspx?Country=<%=CountryNo%>&City=<%=CategoryList[i].CategoryNo%>"><%=GetCategoryName(CategoryList[i])%></a><span class="icon icon-board-icon-next" onclick="location.href='recruit_search.aspx?Country=<%=CountryNo%>&City=<%=CategoryList[i].CategoryNo%>'" style="cursor:pointer;"></span></span>
                                             <ul class="category2">
 <%
     List<SubCategoryEntity> lstSubCategory = GetSubCategory(CategoryList[i].CategoryNo);
