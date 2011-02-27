@@ -20,5 +20,17 @@ namespace Com.Library.DB.Board
             get { return Convert.ToString(GetValue("CategoryName", string.Empty)); }
             set { SetValue("CategoryName", value); }
         }
+
+        public string CategoryCNName
+        {
+            get { return Convert.ToString(GetValue("CategoryCNName", string.Empty)); }
+            set { SetValue("CategoryCNName", value); }
+        }
+
+        public string CategoryENGName
+        {
+            get { return Convert.ToString(GetValue("CategoryENGName", string.Empty)); }
+            set { SetValue("CategoryENGName", value); }
+        }
     }
 }

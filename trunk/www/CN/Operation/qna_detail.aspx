@@ -14,7 +14,7 @@
                                         <tr class="label">
                                             <td class="col1"><%=GetCategoryName(this.ArticleInfo.BoardCategoryNo)%></td>
                                             <td class="col2"><%=ArticleInfo.ArticleTitle%><!--<span class="secret">비밀글</span>--></td>
-                                            <td class="col3"><%=ArticleInfo.UserName %></td>
+                                            <td class="col3"><%=ArticleInfo.UserCNName %></td>
                                             <td class="col4"><%=ArticleInfo.DateCreated.ToString("yyyy.MM.dd") %></td>
                                         </tr>
                                         <tr class="text">

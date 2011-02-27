@@ -43,6 +43,12 @@ namespace Site.Web.Page
             {
                 if (item.BoardCategoryNo == BoardCategoryNo)
                 {
+                    if ( this.WebMaster.CountryCode == 1 )
+                        return item.CategoryName;
+                    if (this.WebMaster.CountryCode == 2)
+                        return item.CategoryCNName;
+                    if (this.WebMaster.CountryCode == 3)
+                        return item.CategoryENGName;
                     return item.CategoryName;
                 }
             }

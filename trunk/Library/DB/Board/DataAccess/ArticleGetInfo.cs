@@ -27,6 +27,8 @@ namespace Com.Library.DB.Board
             AddParameter("UserNo", SqlDbType.Int, 4, SqlDataInOut.Output);
             AddParameter("UserID", SqlDbType.VarChar, 24, SqlDataInOut.Output);
             AddParameter("UserName", SqlDbType.NVarChar, 50, SqlDataInOut.Output);
+            AddParameter("UserCNName", SqlDbType.NVarChar, 50, SqlDataInOut.Output);
+            AddParameter("UserENGName", SqlDbType.NVarChar, 50, SqlDataInOut.Output);
             AddParameter("UserIP", SqlDbType.VarChar, 20, SqlDataInOut.Output);
             AddParameter("ArticleTitle", SqlDbType.NVarChar, 500, SqlDataInOut.Output);
             AddParameter("SomeContent", SqlDbType.NVarChar, 2000, SqlDataInOut.Output);
