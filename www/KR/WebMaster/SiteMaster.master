@@ -6,6 +6,9 @@
 <%@ Import Namespace="Site.Web.Util" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/css/sidemenu.css" />
+<script type="text/javascript">
+$(function(){$(".expo-sponsor .expo-folder").click();});
+</script>
 <asp:ContentPlaceHolder id="Header" runat="server" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
