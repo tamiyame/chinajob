@@ -3,9 +3,7 @@
 <%@ Import Namespace="Com.Library.DB.Banner" %>
 <%@ Import Namespace="Site.Web.Util" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<script type="text/javascript">
-$(function(){$(".expo-sponsor .expo-folder").click();});
-</script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <asp:ScriptManagerProxy ID="px" runat="server">
