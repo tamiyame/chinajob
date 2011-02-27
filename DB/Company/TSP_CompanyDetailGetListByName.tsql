@@ -6,18 +6,13 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-CREATE PROCEDURE [dbo].[TSP_SubCategoryModify]
+CREATE PROCEDURE [dbo].[TSP_CompanyDetailGetListByName]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
-,	@CategoryNo	int	
-,	@SubCategoryNo	int	
-,	@SubCategoryKRName	nvarchar(800)	= NULL	
-,	@SubCategoryCNName	nvarchar(800)	= NULL	
-,	@SubCategoryENGName	nvarchar(800)	= NULL	
-,	@RecruitCount	int	= NULL	
+,	@Name	nvarchar(100)	= NULL	
 )
 as
 Set NOCOUNT ON
@@ -61,17 +56,15 @@ End
 
 -- Implementation
 
-
-UPDATE
-	dbo.TB_SubCategory
-SET
-	CategoryNo = IsNull( @CategoryNo, CategoryNo )
-,	SubCategoryKRName = IsNull( @SubCategoryKRName, SubCategoryKRName )
-,	SubCategoryCNName = IsNull( @SubCategoryCNName, SubCategoryCNName )
-,	SubCategoryENGName = IsNull( @SubCategoryENGName, SubCategoryENGName )
-,	RecruitCount = IsNull( @RecruitCount, RecruitCount )
-WHERE	
-	SubCategoryNo = @SubCategoryNo
+SELECT 
+	d.*
+FROM dbo.TB_Company AS c WITH(NOLOCK)
+	 INNER JOIN dbo.TB_CompanyDetail as d WITH(NOLOCK)
+	 ON c.CompanyNo = d.CompanyNo	     
+WHERE c.approval = 1 AND c.status = 1 AND 
+      ( d.KRName LIKE '%'+@Name+'%' OR
+		d.CNName LIKE '%'+@Name+'%' OR 
+		d.ENGName LIKE '%'+@Name+'%' )
 
 
 -- Frk Error Check

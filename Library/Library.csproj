@@ -175,6 +175,7 @@
     <Compile Include="DB\Category\Entity\SubCategoryEntity.cs" />
     <Compile Include="DB\Company\Arguments\CompanyCreateArguments.cs" />
     <Compile Include="DB\Company\Arguments\CompanyDetailGetInfoArguments.cs" />
+    <Compile Include="DB\Company\Arguments\CompanyDetailGetListByNameArguments.cs" />
     <Compile Include="DB\Company\Arguments\CompanyDetailModifyArguments.cs" />
     <Compile Include="DB\Company\Arguments\CompanyGetInfoArguments.cs" />
     <Compile Include="DB\Company\Arguments\CompanyGetListArguments.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="DB\Company\Arguments\RecruitSearchArguments.cs" />
     <Compile Include="DB\Company\DataAccess\CompanyCreate.cs" />
     <Compile Include="DB\Company\DataAccess\CompanyDetailGetInfo.cs" />
+    <Compile Include="DB\Company\DataAccess\CompanyDetailGetListByName.cs" />
     <Compile Include="DB\Company\DataAccess\CompanyDetailModify.cs" />
     <Compile Include="DB\Company\DataAccess\CompanyGetInfo.cs" />
     <Compile Include="DB\Company\DataAccess\CompanyGetList.cs" />
