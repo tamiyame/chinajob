@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Com.Library.Page;
 using Com.Library.Cookie;
 using Com.Library.Translate;
+using Com.Library.DB.Schedule;
 
 namespace Site.Web.Page
 {
@@ -39,6 +40,13 @@ namespace Site.Web.Page
 			set { m_countryCode2 = value; }
 		}
 
+        private PageSettingEntity m_PageEntity = null;
+        public PageSettingEntity PageEntity
+        {
+            get { return m_PageEntity; }
+            set { m_PageEntity = value; }
+        }
+
         public string GetURL(string url)
         {
             return this.CountryLink + url;
@@ -62,6 +70,14 @@ namespace Site.Web.Page
                 }
                 return null;
             }
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            PageSettingGetInfo info = new PageSettingGetInfo();
+            info.ExecuteNonQuery();
+            m_PageEntity = info.GetOutput();
         }
     }
 }

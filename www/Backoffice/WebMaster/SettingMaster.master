@@ -13,6 +13,8 @@
             <li><a href="./Category.aspx?CategoryMaster=1">직종관리</a></li>
             <li><a href="./Category.aspx?CategoryMaster=3">지역관리</a></li>
             <li><a href="./Category.aspx?CategoryMaster=19">테스트</a></li>
+            <li><a href="./contact.aspx">문의안내</a></li>
+            <li><a href="./logo.aspx">로고</a></li>
         </ul>
     </div>
 </asp:Content>

@@ -13,13 +13,13 @@
             <td>국문</td>
         </tr>
         <tr>
-            <td><input type="text" /></td>
+            <td><input type="text" name="KRTitle" value="<%=PageEntity.KRTitle %>"/></td>
         </tr>
         <tr>
-            <td><img src="" width="236px" height="89px;"/></td>
+            <td><img src="<%=PageEntity.KRLogo %>" width="236px" height="89px;"/></td>
         </tr>
         <tr>
-            <td><input type="file" /></td>            
+            <td><input type="file" name="fiKRLogo"/></td>            
         </tr>
         <tr>
             <td>로고이미지 크기는 최대 236*96px입니다. JPN,GIF,PNG만 가능합니다.</td>
@@ -30,13 +30,13 @@
             <td>중문</td>
         </tr>
         <tr>
-            <td><input type="text" /></td>
+            <td><input type="text" name="CNTitle" value="<%=PageEntity.CNTitle %>"/></td>
         </tr>
         <tr>
-            <td><img src="" width="236px" height="89px;"/></td>
+            <td><img src="<%=PageEntity.CNLogo %>" width="236px" height="89px;"/></td>
         </tr>
         <tr>
-            <td><input type="file" /></td>            
+            <td><input type="file" name="fiCNLogo" /></td>            
         </tr>
         <tr>
             <td>로고이미지 크기는 최대 236*96px입니다. JPN,GIF,PNG만 가능합니다.</td>
@@ -47,13 +47,13 @@
             <td>영문</td>
         </tr>
         <tr>
-            <td><input type="text" /></td>
+            <td><input type="text" name="ENGTitle" value="<%=PageEntity.ENGTitle %>"/></td>
         </tr>
         <tr>
-            <td><img src="" width="236px" height="89px;"/></td>
+            <td><img src="<%=PageEntity.ENGLogo %>" width="236px" height="89px;"/></td>
         </tr>
         <tr>
-            <td><input type="file" /></td>            
+            <td><input type="file" name="fiENGLogo" /></td>            
         </tr>
         <tr>
             <td>로고이미지 크기는 최대 236*96px입니다. JPN,GIF,PNG만 가능합니다.</td>
