@@ -1,16 +1,16 @@
-set ANSI_NULLS ON
-set QUOTED_IDENTIFIER ON
-GO
+
 -- TB_Recruit 테이블에 Update 시 TB_RecruitSearch 테이블에 필요 Data Update 해주는 Trigger 세팅
-ALTER TRIGGER [dbo].[TR_RecruitUpdate] ON [dbo].[TB_Recruit]
+ALTER TRIGGER [TR_RecruitUpdate] ON [dbo].[TB_Recruit]
 FOR UPDATE
 AS
 
 DECLARE @CompanyNo INT
 ,	@RecruitNo INT
 ,	@CountryNo INT
+,	@JoinType	TINYINT
 ,	@JobFairValue TINYINT
 ,	@RecruitDateDiff INT
+,	@RecruitDate smalldatetime
 ,	@Category1No INT
 ,	@Category2No INT
 ,	@CityCategory INT
@@ -23,8 +23,10 @@ SELECT
 	@CompanyNo = CompanyNo
 ,	@RecruitNo = RecruitNo
 ,	@CountryNo = CountryNo
+,	@JoinType = JoinType
 ,	@JobFairValue = JobFairValue
 ,	@RecruitDateDiff = DATEDIFF(d, '2011-01-01', RecruitDate)
+,	@RecruitDate = RecruitDate
 ,	@Category1No = Category1No
 ,	@Category2No = Category2No
 ,	@CityCategory = CityCategory
@@ -41,8 +43,10 @@ BEGIN
 	UPDATE
 		dbo.TB_RecruitSearch
 	SET
-		JobFairValue = IsNull( @JobFairValue, JobFairValue )
+		JoinType = IsNull( @JoinType, JoinType )
+	,	JobFairValue = IsNull( @JobFairValue, JobFairValue )
 	,	RecruitDateDiff = IsNull( @RecruitDateDiff, RecruitDateDiff )
+	,	RecruitDate = IsNull( @RecruitDate, RecruitDate )
 	,	Category1No = IsNull( @Category1No, Category1No )
 	,	Category2No = IsNull( @Category2No, Category2No )
 	,	CityCategory = IsNull( @CityCategory, CityCategory )
@@ -83,6 +87,7 @@ BEGIN
 	,	ENGName
 	,	CompanyImage
 	,	CapitalType
+	,	JoinType
 	,	JobFairValue
 	,	RecruitDateDiff
 	,	Category1No
@@ -92,6 +97,7 @@ BEGIN
 	,	Career
 	,	Gender
 	,	AgeCategory
+	,	RecruitDate
 	)
 	VALUES (
 		@CompanyNo
@@ -102,6 +108,7 @@ BEGIN
 	,	@ENGName
 	,	@CompanyImage
 	,	@CapitalType
+	,	@JoinType
 	,	@JobFairValue
 	,	@RecruitDateDiff
 	,	@Category1No
@@ -111,5 +118,9 @@ BEGIN
 	,	@Career
 	,	@Gender
 	,	@AgeCategory
+	,	@RecruitDate
 	)
 END
+
+
+

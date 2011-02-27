@@ -1,7 +1,5 @@
-set ANSI_NULLS ON
-set QUOTED_IDENTIFIER ON
-GO
-CREATE TRIGGER [dbo].[TR_RecruitMasterInsert] ON [dbo].[TB_RecruitMaster]
+-- TB_Recruit 테이블에 Insert 시 TB_RecruitSearch 테이블에 필요 Data Insert 해주는 Trigger 세팅
+ALTER TRIGGER [TR_RecruitMasterUpdate] ON [dbo].[TB_RecruitMaster]
 FOR UPDATE
 AS
 
@@ -25,3 +23,4 @@ BEGIN
 		CompanyNo = @CompanyNo
 	AND	RecruitNo = @RecruitNo
 END
+
