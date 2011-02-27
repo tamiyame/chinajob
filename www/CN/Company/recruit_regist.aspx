@@ -5,6 +5,8 @@
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/recruit.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+
+
 <asp:ScriptManagerProxy ID="px" runat="server">
     <Services>
         <asp:ServiceReference Path="~/Soap/Category.asmx"></asp:ServiceReference>
@@ -171,7 +173,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">성별<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_174")%><span class="require">*</span></td>
 
 					<td class="input">
 						<table>
@@ -180,21 +182,21 @@
 									<input class="radio" type="radio" name="gender" value="0" id="gender_0" <%=RecruitInfo.Gender == 0 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="gender_0">무관</label>
+									<label for="gender_0"><%= GetText("CN_Company_recruit_regist.aspx_183")%></label>
 
 								</td>
 								<td>
 									<input class="radio" type="radio" name="gender" value="1" id="gender_1" <%=RecruitInfo.Gender == 1 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="gender_1">남</label>
+									<label for="gender_1"><%= GetText("CN_Company_recruit_regist.aspx_190")%></label>
 								</td>
 								<td>
 
 									<input class="radio" type="radio" name="gender" value="2" id="gender_2" <%=RecruitInfo.Gender == 2 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="gender_2">여</label>
+									<label for="gender_2"><%= GetText("CN_Company_recruit_regist.aspx_197")%></label>
 								</td>														
 							</tr>
 						</table>
@@ -202,7 +204,7 @@
 				</tr>
 
 				<tr>
-					<td class="label">연령<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_205")%><span class="require">*</span></td>
 					<td class="input">
 						<table>
 							<tr>
@@ -211,24 +213,24 @@
 								</td>
 
 								<td>
-									<label for="age_0">무관</label>
+									<label for="age_0"><%= GetText("CN_Company_recruit_regist.aspx_214")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="AgeType" value="1" id="age_1" <%=RecruitInfo.AgeType != 0 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="age_1">제한</label>
+									<label for="age_1"><%= GetText("CN_Company_recruit_regist.aspx_220")%></label>
 								</td>
 								<td id="AgeCategory" class="hide">
 									<select name="AgeCategory">
-									    <option value="-1" <>선택하세요</option>
+									    <option value="-1" ><%= GetText("CN_Company_recruit_regist.aspx_224")%></option>
 									    <% if (AgeCategoryList != null) { %>
                                             <% foreach (CategoryEntity item in AgeCategoryList)
                                                { %>
 												    <option value="<%=item.CategoryNo %>" <%=RecruitInfo.AgeCategory == item.CategoryNo ? "selected='selected'":"" %>><%=CategoryLangName(item)%></option>
                                             <% } %>
                                         <% } %>
-                                        <option value="0" <%=RecruitInfo.AgeCategory == 0 ? "selected='selected'":"" %>>직접입력</option>
+                                        <option value="0" <%=RecruitInfo.AgeCategory == 0 ? "selected='selected'":"" %>><%= GetText("CN_Company_recruit_regist.aspx_231")%></option>
 									</select>	
 								</td>
 								<td id="AgeEtcValue" class="hide">
@@ -240,7 +242,7 @@
 
 				</tr>
 				<tr>
-					<td class="label">학력</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_243")%></td>
 					<td class="input">
 						<table>
 							<tr>
@@ -249,34 +251,34 @@
 
 								</td>
 								<td>
-									<label for="education_0">무관</label>
+									<label for="education_0"><%= GetText("CN_Company_recruit_regist.aspx_252")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="education" value="140" id="education_1" <%=RecruitInfo.AcademicAbility == 140 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
 
-									<label for="education_1">고졸이상</label>
+									<label for="education_1"><%= GetText("CN_Company_recruit_regist.aspx_259")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="education" value="141" id="education_2" <%=RecruitInfo.AcademicAbility == 141 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="education_2">전문대졸이상</label>
+									<label for="education_2"><%= GetText("CN_Company_recruit_regist.aspx_265")%></label>
 								</td>
 
 								<td>
 									<input class="radio" type="radio" name="education" value="142" id="education_3" <%=RecruitInfo.AcademicAbility == 142 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="education_3">대졸이상</label>
+									<label for="education_3"><%= GetText("CN_Company_recruit_regist.aspx_272")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="education" value="143" id="education_4" <%=RecruitInfo.AcademicAbility == 143 ? "checked='checked'" : "" %>/>
 
 								</td>
 								<td>
-									<label for="education_4">대학원이상</label>
+									<label for="education_4"><%= GetText("CN_Company_recruit_regist.aspx_279")%></label>
 								</td>															
 							</tr>
 						</table>
@@ -284,7 +286,7 @@
 				</tr>
 				<tr>
 
-					<td class="label">전공</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_287")%></td>
 					<td class="input">
 						<table>
 							<tr>
@@ -293,40 +295,40 @@
 								</td>
 								<td>
 
-									<label for="major_0">무관</label>
+									<label for="major_0"><%= GetText("CN_Company_recruit_regist.aspx_296")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="major" value="146" id="major_1" <%=RecruitInfo.Major == 146 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="major_1">인문계열</label>
+									<label for="major_1"><%= GetText("CN_Company_recruit_regist.aspx_302")%></label>
 								</td>
 
 								<td>
 									<input class="radio" type="radio" name="major" value="147" id="major_2"  <%=RecruitInfo.Major == 147 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="major_2">법계열</label>
+									<label for="major_2"><%= GetText("CN_Company_recruit_regist.aspx_309")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="major" value="148" id="major_3"  <%=RecruitInfo.Major == 148 ? "checked='checked'" : "" %>/>
 
 								</td>
 								<td>
-									<label for="major_3">이공계열</label>
+									<label for="major_3"><%= GetText("CN_Company_recruit_regist.aspx_316")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="major" value="149" id="major_4"  <%=RecruitInfo.Major == 149 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
 
-									<label for="major_4">예술계열</label>
+									<label for="major_4"><%= GetText("CN_Company_recruit_regist.aspx_323")%></label>
 								</td>	
 								<td>
 									<input class="radio" type="radio" name="major" value="150" id="major_5" <%=RecruitInfo.Major == 150 ? "checked='checked'" : "" %> />
 								</td>
 								<td>
-									<label for="major_5">직접입력</label>
+									<label for="major_5"><%= GetText("CN_Company_recruit_regist.aspx_329")%></label>
 								</td>
 
 								<td>
@@ -337,7 +339,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">중국어</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_340")%></td>
 
 					<td class="input">
 						<table>
@@ -346,35 +348,35 @@
 									<input class="radio" type="radio" name="china" value="151" id="china_0" <%=RecruitInfo.ChineseLevel == 151 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="china_0">무관</label>
+									<label for="china_0"><%= GetText("CN_Company_recruit_regist.aspx_349")%></label>
 
 								</td>
 								<td>
 									<input class="radio" type="radio" name="china" value="152" id="china_1" <%=RecruitInfo.ChineseLevel == 152 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="china_1">기본회화가능</label>
+									<label for="china_1"><%= GetText("CN_Company_recruit_regist.aspx_356")%></label>
 								</td>
 								<td>
 
 									<input class="radio" type="radio" name="china" value="153" id="china_2" <%=RecruitInfo.ChineseLevel == 153 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="china_2">업무상 소통 가능</label>
+									<label for="china_2"><%= GetText("CN_Company_recruit_regist.aspx_363")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="china" value="154" id="china_3" <%=RecruitInfo.ChineseLevel == 154 ? "checked='checked'" : "" %>/>
 								</td>
 
 								<td>
-									<label for="china_3">현지인 수준</label>
+									<label for="china_3"><%= GetText("CN_Company_recruit_regist.aspx_370")%></label>
 								</td>													
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">영어</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_377")%></td>
 
 					<td class="input">
 						<table>
@@ -383,35 +385,35 @@
 									<input class="radio" type="radio" name="english" value="155" id="english_0"  <%=RecruitInfo.EnglishLevel == 155 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="english_0">무관</label>
+									<label for="english_0"><%= GetText("CN_Company_recruit_regist.aspx_386")%></label>
 
 								</td>
 								<td>
 									<input class="radio" type="radio" name="english" value="156" id="english_1"  <%=RecruitInfo.EnglishLevel == 156 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="english_1">기본회화가능</label>
+									<label for="english_1"><%= GetText("CN_Company_recruit_regist.aspx_393")%></label>
 								</td>
 								<td>
 
 									<input class="radio" type="radio" name="english" value="157" id="english_2"  <%=RecruitInfo.EnglishLevel == 157 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="english_2">업무상 소통 가능</label>
+									<label for="english_2"><%= GetText("CN_Company_recruit_regist.aspx_400")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="english" value="158" id="english_3"  <%=RecruitInfo.EnglishLevel == 158 ? "checked='checked'" : "" %>/>
 								</td>
 
 								<td>
-									<label for="english_3">현지인 수준</label>
+									<label for="english_3"><%= GetText("CN_Company_recruit_regist.aspx_407")%></label>
 								</td>													
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">일본어</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_414")%></td>
 
 					<td class="input">
 						<table>
@@ -420,41 +422,41 @@
 									<input class="radio" type="radio" name="japanese" value="160" id="japanese_0" <%=RecruitInfo.JapanessLevel == 160 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="japanese_0">무관</label>
+									<label for="japanese_0"><%= GetText("CN_Company_recruit_regist.aspx_423")%></label>
 
 								</td>
 								<td>
 									<input class="radio" type="radio" name="japanese" value="161" id="japanese_1" <%=RecruitInfo.JapanessLevel == 161 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="japanese_1">기본회화가능</label>
+									<label for="japanese_1"><%= GetText("CN_Company_recruit_regist.aspx_430")%></label>
 								</td>
 								<td>
 
 									<input class="radio" type="radio" name="japanese" value="162" id="japanese_2" <%=RecruitInfo.JapanessLevel == 162 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="japanese_2">업무상 소통 가능</label>
+									<label for="japanese_2"><%= GetText("CN_Company_recruit_regist.aspx_437")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="japanese" value="163" id="japanese_3" <%=RecruitInfo.JapanessLevel == 163 ? "checked='checked'" : "" %>/>
 								</td>
 
 								<td>
-									<label for="japanese_3">현지인 수준</label>
+									<label for="japanese_3"><%= GetText("CN_Company_recruit_regist.aspx_444")%></label>
 								</td>													
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">기타언어</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_451")%></td>
 
 					<td class="input">
 						<table>
 							<tr>
 								<td>
-									<label for="japanese_0">언어</label>
+									<label for="japanese_0"><%= GetText("CN_Company_recruit_regist.aspx_457")%></label>
 								</td>
 								<td>
 									<input type="text" name="etc_lang" class="w2" value="<%=RecruitInfo.ETCLanguageName%>"/>
@@ -464,28 +466,28 @@
 									<input class="radio" type="radio" name="etc_lang_level" value="164" id="etc_lang_level_1"  <%=RecruitInfo.ETCLanguageLevel == 164 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="etc_lang_level_1">기본회화가능</label>
+									<label for="etc_lang_level_1"><%= GetText("CN_Company_recruit_regist.aspx_467")%></label>
 								</td>
 								<td>
 
 									<input class="radio" type="radio" name="etc_lang_level" value="165" id="etc_lang_level_2"  <%=RecruitInfo.ETCLanguageLevel == 165 ? "checked='checked'" : "" %>/>
 								</td>
 								<td>
-									<label for="etc_lang_level_2">업무상 소통 가능</label>
+									<label for="etc_lang_level_2"><%= GetText("CN_Company_recruit_regist.aspx_474")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="etc_lang_level" value="165" id="etc_lang_level_3"  <%=RecruitInfo.ETCLanguageLevel == 165 ? "checked='checked'" : "" %>/>
 								</td>
 
 								<td>
-									<label for="etc_lang_level_3">현지인 수준</label>
+									<label for="etc_lang_level_3"><%= GetText("CN_Company_recruit_regist.aspx_481")%></label>
 								</td>													
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">주요업무<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_488")%><span class="require">*</span></td>
 
 					<td class="input">
 						<table>
@@ -499,7 +501,7 @@
 
 				</tr>
 				<tr>
-					<td class="label">근무지역<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_502")%><span class="require">*</span></td>
 					<td class="input">
 						<table>
 							<tr>
@@ -517,7 +519,7 @@
 									</select>	
 								</td>
 								<td>
-									상세주소
+									<%= GetText("CN_Company_recruit_regist.aspx_520")%>
 								</td>
 
 								<td>
@@ -528,7 +530,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">채용예정시기<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_531")%><span class="require">*</span></td>
 
 					<td class="input">
 					    <input type="hidden" name="recruit_day" value="" />
@@ -537,7 +539,7 @@
 								<td>
 									<select class="w1" name="recruit_day_1">
 									<% for (int i = DateTime.Now.Year - 1; i < DateTime.Now.Year + 3; i++){ %>
-										<option value="<%=i %>" <%=i == RecruitInfo.RecruitDate.Year ? "selected='selected'" : "" %>><%=i %>년</option>
+										<option value="<%=i %>" <%=i == RecruitInfo.RecruitDate.Year ? "selected='selected'" : "" %>><%=i %><%= GetText("CN_Company_recruit_regist.aspx_540")%></option>
 									<% } %>
 									</select>	
 								</td>
@@ -545,7 +547,7 @@
 								<td>
 									<select class="w6" name="recruit_day_2">
 									<%for ( int i = 1; i <= 12; i ++ ) { %>
-										<option value="<%=i %>" <%=i == RecruitInfo.RecruitDate.Month ? "selected='selected'" : "" %>><%=i %>월</option> 
+										<option value="<%=i %>" <%=i == RecruitInfo.RecruitDate.Month ? "selected='selected'" : "" %>><%=i %><%= GetText("CN_Company_recruit_regist.aspx_540_2")%></option> 
 									 <% } %>
 									</select>	
 								</td>
@@ -553,7 +555,7 @@
 								<td>
 									<select class="w6" name="recruit_day_3">
 										<%for ( int i = 1; i <= 31; i ++ ) { %>
-										<option value="<%=i %>" <%=i == RecruitInfo.RecruitDate.Day ? "selected='selected'" : "" %>><%=i %>일</option> 
+										<option value="<%=i %>" <%=i == RecruitInfo.RecruitDate.Day ? "selected='selected'" : "" %>><%=i %><%= GetText("CN_Company_recruit_regist.aspx_540_3")%></option> 
 									 <% } %>
 									</select>	
 								</td>									
@@ -562,7 +564,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">기타자격요건<br/></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_565")%><br/></td>
 
 					<td class="input">
 						<table>
@@ -574,7 +576,7 @@
 				</tr>
 
 				<tr>
-					<td class="label">급여<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_577")%><span class="require">*</span></td>
 					<td class="input">
 						<table>
 							<tr>
@@ -593,7 +595,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">계약기간<span class="require">*</span></td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_596")%><span class="require">*</span></td>
 					<td class="input">
 						<table>
 
@@ -602,47 +604,47 @@
 									<input class="radio" type="radio" name="contract" value="0" id="contract_0" <%=RecruitInfo.ContactPeriod == 0 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="contract_0">협의</label>
+									<label for="contract_0"><%= GetText("CN_Company_recruit_regist.aspx_605")%></label>
 								</td>
 								<td>
 
 									<input class="radio" type="radio" name="contract" value="1" id="contract_1" <%=RecruitInfo.ContactPeriod == 1 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="contract_1">1년</label>
+									<label for="contract_1">1<%= GetText("CN_Company_recruit_regist.aspx_612")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="contract" value="2" id="contract_2" <%=RecruitInfo.ContactPeriod == 2 ? "checked='checked'" : ""%>/>
 								</td>
 
 								<td>
-									<label for="contract_2">2년</label>
+									<label for="contract_2">2<%= GetText("CN_Company_recruit_regist.aspx_612")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="contract" value="3" id="contract_3" <%=RecruitInfo.ContactPeriod == 3 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="contract_3">3년</label>
+									<label for="contract_3">3<%= GetText("CN_Company_recruit_regist.aspx_612")%></label>
 
 								</td>
 								<td>
 									<input class="radio" type="radio" name="contract" value="4" id="contract_4" <%=RecruitInfo.ContactPeriod == 4 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="contract_4">4년</label>
+									<label for="contract_4">4<%= GetText("CN_Company_recruit_regist.aspx_612")%></label>
 								</td>	
 								<td>
 									<input class="radio" type="radio" name="contract" value="5" id="contract_5" <%=RecruitInfo.ContactPeriod == 5 ? "checked='checked'" : ""%>/>
 
 								</td>
 								<td>
-									<label for="contract_5">5년</label>
+									<label for="contract_5">5<%= GetText("CN_Company_recruit_regist.aspx_612")%></label>
 								</td>		
 								<td>
 									<input class="radio" type="radio" name="contract" value="10" id="contract_6" <%=RecruitInfo.ContactPeriod == 10 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="contract_6">10년</label>
+									<label for="contract_6">10<%= GetText("CN_Company_recruit_regist.aspx_612")%></label>
 
 								</td>														
 							</tr>
@@ -650,7 +652,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">근무시간</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_653")%></td>
 					<td class="input">
 						<table>
 
@@ -659,14 +661,14 @@
 									<input class="radio" type="radio" name="working_time_opt" value="0" id="working_time_0" <%=RecruitInfo.WorkingHours == "" ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="working_time_0">해당국가 노동법률 의거</label>
+									<label for="working_time_0"><%= GetText("CN_Company_recruit_regist.aspx_662")%></label>
 								</td>
 								<td>
 
 									<input class="radio" type="radio" name="working_time_opt" value="1" id="working_time_1" <%=RecruitInfo.WorkingHours != "" ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="working_time_1">직접입력</label>
+									<label for="working_time_1"><%= GetText("CN_Company_recruit_regist.aspx_669")%></label>
 								</td>
 								<td>
 									<input id="working_time_etc" type="text" class="w2 hide" name="working_time_etc" value="<%=RecruitInfo.WorkingHours %>" />
@@ -677,40 +679,40 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">후생복리</td>
+					<td class="label"><%= GetText("CN_Company_recruit_regist.aspx_680")%></td>
 					<td class="input">
 						<table>
 							<tr>
 
 								<td>
-									보험
+									<%= GetText("CN_Company_recruit_regist.aspx_686")%>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="insurance" value="167" id="insurance_0" <%=RecruitInfo.BenefitsInsurance == 167 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="insurance_0">제공</label>
+									<label for="insurance_0"><%= GetText("CN_Company_recruit_regist.aspx_692")%></label>
 								</td>
 
 								<td>
 									<input class="radio" type="radio" name="insurance" value="168" id="insurance_1" <%=RecruitInfo.BenefitsInsurance == 168 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="insurance_1">미제공</label>
+									<label for="insurance_1"><%= GetText("CN_Company_recruit_regist.aspx_699")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="insurance" value="169" id="insurance_2" <%=RecruitInfo.BenefitsInsurance == 169 ? "checked='checked'" : ""%>/>
 
 								</td>
 								<td>
-									<label for="insurance_2">협의</label>
+									<label for="insurance_2"><%= GetText("CN_Company_recruit_regist.aspx_706")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="insurance" value="0" id="insurance_3" <%=RecruitInfo.BenefitsInsurance == 170 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
 
-									<label for="insurance_3">기타</label>
+									<label for="insurance_3"><%= GetText("CN_Company_recruit_regist.aspx_713")%></label>
 								</td>
 								<td>
 									<input id="insurance_etc" type="text" class="w1 hide" name="insurance_etc"  value="<%=RecruitInfo.BenefitsInsuranceEtcValue%>" />
@@ -721,40 +723,40 @@
 							<tr>
 
 								<td>
-									숙식
+									<%= GetText("CN_Company_recruit_regist.aspx_724")%>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="food" value="171" id="food_0" <%=RecruitInfo.BenefitsRoomAndBoard == 171 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="food_0">제공</label>
+									<label for="food_0"><%= GetText("CN_Company_recruit_regist.aspx_692")%></label>
 								</td>
 
 								<td>
 									<input class="radio" type="radio" name="food" value="172" id="food_1" <%=RecruitInfo.BenefitsRoomAndBoard == 172 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="food_1">미제공</label>
+									<label for="food_1"><%= GetText("CN_Company_recruit_regist.aspx_699")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="food" value="173" id="food_2" <%=RecruitInfo.BenefitsRoomAndBoard == 173 ? "checked='checked'" : ""%>/>
 
 								</td>
 								<td>
-									<label for="food_2">보조</label>
+									<label for="food_2"><%= GetText("CN_Company_recruit_regist.aspx_744")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="food" value="174" id="food_3" <%=RecruitInfo.BenefitsRoomAndBoard == 174 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
 
-									<label for="food_3">협의</label>
+									<label for="food_3"><%= GetText("CN_Company_recruit_regist.aspx_706")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="food" value="0" id="food_4" <%=RecruitInfo.BenefitsRoomAndBoard == 175 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="food_4">기타</label>
+									<label for="food_4"><%= GetText("CN_Company_recruit_regist.aspx_713")%></label>
 								</td>
 
 								<td>
@@ -765,41 +767,41 @@
 						<table>
 							<tr>
 								<td>
-									퇴직금
+									<%= GetText("CN_Company_recruit_regist.aspx_768")%>
 								</td>
 
 								<td>
 									<input class="radio" type="radio" name="severance_pay" value="176" id="severance_pay_0" <%=RecruitInfo.BenefitsSeverancePay == 176 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="severance_pay_0">유</label>
+									<label for="severance_pay_0"><%= GetText("CN_Company_recruit_regist.aspx_755")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="severance_pay" value="177" id="severance_pay_1" <%=RecruitInfo.BenefitsSeverancePay == 177 ? "checked='checked'" : ""%>/>
 
 								</td>
 								<td>
-									<label for="severance_pay_1">무</label>
+									<label for="severance_pay_1"><%= GetText("CN_Company_recruit_regist.aspx_782")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="severance_pay" value="178" id="severance_pay_2" <%=RecruitInfo.BenefitsSeverancePay == 178 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
 
-									<label for="severance_pay_2">협의</label>
+									<label for="severance_pay_2"><%= GetText("CN_Company_recruit_regist.aspx_605")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="severance_pay" value="179" id="severance_pay_3" <%=RecruitInfo.BenefitsSeverancePay == 179 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="severance_pay_3">회사내규</label>
+									<label for="severance_pay_3"><%= GetText("CN_Company_recruit_regist.aspx_795")%></label>
 								</td>
 
 								<td>
 									<input class="radio" type="radio" name="severance_pay" value="0" id="severance_pay_4" <%=RecruitInfo.BenefitsSeverancePay == 180 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="severance_pay_4">기타</label>
+									<label for="severance_pay_4"><%= GetText("CN_Company_recruit_regist.aspx_713")%></label>
 								</td>
 								<td>
 									<input type="text" class="w1 hide" name="severance_etc" id="severance_etc" value="<%=RecruitInfo.BenefitsSeverancePayEtcValue%>">
@@ -810,41 +812,41 @@
 						<table>
 							<tr>
 								<td>
-									휴가
+									<%= GetText("CN_Company_recruit_regist.aspx_813")%>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="vacation" value="181" id="vacation_0" <%=RecruitInfo.BenefitsVacation == 181 ? "checked='checked'" : ""%>/>
 
 								</td>
 								<td>
-									<label for="vacation_0">유</label>
+									<label for="vacation_0"><%= GetText("CN_Company_recruit_regist.aspx_755")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="vacation" value="182" id="vacation_1" <%=RecruitInfo.BenefitsVacation == 182 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
 
-									<label for="vacation_1">무</label>
+									<label for="vacation_1"><%= GetText("CN_Company_recruit_regist.aspx_782")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="vacation" value="183" id="vacation_2" <%=RecruitInfo.BenefitsVacation == 183 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="vacation_2">협의</label>
+									<label for="vacation_2"><%= GetText("CN_Company_recruit_regist.aspx_706")%></label>
 								</td>
 
 								<td>
 									<input class="radio" type="radio" name="vacation" value="184" id="vacation_3" <%=RecruitInfo.BenefitsVacation == 184 ? "checked='checked'" : ""%>/>
 								</td>
 								<td>
-									<label for="vacation_3">회사내규</label>
+									<label for="vacation_3"><%= GetText("CN_Company_recruit_regist.aspx_795")%></label>
 								</td>
 								<td>
 									<input class="radio" type="radio" name="vacation" value="0" id="vacation_4" <%=RecruitInfo.BenefitsVacation == 185 ? "checked='checked'" : ""%>/>
 
 								</td>
 								<td>
-									<label for="vacation_4">기타</label>
+									<label for="vacation_4"><%= GetText("CN_Company_recruit_regist.aspx_713")%></label>
 								</td>
 								<td>
 									<input type="text" class="w1 hide" name="vacation_etc" id="vacation_etc" value="<%=RecruitInfo.BenefitsVacationEtcValue%>" />
@@ -866,7 +868,7 @@
 					</td>
 				</tr>
 			</table>
-			<div class="agree">상기와 같이 구인요청 및 「2011 중국취업박람회」 참가를 신청합니다.</div>
+			<div class="agree"><%= GetText("CN_Company_recruit_regist.aspx_869")%></div>
 			<div class="submit"><a href='#' onclick='jQuery.Submit(); return false;' class="icon icon-recruit-request"></a></div>
 	</div>
 </div>
@@ -1025,12 +1027,12 @@ jQuery(function()
             $("select[name=jobType1]").change(function(){
                 if($(this).val())                
                     $.FillCategory2($(this).val());
-                if($(this).text() != "기타")
+                if($(this).text() != "<%= GetText("CN_Company_recruit_regist.aspx_713")%>")
                      $("input[name=jobType_direct]").hide();
             })
             
             $("select[name=jobType2]").change(function(){
-                if($(this).text() == "직접입력")                
+                if($(this).text() == "<%= GetText("CN_Company_recruit_regist.aspx_669")%>")                
                     $("input[name=jobType_direct]").show();
                 else
                     $("input[name=jobType_direct]").hide();
@@ -1048,11 +1050,11 @@ jQuery(function()
                 $.each(results,function(i){
                     if ( _PageLoad_CityCategory )
                     {
-                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.AreaCategory%> ? "selected='selected'" : "" ) + ">"+$.SubCategoryLangName(this)+"</option>"));
+                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.AreaCategory%> ? "selected='selected'" : "" ) + ">"+this.SubCategoryKRName +"</option>"));
                     }
                     else
                     { 
-                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'>"+ $.SubCategoryLangName(this)+"</option>"));
+                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'>"+ this.SubCategoryKRName +"</option>"));
                     }
                     
                 })
@@ -1071,11 +1073,11 @@ jQuery(function()
                 $.each(results,function(i){
                     if ( _PageLoad_Category )
                     {
-                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.Category2No%> ? "selected='selected'" : "" ) + ">" + $.SubCategoryLangName(this) + "</option>"));
+                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.Category2No%> ? "selected='selected'" : "" ) + ">" + this.SubCategoryKRName + "</option>"));
                     }
                     else
                     { 
-                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'>"+ $.SubCategoryLangName(this)+"</option>"));
+                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'>"+ this.SubCategoryKRName +"</option>"));
                     }
                 })
                 
@@ -1132,16 +1134,16 @@ jQuery(function()
                 };
                 
             /*필수값 검사*/
-            if(!values.join_type){alert("참가여부를 선택해 주세요.");return false;};                
-            if(!values.jobType1 || !values.jobType2){alert("구인직종을 선택해 주세요.");return false;};                
-            if(values.people_count==0){alert("인원을 선택해 주세요.");return false;};                
-            if(!values.gender){alert("성별을 선택해 주세요.");return false;};                
-            if(!values.age){alert("연령을 입력해 주세요.");return false;};                
-            if(values.age==1 && values.age_range == 0 && values.age_range_direct==""){alert("연령을 입력해 주세요.");return false;};  
-            if(values.main_task==""){alert("주요업무를 입력해 주세요.");return false;};                
-            if(values.address_1 == 0 || values.address_2 == 0 || values.address_3==''){alert("근무지역을 선택해 주세요.");return false;};      
-            if(!values.contract){alert("계약기간을 입력해주세요.");return false;};                
-            if(values.working_time_opt!=0 && $.trim(values.working_time_etc)==""){alert("근무시간을 입력해주세요.");return false;}
+            if(!values.join_type){alert("<%= GetText("CN_Company_recruit_regist.aspx_1135")%>");return false;};                
+            if(!values.jobType1 || !values.jobType2){alert("<%= GetText("CN_Company_recruit_regist.aspx_1136")%>");return false;};                
+            if(values.people_count==0){alert("<%= GetText("CN_Company_recruit_regist.aspx_1137")%>");return false;};                
+            if(!values.gender){alert("<%= GetText("CN_Company_recruit_regist.aspx_1138")%>");return false;};                
+            if(!values.age){alert("<%= GetText("CN_Company_recruit_regist.aspx_1139")%>");return false;};                
+            if(values.age==1 && values.age_range == 0 && values.age_range_direct==""){alert("<%= GetText("CN_Company_recruit_regist.aspx_1139")%>");return false;};  
+            if(values.main_task==""){alert("<%= GetText("CN_Company_recruit_regist.aspx_1141")%>");return false;};                
+            if(values.address_1 == 0 || values.address_2 == 0 || values.address_3==''){alert("<%= GetText("CN_Company_recruit_regist.aspx_1142")%>");return false;};      
+            if(!values.contract){alert("<%= GetText("CN_Company_recruit_regist.aspx_1143")%>");return false;};                
+            if(values.working_time_opt!=0 && $.trim(values.working_time_etc)==""){alert("<%= GetText("CN_Company_recruit_regist.aspx_1144")%>");return false;}
             var interviewerStr = []
             $("input.interviewer").each(function(i){interviewerStr.push($(this).val())})            
             $('input[name=interviewers]').val(interviewerStr.join(","));    

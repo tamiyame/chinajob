@@ -51,6 +51,18 @@ namespace Com.Library.DB.Board
             set { SetValue("UserName", value); }
         }
 
+        public string UserCNName
+        {
+            get { return Convert.ToString(GetValue("UserCNName", string.Empty)); }
+            set { SetValue("UserCNName", value); }
+        }
+
+        public string UserENGName
+        {
+            get { return Convert.ToString(GetValue("UserENGName", string.Empty)); }
+            set { SetValue("UserENGName", value); }
+        }
+
         public string UserIP
         {
             get { return Convert.ToString(GetValue("UserIP", string.Empty)); }

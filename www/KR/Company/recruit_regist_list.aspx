@@ -13,14 +13,6 @@
 <div class="recruit-list-title"></div>
 <table class="recruit-list">
 <tbody id="tbody_recruitList">
-	<tr>
-	    <td class="col1">채용제목</td>
-	    <td class="col2">디자인 전략팀 매니저</td>
-	    <td class="col3"><a class="icon icon-recruit-btn-korean" href="javascript:;"></a>
-	    <a class="icon icon-recruit-btn-china" href="javascript:;"></a>
-	    <a class="icon icon-recruit-btn-english" href="javascript:;"></a>
-	    <a class="icon icon-recruit-btn-delete" href="javascript:;" onclick="jQuery.RecruitRemove(this); return false;"></a></td>
-	</tr>
 </tbody>
 <tfoot>
 	<tr class="last">
@@ -51,7 +43,7 @@ jQuery(function()
         {
             var $tr = $("<tr class='regist'/>")
             $tr.append(
-                $('<td class="col1">채용제목</td>')
+                $('<td class="col1"><%= GetText("CN_Company_recruit_regist_list.aspx_17")%></td>')
             ).append(
                 $('<td class="col2"><input type="text" /></td>')
             ).append(
@@ -75,7 +67,7 @@ jQuery(function()
         {
             if ( _tempRemove == null )
             {
-                if ( confirm( "정말로 삭제하시겠습니까?" ) )
+                if ( confirm( "<%= GetText("CN_Company_recruit_regist_list.aspx_78")%>" ) )
                 {
                     _tempRemove = obj;
                     Site.Web.Soap.Recruit.MasterRemove( recruitNo, $.onRecruitRemove, $.onRecruitFailed );
@@ -107,7 +99,7 @@ jQuery(function()
             $(results).each(function(){
                 var $tr = $("<tr class='regist'/>")
                 $tr.append(
-                    $('<td class="col1">채용제목</td>')
+                    $('<td class="col1"><%= GetText("CN_Company_recruit_regist_list.aspx_17")%></td>')
                 ).append(
                     $('<td class="col2">' + this.RecruitTitle + '</td>')
                 ).append(

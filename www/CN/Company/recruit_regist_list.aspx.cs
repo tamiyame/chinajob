@@ -21,6 +21,19 @@ public partial class CN_Company_recruit_list : SitePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        CompanyGetInfo info = new CompanyGetInfo();
+        CompanyGetInfoArguments argInfo = new CompanyGetInfoArguments();
+        argInfo.CompanyID = this.WebCookies.UserID;
+        info.SetArguments(argInfo);
+        info.ExecuteNonQuery();
+        CompanyEntity infoEntity = info.GetOutput();
+        if (infoEntity.Approval != 1)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.Apply_Company) + "');</script>");
+            Response.End();
+        }
+
         if (!this.WebCookies.isCompany)
         {
             Response.Clear();

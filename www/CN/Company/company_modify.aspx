@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="Com.Library.DB.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<link rel="stylesheet" type="text/css" href="/ImgSrv/kr/css/company-join.css" />
+<link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/company-join.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <asp:ScriptManagerProxy ID="px" runat="server">

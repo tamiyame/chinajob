@@ -9,10 +9,10 @@
                         <div class="contents">
                             <table class="board-list">
                                 <tr>
-                                    <th>분류</td>
-                                    <th>제목</td>
-                                    <th>작성자</td>
-                                    <th>작성일</td>
+                                    <th><%= GetText("CN_Operation_qna_list.aspx_12")%></td>
+                                    <th><%= GetText("CN_Operation_qna_list.aspx_13")%></td>
+                                    <th><%= GetText("CN_Operation_qna_list.aspx_14")%></td>
+                                    <th><%= GetText("CN_Operation_qna_list.aspx_15")%></td>
                                 </tr>
 <% foreach (ArticleEntity item in ArticleList.Record) { %>
                                 <tr>

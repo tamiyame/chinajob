@@ -46,7 +46,7 @@ namespace Site.Web.Util
         };
         public static string Msg(int CountryNo, k_MsgType msgType)
         {
-            return m_Msg[(int)msgType, CountryNo];
+            return m_Msg[(int)msgType, CountryNo - 1];
         }
 
         public static string strCut(string value, int len)

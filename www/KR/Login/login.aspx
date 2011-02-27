@@ -29,8 +29,8 @@
 			    </tr>
 		    </table>
 		    <div class="tool">
-			    <a class="id-find" href="/login/find_id.aspx">아이디찾기</a>
-			    <a class="pw-find" href="/login/find_pw.aspx">비밀번호찾기</a>
+			    <a class="id-find" href="<%=this.GetURL("/login/find_id.aspx")%>">아이디찾기</a>
+			    <a class="pw-find" href="<%=this.GetURL("/login/find_pw.aspx")%>">비밀번호찾기</a>
 		    </div>
 		    <div class="join-btn">
 			    <a class="icon icon-join-big" href="<%=GetURL("/company/company_join.aspx")%>"></a>

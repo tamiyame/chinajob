@@ -11,7 +11,7 @@
                         <div class="contents">
                             <table class="board-write">
                                 <tr class="top">
-                                    <td class="col1">분류<span class="require">*</span></td>
+                                    <td class="col1"><%= GetText("CN_Operation_freeboard_write.aspx_14")%><span class="require">*</span></td>
                                     <td class="col2">
                                         <select name="BoardCategoryNo">
 <% foreach (BoardCategoryEntity item in BoardCategoryList) { %>
@@ -19,7 +19,7 @@
 <% } %>
                                         </select>
                                     </td>
-                                    <td class="col3">제목<span class="require">*</span></td>
+                                    <td class="col3"><%= GetText("CN_Operation_freeboard_write.aspx_22")%><span class="require">*</span></td>
                                     <td class="col4">
                                         <input type="text" name="ArticleTitle" id="ArticleTitle" />
                                     </td>
@@ -30,7 +30,7 @@
                                             <div class="wyswig-tool">
                                                 <div class="toolbox">
                                                     <select id="TEditor_fontSyle" class="font-type">
-                                                        <option value="0">글꼴</option>
+                                                        <option value="0"><%= GetText("CN_Operation_freeboard_write.aspx_33")%></option>
                                                         <option value="Arial, Helvetica, sans-serif">Arial</option>
                                                         <option value="Courier New, Courier, mono">Courier New</option>
                                                         <option value="Times New Roman, Times, serif">Times New Roman</option>
@@ -39,7 +39,7 @@
                                                 </div>
                                                 <div class="toolbox">
                                                     <select id="TEditor_fontSize" class="font-size">
-                                                        <option value="0">크기</option>
+                                                        <option value="0"><%= GetText("CN_Operation_freeboard_write.aspx_42")%></option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -111,7 +111,7 @@ function onWrite()
 {
     if ( $( "#ArticleTitle" ).val() == "" )
     {
-        alert( "제목을 입력하세요");
+        alert( "<%= GetText("CN_Operation_freeboard_write.aspx_114")%>");
         return false;
     }
     
@@ -120,7 +120,7 @@ function onWrite()
     
     if ( TextEditor.html == "" )
     {
-        alert( "내용을 입력하세요" );
+        alert( "<%= GetText("CN_Operation_freeboard_write.aspx_123")%>" );
         return false;
     }
     

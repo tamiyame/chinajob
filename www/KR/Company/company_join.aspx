@@ -61,7 +61,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">사업자등록첨부<span class="require">*</span></td>
+							<td class="label">사업자등록첨부</td>
 							<td class="input">
 								<table>
 									<tr>

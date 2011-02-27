@@ -12,7 +12,7 @@
 			    <div onclick="location.href='login.aspx';"><%= GetText("CN_Login_login.aspx_12")%></div>
 		    </li>
 		    <li class="last icon icon-folder-off person">
-			    <div onclick="location.href='login_user.aspx';"><%= GetText("CN_Login_login.aspx_15")%></div>
+			    <!--<div onclick="location.href='login_user.aspx';"><%= GetText("CN_Login_login.aspx_15")%></div>-->
 		    </li>													
 	    </ul>						
     </div>
@@ -29,8 +29,8 @@
 			    </tr>
 		    </table>
 		    <div class="tool">
-			    <a class="id-find" href="/login/find_id.aspx"><%= GetText("CN_Login_login.aspx_32")%></a>
-			    <a class="pw-find" href="/login/find_pw.aspx"><%= GetText("CN_Login_login.aspx_33")%></a>
+			    <a class="id-find" href="<%=this.GetURL("/login/find_id.aspx")%>"><%= GetText("CN_Login_login.aspx_32")%></a>
+			    <a class="pw-find" href="<%=this.GetURL("/login/find_pw.aspx")%>"><%= GetText("CN_Login_login.aspx_33")%></a>
 		    </div>
 		    <div class="join-btn">
 			    <a class="icon icon-join-big" href="<%=GetURL("/company/company_join.aspx")%>"></a>
