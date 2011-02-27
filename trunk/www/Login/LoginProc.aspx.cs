@@ -46,7 +46,7 @@ public partial class Login_LoginProc : System.Web.UI.Page
                 if (spEx.ErrorCode == 1)
                     throw new UserIDNotFoundException("Userid not found", spEx);
                 else if (spEx.ErrorCode == 2)
-                    throw new UserPWDException("password match error", spEx);
+                    throw new UserPWDException("password incorrect", spEx);
             }
 
             CompanyDetailGetInfoArguments infoArg = new CompanyDetailGetInfoArguments();
