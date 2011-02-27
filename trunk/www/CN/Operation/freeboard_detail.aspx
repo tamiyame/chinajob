@@ -27,7 +27,7 @@
                             <div class="board-detail-tool">
                                 <div class="tool-left">
                                     <a href="<%=PageMove("freeboard_modify.aspx")%>&ArticleNo=<%=ArticleNo %>" class="icon icon-board-modify"></a>
-                                    <a href="javascript:;" class="icon icon-board-delete"  onclick="if ( confirm('정말로 삭제하시겠습니까?') ) { location.href='<%=PageMove("freeboard_remove.aspx")%>&ArticleNo=<%=ArticleNo %>' } return false;"></a>
+                                    <a href="javascript:;" class="icon icon-board-delete"  onclick="if ( confirm($.translateHelper.getText("CN_Operation_freeboard_detail.aspx_30")) ) { location.href='<%=PageMove("freeboard_remove.aspx")%>&ArticleNo=<%=ArticleNo %>' } return false;"></a>
                                 </div>
                                 <div class="tool-right">
                                     <a href="<%=PageMove("freeboard_list.aspx")%>" class="icon icon-board-list"></a>
