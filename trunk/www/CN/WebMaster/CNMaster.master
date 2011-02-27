@@ -135,20 +135,6 @@ function GetURL(url)
 			                        </ul>
 			                    </li>
 			                    <li>
-			                        <a class="icon icon-menu-recruit main-label" href="javascript:;"></a>
-			                        <ul class="submenu middle2 ie6fix">
-			                            <li><a class="icon icon-menu-sub-recruit-china" href="javascript:;"></a></li>
-			                            <li><a class="icon icon-menu-sub-job-type" href="javascript:;"></a></li>
-			                            <li><a class="icon icon-menu-sub-national-type" href="javascript:;"></a></li>
-			                        </ul>
-			                    </li>
-			                    <li>
-			                        <a class="icon icon-menu-human main-label" href="javascript:;"></a>
-			                        <ul class="submenu">
-			                            <li><a class="icon icon-menu-sub-human" href="javascript:;"></a></li>
-			                        </ul>
-			                    </li>			                    
-			                    <li>
 			                        <a class="icon icon-menu-operation main-label" href="<%=this.GetURL("/operation/notice_list.aspx")%>"></a>
 			                        <ul class="submenu middle ie6fix">
 			                            <li><a class="icon icon-menu-sub-notice" href="<%=this.GetURL("/operation/notice_list.aspx")%>"></a></li>
