@@ -19,6 +19,8 @@ namespace Com.Library.DB.Board
             AddParameter("BoardNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("BoardCategoryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("CategoryName", SqlDbType.NVarChar, 50, SqlDataInOut.Input);
+            AddParameter("CategoryCNName", SqlDbType.NVarChar, 50, SqlDataInOut.Input);
+            AddParameter("CategoryENGName", SqlDbType.NVarChar, 50, SqlDataInOut.Input);
         }
     }
 }

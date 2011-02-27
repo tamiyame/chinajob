@@ -20,6 +20,8 @@ namespace Com.Library.DB.Board
         public int UserNo { get { return Convert.ToInt32(GetData("UserNo", (int)0)); } }
         public string UserID { get { return Convert.ToString(GetData("UserID", string.Empty)); } }
         public string UserName { get { return Convert.ToString(GetData("UserName", string.Empty)); } }
+        public string UserCNName { get { return Convert.ToString(GetData("UserCNName", string.Empty)); } }
+        public string UserENGName { get { return Convert.ToString(GetData("UserENGName", string.Empty)); } }
         public string UserIP { get { return Convert.ToString(GetData("UserIP", string.Empty)); } }
         public string ArticleTitle { get { return Convert.ToString(GetData("ArticleTitle", string.Empty)); } }
         public string SomeContent { get { return Convert.ToString(GetData("SomeContent", string.Empty)); } }

@@ -59,6 +59,8 @@ public partial class BackOffice_Operation_board_write : ArticleWritePage
             createArg.UserNo = this.WebCookies.UserNo;
             createArg.UserID = this.WebCookies.UserID;
             createArg.UserName = "관리자";
+            createArg.UserCNName = "管理员";
+            createArg.UserENGName = "ADMIN";
             createArg.UserIP = Request.UserHostAddress;
             SetArticleCreate(createArg);
 
