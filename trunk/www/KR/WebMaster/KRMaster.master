@@ -75,7 +75,7 @@ function GetURL(url)
 			                    <li class="bar"></li>
 			                    <li><a href="<%=this.GetURL("/user/human_modify.aspx")%>">개인정보관리</a></li>
 			                    <li class="bar"></li>
-			                    <li><a href="javascript:;">이력서관리</a></li>
+			                    <li><a href="<%=this.GetURL("/user/human_regist_basic.aspx")%>">이력서관리</a></li>
 			                    <li class="bar"></li>
 			                    <li><a href="javascript:;">지원관리<span class="highlight"><span class="underline">0</span>건</span></a></li>
 			                    <li class="bar"></li>
