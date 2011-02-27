@@ -243,10 +243,14 @@
                                 <div class="company-confirm">
                                     <div>상기기업의 구인정보에 틀림없음을 확인합니다.</div>
                                     <div>
+<% if (!this.WebCookies.isCompany) { %>
                                         <a class="icon icon-recruit-supply-btn"></a>
+<% } else { %>
+                                        <span style="height:100px">&nbsp;</span>
+<% } %>
                                     </div>
                                     <div class="toolbox">
-                                        <a class="icon icon-board-list"></a>
+                                        <a class="icon icon-board-list" href="<%=ListPage() %>"></a>
                                     </div>
                                 </div>
                             </div>
