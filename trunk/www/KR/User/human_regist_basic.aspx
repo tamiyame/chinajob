@@ -26,10 +26,10 @@
                                                 <td class="size33 regist-label">2지망<span class="require">*</span></td>
                                                 <td class="size33 regist-label">3지망<span class="require">*</span></td>
                                             </tr>
-                                            <tr>
-                                                <td><input class="w1" type="text" name="hopejob_1"/></td>
-                                                <td><input class="w1" type="text" name="hopejob_2"/></td>
-                                                <td><input class="w1" type="text" name="hopejob_3"/></td>
+                                            <tr class="jobcode_select">
+                                                <td><input class="w1" type="text" readonly="true" name="hopejob_1"/></td>
+                                                <td><input class="w1" type="text" readonly="true" name="hopejob_2"/></td>
+                                                <td><input class="w1" type="text" readonly="true" name="hopejob_3"/></td>
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">희망급여 (RMB/1개월)<span class="require">*</span></td>
@@ -217,6 +217,12 @@
                             </div>
 
 <script language="javascript" type="text/javascript">
+
+function SetJobType(no,value)
+{
+    $('input:[name=hopejob_'+no+']').val(value);
+}
+
 jQuery(function()
 {
     jQuery.CreateInit();
@@ -248,6 +254,12 @@ jQuery(function()
                 if($(this).val())                
                     $.FillCategory($(this).val(),$("select[name=location2_2]"));
             }).change();
+            
+            $(".jobcode_select input").each(function(i){
+                $(this).click(function(){
+                    var popup = window.open('./company_search.aspx?no='+(i+1),'','width=380px,height=280px,menubar=no,toolbars=no,scrollbars=no','');                
+                })                                
+            })
         },        
         onWrite : function()
         {

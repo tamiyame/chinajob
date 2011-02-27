@@ -17,13 +17,24 @@ using Com.Library.DB.Company;
 
 public partial class KR_User_company_search : System.Web.UI.Page
 {
-    public ListData<CompanyEntity, OutputEntity> companyList;
+    public ListData<CompanyDetailEntity, OutputEntity> SearchList = null;
+    public int no;
     protected void Page_Load(object sender, EventArgs e)
     {
-
-
+        no = Request["no"] == null ? 0 : Convert.ToInt32(Request["no"]);
         if (this.IsPostBack)
         {
+            CompanyDetailGetListByName nameSearch = new CompanyDetailGetListByName();
+            nameSearch.SetArguments(
+                    new CompanyDetailGetListByNameArguments()
+                    {
+                        Name = Request["searchValue"]
+                    }
+                );
+            nameSearch.Execute();
+            List<CompanyDetailEntity> record = nameSearch.Execute();
+            OutputEntity outputdata = nameSearch.GetOutput();
+            SearchList = new ListData<CompanyDetailEntity, OutputEntity>(record, outputdata);
         }
     }
 }
