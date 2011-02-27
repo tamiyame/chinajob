@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
                 <div class="sidemenu-main">
 					<div class="sidemenu">
-						<div class="side-logo icon icon-expoinfo-logo"></div>
+						<div class="side-logo icon icon-operation-logo"></div>
 						<div class="line"></div>
 
 						<div class="link-item">
