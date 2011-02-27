@@ -6,16 +6,22 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-alter PROCEDURE [dbo].[TSP_TopMenuGetInfo]
+ALTER PROCEDURE [dbo].[TSP_PageSettingGetInfo]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
-,	@CountryNo	int	
-,	@TopMenuNo	smallint	
-,	@TopMenuName	nvarchar(100)	= NULL	OUTPUT
-,	@TopImageUrl	varchar(200)	= NULL	OUTPUT
+,	@PhoneNo	varchar(50)	= NULL	OUTPUT
+,	@FaxNo	varchar(50)	= NULL	OUTPUT
+,	@Email	varchar(200)	= NULL	OUTPUT
+,	@KRLogo	varchar(200)	= NULL	OUTPUT
+,	@CNLogo	varchar(200)	= NULL	OUTPUT
+,	@ENGLogo	varchar(200)	= NULL	OUTPUT
+
+,	@KRTitle	nvarchar(200)	= NULL	OUTPUT
+,	@CNTitle	nvarchar(200)	= NULL	OUTPUT
+,	@ENGTitle	nvarchar(200)	= NULL	OUTPUT
 )
 as
 Set NOCOUNT ON
@@ -60,14 +66,17 @@ End
 -- Implementation
 
 SELECT
-	@TopMenuName = TopMenuName
-,	@TopImageUrl = TopImageUrl
+	@PhoneNo = PhoneNo
+,	@FaxNo = FaxNo
+,	@Email = Email
+,	@KRLogo = KRLogo
+,	@CNLogo = CNLogo
+,	@ENGLogo = ENGLogo
+,	@KRTitle = KRTitle
+,	@CNTitle = CNTitle
+,	@ENGTitle = ENGTitle
 FROM
-	dbo.TB_TopMenu WITH (NOLOCK)
-WHERE
-	@CountryNo = CountryNo
-AND	@TopMenuNo = TopMenuNo
-
+	dbo.TB_PageSetting WITH (NOLOCK)
 
 -- Frk Error Check
 SELECT

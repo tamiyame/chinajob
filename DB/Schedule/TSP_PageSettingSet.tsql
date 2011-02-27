@@ -6,16 +6,22 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-alter PROCEDURE [dbo].[TSP_TopMenuGetInfo]
+ALTER PROCEDURE [dbo].[TSP_PageSettingSet]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
-,	@CountryNo	int	
-,	@TopMenuNo	smallint	
-,	@TopMenuName	nvarchar(100)	= NULL	OUTPUT
-,	@TopImageUrl	varchar(200)	= NULL	OUTPUT
+,	@PhoneNo	varchar(50)	= NULL
+,	@FaxNo	varchar(50)	= NULL
+,	@Email	varchar(200)	= NULL
+,	@KRLogo	varchar(200)	= NULL
+,	@CNLogo	varchar(200)	= NULL
+,	@ENGLogo	varchar(200)	= NULL
+,	@KRTitle	nvarchar(200)	= NULL
+,	@CNTitle	nvarchar(200)	= NULL
+,	@ENGTitle	nvarchar(200)	= NULL
+
 )
 as
 Set NOCOUNT ON
@@ -59,15 +65,48 @@ End
 
 -- Implementation
 
-SELECT
-	@TopMenuName = TopMenuName
-,	@TopImageUrl = TopImageUrl
-FROM
-	dbo.TB_TopMenu WITH (NOLOCK)
-WHERE
-	@CountryNo = CountryNo
-AND	@TopMenuNo = TopMenuNo
 
+UPDATE
+	TB_PageSetting
+SET
+	PhoneNo = IsNull( @PhoneNo, PhoneNo )
+,	FaxNo = IsNull( @FaxNo, FaxNo )
+,	Email = IsNull( @Email, Email )
+,	KRLogo = IsNull( @KRLogo, KRLogo )
+,	CNLogo = IsNull( @CNLogo, CNLogo )
+,	ENGLogo = IsNull( @ENGLogo, ENGLogo )
+,	KRTitle = IsNull( @KRTitle, KRTitle )
+,	CNTitle = IsNull( @CNTitle, CNTitle )
+,	ENGTitle = IsNull( @ENGLogo, ENGTitle )
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+If ( @FrkRowCount = 0 )
+BEGIN
+	INSERT TB_PageSetting
+	(
+		PhoneNo
+	,	FaxNo
+	,	Email
+	,	KRLogo
+	,	CNLogo
+	,	ENGLogo
+	,	KRTitle
+	,	CNTitle
+	,	ENGTitle
+	)
+	SELECT
+		@PhoneNo
+	,	@FaxNo
+	,	@Email
+	,	@KRLogo
+	,	@CNLogo
+	,	@ENGLogo
+	,	@KRTitle
+	,	@CNTitle
+	,	@ENGTitle
+END
 
 -- Frk Error Check
 SELECT
@@ -98,3 +137,4 @@ ERROR:
 	SET @ErrorCode = @FrkErrorCode
 	SET @ErrorMessage = @FrkErrorMessage
 	return @FrkErrorCode
+ 
