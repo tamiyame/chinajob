@@ -90,6 +90,11 @@
                                         </td>
                                     </tr>
                                  </table>
+<% if (this.WebCookies.IsLogin)
+       if((this.WebCookies.isCompany && this.WebCookies.UserNo == CompanyNo )|| this.WebCookies.IsAdmin )
+       {
+           { 
+%>
                                  <table class="recruit-detail">
                                     <tr class="tab">
                                         <td class="col1"><span class="icon icon-recruit-judge"></span></td>
@@ -100,7 +105,8 @@
                                             <table class="company-detail">
                                                 <tr>
                                                     <td class="label">면접관</td>
-                                                    <td class="text-2"><%if (RecruitInfo.JoinType == 1 ) { %><%=RecruitInfo.JobFairRecruiter%><% } %></td>
+                                                    <td class="text-2"><%if (RecruitInfo.JoinType == 1)
+                                                                         { %><%=RecruitInfo.JobFairRecruiter%><% } %></td>
                                                 </tr>                                            
                                                 <tr>
                                                     <td class="label">전화</td>
@@ -123,6 +129,10 @@
                                         </td>
                                     </tr>
                                  </table>
+<% 
+        }
+    } 
+%>
                                  <table class="recruit-detail">
                                     <tr class="tab">
                                         <td class="col1">
@@ -243,7 +253,7 @@
                                 <div class="company-confirm">
                                     <div>상기기업의 구인정보에 틀림없음을 확인합니다.</div>
                                     <div>
-<% if (!this.WebCookies.isCompany) { %>
+<% if (!this.WebCookies.isCompany && this.WebCookies.IsLogin) { %>
                                         <a class="icon icon-recruit-supply-btn"></a>
 <% } else { %>
                                         <span style="height:100px">&nbsp;</span>
