@@ -20,7 +20,7 @@
                                         <div><a href="recruit_category_city.aspx?CountryNo=1">한국어</a></div>
                                     </li>
                                     <li class=" icon <%=CountryNo == 2 ? "select icon-folder-big-on" : "icon-folder-big-off"%> china">
-                                        <div><a href="recruit_category_city.aspx?CountryNo=2">中文M</a></div>
+                                        <div><a href="recruit_category_city.aspx?CountryNo=2">中文</a></div>
                                     </li>													
                                     <li class=" icon <%=CountryNo == 3 ? "select icon-folder-big-on" : "icon-folder-big-off"%> english">
                                         <div><a href="recruit_category_city.aspx?CountryNo=3">english</a></div>
