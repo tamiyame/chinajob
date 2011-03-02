@@ -8,7 +8,7 @@
 .tab {margin-left:-1px;}
 .tab ul{list-style-type:none;}
 .header {height:89px;overflow:hidden;}
-.header .menu .main-menu li ul.ie6fix{width:220px;margin-left:-16px;}
+.header .menu .main-menu li ul.ie6fix{width:280px;margin-left:-16px;}
 .header .menu .main-menu li ul.middle{margin-left:-73px;}
 .header .menu .main-menu li ul.middle2{margin-left:-60px;}
 .tab li{float:left;padding-right:2px; font-size:11px; color:#7d7d7d;font-weight:bold;text-align:center;cursor:pointer;}
@@ -25,3 +25,5 @@ table.board-list tr.search td table td.search_button a{top:-6px;}
 
 .main table.recruit-detail tr.tab .icon{top:-6px;}
 .main .regist .regist-item input.w100{width:98%;font-size:12px;}
+
+.icon-recruit-search-btn {    background-position: -454px -208px;    height: 43px;    width: 165px;}

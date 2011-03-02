@@ -21,7 +21,7 @@
                                         <tr>
                                             <td class="col1 label">언어</td>
                                             <td class="col2" colspan="3">
-                                                <table>
+                                                <table style="width:420px;">
                                                     <tr>
                                             		    <td><input class="radio" id="isLang_1" type="radio" value="1" name="CountryNo" <%=CountryNo == 1 ? "checked='checked'":"" %> /></td>
                                             		    <td><label for="isLang_1">한국어</label></td>

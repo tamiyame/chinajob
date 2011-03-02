@@ -13,6 +13,9 @@
 		  DD_belatedPNG.fix('.icon');		  
 		</script>
 <![endif]-->
+<!--[if lte IE 7]>
+		<link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.ie7.css" />
+<![endif]-->
 <script language="javascript" type="text/javascript">
 var CountryCode = "<%=this.CountryCode %>";
 var CountryLink = "<%=this.CountryLink %>";
