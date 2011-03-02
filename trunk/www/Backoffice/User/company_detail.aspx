@@ -85,7 +85,7 @@
 			<tr>
 				<td class="label">¿Ã∏ﬁ¿œ</td>
 				<td class="input">
-				    <%=CompanyDetailInfo.PermitNo %>
+				    <%=CompanyDetailInfo.Email %>
 				</td>
 			</tr>
 			<tr>
