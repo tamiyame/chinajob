@@ -16,8 +16,9 @@ namespace Com.Library.DB.User
 
         protected override void ParameterInitialize()
         {
-            AddParameter("ResumeNo", SqlDbType.Int, 4, SqlDataInOut.Input);
-            AddParameter("LanguageName", SqlDbType.NVarChar, 40, SqlDataInOut.Input);
+            AddParameter("UserNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+			AddParameter("CountryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+			AddParameter("LanguageName", SqlDbType.NVarChar, 40, SqlDataInOut.Input);
             AddParameter("TestDesc", SqlDbType.NVarChar, 200, SqlDataInOut.Input);
             AddParameter("GradeDesc", SqlDbType.NVarChar, 200, SqlDataInOut.Input);
             AddParameter("ConversationLevel", SqlDbType.TinyInt, 1, SqlDataInOut.Input);

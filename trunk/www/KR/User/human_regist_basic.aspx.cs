@@ -83,7 +83,7 @@ public partial class KR_User_human_regist_basic : SitePage
                     CompanyNo1 = Convert.ToInt32(hopejob_1),
                     CompanyNo2 = Convert.ToInt32(hopejob_2),
                     CompanyNo3 = Convert.ToInt32(hopejob_3),
-                    CountryNo = this.WebMaster.CountryCode,
+//                    CountryNo = this.WebMaster.CountryCode,
                     HopeRecruitDate = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day)),
                     HopeSalary = pay,
                     UserNo = this.WebCookies.UserNo

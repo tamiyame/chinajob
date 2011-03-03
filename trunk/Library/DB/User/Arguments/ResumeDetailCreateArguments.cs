@@ -9,16 +9,16 @@ namespace Com.Library.DB.User
 {
     public class ResumeDetailCreateArguments : DBArguments
     {
-        public int CountryNo
+		public int UserNo
+		{
+			get { return Convert.ToInt32(GetValue("UserNo", 0)); }
+			set { SetValue("UserNo", value); }
+		}
+
+		public int CountryNo
         {
             get { return Convert.ToInt32(GetValue("CountryNo", 0)); }
             set { SetValue("CountryNo", value); }
-        }
-
-        public int ResumeNo
-        {
-            get { return Convert.ToInt32(GetValue("ResumeNo", 0)); }
-            set { SetValue("ResumeNo", value); }
         }
 
         public string SSN1
