@@ -16,8 +16,9 @@ namespace Com.Library.DB.User
 
         protected override void ParameterInitialize()
         {
-            AddParameter("ResumeNo", SqlDbType.Int, 4, SqlDataInOut.Input);
-            AddParameter("CareerCompanyName", SqlDbType.NVarChar, 200, SqlDataInOut.Input);
+            AddParameter("UserNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+			AddParameter("CountryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+			AddParameter("CareerCompanyName", SqlDbType.NVarChar, 200, SqlDataInOut.Input);
             AddParameter("CareerStartDate", SqlDbType.DateTime, 8, SqlDataInOut.Input);
             AddParameter("CareerEndDate", SqlDbType.DateTime, 8, SqlDataInOut.Input);
             AddParameter("CareerJobs", SqlDbType.NVarChar, 100, SqlDataInOut.Input);

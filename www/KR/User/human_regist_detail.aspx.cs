@@ -70,12 +70,12 @@ public partial class KR_User_human_regist_detail : SitePage
                 create.SetArguments(
                     new ResumeDetailCreateArguments()
                     {
-                        ResumeNo = ResumeNo,
-                        AboutMe = "",
+						UserNo = this.WebCookies.UserNo,
+						CountryNo = this.WebMaster.CountryCode,
+						AboutMe = "",
                         Address = address,
                         Age = Convert.ToByte(age),
                         ChinaExp = inchina_year + "-" + inchina_month,
-                        CountryNo = this.WebMaster.CountryCode,
                         Description = "",
                         IsCareer = Convert.ToByte(isCareer),
                         KoreanAge = Convert.ToByte(korean_age),
@@ -104,7 +104,8 @@ public partial class KR_User_human_regist_detail : SitePage
                     new ResumeAcademicAbilityCreateArguments()
                     {
                         MajorMinor = education_major[i],
-                        ResumeNo = ResumeNo,
+						UserNo = this.WebCookies.UserNo,
+						CountryNo = this.WebMaster.CountryCode,
                         SchoolCountryName = education_national[i],
                         SchoolEndDate = Convert.ToDateTime(education_period_end[i]),
                         SchoolName = education_school[i],
@@ -135,8 +136,9 @@ public partial class KR_User_human_regist_detail : SitePage
                         CareerStartDate = Convert.ToDateTime(career_period_start[i]),
                         CareerJobs = career_department[i],
                         CareerPosition = career_detail[i],
-                        ResumeNo = ResumeNo
-                    });
+						UserNo = this.WebCookies.UserNo,
+						CountryNo = this.WebMaster.CountryCode
+					});
                 create.ExecuteNonQuery();
             }
 
@@ -158,8 +160,9 @@ public partial class KR_User_human_regist_detail : SitePage
                         ConversationLevel = Convert.ToByte(Request["language_level_"+(i+1)]),
                         GradeDesc = language_score[i],
                         LanguageName = language_type[i],
-                        ResumeNo = ResumeNo,
-                        TestDesc = language_testname[i]
+						UserNo = this.WebCookies.UserNo,
+						CountryNo = this.WebMaster.CountryCode,
+						TestDesc = language_testname[i]
                     });
                 create.ExecuteNonQuery();
             }
@@ -181,8 +184,9 @@ public partial class KR_User_human_regist_detail : SitePage
                         LicensedDate = Convert.ToDateTime(licence_year[i]),
                         LicenseName = licence_title[i],
                         Organization = licence_institution[i],
-                        ResumeNo = ResumeNo
-                    });
+						UserNo = this.WebCookies.UserNo,
+						CountryNo = this.WebMaster.CountryCode
+					});
                 create.ExecuteNonQuery();
             }
         }

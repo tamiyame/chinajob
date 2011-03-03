@@ -16,8 +16,8 @@ namespace Com.Library.DB.User
 
         protected override void ParameterInitialize()
         {
-            AddParameter("CountryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
-            AddParameter("ResumeNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+			AddParameter("UserNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+			AddParameter("CountryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("SSN1", SqlDbType.VarChar, 6, SqlDataInOut.Input);
             AddParameter("SSN2", SqlDbType.VarChar, 7, SqlDataInOut.Input);
             AddParameter("KoreanAge", SqlDbType.TinyInt, 1, SqlDataInOut.Input);

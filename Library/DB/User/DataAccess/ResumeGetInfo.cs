@@ -16,8 +16,6 @@ namespace Com.Library.DB.User
 
         protected override void ParameterInitialize()
         {
-            AddParameter("CountryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
-            AddParameter("ResumeNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("UserNo", SqlDbType.Int, 4, SqlDataInOut.Output);
             AddParameter("CompanyNo1", SqlDbType.Int, 4, SqlDataInOut.Output);
             AddParameter("CompanyNo2", SqlDbType.Int, 4, SqlDataInOut.Output);
@@ -31,6 +29,7 @@ namespace Com.Library.DB.User
             AddParameter("BusinessCategoryNo", SqlDbType.Int, 4, SqlDataInOut.Output);
             AddParameter("Category1No", SqlDbType.Int, 4, SqlDataInOut.Output);
             AddParameter("Category2No", SqlDbType.Int, 4, SqlDataInOut.Output);
+			AddParameter("JoinType", SqlDbType.TinyInt, 1, SqlDataInOut.Output);
             AddParameter("RegistryTime", SqlDbType.DateTime, 8, SqlDataInOut.Output);
             AddParameter("Status", SqlDbType.TinyInt, 1, SqlDataInOut.Output);
         }
