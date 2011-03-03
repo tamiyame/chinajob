@@ -1,3 +1,7 @@
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+go
+
 
 -- TB_Recruit 테이블에 Update 시 TB_RecruitSearch 테이블에 필요 Data Update 해주는 Trigger 세팅
 ALTER TRIGGER [TR_RecruitUpdate] ON [dbo].[TB_Recruit]
