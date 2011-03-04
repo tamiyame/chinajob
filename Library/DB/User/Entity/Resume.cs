@@ -10,7 +10,6 @@ namespace Com.Library.DB.User
     public class ResumeEntity : DataEntity
     {
         public int UserNo { get { return Convert.ToInt32(GetData("UserNo", (int)0)); } }
-        public int ResumeNo { get { return Convert.ToInt32(GetData("ResumeNo", (int)0)); } }
         public int CompanyNo1 { get { return Convert.ToInt32(GetData("CompanyNo1", (int)0)); } }
         public int CompanyNo2 { get { return Convert.ToInt32(GetData("CompanyNo2", (int)0)); } }
         public int CompanyNo3 { get { return Convert.ToInt32(GetData("CompanyNo3", (int)0)); } }

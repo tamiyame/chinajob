@@ -7,10 +7,10 @@ using Com.Library.DB;
 
 namespace Com.Library.DB.User
 {
-    public class ResumeCreate : DBDataReader<DataEntity, DataEntity>
-    {
-        public ResumeCreate()
-            : base(new ConnectionString(), "TSP_ResumeCreate")
+	public class ResumeModify : DBDataReader<DataEntity, DataEntity>
+	{
+		public ResumeModify()
+            : base(new ConnectionString(), "TSP_ResumeModify")
         {
         }
 
@@ -30,6 +30,8 @@ namespace Com.Library.DB.User
             AddParameter("Category1No", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("Category2No", SqlDbType.Int, 4, SqlDataInOut.Input);
 			AddParameter("JoinType", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
-        }
-    }
+			AddParameter("RegistryTime", SqlDbType.DateTime, 8, SqlDataInOut.Input);
+			AddParameter("Status", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
+		}
+	}
 }

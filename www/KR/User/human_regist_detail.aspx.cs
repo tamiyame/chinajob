@@ -12,12 +12,14 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using Site.Web.Page;
 using Com.Library.DB.User;
+using Com.Library.Translate;
 
 public partial class KR_User_human_regist_detail : SitePage
 {
     public ResumeEntity Resume = null;
     public UserEntity UserInfo = null;
-    public int ResumeNo;
+	public TranslateHelper.ContryCode CountryCode = TranslateHelper.ContryCode.KR;
+	public ResumeDetailEntity ResumeDetail { get; set; }
     protected void Page_Load(object sender, EventArgs e)
     {
          {
@@ -27,29 +29,36 @@ public partial class KR_User_human_regist_detail : SitePage
                 info.SetArguments(infoArg);
                 info.ExecuteNonQuery();
                 UserInfo = info.GetOutput();
-            }
-        ResumeNo = Request["ResumeNo"] == null ? 0 : Convert.ToInt32(Request["ResumeNo"]);
-        if (ResumeNo == 0)
-        {
-            Response.Write("<script type='text/javascript'>alert('잘못된 접근 입니다.')</script>");
-            return;
         }
-        else
-        {   
-            /*
-            {
-                ResumeGetInfo getInfo = new ResumeGetInfo();
-                getInfo.SetArguments(
-                    new ResumeGetInfoArguments()
-                    {
-                        ResumeNo = ResumeNo,
-                        CountryNo = this.WebMaster.CountryCode
-                    });
-                getInfo.ExecuteNonQuery();
-                Resume = getInfo.GetOutput();
-            }
-             */
-        }
+
+		ResumeGetInfoArguments resumeGetInfoArguments = new ResumeGetInfoArguments();
+		resumeGetInfoArguments.UserNo = this.WebCookies.UserNo;
+ 
+		ResumeGetInfo resumeGetInfo = new ResumeGetInfo();
+		resumeGetInfo.SetArguments(resumeGetInfoArguments);
+		resumeGetInfo.ExecuteNonQuery();
+		ResumeEntity resumeEntity = resumeGetInfo.GetOutput();
+
+		if ( Request["countryCode"] != null && Request["countryCode"] != string.Empty )
+		{
+			CountryCode = (TranslateHelper.ContryCode)Convert.ToByte(Request["CountryCode"]);
+		}
+
+		// 기본정보 등록이 되어있지 않은 경우
+		if (resumeEntity == null || resumeEntity.RegistryTime == DateTime.MinValue)
+		{
+			Response.Write("<script type='text/javascript'>alert('잘못된 접근 입니다. 기본 정보부터 작성해주세요.');location.href='" + GetURL("/user/human_regist_basic.aspx") + "';</script>");
+			return;
+		}
+
+		// detail 정보 로드
+		ResumeDetailGetInfoArguments resumeDetailGetInfoArguments = new ResumeDetailGetInfoArguments();
+		resumeDetailGetInfoArguments.UserNo = WebCookies.UserNo;
+		resumeDetailGetInfoArguments.CountryNo = (int)CountryCode;
+		ResumeDetailGetInfo resumeDetailGetInfo = new ResumeDetailGetInfo();
+		resumeDetailGetInfo.SetArguments(resumeDetailGetInfoArguments);
+		resumeDetailGetInfo.ExecuteNonQuery();
+		ResumeDetail = resumeDetailGetInfo.GetOutput();
 
         if (this.IsPostBack)
         {
@@ -71,7 +80,7 @@ public partial class KR_User_human_regist_detail : SitePage
                     new ResumeDetailCreateArguments()
                     {
 						UserNo = this.WebCookies.UserNo,
-						CountryNo = this.WebMaster.CountryCode,
+						CountryNo = (int)CountryCode,
 						AboutMe = "",
                         Address = address,
                         Age = Convert.ToByte(age),
@@ -105,7 +114,7 @@ public partial class KR_User_human_regist_detail : SitePage
                     {
                         MajorMinor = education_major[i],
 						UserNo = this.WebCookies.UserNo,
-						CountryNo = this.WebMaster.CountryCode,
+						CountryNo = (int)CountryCode,
                         SchoolCountryName = education_national[i],
                         SchoolEndDate = Convert.ToDateTime(education_period_end[i]),
                         SchoolName = education_school[i],
@@ -137,7 +146,7 @@ public partial class KR_User_human_regist_detail : SitePage
                         CareerJobs = career_department[i],
                         CareerPosition = career_detail[i],
 						UserNo = this.WebCookies.UserNo,
-						CountryNo = this.WebMaster.CountryCode
+						CountryNo = (int)CountryCode
 					});
                 create.ExecuteNonQuery();
             }
@@ -161,7 +170,7 @@ public partial class KR_User_human_regist_detail : SitePage
                         GradeDesc = language_score[i],
                         LanguageName = language_type[i],
 						UserNo = this.WebCookies.UserNo,
-						CountryNo = this.WebMaster.CountryCode,
+						CountryNo = (int)CountryCode,
 						TestDesc = language_testname[i]
                     });
                 create.ExecuteNonQuery();
@@ -185,10 +194,52 @@ public partial class KR_User_human_regist_detail : SitePage
                         LicenseName = licence_title[i],
                         Organization = licence_institution[i],
 						UserNo = this.WebCookies.UserNo,
-						CountryNo = this.WebMaster.CountryCode
+						CountryNo = (int)CountryCode
 					});
                 create.ExecuteNonQuery();
             }
         }
     }
+
+	protected string GetDetailValue(string colName)
+	{
+		string retVal = string.Empty;
+		switch (colName)
+		{
+			case "SSN1":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.SSN1.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "SSN2":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = "*******"; } else { retVal = string.Empty; }
+				break;
+			case "KoreanAge":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.KoreanAge.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "Age":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.Age.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "ChinaExp":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.ChinaExp.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "Military":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.Military.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "IsCareer":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.IsCareer.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "Address":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.Address.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "Description":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.Description.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "AboutMe":
+				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.AboutMe.ToString(); } else { retVal = string.Empty; }
+				break;
+			default : 
+				throw new Exception("invalid column name");
+		}
+
+		return retVal;
+	}
 }

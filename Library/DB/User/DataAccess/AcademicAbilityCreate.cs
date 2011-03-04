@@ -1,9 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Collections.Generic;
-
+﻿using System.Data;
 using Com.Framework.Data;
-using Com.Library.DB;
 
 namespace Com.Library.DB.User
 {

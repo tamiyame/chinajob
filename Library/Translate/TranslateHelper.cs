@@ -12,7 +12,8 @@ namespace Com.Library.Translate
 		public enum ContryCode
 		{
 			KR = 1,
-			CN = 2
+			CN = 2,
+			EN = 3
 		}
 
 		private TranslateHelper()
@@ -412,6 +413,7 @@ namespace Com.Library.Translate
 				initData.Add(new TranslateEntity("CN_Recruit_recruit_detail.aspx_234", "기타자격요건", "其他资格条件"));
 				initData.Add(new TranslateEntity("CN_Recruit_recruit_detail.aspx_244", "상기기업의 구인정보에 틀림없음을 확인합니다.", "请确认以上企业招聘信息内容无误"));
 
+				// 인재 정보 상세
 				// 딕셔너리에 저장
 				translateData = new Dictionary<string, TranslateEntity>();
 				translateDataList = new List<TranslateEntity>();

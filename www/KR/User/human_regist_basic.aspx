@@ -13,6 +13,24 @@
                             <div class="human-title-regist"></div>
                         </div>
 <div class="tab-content">
+                        <div class="contents">
+                            <div class="tab">
+					            <ul>
+						            <li class="select icon icon-folder-middle-on">
+							            <div>기본정보</div>
+						            </li>
+						            <li class="icon icon-folder-middle-off">
+							            <div>한국어</div>
+						            </li>	
+						            <li class="icon icon-folder-middle-off">
+							            <div>中文</div>
+						            </li>
+						            <li class="last icon icon-folder-middle-off">
+							            <div>English</div>
+						            </li>												
+					            </ul>						
+				            </div>
+                            <div class="tab-content">
                                 <div class="regist">
                                     <div class="comment">
                                         귀하가 작성하신 이력서는 한국산업인력공단 해외취업국에 등록되어 취업박람회 참가 구인처 및 기타 구인처의 채용과 관련된 정보로만 활용됩니다.<br />  
@@ -44,10 +62,10 @@
                                                             <td>
                                                                 <select name="location1_1">
 <% if (CityCategory != null)
-{ %>
+   { %>
 <% foreach (CategoryEntity item in CityCategory)
    { %>
-												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName %></option>
+												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName%></option>
 <% } %>
 <% } %>
                                                                 </select>
@@ -69,10 +87,10 @@
                                                             <td>
                                                                 <select name="location1_2">
                                                                     <% if (CityCategory != null)
-{ %>
+																	   { %>
 <% foreach (CategoryEntity item in CityCategory)
    { %>
-												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName %></option>
+												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName%></option>
 <% } %>
 <% } %>
                                                                 </select>
@@ -100,15 +118,17 @@
                                                             </td>
                                                             <td>
                                                                 <select class="month" name="month">
-                                                                 <%for ( int i = 1; i <= 12; i ++ ) { %>
-										                            <option value="<%=i %>" ><%=i %></option> 
+                                                                 <%for (int i = 1; i <= 12; i++)
+																   { %>
+										                            <option value="<%=i %>" ><%=i%></option> 
 									                             <% } %>
                                                                 </select>월
                                                             </td>
                                                             <td>
                                                                 <select class="day" name="day">
-                                                                <%for ( int i = 1; i <= 31; i ++ ) { %>
-										                            <option value="<%=i %>" ><%=i %></option> 
+                                                                <%for (int i = 1; i <= 31; i++)
+																  { %>
+										                            <option value="<%=i %>" ><%=i%></option> 
 									                             <% } %>
                                                                 </select><span class="label">일 이후</span>
                                                             </td>
@@ -132,7 +152,7 @@
    { %>
 <% foreach (CategoryEntity item in BusinessCategory)
    { %>
-												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName %></option>
+												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName%></option>
 <% } %>
 <% } %>
                                                                 </select>
@@ -149,10 +169,10 @@
                                                             <td>
                                                                 <select name="hope_job_category2_1">
                                                                     <% if (JobCategory != null)
-   { %>
+																	   { %>
 <% foreach (CategoryEntity item in JobCategory)
    { %>
-												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName %></option>
+												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName%></option>
 <% } %>
 <% } %>
                                                                 </select>
@@ -160,10 +180,10 @@
                                                             <td>
                                                                 <select name="hope_job_category2_2">
                                                                     <% if (JobCategory != null)
-   { %>
+																	   { %>
 <% foreach (CategoryEntity item in JobCategory)
    { %>
-												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName %></option>
+												<option value="<%=item.CategoryNo %>"><%=item.CategoryKRName%></option>
 <% } %>
 <% } %>
                                                                 </select>
@@ -215,7 +235,7 @@
                                     </div>
                                 </div>
                             </div>
-
+						</div>
 <script language="javascript" type="text/javascript">
 
 function SetJobType(no,value)
@@ -223,14 +243,57 @@ function SetJobType(no,value)
     $('input:[name=hopejob_'+no+']').val(value);
 }
 
-jQuery(function()
-{
+$(document).ready(function() {
     jQuery.CreateInit();
+	// 이력서가 있는 경우 값 세팅
+	var companyNo1 = '<%= GetResumeEntityValue("CompanyNo1") %>';
+	var companyNo2 = '<%= GetResumeEntityValue("CompanyNo2") %>';
+	var companyNo3 = '<%= GetResumeEntityValue("CompanyNo3") %>';
+	var hopeSalary = '<%= GetResumeEntityValue("HopeSalary") %>';
+	var cityNo1 = '<%= GetResumeEntityValue("CityNo1") %>';
+	var arrayNo1 = '<%= GetResumeEntityValue("ArrayNo1") %>';
+	var cityNo2 = '<%= GetResumeEntityValue("CityNo2") %>';
+	var arrayNo2 = '<%= GetResumeEntityValue("ArrayNo2") %>';
+	var hopeRecruitDate = new Date(<%= GetResumeEntityValue("HopeRecruitDateYear") %>, <%= GetResumeEntityValue("HopeRecruitDateMonth") %>-1, <%= GetResumeEntityValue("HopeRecruitDateDay") %>);
+	var businessCategoryNo = '<%= GetResumeEntityValue("BusinessCategoryNo") %>';
+	var category1No = '<%= GetResumeEntityValue("Category1No") %>';
+	var category2No = '<%= GetResumeEntityValue("Category2No") %>';
+	var joinType = '<%= GetResumeEntityValue("JoinType") %>';
+	
+	$("input[name=hopejob_1]").val(companyNo1);
+	$("input[name=hopejob_2]").val(companyNo2);
+	$("input[name=hopejob_3]").val(companyNo3);
+	$("input[name=pay]").val(hopeSalary);
+	$("select[name=location1_1]").val(cityNo1);
+	$.FillCategory(cityNo1,$("select[name=location2_1]"),function() {$("select[name=location2_1]").val(arrayNo1);});
+	$("select[name=location1_2]").val(cityNo2);
+	$.FillCategory(cityNo2,$("select[name=location2_2]"),function() {$("select[name=location2_2]").val(arrayNo2);});
+	$("select[name=year]").val(hopeRecruitDate.getFullYear());
+	$("select[name=month]").val(hopeRecruitDate.getMonth());
+	$("select[name=day]").val(hopeRecruitDate.getDate());
+	$("select[name=hope_job_category1_1]").val(businessCategoryNo);
+	$("select[name=hope_job_category2_1]").val(category1No);
+	$("select[name=hope_job_category2_2]").val(category2No);
+	
+	$("input[name=isJoin]").each(function() {
+		if ( $(this).val() == joinType )
+		{
+			$(this).attr("checked", "checked");
+		}
+		else
+		{
+			$(this).attr("checked", "");
+		}
+	});
+	
+	$("div.tab ul li:eq(0)").click(function() { location.href=GetURL("/user/human_regist_basic.aspx"); });
+	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=1"); });
+	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=2"); });
+	$("div.tab ul li:eq(3)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=3"); });
 });
-
 (function($){
     $.extend({
-        FillCategory : function(category1No,targetCategory)
+        FillCategory : function(category1No,targetCategory,afterFillFunc)
         {            
             targetCategory.html('');            
             Site.Web.Soap.Category.GetSubCategory(category1No, 
@@ -238,6 +301,11 @@ jQuery(function()
                 $.each(results,function(i){                     
                     targetCategory.append($("<option value='"+this.SubCategoryNo+"'>"+ $.SubCategoryLangName(this)+"</option>"));                    
                 })
+                
+                if (afterFillFunc != undefined)
+                {
+					afterFillFunc();
+                }
             },
             function(results, context, methodNames){
                 alert( results.get_message() );

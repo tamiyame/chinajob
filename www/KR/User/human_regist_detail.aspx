@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
-<input type="text" name="ResumeNo" value="<%=ResumeNo %>"/>
+<input type="text" name="ResumeNo" value=""/>
     <div class="title">
         <div class="human-title-regist"></div>
     </div>
@@ -380,7 +380,15 @@
 <script language="javascript" type="text/javascript">
 jQuery(function()
 {
+	var countryCode = <%= (byte)CountryCode %>
     jQuery.CreateInit();
+
+	$("div.tab ul li").removeClass("icon-folder-middle-on").addClass("icon-folder-middle-off").removeClass("select");
+	$("div.tab ul li:eq("+ countryCode +")").removeClass("icon-folder-middle-off").addClass("icon-folder-middle-on").addClass("select");
+	$("div.tab ul li:eq(0)").click(function() { location.href=GetURL("/user/human_regist_basic.aspx"); });
+	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=1"); });
+	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=2"); });
+	$("div.tab ul li:eq(3)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=3"); });
 });
 
 (function($){
