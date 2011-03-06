@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+
+using Site.Web.Page;
+using Com.Framework.Data;
+using Com.Library.DB.Company;
+using Com.Library.DB.Category;
+
+public partial class KR_Recruit_user_search : SitePage
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+}

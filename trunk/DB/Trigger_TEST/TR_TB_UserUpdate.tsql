@@ -1,0 +1,42 @@
+create TRIGGER [TR_TB_UserUpdate] ON [dbo].[TB_User]
+FOR UPDATE
+AS
+
+DECLARE @UserNo int
+DECLARE @KRName nvarchar( 20 )
+DECLARE @CNName	nvarchar( 20 )
+DECLARE @ENGName	nvarchar( 20 )
+DECLARE @UserImage	varchar( 200 )
+DECLARE @Gender tinyint
+
+
+SELECT
+	@UserNo = UserNo
+,	@KRName = KRName
+,	@CNName = CNName
+,	@ENGName = ENGName
+,	@Gender = Gender
+,	@UserImage = ImageUrl
+FROM
+	UPDATED
+
+
+IF EXISTS (SELECT UserNo FROM dbo.TB_ResumeSearch WITH(NOLOCK) WHERE UserNo = @UserNo )
+
+BEGIN
+	UPDATE
+		dbo.TB_ResumeSearch
+	SET
+		KRName = @KRName
+	,	CNName = @CNName
+	,	ENGName = @ENGName
+	,	UserImage = @UserImage
+	,	Gender = @Gender
+	WHERE
+		UserNo = @UserNo
+END
+
+
+
+
+

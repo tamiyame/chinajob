@@ -1,0 +1,122 @@
+create TRIGGER [TR_TB_ResumeDetailUpdate] ON [dbo].[TB_ResumeDetail]
+FOR UPDATE
+AS
+
+DECLARE @UserNo int
+DECLARE @CountryNo int
+DECLARE @KRName nvarchar( 20 )
+DECLARE @CNName	nvarchar( 20 )
+DECLARE @ENGName	nvarchar( 20 )
+DECLARE @UserImage	varchar( 200 )
+DECLARE @JoinType tinyint
+DECLARE @Category1No int
+DECLARE @Category2No int
+DECLARE @CityCategory int
+DECLARE @AreaCategory int
+DECLARE @Age int
+DECLARE @KoreanAge int
+DECLARE @Gender tinyint
+DECLARE @Career int
+DECLARE @RegistryTime datetime
+
+SELECT 
+	@UserNo = UserNo
+,	@CountryNo = CountryNo
+,	@Age = Age
+,	@KoreanAge = KoreanAge
+FROM 
+	UPDATED
+
+SELECT
+	@KRName = KRName
+,	@CNName = CNName
+,	@ENGName = ENGName
+,	@Gender = Gender
+,	@UserImage = ImageUrl
+FROM
+	dbo.TB_User with ( nolock )
+WHERE
+	UserNo = @UserNo
+
+SELECT
+	@CityCategory = CityNo1
+,	@AreaCategory = ArrayNo1
+,	@JoinType = JoinType
+,	@Category1No = Category1No
+,	@Category2No = Category2No
+,	@RegistryTime = RegistryTime
+FROM
+	dbo.TB_Resume with ( nolock )
+WHERE
+	UserNo = @UserNo
+
+IF NOT EXISTS (SELECT UserNo FROM dbo.TB_ResumeSearch WITH(NOLOCK) WHERE UserNo = @UserNo AND CountryNo = @CountryNo )
+BEGIN
+	-- 해당 CompnayNo, CountryNo, RecruitNo 값기준으로 Search Data가 없으므로 추가로 필요한 Data TB_CompanyDetail Table 에서 뽑아오고 
+	INSERT	dbo.TB_ResumeSearch
+	(
+		UserNo
+	,	CountryNo
+	,	KRName
+	,	CNName
+	,	ENGName
+	,	UserImage
+	,	JoinType
+	,	Category1No
+	,	Category2No
+	,	CityCategory
+	,	AreaCategory
+	,	KoreanAge
+	,	Age
+	,	Gender
+	,	Career
+	,	RegistryTime
+	)
+	SELECT
+		@UserNo
+	,	@CountryNo
+	,	@KRName
+	,	@CNName
+	,	@ENGName
+	,	@UserImage
+	,	@JoinType
+	,	@Category1No
+	,	@Category2No
+	,	@CityCategory
+	,	@AreaCategory
+	,	@KoreanAge
+	,	@Age
+	,	@Gender
+	,	@Career
+	,	@RegistryTime
+
+		
+END
+ELSE
+BEGIN
+	UPDATE
+		dbo.TB_ResumeSearch
+	SET
+		KRName = @KRName
+	,	CNName = @CNName
+	,	ENGName = @ENGName
+	,	UserImage = @UserImage
+	,	JoinType = @JoinType
+	,	Category1No = @Category1No
+	,	Category2No = @Category2No
+	,	CityCategory = @CityCategory
+	,	AreaCategory = @AreaCategory
+	,	KoreanAge = @KoreanAge
+	,	Age = @Age
+	,	Gender = @Gender
+	,	Career = @Career
+	,	RegistryTime = @RegistryTime
+	WHERE
+		UserNo = @UserNo
+	AND	CountryNo = @CountryNo
+END
+
+
+
+
+
