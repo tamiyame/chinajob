@@ -1,0 +1,40 @@
+create TRIGGER [TR_TB_ResumeUpdate] ON [dbo].[TB_Resume]
+FOR UPDATE
+AS
+
+DECLARE @UserNo int
+DECLARE @JoinType tinyint
+DECLARE @Category1No int
+DECLARE @Category2No int
+DECLARE @CityCategory int
+DECLARE @AreaCategory int
+
+
+SELECT
+	@UserNo = UserNo
+,	@CityCategory = CityNo1
+,	@AreaCategory = ArrayNo1
+,	@JoinType = JoinType
+,	@Category1No = Category1No
+,	@Category2No = Category2No
+FROM
+	UPDATED
+
+IF EXISTS (SELECT UserNo FROM dbo.TB_ResumeSearch WITH(NOLOCK) WHERE UserNo = @UserNo )
+BEGIN
+	UPDATE
+		dbo.TB_ResumeSearch
+	SET
+		Category1No = @Category1No
+	,	Category2No = @Category2No
+	,	CityCategory = @CityCategory
+	,	AreaCategory = @AreaCategory
+	,	JoinType = @JoinType
+	WHERE
+		UserNo = @UserNo
+END
+
+
+
+
+
