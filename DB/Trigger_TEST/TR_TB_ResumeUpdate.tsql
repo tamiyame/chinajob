@@ -18,7 +18,7 @@ SELECT
 ,	@Category1No = Category1No
 ,	@Category2No = Category2No
 FROM
-	UPDATED
+	INSERTED
 
 IF EXISTS (SELECT UserNo FROM dbo.TB_ResumeSearch WITH(NOLOCK) WHERE UserNo = @UserNo )
 BEGIN

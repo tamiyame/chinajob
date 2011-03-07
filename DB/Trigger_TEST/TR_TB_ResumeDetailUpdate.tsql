@@ -25,7 +25,7 @@ SELECT
 ,	@Age = Age
 ,	@KoreanAge = KoreanAge
 FROM 
-	UPDATED
+	INSERTED
 
 SELECT
 	@KRName = KRName
