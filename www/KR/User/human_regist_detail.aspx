@@ -437,6 +437,43 @@ jQuery(function()
 	$("textarea[name=award_text]").val(description);
 	$("textarea[name=introduce]").val(aboutMe);
 
+    $.each(academicAbilities, function(idx, data) {
+        $("input[name=education_school]:eq("+idx+")").val(data.SchoolName);
+        $("input[name=education_period_start]:eq("+idx+")").val(data.SchoolStartDate);
+        $("input[name=education_period_end]:eq("+idx+")").val(data.SchoolEndDate);
+        $("select[name=education_state]:eq("+idx+")").val(data.SchoolStatus);
+        $("input[name=education_major]:eq("+idx+")").val(data.MajorMinor);
+        $("input[name=education_national]:eq("+idx+")").val(data.SchoolCountryName);
+    });
+
+    $.each(careers, function(idx, data) {
+        $("input[name=career_company]:eq("+idx+")").val(data.CareerCompanyName);
+        $("input[name=career_period_start]:eq("+idx+")").val(data.CareerStartDate);
+        $("input[name=career_period_end]:eq("+idx+")").val(data.CareerEndDate);
+        $("input[name=career_department]:eq("+idx+")").val(data.CareerJobs);
+        $("input[name=career_detail]:eq("+idx+")").val(data.CareerPosition);
+    });
+
+    $.each(languages, function(idx, data) {
+        $("input[name=language_type]:eq("+idx+")").val(data.LanguageName);
+        $("input[name=language_testname]:eq("+idx+")").val(data.TestDesc);
+        $("input[name=language_score]:eq("+idx+")").val(data.GradeDesc);
+        $("input[name=language_level_"+(idx+1)+"]").each(function() {
+            if( $(this).val() == data.ConversationLevel)
+            {
+                $(this).attr("checked", "checked");
+            }
+            else{
+                $(this).attr("checked", "");
+            }
+        });
+    });
+
+    $.each(licenses, function(idx, data) {
+        $("input[name=licence_year]:eq("+idx+")").val(data.LicensedDate);
+        $("input[name=licence_title]:eq("+idx+")").val(data.LicenseName);
+        $("input[name=licence_institution]:eq("+idx+")").val(data.Organization);
+    });
 });
 
 (function($){
