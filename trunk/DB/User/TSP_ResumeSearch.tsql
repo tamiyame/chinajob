@@ -77,7 +77,7 @@ BEGIN
 		SELECT	Top( @PageSize )
 			UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 		FROM
-			dbo.TB_UserSearch with ( nolock )
+			dbo.TB_ResumeSearch with ( nolock )
 		WHERE
 			CountryNo = @CountryNo
 		AND	1 = CASE WHEN @UserName IS Null OR KRName like @UserName + '%' OR CNName like @UserName + '%' OR EngName like @UserName + '%' THEN 1 ELSE 0 END
@@ -129,7 +129,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	JoinType = @JoinType
@@ -196,7 +196,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	JoinType = @JoinType
@@ -258,7 +258,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	JoinType = @JoinType
@@ -319,7 +319,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	JoinType = @JoinType
@@ -373,7 +373,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	JoinType = @JoinType
@@ -427,7 +427,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	Category1No = @Category1No
@@ -491,7 +491,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	CityCategory = @CityCategory
@@ -549,7 +549,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	Age >= @Age_Start 
@@ -606,7 +606,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	Gender = @Gender
@@ -655,7 +655,7 @@ BEGIN
 			SELECT	Top( @PageSize )
 				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
-				dbo.TB_UserSearch with ( nolock )
+				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
 			AND	JoinType = @JoinType

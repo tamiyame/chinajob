@@ -1,10 +1,16 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="user_search.aspx.cs" Inherits="KR_Recruit_user_search" Title="제목 없음" %>
-
+<%@ Import Namespace="Com.Library.DB.Category" %>
+<%@ Import Namespace="Com.Library.DB.User" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
-<div class="title">
+<asp:ScriptManagerProxy ID="px" runat="server">
+    <Services>
+        <asp:ServiceReference Path="~/Soap/Category.asmx"></asp:ServiceReference>
+    </Services>
+</asp:ScriptManagerProxy>
+                        <div class="title">
                             <div class="human-title-search"></div>
                         </div>
                         <div class="contents">
@@ -29,56 +35,204 @@
                                             <td class="col2">
                                                 <table>
                                                     <tr>
-                                                        <td><select name="category1"><option value="1">전체</option></select></td>
-                                                        <td><select name="category2"><option value="1">전체</option></select></td>
+                                                        <td><select name="Category1No"><option value="0">전체</option>
+                                                        <% foreach (CategoryEntity item in Category1List)
+                                                           { %>
+												                <option value="<%=item.CategoryNo %>" <%=item.CategoryNo == Category1No ? "selected='selected'" : "" %>><%=item.CategoryKRName%></option>
+                                                        <% } %>
+                                                        </select></td>
+                                                        <td><select name="Category2No"><option value="0">전체</option>
+                                                        <% if (Category2List != null) { %>
+                                                            <% foreach (SubCategoryEntity item in Category2List) { %>
+												                <option value="<%=item.SubCategoryNo %>" <%=item.SubCategoryNo == Category2No ? "selected='selected'" : "" %>><%=item.SubCategoryKRName%></option>
+                                                            <% } %>
+                                                        <% } %>
+                                                        </select></td>
                                                     </tr>
                                                 </table>
                                             </td>
                                             <td class="col3 label">연령</td>
-                                            <td class="col4"><select name="age"><option value="1">무관</option></select></td>                                            
+                                            <td class="col4"><select name="AgeCategory">
+                                                <option value="0">무관</option>
+                                                <% foreach (CategoryEntity item in AgeCategoryList)
+                                                       if ( item.CategoryNo != 10 )
+                                                       {
+                                                           { 
+                                                %>
+												        <option value="<%=item.CategoryNo %>" <%=AgeCategory == item.CategoryNo ? "selected='selected'":"" %>><%=item.CategoryKRName%></option>
+                                                <% 
+                                                            }
+                                                       } 
+                                                %>
+                                            </select></td>                                            
                                         </tr>
                                         <tr>
                                             <td class="col1 label">지역</td>
                                             <td class="col2">
                                                 <table>
                                                     <tr>
-                                                        <td><select name="address1"><option value="1">전체</option></select></td>
-                                                        <td><select name="address2"><option value="1">전체</option></select></td>
+                                                        <td><select name="CityCategory"><option value="0">전체</option>
+                                                        <% foreach (CategoryEntity item in CityCategoryList) { %>
+												                <option value="<%=item.CategoryNo %>" <%=item.CategoryNo == CityCategory ? "selected='selected'" : ""%>><%=item.CategoryKRName%></option>
+                                                        <% } %>
+                                                        </select></td>
+                                                        <td><select name="AreaCategory"><option value="0">전체</option>
+                                                        <% if (AreaSubCategoryList != null) { %>
+                                                            <% foreach (SubCategoryEntity item in AreaSubCategoryList) { %>
+												                <option value="<%=item.SubCategoryNo %>" <%=item.SubCategoryNo == AreaCategory ? "selected='selected'" : "" %>><%=item.SubCategoryKRName%></option>
+                                                            <% } %>
+                                                        <% } %>
+                                                        </select></td>
                                                     </tr>
                                                 </table>
                                             </td>
                                             <td class="col3 label">성별</td>
-                                            <td class="col4"><select name="gender"><option value="1">무관</option></select></td>                                            
+                                            <td class="col4"><select name="Gender">
+                                                <option value="0" <%=Gender==0?"selected='selected'":"" %>>무관</option>
+                                                <option value="1" <%=Gender==1?"selected='selected'":"" %>>남성</option>
+                                                <option value="2" <%=Gender==2?"selected='selected'":"" %>>여성</option>
+                                                </select></td>                                            
                                         </tr>
                                         <tr>
                                             <td class="col1 label">성명</td>
                                             <td class="col2" colspan="3">
-                                                <input type="text" class="big" name="name"/>
+                                                <input type="text" class="big" name="UserName" maxlength="50"/>
                                             </td>
-                                            <!--<td class="col3 label">경력</td>
-                                            <td class="col4"><select name="career"><option value="1">무관</option></select></td>  -->                                          
                                         </tr>
                                     </table>
                                 </div>
                                 <div class="search-btn">
-                                    <a class="icon icon-human-search-btn"></a>
-                                    <a class="icon icon-human-regist-btn" href="/login/join_select.aspx"></a>x
+                                    <a class="icon icon-human-search-btn" onclick="jQuery.onSearch(); return false;" style="cursor:pointer"></a>
+                                    <a class="icon icon-human-regist-btn" href="<%=GetURL("/login/join_select.aspx") %>"></a>
                                 </div>
                             </div>
                             <div class="search-data">
                                 <div class="tab">
 						            <ul>
-							            <li class="select icon icon-folder-big-on">
-								            <div>한국어</div>
+							            <li class="<%if (CountryNo == 1){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
+								            <div><a href="<%=GetCountryType(1)%>">한국어</a></div>
 							            </li>
-							            <li class="last icon icon-folder-big-off">
-								            <div>中文</div>
+							            <li class="<%if (CountryNo == 2){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
+								            <div><a href="<%=GetCountryType(2)%>">中文</a></div>
 							            </li>	
-							            <li class="last icon icon-folder-big-off">
-								            <div>English</div>
+							            <li class="<%if (CountryNo == 3){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
+								            <div><a href="<%=GetCountryType(3)%>">English</a></div>
 							            </li>							
 						            </ul>						
 					            </div>
+<script language="javascript" type="text/javascript">
+jQuery(function()
+{
+    jQuery.InitProc();    
+});
+
+(function($)
+{
+    $.extend({
+        InitProc : function()
+        {
+            jQuery("select:[name=Category1No]").bind("change", function()
+            {
+                Site.Web.Soap.Category.GetSubCategory($(this).val(), function(results, context, methodName)
+                {
+                    if ( results.valueOf() )
+                    {
+                        jQuery("select:[name=Category2No]").find("option").remove();
+                        jQuery("select:[name=Category2No]").append(
+                            $("<option value='0'>전체</option>")
+                        )
+                        if ( results.length > 0 )
+                        {
+                            $(results).each(function()
+                            {
+                                jQuery("select:[name=Category2No]").append(
+                                    $("<option value='" + this.SubCategoryNo + "'>" + this.SubCategoryKRName + "</option>")
+                                )
+                            });
+                        }
+                    };
+                },
+                $.onFailed);
+            });
+            
+            jQuery("select:[name=CityCategory]").bind("change", function()
+            {
+                Site.Web.Soap.Category.GetSubCategory($(this).val(), function(results, context, methodName)
+                {
+                    if ( results.valueOf() )
+                    {
+                        
+                        jQuery("select:[name=AreaCategory]").find("option").remove();
+                        jQuery("select:[name=AreaCategory]").append(
+                            $("<option value='0'>전체</option>")
+                        )
+                        if ( results.length > 0 )
+                            {
+                            $(results).each(function()
+                            {
+                                jQuery("select:[name=AreaCategory]").append(
+                                    $("<option value='" + this.SubCategoryNo + "'>" + this.SubCategoryKRName + "</option>")
+                                )
+                            });
+                        }
+                    };
+                },
+                $.onFailed);
+            });
+        },
+        
+        onFailed : function(results, methodName, context )
+        {
+            alert( results.get_message() );
+        },
+        
+        onSearch : function()
+        {
+            var CountryNo = <%=CountryNo %>;
+            var JoinType = null;
+            var Category1No = jQuery("select:[name=Category1No]").val();
+            var Category2No = jQuery("select:[name=Category2No]").val();
+            var AgeCategory = jQuery("select:[name=AgeCategory]").val();
+            var CityCategory = jQuery("select:[name=CityCategory]").val();
+            var AreaCategory = jQuery("select:[name=AreaCategory]").val();
+            var Gender = jQuery("select:[name=Gender]").val();
+            var UserName = jQuery("input:[name=UserName]").val();
+            
+            jQuery("input:[name=CountryNo]").each(function(){
+                if ( jQuery(this).attr("checked") )
+                {
+                    CountryNo = jQuery(this).val();
+                }
+            });
+            jQuery("input:[name=JoinType]").each(function(){
+                if ( jQuery(this).attr("checked") )
+                {
+                    JoinType = jQuery(this).val();
+                }
+            });
+            
+            var url = "user_search.aspx?Country=" + CountryNo;
+            if ( JoinType != null )
+                url += "&jointype=" + JoinType;
+            if ( Category1No != 0 )
+                url += "&Category1=" + Category1No;
+            if ( Category2No != 0 )
+                url += "&Category2=" + Category2No;
+            if ( AgeCategory != 0 )
+                url += "&Age=" + AgeCategory;
+            if ( CityCategory != 0 )
+                url += "&City=" + CityCategory;
+            if ( AreaCategory != 0 )
+                url += "&Area=" + AreaCategory;
+            if ( Gender != 0 )
+                url += "&Gender=" + Gender;
+            if ( jQuery.trim(UserName) != "" )
+                url += "&Name=" + encodeURIComponent(UserName);
+            location.href = url;
+        }
+    });
+})(jQuery);
+</script>
                                 <div class="tab-content">
                                     <table>
                                         <tr class="first">
@@ -95,17 +249,24 @@
                                         </tr>
                                     </table>
                                     <div class="pager">
-                                        <a href="javascript:;" class="icon icon-board-icon-prev"></a>
-                                        <a href="javascript:;" class="select">1</a>
-                                        <a href="javascript:;">2</a>
-                                        <a href="javascript:;">3</a>
-                                        <a href="javascript:;">4</a>
-                                        <a href="javascript:;">5</a>
-                                        <a href="javascript:;">6</a>
-                                        <a href="javascript:;">7</a>
-                                        <a href="javascript:;">8</a>
-                                        <a href="javascript:;">9</a>
-                                        <a href="javascript:;" class="icon icon-board-icon-next"></a>
+<%
+    int TotalPageNo = 1;
+    int StartPageNo = 1;
+    int EndPageNo = StartPageNo + 9;
+    TotalPageNo = SearchList.Output.CntTotal != 0 ? ((SearchList.Output.CntTotal - 1) / 10) + 1 : 1;
+    StartPageNo = (((PageNo - 1) / 10) * 10) + 1;
+    EndPageNo = StartPageNo + 9;
+    EndPageNo = EndPageNo > TotalPageNo ? TotalPageNo : EndPageNo;
+%>
+<%  if (PageNo > 10) { %>
+                                            <a href="<%=PageMove(StartPageNo-10)%>" class="icon icon-board-icon-prev"></a>
+<% } %>
+<%  for (int pageNo = StartPageNo; pageNo <= EndPageNo; pageNo++) { %>
+                                            <a href="<%=PageMove(pageNo)%>" <%=pageNo==PageNo ? "class='select'" : "" %>><%=pageNo %></a>
+<% } %>
+<% if ( EndPageNo < TotalPageNo ) { %>
+                                            <a href="<%=PageMove(StartPageNo+10)%>" class="icon icon-board-icon-next"></a>
+<% } %>
                                     </div>
                                 </div>
                             </div>
