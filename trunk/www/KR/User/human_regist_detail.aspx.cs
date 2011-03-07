@@ -155,20 +155,41 @@ public partial class KR_User_human_regist_detail : SitePage
             {
                 if (education_school[i] == "")
                     continue;
-                ResumeAcademicAbilityCreate create = new ResumeAcademicAbilityCreate();
-                create.SetArguments(
-                    new ResumeAcademicAbilityCreateArguments()
-                    {
-                        MajorMinor = education_major[i],
-						UserNo = this.WebCookies.UserNo,
-						CountryNo = (int)CountryCode,
-                        SchoolCountryName = education_national[i],
-                        SchoolEndDate = Convert.ToDateTime(education_period_end[i]),
-                        SchoolName = education_school[i],
-                        SchoolStartDate = Convert.ToDateTime(education_period_start[i]),
-                        SchoolStatus = Convert.ToByte(education_state[i])
-                    });
-                create.ExecuteNonQuery();
+				if (ResumeAcademicAbilities.Count <= i)
+				{
+					ResumeAcademicAbilityCreate create = new ResumeAcademicAbilityCreate();
+					create.SetArguments(
+						new ResumeAcademicAbilityCreateArguments()
+						{
+							MajorMinor = education_major[i],
+							UserNo = this.WebCookies.UserNo,
+							CountryNo = (int)CountryCode,
+							SchoolCountryName = education_national[i],
+							SchoolEndDate = Convert.ToDateTime(education_period_end[i]),
+							SchoolName = education_school[i],
+							SchoolStartDate = Convert.ToDateTime(education_period_start[i]),
+							SchoolStatus = Convert.ToByte(education_state[i])
+						});
+					create.ExecuteNonQuery();
+				}
+				else
+				{
+					ResumeAcademicAbilityModify modify = new ResumeAcademicAbilityModify();
+					modify.SetArguments(
+						new ResumeAcademicAbilityModifyArguments()
+						{
+							MajorMinor = education_major[i],
+							UserNo = this.WebCookies.UserNo,
+							ResumeAcademicAbilityNo = ResumeAcademicAbilities[i].ResumeAcademicAbilityNo,
+							CountryNo = (int)CountryCode,
+							SchoolCountryName = education_national[i],
+							SchoolStartDate = Convert.ToDateTime(education_period_start),
+							SchoolEndDate = Convert.ToDateTime(education_period_end),
+							SchoolName = education_school[i],
+							SchoolStatus = Convert.ToByte(education_state[i])
+						});
+					modify.ExecuteNonQuery();
+				}
             }
 
             // career 등록
@@ -183,19 +204,39 @@ public partial class KR_User_human_regist_detail : SitePage
             {
                 if (career_company[i] == "")
                     continue;
-                ResumeCareerCreate create = new ResumeCareerCreate();
-                create.SetArguments(
-                    new ResumeCareerCreateArguments()
-                    {
-                        CareerCompanyName = career_company[i],
-                        CareerEndDate = Convert.ToDateTime(career_period_end[i]),
-                        CareerStartDate = Convert.ToDateTime(career_period_start[i]),
-                        CareerJobs = career_department[i],
-                        CareerPosition = career_detail[i],
-						UserNo = this.WebCookies.UserNo,
-						CountryNo = (int)CountryCode
-					});
-                create.ExecuteNonQuery();
+				if (ResumeCareers.Count <= i)
+				{
+					ResumeCareerCreate create = new ResumeCareerCreate();
+					create.SetArguments(
+						new ResumeCareerCreateArguments()
+						{
+							CareerCompanyName = career_company[i],
+							CareerEndDate = Convert.ToDateTime(career_period_end[i]),
+							CareerStartDate = Convert.ToDateTime(career_period_start[i]),
+							CareerJobs = career_department[i],
+							CareerPosition = career_detail[i],
+							UserNo = this.WebCookies.UserNo,
+							CountryNo = (int)CountryCode
+						});
+					create.ExecuteNonQuery();
+				}
+				else
+				{
+					ResumeCareerModify modify = new ResumeCareerModify();
+					modify.SetArguments(
+						new ResumeCareerModifyArguments()
+						{
+							CareerCompanyName = career_company[i],
+							CareerEndDate = Convert.ToDateTime(career_period_end[i]),
+							CareerStartDate = Convert.ToDateTime(career_period_start[i]),
+							CareerJobs = career_department[i],
+							CareerPosition = career_detail[i],
+							UserNo = this.WebCookies.UserNo,
+							CountryNo = (int)CountryCode,
+							ResumeCareerNo = ResumeCareers[i].ResumeCareerNo,
+						});
+					modify.ExecuteNonQuery();
+				}
             }
 
             // language 등록
@@ -209,18 +250,37 @@ public partial class KR_User_human_regist_detail : SitePage
             {
                 if (language_type[i] == "")
                     continue;
-                ResumeLanguageCreate create = new ResumeLanguageCreate();
-                create.SetArguments(
-                    new ResumeLanguageCreateArguments()
-                    {
-                        ConversationLevel = Convert.ToByte(Request["language_level_"+(i+1)]),
-                        GradeDesc = language_score[i],
-                        LanguageName = language_type[i],
-						UserNo = this.WebCookies.UserNo,
-						CountryNo = (int)CountryCode,
-						TestDesc = language_testname[i]
-                    });
-                create.ExecuteNonQuery();
+				if (ResumeLanguages.Count <= i)
+				{
+					ResumeLanguageCreate create = new ResumeLanguageCreate();
+					create.SetArguments(
+						new ResumeLanguageCreateArguments()
+						{
+							ConversationLevel = Convert.ToByte(Request["language_level_"+(i+1)]),
+							GradeDesc = language_score[i],
+							LanguageName = language_type[i],
+							UserNo = this.WebCookies.UserNo,
+							CountryNo = (int)CountryCode,
+							TestDesc = language_testname[i]
+						});
+					create.ExecuteNonQuery();
+				}
+				else
+				{
+					ResumeLanguageModify modify = new ResumeLanguageModify();
+					modify.SetArguments(
+						new ResumeLanguageModifyArguments()
+						{
+							ConversationLevel = Convert.ToByte(Request["language_level_"+(i+1)]),
+							GradeDesc = language_score[i],
+							LanguageName = language_type[i],
+							UserNo = this.WebCookies.UserNo,
+							CountryNo = (int)CountryCode,
+							ResumeLanguageNo = ResumeLanguages[i].ResumeLanguageNo,
+							TestDesc = language_testname[i]
+						});
+					modify.ExecuteNonQuery();
+				}
             }
 
             // licence 등록
@@ -233,17 +293,35 @@ public partial class KR_User_human_regist_detail : SitePage
             {
                 if (licence_title[i] == "")
                     continue;
-                ResumeLicenseCreate create = new ResumeLicenseCreate();
-                create.SetArguments(
-                    new ResumeLicenseCreateArguments()
-                    {
-                        LicensedDate = Convert.ToDateTime(licence_year[i]),
-                        LicenseName = licence_title[i],
-                        Organization = licence_institution[i],
-						UserNo = this.WebCookies.UserNo,
-						CountryNo = (int)CountryCode
-					});
-                create.ExecuteNonQuery();
+				if (ResumeLicenses.Count <= i)
+				{
+					ResumeLicenseCreate create = new ResumeLicenseCreate();
+					create.SetArguments(
+						new ResumeLicenseCreateArguments()
+						{
+							LicensedDate = Convert.ToDateTime(licence_year[i]),
+							LicenseName = licence_title[i],
+							Organization = licence_institution[i],
+							UserNo = this.WebCookies.UserNo,
+							CountryNo = (int)CountryCode
+						});
+					create.ExecuteNonQuery();
+				}
+				else
+				{
+					ResumeLicenseModify modify = new ResumeLicenseModify();
+					modify.SetArguments(
+						new ResumeLicenseMidifyArguments()
+						{
+							LicensedDate = Convert.ToDateTime(licence_year[i]),
+							LicenseName = licence_title[i],
+							Organization = licence_institution[i],
+							UserNo = this.WebCookies.UserNo,
+							CountryNo = (int)CountryCode,
+							ResumeLicenseNo = ResumeLicenses[i].ResumeLicenseNo,
+						});
+					modify.ExecuteNonQuery();
+				}
             }
         }
     }
@@ -350,6 +428,6 @@ public partial class KR_User_human_regist_detail : SitePage
 
 		string json = Encoding.UTF8.GetString(ms.ToArray());
 
-		return json;
+		return json.Replace("\\/","").Replace("\"Date(", "Date(").Replace("+0900)\"","+0900)");
 	}
 }
