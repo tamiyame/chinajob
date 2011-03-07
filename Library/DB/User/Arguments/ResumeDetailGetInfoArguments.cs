@@ -15,13 +15,8 @@ namespace Com.Library.DB.User
 		public int CountryNo
 		{
 			get { return Convert.ToInt32(GetValue("CountryNo", 0)); }
-			set { SetValue("UserNo", value); }
+			set { SetValue("CountryNo", value); }
 		}
 
-		public int ResumeDetailNo
-		{
-			get { return Convert.ToInt32(GetValue("ResumeDetailNo", 0)); }
-			set { SetValue("UserNo", value); }
-		}
 	}
 }

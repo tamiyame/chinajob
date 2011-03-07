@@ -389,6 +389,54 @@ jQuery(function()
 	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=1"); });
 	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=2"); });
 	$("div.tab ul li:eq(3)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=3"); });
+
+	var academicAbilities = <%= GetAcademicAbilityJson() %>;
+	var careers = <%= GetCareerJson() %>;
+	var languages = <%= GetLanguageJson() %>;
+	var licenses = <%= GetLicensesJson() %>;
+	
+	var ssn1 = '<%= GetDetailValue("SSN1") %>';
+	var ssn2 = '<%= GetDetailValue("SSN2") %>';
+	var koreanAge = '<%= GetDetailValue("KoreanAge") %>';
+	var age = '<%= GetDetailValue("Age") %>';
+	var chinaExpChunk = '<%= GetDetailValue("ChinaExp") %>';
+	var chinaExp = chinaExpChunk.split("-");
+	var military = '<%= GetDetailValue("Military") %>';
+	var isCareer = '<%= GetDetailValue("IsCareer") %>';
+	var address = '<%= GetDetailValue("Address") %>';
+	var description = '<%= GetDetailValue("Description") %>';
+	var aboutMe = '<%= GetDetailValue("AboutMe") %>';
+	
+	$("input[name=ssn1]").val(ssn1);
+	$("input[name=ssn2]").val(ssn2);
+	$("input[name=korean_age]").val(koreanAge);
+	$("input[name=age]").val(age);
+	$("select[name=inchina_year]").val(chinaExp[0]);
+	$("select[name=inchina_month]").val(chinaExp[1]);
+	$("input[name=army]").each(function() {
+		if( $(this).val() == military )
+		{
+			$(this).attr("checked", "checked");
+		}
+		else
+		{
+			$(this).attr("checked", "");
+		}
+	});
+	$("input[name=isCareer]").each(function() {
+		if( $(this).val() == isCareer )
+		{
+			$(this).attr("checked", "checked");
+		}
+		else
+		{
+			$(this).attr("checked", "");
+		}
+	});
+	$("input[name=address]").val(address);
+	$("textarea[name=award_text]").val(description);
+	$("textarea[name=introduce]").val(aboutMe);
+
 });
 
 (function($){

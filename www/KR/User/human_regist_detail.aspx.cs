@@ -13,6 +13,11 @@ using System.Xml.Linq;
 using Site.Web.Page;
 using Com.Library.DB.User;
 using Com.Library.Translate;
+using System.Collections.Generic;
+using Com.Framework.Data;
+using System.Runtime.Serialization.Json;
+using System.IO;
+using System.Text;
 
 public partial class KR_User_human_regist_detail : SitePage
 {
@@ -20,7 +25,12 @@ public partial class KR_User_human_regist_detail : SitePage
     public UserEntity UserInfo = null;
 	public TranslateHelper.ContryCode CountryCode = TranslateHelper.ContryCode.KR;
 	public ResumeDetailEntity ResumeDetail { get; set; }
-    protected void Page_Load(object sender, EventArgs e)
+	public List<ResumeAcademicAbilityEntity> ResumeAcademicAbilities { get; set; }
+	public List<ResumeCareerEntity> ResumeCareers { get; set; }
+	public List<ResumeLanguageEntity> ResumeLanguages { get; set; }
+	public List<ResumeLicenseEntity> ResumeLicenses { get; set; }
+
+	protected void Page_Load(object sender, EventArgs e)
     {
          {
                 UserGetInfoArguments infoArg = new UserGetInfoArguments();
@@ -60,6 +70,18 @@ public partial class KR_User_human_regist_detail : SitePage
 		resumeDetailGetInfo.ExecuteNonQuery();
 		ResumeDetail = resumeDetailGetInfo.GetOutput();
 
+		// detailAcademy
+		ResumeAcademicAbilities = SetList<ResumeAcademicAbilityEntity>(delegate(IArguments arg) { ResumeAcademicAbilityGetList getlist = new ResumeAcademicAbilityGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
+
+		// detailCareer
+		ResumeCareers = SetList<ResumeCareerEntity>(delegate(IArguments arg) { ResumeCareerGetList getlist = new ResumeCareerGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
+
+		// detailLanguage
+		ResumeLanguages = SetList<ResumeLanguageEntity>(delegate(IArguments arg) { ResumeLanguageGetList getlist = new ResumeLanguageGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
+
+		// detailLicense
+		ResumeLicenses = SetList<ResumeLicenseEntity>(delegate(IArguments arg) { ResumeLicenseGetList getlist = new ResumeLicenseGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
+
         if (this.IsPostBack)
         {
             //Detail 등록
@@ -72,28 +94,53 @@ public partial class KR_User_human_regist_detail : SitePage
             inchina_month = Request["inchina_month"] == null ? String.Empty : Request["inchina_month"],
             army = Request["army"] == null ? String.Empty : Request["army"],
             isCareer = Request["isCareer"] == null ? String.Empty : Request["isCareer"],
-            address = Request["address"] == null ? String.Empty : Request["address"];
+            address = Request["address"] == null ? String.Empty : Request["address"],
+			description = Request["award_text"] == null ? string.Empty : Request["award_text"],
+			aboutMe = Request["introduce"] == null ? string.Empty : Request["introduce"];
 
-            {
-                ResumeDetailCreate create = new ResumeDetailCreate();
-                create.SetArguments(
-                    new ResumeDetailCreateArguments()
-                    {
+			if (ResumeDetail.ResumeDetailNo > 0)
+			{
+				ResumeDetailCreate create = new ResumeDetailCreate();
+				create.SetArguments(
+					new ResumeDetailCreateArguments()
+					{
 						UserNo = this.WebCookies.UserNo,
 						CountryNo = (int)CountryCode,
-						AboutMe = "",
-                        Address = address,
-                        Age = Convert.ToByte(age),
-                        ChinaExp = inchina_year + "-" + inchina_month,
-                        Description = "",
-                        IsCareer = Convert.ToByte(isCareer),
-                        KoreanAge = Convert.ToByte(korean_age),
-                        Military = Convert.ToByte(isCareer),
-                        SSN1 = ssn1,
-                        SSN2 = ssn2
-                    });
-                create.ExecuteNonQuery();
-            }
+						AboutMe = aboutMe,
+						Address = address,
+						Age = Convert.ToByte(age),
+						ChinaExp = inchina_year + "-" + inchina_month,
+						Description = description,
+						IsCareer = Convert.ToByte(isCareer),
+						KoreanAge = Convert.ToByte(korean_age),
+						Military = Convert.ToByte(army),
+						SSN1 = ssn1,
+						SSN2 = ssn2
+					});
+				create.ExecuteNonQuery();
+			}
+			else
+			{
+				ResumeDetailModify modify = new ResumeDetailModify();
+				modify.SetArguments(
+					new ResumeDetailModifyArguments()
+					{
+						UserNo = this.WebCookies.UserNo,
+						CountryNo = (int)CountryCode,
+						AboutMe = aboutMe,
+						Address = address,
+						Age = Convert.ToByte(age),
+						ChinaExp = inchina_year + "-" + inchina_month,
+						Description = description,
+						IsCareer = Convert.ToByte(isCareer),
+						KoreanAge = Convert.ToByte(korean_age),
+						Military = Convert.ToByte(army),
+						SSN1 = ssn1,
+						SSN2 = (ssn2 == "*******" ? null : ssn2),
+						ResumeDetailNo = ResumeDetail.ResumeDetailNo
+					});
+				modify.ExecuteNonQuery();
+			}
 
             // Academic ability 등록
             string[]
@@ -201,45 +248,108 @@ public partial class KR_User_human_regist_detail : SitePage
         }
     }
 
+	protected List<Entity> SetList<Entity>(Func<IArguments, List<Entity>> func) where Entity : DataEntity, new()
+	{
+		IArguments arg = null;
+		Entity dummy = new Entity();
+		if (dummy is ResumeAcademicAbilityEntity)
+		{
+			arg = new ResumeAcademicAbilityGetListArguments();
+			((ResumeAcademicAbilityGetListArguments)arg).UserNo = WebCookies.UserNo;
+			((ResumeAcademicAbilityGetListArguments)arg).CountryNo = (int)CountryCode;
+		}
+		else if (dummy is ResumeCareerEntity)
+		{
+			arg = new ResumeCareerGetListArguments();
+			((ResumeCareerGetListArguments)arg).UserNo = WebCookies.UserNo;
+			((ResumeCareerGetListArguments)arg).CountryNo = (int)CountryCode;
+		}
+		else if (dummy is ResumeLanguageEntity)
+		{
+			arg = new ResumeLanguageGetListArguments();
+			((ResumeLanguageGetListArguments)arg).UserNo = WebCookies.UserNo;
+			((ResumeLanguageGetListArguments)arg).CountryNo = (int)CountryCode;
+		}
+		else if (dummy is ResumeLicenseEntity)
+		{
+			arg = new ResumeLicenseGetListArguments();
+			((ResumeLicenseGetListArguments)arg).UserNo = WebCookies.UserNo;
+			((ResumeLicenseGetListArguments)arg).CountryNo = (int)CountryCode;
+		}
+		return func(arg);
+
+	}
+
 	protected string GetDetailValue(string colName)
 	{
 		string retVal = string.Empty;
 		switch (colName)
 		{
 			case "SSN1":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.SSN1.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.SSN1.ToString(); } else { retVal = string.Empty; }
 				break;
 			case "SSN2":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = "*******"; } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = "*******"; } else { retVal = string.Empty; }
 				break;
 			case "KoreanAge":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.KoreanAge.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.KoreanAge.ToString(); } else { retVal = string.Empty; }
 				break;
 			case "Age":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.Age.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.Age.ToString(); } else { retVal = string.Empty; }
 				break;
 			case "ChinaExp":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.ChinaExp.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.ChinaExp.ToString(); } else { retVal = string.Empty; }
 				break;
 			case "Military":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.Military.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.Military.ToString(); } else { retVal = string.Empty; }
 				break;
 			case "IsCareer":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.IsCareer.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.IsCareer.ToString(); } else { retVal = string.Empty; }
 				break;
 			case "Address":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.Address.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.Address.ToString(); } else { retVal = string.Empty; }
 				break;
 			case "Description":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.Description.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.Description.ToString(); } else { retVal = string.Empty; }
 				break;
 			case "AboutMe":
-				if (ResumeDetail.ResumeDetailNo == 0) { retVal = ResumeDetail.AboutMe.ToString(); } else { retVal = string.Empty; }
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.AboutMe.ToString(); } else { retVal = string.Empty; }
 				break;
 			default : 
 				throw new Exception("invalid column name");
 		}
 
 		return retVal;
+	}
+
+	public string GetAcademicAbilityJson()
+	{
+		return GetJson(ResumeAcademicAbilities);
+	}
+
+	public string GetCareerJson()
+	{
+		return GetJson(ResumeCareers);
+	}
+
+	public string GetLanguageJson()
+	{
+		return GetJson(ResumeLanguages);
+	}
+
+	public string GetLicensesJson()
+	{
+		return GetJson(ResumeLicenses);
+	}
+
+	public string GetJson(object obj)
+	{
+		DataContractJsonSerializer serailizer = new DataContractJsonSerializer(obj.GetType());
+		MemoryStream ms = new MemoryStream();
+		serailizer.WriteObject(ms, obj);
+
+		string json = Encoding.UTF8.GetString(ms.ToArray());
+
+		return json;
 	}
 }
