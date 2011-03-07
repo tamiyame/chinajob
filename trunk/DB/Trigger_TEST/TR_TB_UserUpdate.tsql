@@ -18,7 +18,7 @@ SELECT
 ,	@Gender = Gender
 ,	@UserImage = ImageUrl
 FROM
-	UPDATED
+	INSERTED
 
 
 IF EXISTS (SELECT UserNo FROM dbo.TB_ResumeSearch WITH(NOLOCK) WHERE UserNo = @UserNo )
