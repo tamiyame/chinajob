@@ -430,4 +430,9 @@ public partial class KR_User_human_regist_detail : SitePage
 
 		return json.Replace("\\/","").Replace("\"Date(", "Date(").Replace("+0900)\"","+0900)");
 	}
+
+	public string GetText(string transCode)
+	{
+		return TranslateHelper.GetText(CountryCode, transCode);
+	}
 }

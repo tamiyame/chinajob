@@ -2,6 +2,14 @@
 <%@ Import Namespace="Com.Library.DB.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
+<script language="javascript" type="text/javascript">
+(function($)
+{
+	$.translateHelper.getText = function(transCode) {
+		return $.translateHelper.getTextCore(<%= (byte)CountryCode %>, transCode);
+	}
+})(jQuery);
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <input type="text" name="ResumeNo" value=""/>
@@ -34,9 +42,9 @@
                             <td rowspan="6" class="size-k-1-1">
                                 <img class="picture" width="104px" height="138px" src="<%=UserInfo.ImageUrl %>" />
                             </td>
-                            <td class="size-k-1-2 regist-label">국문</td>
+                            <td class="size-k-1-2 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_37") %></td>
                             <td class="size-k-1-3"><%=UserInfo.KRName %></td>
-                            <td class="size-k-1-4 regist-label">주민등록번호<span class="require">*</span></td>
+                            <td class="size-k-1-4 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_39")%><span class="require">*</span></td>
                             <td class="size-k-1-5">
                                 <table>
                                     <tr>
@@ -48,22 +56,22 @@
                             </td>                                                    
                         </tr>
                         <tr>
-                            <td class="regist-label">중문</td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_51")%></td>
                             <td><%=UserInfo.CNName %></td>
-                            <td class="regist-label">연령<span class="require">*</span></td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_53")%><span class="require">*</span></td>
                             <td>
                                 <table>
                                     <tr>
-                                        <td><input type="text" class="w3" name="korean_age"/>세</td>
-                                        <td>(만<input type="text" class="w3" name="age" />세)</td>
+                                        <td><input type="text" class="w3" name="korean_age"/><%= GetText("KR_user_human_regist_detail.aspx_57")%></td>
+                                        <td>(<%= GetText("KR_user_human_regist_detail.aspx_58") %><input type="text" class="w3" name="age" /><%= GetText("KR_user_human_regist_detail.aspx_57")%>)</td>
                                     </tr>
                                 </table>
                             </td>                                                    
                         </tr>
                         <tr>
-                            <td class="regist-label">영문</td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_64")%></td>
                             <td><%=UserInfo.ENGName %></td>
-                            <td class="regist-label">재중경험<span class="require">*</span></td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_66")%><span class="require">*</span></td>
                             <td>
                                 <table>
                                 <tr>
@@ -73,7 +81,7 @@
                                               { %>
                                                 <option value="<%=i %>"><%=i %></option>
                                             <%} %>
-                                        </select>년
+                                        </select><%= GetText("KR_user_human_regist_detail.aspx_76")%>
                                     </td>
                                     <td>
                                         <select class="month" name="inchina_month">
@@ -81,22 +89,22 @@
                                               { %>
                                                 <option value="<%=i %>"><%=i %></option>
                                             <%} %>
-                                        </select>개월
+                                        </select><%= GetText("KR_user_human_regist_detail.aspx_84")%>
                                     </td>
                                 </tr>
                             </table>
                             </td>                                                                                                    
                         </tr>
                         <tr>
-                            <td class="regist-label">한국연락처</td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_91")%></td>
                             <td><%=UserInfo.KRPhoneNo %></td>
-                            <td class="regist-label">중국연락처</td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_93")%></td>
                             <td>131-1111-1131</td>                                                                                                    
                         </tr>
                         <tr>
-                            <td class="regist-label">거주국가</td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_97")%></td>
                             <td><%=UserInfo.ResidanceCountry %></td>
-                            <td class="regist-label">병역<span class="require">*</span></td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_99")%><span class="require">*</span></td>
                             <td>
                                 <table>
                                     <tr>
@@ -104,28 +112,28 @@
                                             <input id="army1" type="radio" class="radio" name="army" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="army1">필</label>
+                                            <label for="army1"><%= GetText("KR_user_human_regist_detail.aspx_107")%></label>
                                         </td>
                                         <td>
                                             <input id="army2" type="radio" class="radio" name="army" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="army2">미필</label>
+                                            <label for="army2"><%= GetText("KR_user_human_regist_detail.aspx_113")%></label>
                                         </td>
                                         <td>
                                             <input id="army3" type="radio" class="radio" name="army" value="3"/>
                                         </td>
                                         <td>
-                                            <label for="army3">면제</label>
+                                            <label for="army3"><%= GetText("KR_user_human_regist_detail.aspx_119")%></label>
                                         </td>
                                     </tr>
                                 </table>
                             </td>                                                                                                    
                         </tr>
                         <tr>
-                            <td class="regist-label">이메일</td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_126")%></td>
                             <td><%=UserInfo.Email %></td>
-                            <td class="regist-label">경력여부<span class="require">*</span></td>
+                            <td class="regist-label"><%= GetText("KR_user_human_regist_detail.aspx_128")%><span class="require">*</span></td>
                             <td>
                                 <table>
                                     <tr>
@@ -133,20 +141,20 @@
                                             <input id="isCareer1" type="radio" class="radio" name="isCareer" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="isCareer1">신입</label>
+                                            <label for="isCareer1"><%= GetText("KR_user_human_regist_detail.aspx_136")%></label>
                                         </td>
                                         <td>
                                             <input id="isCareer2" type="radio" class="radio" name="isCareer" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="isCareer2">경력</label>
+                                            <label for="isCareer2"><%= GetText("KR_user_human_regist_detail.aspx_142")%></label>
                                         </td>
                                     </tr>
                                 </table>
                             </td>                                                                                                    
                         </tr>
                         <tr>
-                            <td class="regist-label" colspan="2">주소(현재 실 거주지)<span class="require">*</span></td>
+                            <td class="regist-label" colspan="2"><%= GetText("KR_user_human_regist_detail.aspx_149")%><span class="require">*</span></td>
                             <td colspan="3">
                                 <input type="text" name="address" class="w100"/>
                             </td>                                 
@@ -155,20 +163,20 @@
                 </div>
                 
                 <div class="regist-item">
-                    <div class="regist-header">2.학력 <span class="desc">(최종학력 기입, 단, 석사이상 소지자는 학사학위부터 기재해 주십시오.)</span></div>                                
+                    <div class="regist-header">2.<%= GetText("KR_user_human_regist_detail.aspx_158")%> <span class="desc"><%= GetText("KR_user_human_regist_detail.aspx_158_2")%></span></div>                                
                     <table class="regist-table">
                         <tr>
-                            <td class="size-k-2-1 regist-label">학교명</td>
-                            <td class="size-k-2-2 regist-label">재학기간(년,월)</td>
-                            <td class="size-k-2-3 regist-label">상태</td>
-                            <td class="size-k-2-4 regist-label">전공/부전공</td>
-                            <td class="size-k-2-5 regist-label">소재국가</td>                                                    
+                            <td class="size-k-2-1 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_161")%></td>
+                            <td class="size-k-2-2 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_162")%></td>
+                            <td class="size-k-2-3 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_163")%></td>
+                            <td class="size-k-2-4 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_164")%></td>
+                            <td class="size-k-2-5 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_165")%></td>                                                    
                         </tr>
                         <tr>
                            <td><input class="w100" name="education_school"/></td>
                            <td><input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/></td>
                            <td><select class="state" name="education_state">
-                                <option value="0">졸업</option>
+                                <option value="0"><%= GetText("KR_user_human_regist_detail.aspx_graduate")%></option>
                            </select></td>
                            <td><input class="w100" name="education_major"/></td>
                            <td><input class="w100" name="education_national"/></td>
@@ -177,7 +185,7 @@
                            <td><input class="w100" name="education_school"/></td>
                            <td><input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/></td>
                            <td><select class="state" name="education_state">
-                                <option value="0">졸업</option>
+                                <option value="0"><%= GetText("KR_user_human_regist_detail.aspx_graduate")%></option>
                            </select></td>
                            <td><input class="w100" name="education_major"/></td>
                            <td><input class="w100" name="education_national"/></td>
@@ -186,7 +194,7 @@
                            <td><input class="w100" name="education_school"/></td>
                            <td><input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/></td>
                            <td><select class="state" name="education_state">
-                                <option value="0">졸업</option>
+                                <option value="0"><%= GetText("KR_user_human_regist_detail.aspx_graduate")%></option>
                            </select></td>
                            <td><input class="w100" name="education_major"/></td>
                            <td><input class="w100" name="education_national"/></td>
@@ -195,13 +203,13 @@
                 </div>
                 
                 <div class="regist-item">
-                    <div class="regist-header">3.경력</div>                                
+                    <div class="regist-header">3.<%= GetText("KR_user_human_regist_detail.aspx_198")%></div>                                
                     <table class="regist-table">
                         <tr>
-                            <td class="size-k-3-1 regist-label">근무지(회사명)</td>
-                            <td class="size-k-3-2 regist-label">재직기간(년,월)</td>
-                            <td class="size-k-3-3 regist-label">직종</td>
-                            <td class="size-k-3-4 regist-label">직책 및 근무내역</td>                                             
+                            <td class="size-k-3-1 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_201")%></td>
+                            <td class="size-k-3-2 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_202")%></td>
+                            <td class="size-k-3-3 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_203")%></td>
+                            <td class="size-k-3-4 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_204")%></td>                                             
                         </tr>
                         <tr>
                            <td><input class="w100" name="career_company"/></td>
@@ -225,13 +233,13 @@
                 </div>
                 
                 <div class="regist-item">
-                    <div class="regist-header">4.외국어</div>                                
+                    <div class="regist-header">4.<%= GetText("KR_user_human_regist_detail.aspx_228")%></div>                                
                     <table class="regist-table">
                         <tr>
-                            <td class="size-k-4-1 regist-label">언어구분</td>
-                            <td class="size-k-4-2 regist-label">시험명 or (실제 수준 기술)</td>
-                            <td class="size-k-4-3 regist-label">시험점수/등급</td>
-                            <td class="size-k-4-4 regist-label">회화</td>                                             
+                            <td class="size-k-4-1 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_231")%></td>
+                            <td class="size-k-4-2 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_232")%></td>
+                            <td class="size-k-4-3 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_233")%></td>
+                            <td class="size-k-4-4 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_234")%></td>                                             
                         </tr>
                         <tr>
                            <td><input class="w100" name="language_type"/></td>                                              
@@ -244,19 +252,19 @@
                                             <input id="languageLevel-1" type="radio" class="radio" name="language_level_1" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-1">고급</label>
+                                            <label for="languageLevel-1"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_high")%></label>
                                         </td>
                                         <td>
                                             <input id="languageLevel-2" type="radio" class="radio" name="language_level_1" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-2">중급</label>
+                                            <label for="languageLevel-2"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_middle")%></label>
                                         </td>
                                         <td>
                                             <input id="languageLevel-3" type="radio" class="radio" name="language_level_1" value="3"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-3">초급</label>
+                                            <label for="languageLevel-3"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_low")%></label>
                                         </td>
                                     </tr>
                                 </table>
@@ -273,19 +281,19 @@
                                             <input id="Radio1" type="radio" class="radio" name="language_level_2" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-1">고급</label>
+                                            <label for="languageLevel-1"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_high")%></label>
                                         </td>
                                         <td>
                                             <input id="Radio2" type="radio" class="radio" name="language_level_2" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-2">중급</label>
+                                            <label for="languageLevel-2"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_middle")%></label>
                                         </td>
                                         <td>
                                             <input id="Radio3" type="radio" class="radio" name="language_level_2" value="3"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-3">초급</label>
+                                            <label for="languageLevel-3"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_low")%></label>
                                         </td>
                                     </tr>
                                 </table>
@@ -302,19 +310,19 @@
                                             <input id="Radio4" type="radio" class="radio" name="language_level_3" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-1">고급</label>
+                                            <label for="languageLevel-1"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_high")%></label>
                                         </td>
                                         <td>
                                             <input id="Radio5" type="radio" class="radio" name="language_level_3" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-2">중급</label>
+                                            <label for="languageLevel-2"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_middle")%></label>
                                         </td>
                                         <td>
                                             <input id="Radio6" type="radio" class="radio" name="language_level_3" value="3"/>
                                         </td>
                                         <td>
-                                            <label for="languageLevel-3">초급</label>
+                                            <label for="languageLevel-3"><%= GetText("KR_user_human_regist_detail.aspx_languagegrade_low")%></label>
                                         </td>
                                     </tr>
                                 </table>
@@ -324,12 +332,12 @@
                 </div>
                 
                 <div class="regist-item">
-                    <div class="regist-header">5.자격/면허</div>                                
+                    <div class="regist-header">5.<%= GetText("KR_user_human_regist_detail.aspx_327")%></div>                                
                     <table class="regist-table">
                         <tr>
-                            <td class="size-k-4-1 regist-label">발행년월</td>
-                            <td class="size-k-4-2 regist-label">자격/면허명</td>
-                            <td class="size-k-4-3 regist-label">발급기관</td>                                         
+                            <td class="size-k-4-1 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_330")%></td>
+                            <td class="size-k-4-2 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_331")%></td>
+                            <td class="size-k-4-3 regist-label"><%= GetText("KR_user_human_regist_detail.aspx_332")%></td>                                         
                         </tr>
                         <tr>
                             <td><input class="w100" name="licence_year"/></td>                                              
@@ -350,12 +358,12 @@
                 </div>
                 
                 <div class="regist-item">
-                    <div class="regist-header">6.보유기술 및 특기사항 <span class="desc">(해외어학연수경험, 컴퓨터능력, 훈련과정 수료사항 등 이력서에 추가할 내용을 기재하십시오.)</span></div>                                
+                    <div class="regist-header">6.<%= GetText("KR_user_human_regist_detail.aspx_353")%> <span class="desc"><%= GetText("KR_user_human_regist_detail.aspx_353_2")%></span></div>                                
                     <textarea class="w100" rows="20" name="award_text"></textarea>
                 </div>
                 
                 <div class="regist-item">
-                    <div class="regist-header">7.자기소개서</div>                                
+                    <div class="regist-header">7.<%= GetText("KR_user_human_regist_detail.aspx_358")%></div>                                
                     <textarea class="w100" rows="20" name="introduce"></textarea>
                 </div>
                 
@@ -363,7 +371,7 @@
                     <div class="regist-tool">
                         <span class="agree">
                             <input class="checkbox" id="agree" name="agree" type="checkbox" />
-                            <label for="agree">취업을 희망하여 동 이력서를 작성하였으며 해외취업을 목적으로 한국산업인력공단 월드잡사이트 등록 및 해외 구인기업체에게 제공되는 것에 동의합니다.</label>
+                            <label for="agree"><%= GetText("KR_user_human_regist_detail.aspx_336")%></label>
                             </span>
                         <br />
                         <br />
