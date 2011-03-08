@@ -18,6 +18,7 @@ using Com.Framework.Data;
 using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Text;
+using System.Web.Script.Serialization;
 
 public partial class KR_User_human_regist_detail : SitePage
 {
@@ -61,28 +62,9 @@ public partial class KR_User_human_regist_detail : SitePage
 			return;
 		}
 
-		// detail 정보 로드
-		ResumeDetailGetInfoArguments resumeDetailGetInfoArguments = new ResumeDetailGetInfoArguments();
-		resumeDetailGetInfoArguments.UserNo = WebCookies.UserNo;
-		resumeDetailGetInfoArguments.CountryNo = (int)CountryCode;
-		ResumeDetailGetInfo resumeDetailGetInfo = new ResumeDetailGetInfo();
-		resumeDetailGetInfo.SetArguments(resumeDetailGetInfoArguments);
-		resumeDetailGetInfo.ExecuteNonQuery();
-		ResumeDetail = resumeDetailGetInfo.GetOutput();
+		LoadInfo();
 
-		// detailAcademy
-		ResumeAcademicAbilities = SetList<ResumeAcademicAbilityEntity>(delegate(IArguments arg) { ResumeAcademicAbilityGetList getlist = new ResumeAcademicAbilityGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
-
-		// detailCareer
-		ResumeCareers = SetList<ResumeCareerEntity>(delegate(IArguments arg) { ResumeCareerGetList getlist = new ResumeCareerGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
-
-		// detailLanguage
-		ResumeLanguages = SetList<ResumeLanguageEntity>(delegate(IArguments arg) { ResumeLanguageGetList getlist = new ResumeLanguageGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
-
-		// detailLicense
-		ResumeLicenses = SetList<ResumeLicenseEntity>(delegate(IArguments arg) { ResumeLicenseGetList getlist = new ResumeLicenseGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
-
-        if (this.IsPostBack)
+		if (this.IsPostBack)
         {
             //Detail 등록
             string
@@ -98,7 +80,7 @@ public partial class KR_User_human_regist_detail : SitePage
 			description = Request["award_text"] == null ? string.Empty : Request["award_text"],
 			aboutMe = Request["introduce"] == null ? string.Empty : Request["introduce"];
 
-			if (ResumeDetail.ResumeDetailNo > 0)
+			if (ResumeDetail.ResumeDetailNo == 0)
 			{
 				ResumeDetailCreate create = new ResumeDetailCreate();
 				create.SetArguments(
@@ -183,8 +165,8 @@ public partial class KR_User_human_regist_detail : SitePage
 							ResumeAcademicAbilityNo = ResumeAcademicAbilities[i].ResumeAcademicAbilityNo,
 							CountryNo = (int)CountryCode,
 							SchoolCountryName = education_national[i],
-							SchoolStartDate = Convert.ToDateTime(education_period_start),
-							SchoolEndDate = Convert.ToDateTime(education_period_end),
+							SchoolStartDate = Convert.ToDateTime(education_period_start[i]),
+							SchoolEndDate = Convert.ToDateTime(education_period_end[i]),
 							SchoolName = education_school[i],
 							SchoolStatus = Convert.ToByte(education_state[i])
 						});
@@ -323,9 +305,35 @@ public partial class KR_User_human_regist_detail : SitePage
 					modify.ExecuteNonQuery();
 				}
             }
+
+			LoadInfo();
         }
     }
 
+	protected void LoadInfo()
+	{
+		// detail 정보 로드
+		ResumeDetailGetInfoArguments resumeDetailGetInfoArguments = new ResumeDetailGetInfoArguments();
+		resumeDetailGetInfoArguments.UserNo = WebCookies.UserNo;
+		resumeDetailGetInfoArguments.CountryNo = (int)CountryCode;
+		ResumeDetailGetInfo resumeDetailGetInfo = new ResumeDetailGetInfo();
+		resumeDetailGetInfo.SetArguments(resumeDetailGetInfoArguments);
+		resumeDetailGetInfo.ExecuteNonQuery();
+		ResumeDetail = resumeDetailGetInfo.GetOutput();
+
+		// detailAcademy
+		ResumeAcademicAbilities = SetList<ResumeAcademicAbilityEntity>(delegate(IArguments arg) { ResumeAcademicAbilityGetList getlist = new ResumeAcademicAbilityGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
+
+		// detailCareer
+		ResumeCareers = SetList<ResumeCareerEntity>(delegate(IArguments arg) { ResumeCareerGetList getlist = new ResumeCareerGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
+
+		// detailLanguage
+		ResumeLanguages = SetList<ResumeLanguageEntity>(delegate(IArguments arg) { ResumeLanguageGetList getlist = new ResumeLanguageGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
+
+		// detailLicense
+		ResumeLicenses = SetList<ResumeLicenseEntity>(delegate(IArguments arg) { ResumeLicenseGetList getlist = new ResumeLicenseGetList(); getlist.SetArguments(arg); getlist.Execute(); return getlist.GetRecords(); });
+
+	}
 	protected List<Entity> SetList<Entity>(Func<IArguments, List<Entity>> func) where Entity : DataEntity, new()
 	{
 		IArguments arg = null;
@@ -422,16 +430,13 @@ public partial class KR_User_human_regist_detail : SitePage
 
 	public string GetJson(object obj)
 	{
-		DataContractJsonSerializer serailizer = new DataContractJsonSerializer(obj.GetType());
-		MemoryStream ms = new MemoryStream();
-		serailizer.WriteObject(ms, obj);
+		JavaScriptSerializer ser = new JavaScriptSerializer();
+		string json = ser.Serialize(obj).Replace("\"\\/Date", "new Date").Replace("\\/\"", "") ;
 
-		string json = Encoding.UTF8.GetString(ms.ToArray());
-
-		return json.Replace("\\/","").Replace("\"Date(", "Date(").Replace("+0900)\"","+0900)");
+		return json;
 	}
 
-	public string GetText(string transCode)
+	new public string GetText(string transCode)
 	{
 		return TranslateHelper.GetText(CountryCode, transCode);
 	}

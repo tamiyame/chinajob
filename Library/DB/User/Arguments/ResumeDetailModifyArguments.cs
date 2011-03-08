@@ -21,7 +21,7 @@ namespace Com.Library.DB.User
 		public int ResumeDetailNo
 		{
 			get { return Convert.ToInt32(GetValue("ResumeDetailNo", 0)); }
-			set { SetValue("CountryNo", value); }
+			set { SetValue("ResumeDetailNo", value); }
 		}
 
 		public string SSN1

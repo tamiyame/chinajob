@@ -21,7 +21,7 @@ namespace Com.Library.DB.User
 		public int ResumeLanguageNo
 		{
 			get { return Convert.ToInt32(GetValue("ResumeLanguageNo", 0)); }
-			set { SetValue("CountryNo", value); }
+			set { SetValue("ResumeLanguageNo", value); }
 		}
 
 		public string LanguageName
