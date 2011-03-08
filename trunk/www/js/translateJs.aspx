@@ -4,17 +4,18 @@
 (function($)
 {
 	$.translateHelper = {};
-	$.translateHelper.contryCode_kr = 1;
-	$.translateHelper.contryCode_cn = 2;
+	$.translateHelper.countryCode_kr = 1;
+	$.translateHelper.countryCode_cn = 2;
+	$.translateHelper.countryCode_en = 3;
 	
-	$.translateHelper.contryCode = <%= this.WebMaster.CountryCode %>;
+	$.translateHelper.countryCode = <%= this.WebMaster.CountryCode %>;
 	$.translateHelper.translateData = new Array();
 <asp:Repeater ID="rptTranslateData" runat="server">
 <ItemTemplate>
-	$.translateHelper.translateData.push({"transCode":"<%# ((Com.Library.Translate.TranslateEntity)Container.DataItem).TransCode%>","krText":"<%# ((Com.Library.Translate.TranslateEntity)Container.DataItem).KrText%>","cnText":"<%# ((Com.Library.Translate.TranslateEntity)Container.DataItem).CnText%>"});
+	$.translateHelper.translateData.push({"transCode":"<%# ((Com.Library.Translate.TranslateEntity)Container.DataItem).TransCode%>","krText":"<%# ((Com.Library.Translate.TranslateEntity)Container.DataItem).KrText%>","cnText":"<%# ((Com.Library.Translate.TranslateEntity)Container.DataItem).CnText%>","enText":"<%# ((Com.Library.Translate.TranslateEntity)Container.DataItem).EnText%>"});
 </ItemTemplate>
 </asp:Repeater>
-	$.translateHelper.getText = function(transCode) {
+	$.translateHelper.getTextCore = function(countryCode, transCode) {
 		var entity = null;
 		var found = false;
 		$.each($.translateHelper.translateData, function(idx, data) {
@@ -34,13 +35,17 @@
 			return retVal;
 		}
 
-		if ( $.translateHelper.contryCode == $.translateHelper.contryCode_kr )
+		if ( countryCode == $.translateHelper.countryCode_kr )
 		{
 			retVal = entity.krText;
 		}
-		else if ( $.translateHelper.contryCode == $.translateHelper.contryCode_cn)
+		else if ( countryCode == $.translateHelper.countryCode_cn)
 		{
 			retVal = entity.cnText;
+		}
+		else if ( countryCode == $.translateHelper.countryCode_en)
+		{
+			retVal = entity.enText;
 		}
 		else
 		{
@@ -49,6 +54,9 @@
 		}
 		
 		return retVal;
+	}
+	$.translateHelper.getText = function(transCode) {
+		return $.translateHelper.getTextCore($.translateHelper.countryCode, transCode);
 	}
 })(jQuery);
 </asp:Content>
