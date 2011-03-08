@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="user_search.aspx.cs" Inherits="KR_Recruit_user_search" Title="제목 없음" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="human_search.aspx.cs" Inherits="KR_Recruit_human_search" Title="제목 없음" %>
 <%@ Import Namespace="Com.Library.DB.Category" %>
 <%@ Import Namespace="Com.Library.DB.User" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
@@ -211,7 +211,7 @@ jQuery(function()
                 }
             });
             
-            var url = "user_search.aspx?Country=" + CountryNo;
+            var url = "human_search.aspx?Country=" + CountryNo;
             if ( JoinType != null )
                 url += "&jointype=" + JoinType;
             if ( Category1No != 0 )

@@ -17,7 +17,7 @@ using Com.Framework.Data;
 using Com.Library.DB.User;
 using Com.Library.DB.Category;
 
-public partial class KR_Recruit_user_search : SitePage
+public partial class KR_Recruit_human_search : SitePage
 {
     public int CountryNo = 1;
     public byte JoinType = 3;
@@ -156,7 +156,7 @@ public partial class KR_Recruit_user_search : SitePage
 
     public string GetCountryType(byte _CountryNo)
     {
-        string url = "user_search.aspx?Country=" + _CountryNo;
+        string url = "human_search.aspx?Country=" + _CountryNo;
         if (JoinType != 3)
             url += "&jointype=" + JoinType.ToString();
         if (Category1No != 0)
@@ -178,7 +178,7 @@ public partial class KR_Recruit_user_search : SitePage
 
     public string PageMove(int pageNo)
     {
-        string url = "user_search.aspx?Country=" + CountryNo;
+        string url = "human_search.aspx?Country=" + CountryNo;
         url += "&PageNo=" + pageNo.ToString();
         if (JoinType != 3)
             url += "&jointype=" + JoinType.ToString();
