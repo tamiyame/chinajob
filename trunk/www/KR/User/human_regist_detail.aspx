@@ -447,8 +447,8 @@ jQuery(function()
 
     $.each(academicAbilities, function(idx, data) {
         $("input[name=education_school]:eq("+idx+")").val(data.SchoolName);
-        $("input[name=education_period_start]:eq("+idx+")").val(data.SchoolStartDate);
-        $("input[name=education_period_end]:eq("+idx+")").val(data.SchoolEndDate);
+        $("input[name=education_period_start]:eq("+idx+")").val(formatDateTime(data.SchoolStartDate));
+        $("input[name=education_period_end]:eq("+idx+")").val(formatDateTime(data.SchoolEndDate));
         $("select[name=education_state]:eq("+idx+")").val(data.SchoolStatus);
         $("input[name=education_major]:eq("+idx+")").val(data.MajorMinor);
         $("input[name=education_national]:eq("+idx+")").val(data.SchoolCountryName);
@@ -456,8 +456,8 @@ jQuery(function()
 
     $.each(careers, function(idx, data) {
         $("input[name=career_company]:eq("+idx+")").val(data.CareerCompanyName);
-        $("input[name=career_period_start]:eq("+idx+")").val(data.CareerStartDate);
-        $("input[name=career_period_end]:eq("+idx+")").val(data.CareerEndDate);
+        $("input[name=career_period_start]:eq("+idx+")").val(formatDateTime(data.CareerStartDate));
+        $("input[name=career_period_end]:eq("+idx+")").val(formatDateTime(data.CareerEndDate));
         $("input[name=career_department]:eq("+idx+")").val(data.CareerJobs);
         $("input[name=career_detail]:eq("+idx+")").val(data.CareerPosition);
     });
@@ -478,10 +478,26 @@ jQuery(function()
     });
 
     $.each(licenses, function(idx, data) {
-        $("input[name=licence_year]:eq("+idx+")").val(data.LicensedDate);
+        $("input[name=licence_year]:eq("+idx+")").val(formatDateTime(data.LicensedDate));
         $("input[name=licence_title]:eq("+idx+")").val(data.LicenseName);
         $("input[name=licence_institution]:eq("+idx+")").val(data.Organization);
     });
+    
+    function formatDateTime(date)
+    {
+		return date.getFullYear() + '-' + padLeft((date.getMonth()+1).toString(), 2, '0') + '-' + padLeft(date.getDate().toString(), 2, 0);
+    }
+    
+    function padLeft(str, n, pad)
+    {
+		t = '';
+		if(n>str.length){
+			for(i=0;i < n-str.length;i++){
+				t+=pad;
+			}
+		}
+		return t+str;
+    }
 });
 
 (function($){
