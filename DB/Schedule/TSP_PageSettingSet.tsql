@@ -21,6 +21,7 @@ ALTER PROCEDURE [dbo].[TSP_PageSettingSet]
 ,	@KRTitle	nvarchar(200)	= NULL
 ,	@CNTitle	nvarchar(200)	= NULL
 ,	@ENGTitle	nvarchar(200)	= NULL
+,	@MainViewer	tinyint			= NULL
 
 )
 as
@@ -78,6 +79,7 @@ SET
 ,	KRTitle = IsNull( @KRTitle, KRTitle )
 ,	CNTitle = IsNull( @CNTitle, CNTitle )
 ,	ENGTitle = IsNull( @ENGLogo, ENGTitle )
+,	MainViewer = IsNull( @MainViewer, MainViewer )
 SELECT
 	@FrkErrorCode = @@ERROR
 ,	@FrkRowCount = @@RowCount
@@ -95,6 +97,7 @@ BEGIN
 	,	KRTitle
 	,	CNTitle
 	,	ENGTitle
+	,	MainViewer
 	)
 	SELECT
 		@PhoneNo
@@ -106,6 +109,7 @@ BEGIN
 	,	@KRTitle
 	,	@CNTitle
 	,	@ENGTitle
+	,	@MainViewer
 END
 
 -- Frk Error Check

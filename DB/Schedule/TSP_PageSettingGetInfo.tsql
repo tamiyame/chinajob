@@ -22,6 +22,7 @@ ALTER PROCEDURE [dbo].[TSP_PageSettingGetInfo]
 ,	@KRTitle	nvarchar(200)	= NULL	OUTPUT
 ,	@CNTitle	nvarchar(200)	= NULL	OUTPUT
 ,	@ENGTitle	nvarchar(200)	= NULL	OUTPUT
+,	@MainViewer	tinyint			= NULL output
 )
 as
 Set NOCOUNT ON
@@ -75,6 +76,7 @@ SELECT
 ,	@KRTitle = KRTitle
 ,	@CNTitle = CNTitle
 ,	@ENGTitle = ENGTitle
+,	@MainViewer = MainViewer
 FROM
 	dbo.TB_PageSetting WITH (NOLOCK)
 
