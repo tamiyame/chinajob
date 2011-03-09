@@ -16,6 +16,9 @@ public partial class KR_Login_join_select : SitePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (this.WebCookies.IsLogin)
+        {
+            Response.Redirect(GetURL("/home/"));
+        }
     }
 }
