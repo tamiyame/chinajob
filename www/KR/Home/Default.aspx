@@ -143,21 +143,19 @@
     var isIE6 = /msie|MSIE 6/.test(navigator.userAgent);
     $.CompanyList = $.fn.CompanyList = {
         Prev: function() {
-            PageNo--;
-            if (PageNo < 0) {
+            if ( (PageNo - 1 ) < 0) {
                 PageNo = 0;
                 return;
             }
-            $.CompanyList.Page(PageNo);
+            $.CompanyList.Page(PageNo-1);
         },
 
         Next: function() {
-            PageNo++;
-            if (PageNo >= 4) {
+            if ( ( PageNo + 1 ) >= 4) {
                 PageNo = PageNo - 1;
                 return;
             }
-            $.CompanyList.Page(PageNo);
+            $.CompanyList.Page(PageNo+1);
         },
 
         Page: function(idx) {
