@@ -51,7 +51,7 @@ public partial class KR_Recruit_human_search : SitePage
         AreaCategory = Request.QueryString["Area"] == null ? 0 : Convert.ToInt32(Request.QueryString["Area"]);
         Gender = Request.QueryString["Gender"] == null ? (byte)0 : Convert.ToByte(Request.QueryString["Gender"]);
         UserName = Request.QueryString["Name"] == null ? string.Empty : Convert.ToString(Request.QueryString["Name"]);
-        Response.Write(JoinType);
+
         CategoryGetList list = new CategoryGetList();
         CategoryGetListArguments arg = new CategoryGetListArguments();
         arg.CategoryMasterNo = 1;
