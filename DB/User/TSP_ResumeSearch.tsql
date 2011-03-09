@@ -658,7 +658,6 @@ BEGIN
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
 				CountryNo = @CountryNo
-			AND	JoinType = @JoinType
 			ORDER BY
 				CountryNo DESC, RegistryTime DESC
 			SELECT
@@ -680,7 +679,6 @@ BEGIN
 					dbo.TB_ResumeSearch with ( nolock )
 				WHERE
 					CountryNo = @CountryNo
-				AND	JoinType = @JoinType
 			)	S
 			WHERE
 				ROWNUM > @SkipPage

@@ -43,7 +43,7 @@ public partial class KR_Recruit_human_search : SitePage
     {
         PageNo = Request.QueryString["PageNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["PageNo"]);
         CountryNo = Request.QueryString["Country"] == null ? 1 : Convert.ToInt32(Request.QueryString["Country"]);
-        JoinType = Request.QueryString["JoinType"] == null ? (byte)3 : Convert.ToByte(Request.QueryString["Join"]);
+        JoinType = Request.QueryString["Join"] == null ? (byte)3 : Convert.ToByte(Request.QueryString["Join"]);
         Category1No = Request.QueryString["Category1"] == null ? 0 : Convert.ToInt32(Request.QueryString["Category1"]);
         Category2No = Request.QueryString["Category2"] == null ? 0 : Convert.ToInt32(Request.QueryString["Category2"]);
         AgeCategory = Request.QueryString["Age"] == null ? 0 : Convert.ToInt32(Request.QueryString["Age"]);
@@ -51,7 +51,7 @@ public partial class KR_Recruit_human_search : SitePage
         AreaCategory = Request.QueryString["Area"] == null ? 0 : Convert.ToInt32(Request.QueryString["Area"]);
         Gender = Request.QueryString["Gender"] == null ? (byte)0 : Convert.ToByte(Request.QueryString["Gender"]);
         UserName = Request.QueryString["Name"] == null ? string.Empty : Convert.ToString(Request.QueryString["Name"]);
-
+        Response.Write(JoinType);
         CategoryGetList list = new CategoryGetList();
         CategoryGetListArguments arg = new CategoryGetListArguments();
         arg.CategoryMasterNo = 1;
@@ -158,7 +158,31 @@ public partial class KR_Recruit_human_search : SitePage
     {
         string url = "human_search.aspx?Country=" + _CountryNo;
         if (JoinType != 3)
-            url += "&jointype=" + JoinType.ToString();
+            url += "&join=" + JoinType.ToString();
+        if (Category1No != 0)
+            url += "&Category1=" + Category1No.ToString();
+        if (Category2No != 0)
+            url += "&Category2=" + Category2No.ToString();
+        if (AgeCategory != 0)
+            url += "&Age=" + AgeCategory.ToString();
+        if (CityCategory != 0)
+            url += "&City=" + CityCategory.ToString();
+        if (AreaCategory != 0)
+            url += "&Age=" + AreaCategory.ToString();
+        if (Gender != 0)
+            url += "&Gender=" + Gender.ToString();
+        if (UserName.Trim() != "")
+            url += "&Name=" + Server.UrlEncode(UserName);
+        return url;
+    }
+
+    public string DetailViewer(int userNo)
+    {
+        string url = "human_detail_basic.aspx?Country=" + CountryNo;
+        url += "&userNo=" + userNo.ToString();
+        url += "&PageNo=" + PageNo.ToString();
+        if (JoinType != 3)
+            url += "&join=" + JoinType.ToString();
         if (Category1No != 0)
             url += "&Category1=" + Category1No.ToString();
         if (Category2No != 0)
@@ -181,7 +205,7 @@ public partial class KR_Recruit_human_search : SitePage
         string url = "human_search.aspx?Country=" + CountryNo;
         url += "&PageNo=" + pageNo.ToString();
         if (JoinType != 3)
-            url += "&jointype=" + JoinType.ToString();
+            url += "&join=" + JoinType.ToString();
         if (Category1No != 0)
             url += "&Category1=" + Category1No.ToString();
         if (Category2No != 0)
@@ -197,5 +221,49 @@ public partial class KR_Recruit_human_search : SitePage
         if (UserName.Trim() != "")
             url += "&Name=" + Server.UrlEncode(UserName);
         return url;
+    }
+
+    public string GetCategoryName(int CategoryNo)
+    {
+        CategoryGetInfoArguments arg = new CategoryGetInfoArguments();
+        arg.CategoryNo = CategoryNo;
+        CategoryGetInfo info = new CategoryGetInfo();
+        info.SetArguments(arg);
+        info.ExecuteNonQuery();
+        if (CountryNo == 1)
+        {
+            return info.GetOutput().CategoryKRName;
+        }
+        else if (CountryNo == 2)
+        {
+            return info.GetOutput().CategoryCNName;
+        }
+        else
+        {
+            return info.GetOutput().CategoryENGName;
+        }
+    }
+
+    public string GetSubCategoryName(int SubCategoryNo)
+    {
+        SubCategoryGetInfoArguments arg = new SubCategoryGetInfoArguments();
+        arg.SubCategoryNo = SubCategoryNo;
+        SubCategoryGetInfo info = new SubCategoryGetInfo();
+        info.SetArguments(arg);
+        info.ExecuteNonQuery();
+
+        if (CountryNo == 1)
+        {
+            return info.GetOutput().SubCategoryKRName;
+        }
+        else if (CountryNo == 2)
+        {
+            return info.GetOutput().SubCategoryCNName;
+        }
+        else
+        {
+            return info.GetOutput().SubCategoryENGName;
+        }
+        
     }
 }

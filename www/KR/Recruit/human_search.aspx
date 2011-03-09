@@ -22,9 +22,9 @@
                                             <td class="col2" colspan="3">
                                                 <table>
                                                     <tr>
-                                                        <td><input class="radio" id="isJoin_1" type="radio" value="1" name="isJoin" /></td>
+                                                        <td><input class="radio" id="isJoin_1" type="radio" value="1" name="JoinType" <%=JoinType == 1 ? "checked='checked'":"" %>/></td>
                                                         <td><label for="isJoin_1">참가</label></td>
-                                                        <td><input class="radio" id="isJoin_2" type="radio" value="2" name="isJoin" /></td>
+                                                        <td><input class="radio" id="isJoin_2" type="radio" value="0" name="JoinType" <%=JoinType == 0 ? "checked='checked'":"" %>/></td>
                                                         <td><label for="isJoin_2">불참</label></td>
                                                     </tr>
                                                 </table>
@@ -213,7 +213,7 @@ jQuery(function()
             
             var url = "human_search.aspx?Country=" + CountryNo;
             if ( JoinType != null )
-                url += "&jointype=" + JoinType;
+                url += "&join=" + JoinType;
             if ( Category1No != 0 )
                 url += "&Category1=" + Category1No;
             if ( Category2No != 0 )
@@ -241,12 +241,31 @@ jQuery(function()
                                             <th>희망지역</th>
                                             <th>참가</th>                                            
                                         </tr>
-                                        <tr>
-                                            <td class="col1">김광현<span class="desc">(남,31)</span></td>
-                                            <td class="col2">영업/마케팅/판매</td>
-                                            <td class="col3">광동 > 심천</td>
-                                            <td class="col4">참가</td>
+ <% foreach(ResumeSearchEntity item in SearchList.Record) { %>
+                                        <tr style="cursor:pointer" onclick="location.href='<%=DetailViewer(item.UserNo)%>'">
+                                            <td class="col1"><%if (CountryNo == 1) { %><%=item.KRName%> <% } else if (CountryNo == 2) { %><%=item.CNName%> <%} else { %><%=item.ENGName%> <%} %>
+                                            <span class="desc">(
+                                            <%if (CountryNo == 1) { %>
+                                            <%=item.Gender == 1 ? "남" : "여" %>
+                                            <% } else if (CountryNo == 2) { %>
+                                            <%=item.Gender == 1 ? "男" : "女"%>
+                                            <%} else { %>
+                                            <%=item.Gender == 1 ? "Man" : "Girl"%>
+                                            <% } %>
+                                            ,<%=item.Age %>)</span></td>
+                                            <td class="col2"><%=GetCategoryName(item.Category1No) %> > <%=GetSubCategoryName(item.Category2No)%></td>
+                                            <td class="col3"><%=GetCategoryName(item.CityCategory)%> > <%=GetSubCategoryName(item.AreaCategory)%></td>
+                                            <td class="col4">
+                                            <%if (CountryNo == 1) { %>
+                                            <%=item.JoinType == 1 ? "참가" : "불참가"%>
+                                            <% } else if (CountryNo == 2) { %>
+                                            <%=item.JoinType == 1 ? "参加" : "不参加"%>
+                                            <%} else { %>
+                                            <%=item.JoinType == 1 ? "1" : "2"%>
+                                            <% } %>
+                                            </td>
                                         </tr>
+<% }%>
                                     </table>
                                     <div class="pager">
 <%
