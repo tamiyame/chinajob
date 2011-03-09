@@ -44,7 +44,7 @@ public partial class KR_Recruit_recruit_search : SitePage
     {
         PageNo = Request.QueryString["PageNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["PageNo"]);
         CountryNo = Request.QueryString["Country"] == null ? 1 : Convert.ToInt32(Request.QueryString["Country"]);
-        JoinType = Request.QueryString["JoinType"] == null ? (byte)3 : Convert.ToByte(Request.QueryString["Join"]);
+        JoinType = Request.QueryString["Join"] == null ? (byte)3 : Convert.ToByte(Request.QueryString["Join"]);
         Category1No = Request.QueryString["Category1"] == null ? 0 : Convert.ToInt32(Request.QueryString["Category1"]);
         Category2No = Request.QueryString["Category2"] == null ? 0 : Convert.ToInt32(Request.QueryString["Category2"]);
         AgeCategory = Request.QueryString["Age"] == null ? 0 : Convert.ToInt32(Request.QueryString["Age"]);
@@ -156,7 +156,7 @@ public partial class KR_Recruit_recruit_search : SitePage
     {
         string url = "recruit_search.aspx?Country=" + CountryNo;
         if (JoinType != 3)
-            url += "&jointype=" + JoinType.ToString();
+            url += "&join=" + JoinType.ToString();
         if (Category1No != 0)
             url += "&Category1=" + Category1No.ToString();
         if (Category2No != 0)
@@ -183,7 +183,7 @@ public partial class KR_Recruit_recruit_search : SitePage
         string url = "recruit_search.aspx?Country=" + CountryNo;
         url += "&PageNo=" + pageNo.ToString();
         if (JoinType != 3)
-            url += "&jointype=" + JoinType.ToString();
+            url += "&join=" + JoinType.ToString();
         if (Category1No != 0)
             url += "&Category1=" + Category1No.ToString();
         if (Category2No != 0)
@@ -212,7 +212,7 @@ public partial class KR_Recruit_recruit_search : SitePage
         url += "&RecruitNo=" + recruitNo.ToString();
         url += "&PageNo=" + PageNo.ToString();
         if (JoinType != 3)
-            url += "&jointype=" + JoinType.ToString();
+            url += "&join=" + JoinType.ToString();
         if (Category1No != 0)
             url += "&Category1=" + Category1No.ToString();
         if (Category2No != 0)

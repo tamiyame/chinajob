@@ -240,7 +240,7 @@ jQuery(function()
             
             var url = "recruit_search.aspx?Country=" + CountryNo;
             if ( JoinType != null )
-                url += "&jointype=" + JoinType;
+                url += "&join=" + JoinType;
             if ( Category1No != 0 )
                 url += "&Category1=" + Category1No;
             if ( Category2No != 0 )
