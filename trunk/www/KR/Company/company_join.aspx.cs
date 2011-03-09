@@ -21,7 +21,10 @@ public partial class KR_Company_company_join : SitePage
     public List<CategoryEntity> BusinessCategoryList = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (this.WebCookies.IsLogin)
+        {
+            Response.Redirect(GetURL("/home/"));
+        }
     }
 
     protected override void OnPreRender(EventArgs e)

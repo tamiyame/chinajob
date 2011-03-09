@@ -20,6 +20,11 @@ public partial class KR_User_human_join : SitePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (this.WebCookies.IsLogin)
+        {
+            Response.Redirect(GetURL("/home/"));
+        }
+
         if (!isUserCreate)
         {
             Response.Clear();
