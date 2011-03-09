@@ -138,53 +138,51 @@
                     </div>
 				</div>
 <script language="javascript" type="text/javascript">
-(function($)
-{
+(function($) {
     var PageNo = 0;
+    var isIE6 = /msie|MSIE 6/.test(navigator.userAgent);
     $.CompanyList = $.fn.CompanyList = {
-        Prev : function()
-        {
-            PageNo --;
-            if ( PageNo < 0 )
-            {
+        Prev: function() {
+            PageNo--;
+            if (PageNo < 0) {
                 PageNo = 0;
                 return;
             }
-            $.CompanyList.Page( PageNo );
+            $.CompanyList.Page(PageNo);
         },
-        
-        Next : function()
-        {
-            PageNo ++;
-            if ( PageNo >= 4 )
-            {
+
+        Next: function() {
+            PageNo++;
+            if (PageNo >= 4) {
                 PageNo = PageNo - 1;
                 return;
             }
-            $.CompanyList.Page( PageNo );
+            $.CompanyList.Page(PageNo);
         },
-        
-        Page : function( idx )
-        {
-            
-            $("#CompanyPager ul li:eq(" + PageNo + ") a").removeClass("icon-pager-select").addClass("icon-pager").parent().removeClass("select");
-            $("#CompanyPager ul li:eq(" + idx + ") a").removeClass("icon-pager").addClass("icon-pager-select");
+
+        Page: function(idx) {
+
+            $("#CompanyPager ul li:eq(" + PageNo + ") a").addClass("icon-pager").removeClass("icon-pager-select").parent().removeClass("select");
+            $("#CompanyPager ul li:eq(" + idx + ") a").addClass("icon-pager-select").removeClass("icon-pager");
             PageNo = idx;
             $.CompanyList.List();
+            if (isIE6) {
+                if (idx != 0)
+                    $("#divCompanyList").addClass('company_list_ie6fix');
+                else
+                    $("#divCompanyList").removeClass('company_list_ie6fix');
+            }
         },
-        
-        List : function()
-        {
 
-            $("#divCompanyList div.info-box" ).hide();
-            for ( var i = 0 + ( PageNo * 8 ); i < ( ( PageNo * 8 ) + 8 ); i ++ )
-            {
-                $("#divCompanyList div.info-box:eq(" + i + ")" ).show();
+        List: function() {
+
+            $("#divCompanyList div.info-box").hide();
+            for (var i = 0 + (PageNo * 8); i < ((PageNo * 8) + 8); i++) {
+                $("#divCompanyList div.info-box:eq(" + i + ")").show();
             }
         }
     }
 })(jQuery);
-
 </script>
 		
 <% } else { %>
