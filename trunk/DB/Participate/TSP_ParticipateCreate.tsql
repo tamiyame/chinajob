@@ -59,6 +59,30 @@ End
 
 -- Implementation
 
+DECLARE @SeqNo bigint
+
+SELECT 
+	@SeqNo = SeqNo
+FROM	
+	TB_Participate with ( nolock )
+WHERE
+	CompanyNo = @CompanyNo
+AND	RecruitNo = @RecruitNo
+AND	UserNo = @UserNo
+AND	ConfirmType = 0
+
+SELECT
+	@FrkErrorCode = @@ERROR
+,	@FrkRowCount = @@RowCount
+
+IF ( @SeqNo IS Not Null )
+BEGIN
+	SET @FrkErrorCode = 1
+	SET @FrkErrorMessage = '이미 면접 요청한 상태입니다.'
+	GOTO ERROR
+END
+
+
 INSERT	TB_Participate
 (
 	CompanyNo
