@@ -254,7 +254,13 @@
                                     <div>상기기업의 구인정보에 틀림없음을 확인합니다.</div>
                                     <div>
 <% if (!this.WebCookies.isCompany && this.WebCookies.IsLogin) { %>
-                                        <a class="icon icon-recruit-supply-btn"></a>
+                                        <a class="icon icon-recruit-supply-btn" href="javascript:;" onclick="onApply(); return false;"></a>
+<script language="javascript" type="text/javascript">
+function onApply()
+{
+    document.forms[ 0 ].submit();
+}
+</script>
 <% } else { %>
                                         <span style="height:100px">&nbsp;</span>
 <% } %>
