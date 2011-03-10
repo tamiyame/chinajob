@@ -238,6 +238,13 @@
     <Compile Include="DB\Menu\DataAccess\TopMenuRemove.cs" />
     <Compile Include="DB\Menu\Entity\SubMenuEntity.cs" />
     <Compile Include="DB\Menu\Entity\TopMenuEntity.cs" />
+    <Compile Include="DB\Participate\Arguments\ParticipateCreateArguments.cs" />
+    <Compile Include="DB\Participate\Arguments\ParticipateGetListArguments.cs" />
+    <Compile Include="DB\Participate\Arguments\ParticipateModifyArguments.cs" />
+    <Compile Include="DB\Participate\DataAccess\ParticipateCreate.cs" />
+    <Compile Include="DB\Participate\DataAccess\ParticipateGetList.cs" />
+    <Compile Include="DB\Participate\DataAccess\ParticipateModify.cs" />
+    <Compile Include="DB\Participate\Entity\ParticipateEntity.cs" />
     <Compile Include="DB\Schedule\Arguments\PageSettingSetArguments.cs" />
     <Compile Include="DB\Schedule\Arguments\RecruitScheduleSetArguments.cs" />
     <Compile Include="DB\Schedule\DataAccess\PageSettingGetInfo.cs" />
