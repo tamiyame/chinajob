@@ -20,7 +20,8 @@ namespace Com.Library.DB.User
             AddParameter("CareerEndDate", SqlDbType.DateTime, 8, SqlDataInOut.Input);
             AddParameter("CareerJobs", SqlDbType.NVarChar, 100, SqlDataInOut.Input);
             AddParameter("CareerPosition", SqlDbType.NVarChar, 200, SqlDataInOut.Input);
-            AddParameter("ResumeCareerNo", SqlDbType.Int, 4, SqlDataInOut.Output);
-        }
+			AddParameter("CareerLocation", SqlDbType.NVarChar, 100, SqlDataInOut.Input);
+			AddParameter("ResumeCareerNo", SqlDbType.Int, 4, SqlDataInOut.Output);
+		}
     }
 }

@@ -48,5 +48,11 @@ namespace Com.Library.DB.User
             get { return Convert.ToString(GetValue("CareerPosition", string.Empty)); }
             set { SetValue("CareerPosition", value); }
         }
-    }
+
+		public string CareerLocation
+		{
+			get { return Convert.ToString(GetValue("CareerLocation", string.Empty)); }
+			set { SetValue("CareerLocation", value); }
+		}
+	}
 }

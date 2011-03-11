@@ -13,5 +13,6 @@ namespace Com.Library.DB.User
         public DateTime CareerEndDate { get { return Convert.ToDateTime(GetData("CareerEndDate", DateTime.MaxValue)); } set { SetData("CareerEndDate", value); } }
         public string CareerJobs { get { return Convert.ToString(GetData("CareerJobs", string.Empty)); } set { SetData("CareerJobs", value); } }
         public string CareerPosition { get { return Convert.ToString(GetData("CareerPosition", string.Empty)); } set { SetData("CareerPosition", value); } }
+		public string CareerLocation { get { return Convert.ToString(GetData("CareerLocation", string.Empty)); } set { SetData("CareerLocation", value); } }
 	}
 }
