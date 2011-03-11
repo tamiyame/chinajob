@@ -287,9 +287,9 @@ $(document).ready(function() {
 	});
 	
 	$("div.tab ul li:eq(0)").click(function() { location.href=GetURL("/user/human_regist_basic.aspx"); });
-	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=1"); });
-	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=2"); });
-	$("div.tab ul li:eq(3)").click(function() { location.href=GetURL("/user/human_regist_detail.aspx?CountryCode=3"); });
+	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/user/human_regist_detail_kr.aspx"); });
+	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/user/human_regist_detail_cn.aspx"); });
+	$("div.tab ul li:eq(3)").click(function() { location.href=GetURL("/user/human_regist_detail_en.aspx"); });
 });
 (function($){
     $.extend({
