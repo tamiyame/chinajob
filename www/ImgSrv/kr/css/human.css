@@ -3,6 +3,8 @@
 .main .human-title-regist{ background:url('../Images/submenu/human-title-regist.png');width:449px;height:24px;margin-bottom:14px;}
 .main .human-title-detail{ background:url('../Images/submenu/human-title-detail.png');width:315px;height:24px;margin-bottom:14px;}
 .human-title-join{ background:url('../Images/submenu/human-title-join.png');width:253px;height:25px;margin-bottom:14px;margin-top:30px;}
+.human-title-manage{ background:url('../Images/human/human-title-manage.jpg');width:253px;height:25px;margin-bottom:14px;margin-top:30px;}
+.human-title-recruit-manage{ background:url('../Images/human/human-recruit-manage.jpg');width:255px;height:25px;margin-bottom:14px;margin-top:30px;}
 .human-title-search{background:url('../Images/submenu/human-title-list.png');width:253px;height:25px;margin-bottom:14px;}
 
 
@@ -141,3 +143,15 @@
 div.pager{text-align:center;border-bottom:none;margin-top:10px}
 div.pager a{margin:0 8px; font-family:Tahoma; font-size:14px;}
 div.pager a.select{color:#469ed9;}
+
+.recruit-table{width:777px;}
+.recruit-table tr{}
+.recruit-table tr th{text-align:center;background-color:#f7f7f7;color:#7d7d7d;font-size:12px;padding:0px;border-top:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb;}
+.recruit-table tr td{text-align:center;padding:0px;border-top:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb;}
+.recruit-table tr td.col1{color:#469ed9;font-size:12px;width:193px;}
+.recruit-table tr td.col2{color:#555555;font-size:12px;width:193px;}
+.recruit-table tr td.col3{color:#999999;font-family:'tahoma'; font-size:9px;width:179px;}
+.recruit-table tr td.col4{color:#ff6600;font-size:11px;width:105px;}
+.recruit-table tr td.col5 a,
+.recruit-table tr td.col5{color:#969696;font-size:11px;width:105px;}
+.recruit-table tr.toolbox td{border:none;border-top:2px solid #ebebeb;}
