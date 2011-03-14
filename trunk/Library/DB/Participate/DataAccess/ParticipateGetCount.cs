@@ -7,20 +7,17 @@ using Com.Library.DB;
 
 namespace Com.Library.DB.Participate
 {
-    public class ParticipateGetList : DBDataReader<ParticipateEntity, OutputEntity>
+    public class ParticipateGetCount : DBDataReader<DataEntity, OutputEntity>
     {
-        public ParticipateGetList()
-            : base(new ConnectionString(), "TSP_ParticipateGetList")
+        public ParticipateGetCount()
+            : base(new ConnectionString(), "TSP_ParticipateGetCount")
         {
         }
 
         protected override void ParameterInitialize()
         {
-            AddParameter("CompanyNo", SqlDbType.Int, 4, SqlDataInOut.Input);
-            AddParameter("RecruitNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("UserNo", SqlDbType.Int, 4, SqlDataInOut.Input);
-            AddParameter("PageNo", SqlDbType.Int, 4, SqlDataInOut.Input);
-            AddParameter("PageSize", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
+            AddParameter("IsConfirm", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
             AddParameter("CntRow", SqlDbType.Int, 4, SqlDataInOut.Output);
             AddParameter("CntTotal", SqlDbType.Int, 4, SqlDataInOut.Output);
         }

@@ -65,27 +65,7 @@ public partial class KR_Recruit_recruit_detail : SitePage
 
     protected override void OnPreRender(EventArgs e)
     {
-        if (this.IsPostBack)
-        {
-            ParticipateCreateArguments createArg = new ParticipateCreateArguments();
-            createArg.CompanyNo = CompanyNo;
-            createArg.RecruitNo = RecruitNo;
-            createArg.RecruitType = 1;
-            createArg.UserNo = this.WebCookies.UserNo;
-            try
-            {
-                ParticipateCreate create = new ParticipateCreate();
-                create.SetArguments(createArg);
-                create.ExecuteNonQuery();
-            }
-            catch (SPException spEx)
-            {
-                Response.Write("<script language='javascript'>location.href=location.href; alert('이미 면접요청된 기업입니다.');</script>");
-                Response.End();
-            }
-            Response.Write("<script language='javascript'>location.href=location.href; alert('면접 요청을 하였습니다.');</script>");
-            Response.End();
-        }
+        
         base.OnPreRender(e);
         
         CompanyGetInfoArguments companyInfoArg = new CompanyGetInfoArguments();
@@ -113,6 +93,31 @@ public partial class KR_Recruit_recruit_detail : SitePage
         recruitInfo.SetArguments(recruitInfoArg);
         recruitInfo.ExecuteNonQuery();
         RecruitInfo = recruitInfo.GetOutput();
+
+        if (this.IsPostBack)
+        {
+            ParticipateCreateArguments createArg = new ParticipateCreateArguments();
+            createArg.CompanyNo = CompanyNo;
+            createArg.RecruitNo = RecruitNo;
+            createArg.RecruitType = 1;
+            createArg.UserNo = this.WebCookies.UserNo;
+            createArg.CountryNo = RecruitInfo.CountryNo;
+            createArg.Category1No = RecruitInfo.Category1No;
+            createArg.Category2No = RecruitInfo.Category2No;
+            try
+            {
+                ParticipateCreate create = new ParticipateCreate();
+                create.SetArguments(createArg);
+                create.ExecuteNonQuery();
+            }
+            catch (SPException spEx)
+            {
+                Response.Write("<script language='javascript'>location.href=location.href; alert('이미 면접요청된 기업입니다.');</script>");
+                Response.End();
+            }
+            Response.Write("<script language='javascript'>location.href=location.href; alert('면접 요청을 하였습니다.');</script>");
+            Response.End();
+        }
     }
 
     public string GetCategoryName(int CategoryNo)

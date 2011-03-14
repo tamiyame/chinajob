@@ -239,9 +239,11 @@
     <Compile Include="DB\Menu\Entity\SubMenuEntity.cs" />
     <Compile Include="DB\Menu\Entity\TopMenuEntity.cs" />
     <Compile Include="DB\Participate\Arguments\ParticipateCreateArguments.cs" />
+    <Compile Include="DB\Participate\Arguments\ParticipateGetCountArguments.cs" />
     <Compile Include="DB\Participate\Arguments\ParticipateGetListArguments.cs" />
     <Compile Include="DB\Participate\Arguments\ParticipateModifyArguments.cs" />
     <Compile Include="DB\Participate\DataAccess\ParticipateCreate.cs" />
+    <Compile Include="DB\Participate\DataAccess\ParticipateGetCount.cs" />
     <Compile Include="DB\Participate\DataAccess\ParticipateGetList.cs" />
     <Compile Include="DB\Participate\DataAccess\ParticipateModify.cs" />
     <Compile Include="DB\Participate\Entity\ParticipateEntity.cs" />

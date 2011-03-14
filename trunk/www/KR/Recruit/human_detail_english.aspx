@@ -44,18 +44,18 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                             <div class="tab">
 					            <ul>
 						            <li class="icon icon-folder-middle-off">
-							            <div>기본정보</div>
+							            <div><a href="<%=GetDetailViewer("human_detail_basic.aspx",this.UserNo)  %>">기본정보</a></div>
 						            </li>
 						            <li class="icon icon-folder-middle-off">
-							            <div>한국어</div>
+							            <div><a href="<%=GetDetailViewer("human_detail_korean.aspx",this.UserNo)  %>">한국어</a></div>
 						            </li>	
-						            <li class="icon icon-folder-middle-off">
-							            <div>中文</div>
+						            <li class="select icon icon-folder-middle-on">
+							            <div><a href="<%=GetDetailViewer("human_detail_china.aspx",this.UserNo)  %>">中文</a></div>
 						            </li>
-						            <li class="select last icon icon-folder-middle-on">
-							            <div>English</div>
+						            <li class="last icon icon-folder-middle-off">
+							            <div><a href="<%=GetDetailViewer("human_detail_english.aspx",this.UserNo)  %>">English</a></div>
 						            </li>												
-					            </ul>						
+					            </ul>					
 				            </div>
                             <div class="tab-content">
                                 <div class="regist">
@@ -293,7 +293,7 @@ thanks
                                             <br />
                                             <a class="icon icon-human-interview-btn" href="javascript:;"></a>
                                         </div>                                        
-                                        <div class="regist-tool-right"><a class="icon icon-board-list" href="javascript:;"></a></div>
+                                        <div class="regist-tool-right"><a class="icon icon-board-list" href="<%=GetSearch()%>"></a></div>
                                     </div>
                                 </div>
                             </div>

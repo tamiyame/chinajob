@@ -61,6 +61,7 @@ public partial class CN_Company_company_join : SitePage
             fax = Request.Form["fax"];
             address = Request.Form["address"];
             homepage = Request.Form["homepage"];
+            fund = fund.Replace(",", "");
 
             CompanyCreateArguments arg = new CompanyCreateArguments();
             arg.CountryNo = 1;
@@ -77,7 +78,14 @@ public partial class CN_Company_company_join : SitePage
             arg.CapitalType = Convert.ToByte(Company_type == "" ? "0" : Company_type);
             arg.FoundYear = build_date;
             arg.EmployeeCount = Convert.ToInt32(employ_count == "" ? "0" : employ_count);
-            arg.Capital = Convert.ToInt64(fund == "" ? "0" : fund);
+            try
+            {
+                arg.Capital = Convert.ToInt64(fund == "" ? "0" : fund);
+            }
+            catch (Exception ex)
+            {
+                arg.Capital = 0;
+            }
             arg.CapitalCurrencyNo = Convert.ToInt32(fundcurrency == "" ? "0" : fundcurrency);
             arg.Turnover = Convert.ToInt64(investment == "" ? "0" : investment);
             arg.TurnoverCurrencyNo = Convert.ToInt32(investment_currency == "" ? "0" : investment_currency);

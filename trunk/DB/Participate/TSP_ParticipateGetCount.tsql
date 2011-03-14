@@ -6,15 +6,17 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-alter PROCEDURE [dbo].[TSP_ParticipateModify]
+create PROCEDURE [dbo].[TSP_ParticipateGetCount]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
-,	@SeqNo	bigint	
-,	@ConfirmType	tinyint	= null
-,	@Status	tinyint	= null
+,	@UserNo	int	 = null
+,	@IsConfirm tinyint = null
+
+,	@CntRow	int	= NULL	OUTPUT
+,	@CntTotal	int	= NULL	OUTPUT
 )
 as
 Set NOCOUNT ON
@@ -59,15 +61,15 @@ End
 -- Implementation
 
 
-UPDATE
-	dbo.TB_Participate
-SET
-	ConfirmType = IsNull( @ConfirmType, ConfirmType )
-,	Status = IsNull( @Status, Status )
-,	DateLastUpdated = @FrkDateNow
-WHERE
-	SeqNo = @SeqNo
-
+	SELECT
+		@CntTotal = Count( * )
+	FROM
+		dbo.TB_Participate with ( nolock )
+	WHERE
+		UserNo = @UserNo
+	AND	ConfirmType = @IsConfirm
+	AND	Status = 1
+	SET @CntRow = @CntTotal
 
 -- Frk Error Check
 SELECT
