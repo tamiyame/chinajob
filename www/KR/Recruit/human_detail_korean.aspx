@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
-<script language="javascript" type="text/javascript" src=human_detail.js></script>
+<script language="javascript" type="text/javascript" src="human_detail.js"></script>
 <script language="javascript" type="text/javascript">
 (function($)
 {
@@ -64,43 +64,43 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                     <img class="picture" width="104px" height="138px" src="/FileServer/Company/10/Company_1024.jpg" />
                                                 </td>
                                                 <td class="size-k-1-2 regist-label">국문</td>
-                                                <td class="size-k-1-3">김개똥</td>
+                                                <td class="size-k-1-3"><%=UserInfo.KRName%></td>
                                                 <td class="size-k-1-4 regist-label">주민등록번호</td>
-                                                <td class="size-k-1-5">840924-1846018</td>                                                    
+                                                <td class="size-k-1-5 ssn">840924-1846018</td>                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">중문</td>
-                                                <td>김개똥</td>
+                                                <td><%=UserInfo.CNName%></td>
                                                 <td class="regist-label">연령</td>
-                                                <td>24세 (만 23세)</td>                                                    
+                                                <td class="age">24세 (만 23세)</td>                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">영문</td>
-                                                <td>Kim Kim Kim</td>
+                                                <td><%=UserInfo.ENGName%></td>
                                                 <td class="regist-label">재중경험</td>
-                                                <td>3년 3개월</td>                                                                                                    
+                                                <td class="inchina">3년 3개월</td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">한국연락처</td>
-                                                <td>011-1111-1111</td>
+                                                <td><%=UserInfo.KRPhoneNo%></td>
                                                 <td class="regist-label">중국연락처</td>
-                                                <td>131-1111-1131</td>                                                                                                    
+                                                <td><%=UserInfo.CNPhoneNo%></td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">거주국가</td>
-                                                <td>중국</td>
+                                                <td><%=GetCountryName(UserInfo.ResidanceCountry)%></td>
                                                 <td class="regist-label">병역</td>
-                                                <td>미필</td>                                                                                                    
+                                                <td class="army">미필</td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">이메일</td>
-                                                <td>asdad@asd.com</td>
+                                                <td><%=UserInfo.Email%></td>
                                                 <td class="regist-label">경력여부</td>
-                                                <td>신입</td>                                                                                                    
+                                                <td class="isCareer">신입</td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label" colspan="2">주소(현재 실 거주지)</td>
-                                                <td colspan="3">주소주소</td>                                 
+                                                <td colspan="3" class="address">주소주소</td>                                 
                                             </tr>
                                         </table>
                                     </div>
@@ -116,49 +116,49 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="size-k-2-5 regist-label">소재국가</td>                                                    
                                             </tr>
                                             <tr>
-                                               <td>서울대학교</td>
+                                               <td class="education_school"></td>
                                                <td>
                                                    <table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.2</td>
+                                                            <td class="size-sub-k-2-1 education_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2011.3</td>
+                                                            <td class="size-sub-k-2-3 education_period_end"></td>
                                                         </tr>
                                                    </table>
                                                </td>
-                                               <td class="v-center">졸업</td>
-                                               <td>대외한어과</td>
-                                               <td>한국</td>
+                                               <td class="v-center education_state"></td>
+                                               <td class="education_major"></td>
+                                               <td class="education_national"></td>
                                             </tr>
                                             <tr>
-                                               <td>서울대학교</td>
+                                               <td class="education_school"></td>
                                                <td>
                                                    <table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.2</td>
+                                                            <td class="size-sub-k-2-1 education_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2011.3</td>
+                                                            <td class="size-sub-k-2-3 education_period_end"></td>
                                                         </tr>
                                                    </table>
                                                </td>
-                                               <td class="v-center">졸업</td>
-                                               <td>대외한어과</td>
-                                               <td>한국</td>
+                                               <td class="v-center education_state"></td>
+                                               <td class="education_major"></td>
+                                               <td class="education_national"></td>
                                             </tr>
                                             <tr>
-                                               <td>서울대학교</td>
+                                               <td class="education_school"></td>
                                                <td>
                                                    <table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.2</td>
+                                                            <td class="size-sub-k-2-1 education_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2011.3</td>
+                                                            <td class="size-sub-k-2-3 education_period_end"></td>
                                                         </tr>
                                                    </table>
                                                </td>
-                                                   <td class="v-center">졸업</td>
-                                               <td>대외한어과</td>
-                                               <td>한국</td>
+                                                   <td class="v-center education_state"></td>
+                                               <td class="education_major"></td>
+                                               <td class="education_national"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -173,46 +173,46 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="size-k-3-4 regist-label">직책 및 근무내역</td>                                             
                                             </tr>
                                             <tr>
-                                               <td>대한적십자</td>
+                                               <td class="career_company"></td>
                                                <td>
                                                    <table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2008.8</td>
+                                                            <td class="size-sub-k-2-3 career_period_end"></td>
                                                         </tr>
                                                    </table>
                                                </td>
-                                               <td>정부기관</td>
-                                               <td>인턴,자원봉사</td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
                                             </tr>
                                             <tr>
-                                               <td>대한적십자</td>
+                                               <td class="career_company"></td>
                                                <td>
                                                    <table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2008.8</td>
+                                                            <td class="size-sub-k-2-3"></td>
                                                         </tr>
                                                    </table>
                                                </td>
-                                               <td>정부기관</td>
-                                               <td>인턴,자원봉사</td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
                                             </tr>
                                             <tr>
-                                               <td>대한적십자</td>
+                                               <td class="career_company"></td>
                                                <td>
                                                    <table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2008.8</td>
+                                                            <td class="size-sub-k-2-3 career_period_end"></td>
                                                         </tr>
                                                    </table>
                                                </td>
-                                               <td>정부기관</td>
-                                               <td>인턴,자원봉사</td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -227,22 +227,22 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="size-k-4-4 regist-label">회화</td>                                             
                                             </tr>
                                             <tr>
-                                               <td>중국어</td>
-                                               <td>신HSK</td>
-                                               <td>5급</td>
-                                               <td>고급</td>
+                                               <td class="language_type"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
+                                               <td class="language_level"></td>
                                             </tr>
                                             <tr>
-                                               <td>중국어</td>
-                                               <td>신HSK</td>
-                                               <td>5급</td>
-                                               <td>고급</td>
+                                               <td class="language_type"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
+                                               <td class="language_level"></td>
                                             </tr>
                                             <tr>
-                                               <td>중국어</td>
-                                               <td>신HSK</td>
-                                               <td>5급</td>
-                                               <td>고급</td>
+                                               <td class="language_type"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
+                                               <td class="language_level"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -256,16 +256,26 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="size-k-4-3 regist-label">발급기관</td>                                         
                                             </tr>
                                             <tr>
-                                                <td>2007.4</td>
-                                                <td>운전면허 보통1급</td>
-                                                <td>서울지방경찰청</td>
+                                                <td class="licence_year"></td>
+                                                <td class="licence_title"></td>
+                                                <td class="licence_institution"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="licence_year"></td>
+                                                <td class="licence_title"></td>
+                                                <td class="licence_institution"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="licence_year"></td>
+                                                <td class="licence_title"></td>
+                                                <td class="licence_institution"></td>
                                             </tr>
                                         </table>
                                     </div>
                                     
                                     <div class="regist-item">
                                         <div class="regist-header">6.보유기술 및 특기사항</div>                                
-                                        <textarea class="w100" rows="20" name="award-text">
+                                        <textarea class="w100" rows="20" name="award_text" readonly="readonly">
                                             이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다
 이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고
 이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다이쁘고 착합니다
@@ -276,7 +286,7 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                     
                                     <div class="regist-item">
                                         <div class="regist-header">7.자기소개서</div>                                
-                                        <textarea class="w100" rows="20" name="introduce">
+                                        <textarea class="w100" rows="20" name="introduce" readonly="readonly">
                                         역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다
 역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다
 역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다역시나 이쁘고 착합니다

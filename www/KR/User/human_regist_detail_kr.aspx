@@ -124,7 +124,7 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                         </tr>
                         <tr>
                             <td class="regist-label">거주국가</td>
-                            <td><%=UserInfo.ResidanceCountry%></td>
+                            <td><%=GetCountryName(UserInfo.ResidanceCountry)%></td>
                             <td class="regist-label">병역<span class="require">*</span></td>
                             <td>
                                 <table>

@@ -61,37 +61,37 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                         <table class="regist-table">
                                             <tr>
                                                 <td class="regist-label">姓名</td>
-                                                <td>金金金</td>
+                                                <td><%=UserInfo.CNName%></td>
                                                 <td class="regist-label">性別</td>
-                                                <td>女</td>                                                    
+                                                <td><%=UserInfo.Gender==1?"男":"女" %></td>                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">出生年月</td>
-                                                <td>2011年 8月 23日</td>
+                                                <td><%=UserInfo.Birthday.ToString("yyyy年 MM月 dd日") %></td>
                                                 <td class="regist-label">工作年限</td>
-                                                <td>无</td>                                                                                                    
+                                                <td class="isCareer">无</td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">最高学历(学位)</td>
                                                 <td>大学</td>
                                                 <td class="regist-label">毕业学校</td>
-                                                <td>复旦大学</td>                                                                                                    
+                                                <td class="education_school">复旦大学</td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">专业</td>
-                                                <td>汉语</td>
+                                                <td class="education_major">汉语</td>
                                                 <td class="regist-label">毕业时间</td>
-                                                <td>2010.5</td>                                                                                                    
+                                                <td class="education_state">2010.5</td>                                                                                                    
                                             </tr>                                            
                                             <tr>
                                                 <td class="regist-label">现详细居住地址</td>
-                                                <td colspan="3">上海市民港区古北路5382弄14号1392室</td>                                 
+                                                <td colspan="3" class="address">上海市民港区古北路5382弄14号1392室</td>                                 
                                             </tr>
 											<tr>
                                                 <td class="regist-label">手机</td>
-                                                <td>131-4443-2124</td>
+                                                <td><%=UserInfo.CNPhoneNo%></td>
                                                 <td class="regist-label">电子邮件</td>
-                                                <td>kimkimkim@hotmail.com</td>                                                                                                    
+                                                <td><%=UserInfo.Email%></td>                                                                                                    
                                             </tr>
                                         </table>
                                     </div>
@@ -110,61 +110,46 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                <td>
 													<table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2010.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2010.8</td>
+                                                            <td class="size-sub-k-2-3 career_period_end"></td>
                                                         </tr>
 													</table>
 											   </td>
-                                               <td>上网</td>
-                                               <td>门户网站部</td>
-                                               <td>经历</td>
-                                               <td>无</td>
+                                               <td class="career_company"></td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
+                                               <td class="career_location"></td>
                                             </tr>
-											<tr>
+                                            <tr>
                                                <td>
 													<table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2010.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2010.8</td>
+                                                            <td class="size-sub-k-2-3 career_period_end"></td>
                                                         </tr>
 													</table>
 											   </td>
-                                               <td>上网</td>
-                                               <td>门户网站部</td>
-                                               <td>经历</td>
-                                               <td>无</td>
+                                               <td class="career_company"></td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
+                                               <td class="career_location"></td>
                                             </tr>
-											<tr>
+                                            <tr>
                                                <td>
 													<table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2010.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2010.8</td>
+                                                            <td class="size-sub-k-2-3 career_period_end"></td>
                                                         </tr>
 													</table>
 											   </td>
-                                               <td>上网</td>
-                                               <td>门户网站部</td>
-                                               <td>经历</td>
-                                               <td>无</td>
-                                            </tr>
-											<tr>
-                                               <td>
-													<table>
-                                                        <tr>
-                                                            <td class="size-sub-k-2-1">2010.6</td>
-                                                            <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2010.8</td>
-                                                        </tr>
-													</table>
-											   </td>
-                                               <td>上网</td>
-                                               <td>门户网站部</td>
-                                               <td>经历</td>
-                                               <td>无</td>
+                                               <td class="career_company"></td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
+                                               <td class="career_location"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -174,34 +159,34 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                         <table class="regist-table">
                                             <tr>
                                                 <td class="regist-label" style="width:141px">语言</td>
-                                                <td class="regist-label" style="width:258px">>考试名称</td>
-                                                <td class="regist-label" style="width:182px">>分数</td>
-                                                <td class="regist-label" style="width:143px">>会话</td>                                             
+                                                <td class="regist-label" style="width:258px">考试名称</td>
+                                                <td class="regist-label" style="width:182px">分数</td>
+                                                <td class="regist-label" style="width:143px">会话</td>                                             
                                             </tr>
                                             <tr>
-                                               <td>汉语</td>
-                                               <td>新HSK</td>
-                                               <td>五级</td>
-                                               <td>上</td>
+                                               <td class="language_type">汉语</td>
+                                               <td class="language_testname">新HSK</td>
+                                               <td class="language_score">五级</td>
+                                               <td class="language_level">上</td>
                                             </tr>
-											<tr>
-                                               <td>汉语</td>
-                                               <td>新HSK</td>
-                                               <td>五级</td>
-                                               <td>上</td>
+                                            <tr>
+                                               <td class="language_type">汉语</td>
+                                               <td class="language_testname">新HSK</td>
+                                               <td class="language_score">五级</td>
+                                               <td class="language_level">上</td>
                                             </tr>
-											<tr>
-                                               <td>汉语</td>
-                                               <td>新HSK</td>
-                                               <td>五级</td>
-                                               <td>上</td>
+                                            <tr>
+                                               <td class="language_type">汉语</td>
+                                               <td class="language_testname">新HSK</td>
+                                               <td class="language_score">五级</td>
+                                               <td class="language_level">上</td>
                                             </tr>
                                         </table>
                                     </div>
                                                                         
                                     <div class="regist-item">
                                         <div class="regist-header">自我评价（主要业绩，个人特长，电脑能力等）</div>                                
-                                        <textarea class="w100" rows="20">
+                                        <textarea class="w100" rows="20" name="award_text" readonly="readonly">
                                             哈哈哈
 我是很漂亮哈哈哈
 我是很漂亮哈哈哈我是很漂亮我是很漂亮我是很漂亮我是很漂亮我是很漂亮我是很漂亮

@@ -425,6 +425,12 @@ namespace Com.Library.Translate
 				initData.Add(new TranslateEntity("KR_user_human_regist_detail.aspx_523", "등록동의여부를 확인해주세요.", "등록동의여부를 확인해주세요.c", "등록동의여부를 확인해주세요.e"));
 				initData.Add(new TranslateEntity("KR_user_human_regist_detail.aspx_527", "학력을 하나이상 입력해 주세요", "학력을 하나이상 입력해 주세요c", "학력을 하나이상 입력해 주세요e"));
 				initData.Add(new TranslateEntity("KR_user_human_regist_detail.aspx_531", "외국어를 하나이상 입력해 주세요", "외국어를 하나이상 입력해 주세요c", "외국어를 하나이상 입력해 주세요e"));
+				initData.Add(new TranslateEntity("KR_recruit_human_detail.js_isCareer_no", "신입", "新来", "New"));
+				initData.Add(new TranslateEntity("KR_recruit_human_detail.js_isCareer_yes", "경력", "阅历", "Career"));
+				initData.Add(new TranslateEntity("KR_recruit_human_detail.js_other", "-", "-", "-"));
+				initData.Add(new TranslateEntity("KR_recruit_human_detail.js_languagelevel_high", "고급", "上", "LEVEL1"));
+				initData.Add(new TranslateEntity("KR_recruit_human_detail.js_languagelevel_middle", "중급", "中", "LEVEL2"));
+				initData.Add(new TranslateEntity("KR_recruit_human_detail.js_languagelevel_low", "초급", "下", "LEVEL3"));
 				// 딕셔너리에 저장
 				translateData = new Dictionary<string, TranslateEntity>();
 				translateDataList = new List<TranslateEntity>();
