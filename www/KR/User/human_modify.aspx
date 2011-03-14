@@ -12,7 +12,7 @@
 </asp:ScriptManagerProxy>
 
                 <div class="join">
-				    <div class="human-title-join"></div>
+				    <div class="human-title-manage"></div>
 				    <table class="join-table">
 				        <tr>
 				            <td class="label">사진<span class="require">*</span></td>
