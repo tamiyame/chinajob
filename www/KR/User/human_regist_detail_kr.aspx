@@ -36,10 +36,11 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
-<input type="text" name="ResumeNo" value=""/>
+<input type="text" name="ResumeNo" value="" style="display:none;"/>
     <div class="title">
         <div class="human-title-regist"></div>
     </div>
+    <div class="tab-content">
     <div class="contents">
         <div class="tab">
             <ul>
@@ -404,6 +405,7 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                 </div>
             </div>
         </div>
+    </div>
     </div>
 				
 
