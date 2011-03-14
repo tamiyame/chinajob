@@ -136,7 +136,7 @@ td.v-top{vertical-align:top;}
 .search-box .search-table{padding-top:48px;padding-left:30px;width:478px;height:105px;}
 .search-box .search-table table{}
 .search-box .search-table tr{}
-.search-box .search-table td{padding:0px;padding-bottom:11px;border:none;font-size:12px;color:#555555;}
+.search-box .search-table td{padding:2px 0px;padding-bottom:11px;border:none;font-size:12px;color:#555555;}
 .search-box .search-table td td{padding:0px;}
 .search-box .search-table td.col1{width:55px;}
 .search-box .search-table td.col2{width:324px;}
