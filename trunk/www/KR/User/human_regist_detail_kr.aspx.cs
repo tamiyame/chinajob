@@ -20,7 +20,7 @@ using System.IO;
 using System.Text;
 using System.Web.Script.Serialization;
 
-public partial class KR_User_human_regist_detail_kr : KR_User_human_regist_detail
+public partial class KR_User_human_regist_detail_kr : Site.Web.Page.KR_User_human_regist_detail
 {
 	protected void Page_Load(object sender, EventArgs e)
     {

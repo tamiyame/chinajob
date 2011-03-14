@@ -12,7 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using Com.Library.Translate;
 
-public partial class KR_User_human_regist_detail_en : KR_User_human_regist_detail
+public partial class KR_User_human_regist_detail_en : Site.Web.Page.KR_User_human_regist_detail
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
