@@ -38,6 +38,10 @@
 	$("input[name=address]").val(address);
 	$("textarea[name=award_text]").val(description);
 	$("textarea[name=introduce]").val(aboutMe);
+	
+	$("input[name=lastestEducation]").val(lasteastEducation);
+	$("input[name=graduationYear]").val(graduationYear);
+	$("input[name=militaryService]").val(militaryService);
 
     $.each(academicAbilities, function(idx, data) {
         $("input[name=education_school]:eq("+idx+")").val(data.SchoolName);
@@ -138,7 +142,7 @@
             if(address==""){ alert("주소를 입력해 주세요.");return;  }
             if(award_text==""){ alert("보유기술 및 특기사항을 입력해 주세요.");return;  }
             if(introduce==""){ alert("자기소개서를 입력해 주세요.");return;  }
-            if(countryCode!=$.translateHelper.countryCode_cn && !army){ alert("병역을 확인해주세요.");return;  }
+            if(countryCode==$.translateHelper.countryCode_kr && !army){ alert("병역을 확인해주세요.");return;  }
             if(countryCode!=$.translateHelper.countryCode_en && !isCareer){ alert("경력여부를 확인해주세요.");return;  }
             if(!agree){ alert("등록동의여부를 확인해주세요.");return;  }
             

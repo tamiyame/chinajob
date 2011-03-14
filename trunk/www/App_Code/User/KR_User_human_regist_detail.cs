@@ -80,7 +80,10 @@ public class KR_User_human_regist_detail : SitePage
 			isCareer = Request["isCareer"] == null ? String.Empty : Request["isCareer"],
 			address = Request["address"] == null ? String.Empty : Request["address"],
 			description = Request["award_text"] == null ? string.Empty : Request["award_text"],
-			aboutMe = Request["introduce"] == null ? string.Empty : Request["introduce"];
+			aboutMe = Request["introduce"] == null ? string.Empty : Request["introduce"],
+			lastestEducation = Request["lastestEducation"] == null ? string.Empty : Request["lastestEducation"],
+			graduationYear = Request["graduationYear"] == null ? string.Empty : Request["graduationYear"],
+			militaryService = Request["militaryService"] == null ? string.Empty : Request["militaryService"];
 
 			if (CountryCode == TranslateHelper.ContryCode.CN)
 			{
@@ -91,6 +94,7 @@ public class KR_User_human_regist_detail : SitePage
 
 			if (CountryCode == TranslateHelper.ContryCode.EN)
 			{
+				army = "1";
 				isCareer = "1";
 				age = "0";
 				korean_age = "0";
@@ -113,7 +117,10 @@ public class KR_User_human_regist_detail : SitePage
 						KoreanAge = Convert.ToByte(korean_age),
 						Military = Convert.ToByte(army),
 						SSN1 = ssn1,
-						SSN2 = ssn2
+						SSN2 = ssn2,
+						LastestEducation = lastestEducation,
+						GraduationYear = graduationYear,
+						MilitaryService = militaryService
 					});
 				create.ExecuteNonQuery();
 			}
@@ -135,6 +142,9 @@ public class KR_User_human_regist_detail : SitePage
 						Military = Convert.ToByte(army),
 						SSN1 = ssn1,
 						SSN2 = (ssn2 == "*******" ? null : ssn2),
+						LastestEducation = lastestEducation,
+						GraduationYear = graduationYear,
+						MilitaryService = militaryService,
 						ResumeDetailNo = ResumeDetail.ResumeDetailNo
 					});
 				modify.ExecuteNonQuery();
@@ -431,6 +441,15 @@ public class KR_User_human_regist_detail : SitePage
 				break;
 			case "AboutMe":
 				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.AboutMe.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "LastestEducation":
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.LastestEducation.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "GraduationYear":
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.GraduationYear.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "MilitaryService":
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.MilitaryService.ToString(); } else { retVal = string.Empty; }
 				break;
 			default:
 				throw new Exception("invalid column name");

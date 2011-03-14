@@ -17,5 +17,8 @@ namespace Com.Library.DB.User
 		public string Address { get { return Convert.ToString(GetData("Address", string.Empty)); } }
 		public string Description { get { return Convert.ToString(GetData("Description", string.Empty)); } }
 		public string AboutMe { get { return Convert.ToString(GetData("AboutMe", string.Empty)); } }
+		public string LastestEducation { get { return Convert.ToString(GetData("LastestEducation", string.Empty)); } }
+		public string GraduationYear { get { return Convert.ToString(GetData("GraduationYear", string.Empty)); } }
+		public string MilitaryService { get { return Convert.ToString(GetData("MilitaryService", string.Empty)); } }
 	}
 }

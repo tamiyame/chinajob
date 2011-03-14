@@ -30,6 +30,9 @@ var isCareer = '<%= GetDetailValue("IsCareer") %>';
 var address = '<%= GetDetailValue("Address") %>';
 var description = '<%= GetDetailValue("Description") %>';
 var aboutMe = '<%= GetDetailValue("AboutMe") %>';
+var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
+var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
+var militaryService = '<%= GetDetailValue("MilitaryService") %>';
 
 </script>
 </asp:Content>
@@ -73,7 +76,7 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">最高学历(学位)</td>
-                                                <td>大学</td>
+                                                <td class="lastestEducation">大学</td>
                                                 <td class="regist-label">毕业学校</td>
                                                 <td class="education_school">复旦大学</td>                                                                                                    
                                             </tr>
@@ -81,7 +84,7 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="regist-label">专业</td>
                                                 <td class="education_major">汉语</td>
                                                 <td class="regist-label">毕业时间</td>
-                                                <td class="education_state">2010.5</td>                                                                                                    
+                                                <td class="graduationYear">2010.5</td>                                                                                                    
                                             </tr>                                            
                                             <tr>
                                                 <td class="regist-label">现详细居住地址</td>

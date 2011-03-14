@@ -83,5 +83,21 @@ namespace Com.Library.DB.User
 			get { return Convert.ToString(GetValue("AboutMe", string.Empty)); }
 			set { SetValue("AboutMe", value); }
 		}
+
+		public string LastestEducation
+		{
+			get { return Convert.ToString(GetValue("LastestEducation", string.Empty)); }
+			set { SetValue("LastestEducation", value); }
+		}
+		public string GraduationYear
+		{
+			get { return Convert.ToString(GetValue("GraduationYear", string.Empty)); }
+			set { SetValue("GraduationYear", value); }
+		}
+		public string MilitaryService
+		{
+			get { return Convert.ToString(GetValue("MilitaryService", string.Empty)); }
+			set { SetValue("MilitaryService", value); }
+		}
 	}
 }

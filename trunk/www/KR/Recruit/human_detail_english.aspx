@@ -30,6 +30,9 @@ var isCareer = '<%= GetDetailValue("IsCareer") %>';
 var address = '<%= GetDetailValue("Address") %>';
 var description = '<%= GetDetailValue("Description") %>';
 var aboutMe = '<%= GetDetailValue("AboutMe") %>';
+var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
+var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
+var militaryService = '<%= GetDetailValue("MilitaryService") %>';
 
 </script>
 </asp:Content>
@@ -69,7 +72,7 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="regist-label">Date of Birth</td>
                                                 <td><%=UserInfo.Birthday.ToString("yyyy.MM.dd") %></td>
                                                 <td class="regist-label">Military service</td>
-                                                <td>done</td>                                                                                                    
+                                                <td class="militaryService">done</td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">Phone</td>
