@@ -54,6 +54,8 @@
         $("input[name=career_period_end]:eq("+idx+")").val(formatDateTime(data.CareerEndDate));
         $("input[name=career_department]:eq("+idx+")").val(data.CareerJobs);
         $("input[name=career_detail]:eq("+idx+")").val(data.CareerPosition);
+        $("input[name=career_location]:eq("+idx+")").val(data.CareerLocation);
+        
     });
 
     $.each(languages, function(idx, data) {

@@ -471,4 +471,27 @@ public class KR_User_human_regist_detail : SitePage
 	{
 		return TranslateHelper.GetText(CountryCode, transCode);
 	}
+
+	public string GetCountryName(byte countryCode)
+	{
+		TranslateHelper.ContryCode cc = (TranslateHelper.ContryCode)countryCode;
+		string retVal = string.Empty;
+		switch (cc)
+		{
+			case TranslateHelper.ContryCode.KR:
+				retVal = "한국";
+				break;
+			case TranslateHelper.ContryCode.CN:
+				retVal = "중국";
+				break;
+			case TranslateHelper.ContryCode.EN:
+				retVal = "미국";
+				break;
+			default:
+				retVal = string.Empty;
+				break;
+		}
+
+		return retVal;
+	}
 }

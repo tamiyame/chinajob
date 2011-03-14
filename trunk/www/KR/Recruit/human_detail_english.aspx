@@ -61,25 +61,25 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                         <table class="regist-table">                                            
                                             <tr>
                                                 <td class="regist-label">Name</td>
-                                                <td>kim kim kim</td>
+                                                <td><%=UserInfo.ENGName%></td>
                                                 <td class="regist-label">Gender</td>
-                                                <td>Famle</td>                                                    
+                                                <td><%=UserInfo.Gender==1?"Male":"Female" %></td>                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">Date of Birth</td>
-                                                <td>2011.8.23</td>
+                                                <td><%=UserInfo.Birthday.ToString("yyyy.MM.dd") %></td>
                                                 <td class="regist-label">Military service</td>
                                                 <td>done</td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">Phone</td>
-                                                <td>131-4443-2124</td>
+                                                <td><%=UserInfo.CNPhoneNo%></td>
                                                 <td class="regist-label">E-mail</td>
-                                                <td>kimkimkim@hotmail.com</td>                                                                                                    
+                                                <td><%=UserInfo.Email%></td>                                                                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">Address</td>
-                                                <td colspan="3">Room 12323, minhang-qu, Shanghai-city, China</td>                                 
+                                                <td colspan="3" class="address">Room 12323, minhang-qu, Shanghai-city, China</td>                                 
                                             </tr>
                                         </table>
                                     </div>
@@ -94,32 +94,46 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="regist-label" style="width:159px;">Location</td>                                                 
                                             </tr>
                                             <tr>
-                                               <td>Seoul university</td>
-                                               <td>Chinese</td>
+                                               <td class="education_school"></td>
+                                               <td class="education_major"></td>
                                                <td>
 													<table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.2</td>
+                                                            <td class="size-sub-k-2-1 education_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2011.3</td>
+                                                            <td class="size-sub-k-2-3 education_period_end"></td>
                                                         </tr>
 													</table>
 											   </td>
-                                               <td>Korea</td>
+                                               <td class="education_national"></td>
                                             </tr>
-											<tr>
-                                               <td>Seoul university</td>
-                                               <td>Chinese</td>
+                                            <tr>
+                                               <td class="education_school"></td>
+                                               <td class="education_major"></td>
                                                <td>
 													<table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.2</td>
+                                                            <td class="size-sub-k-2-1 education_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2011.3</td>
+                                                            <td class="size-sub-k-2-3 education_period_end"></td>
                                                         </tr>
 													</table>
 											   </td>
-                                               <td>Korea</td>
+                                               <td class="education_national"></td>
+                                            </tr>
+                                            <tr>
+                                               <td class="education_school"></td>
+                                               <td class="education_major"></td>
+                                               <td>
+													<table>
+                                                        <tr>
+                                                            <td class="size-sub-k-2-1 education_period_start"></td>
+                                                            <td class="size-sub-k-2-2">-</td>
+                                                            <td class="size-sub-k-2-3 education_period_end"></td>
+                                                        </tr>
+													</table>
+											   </td>
+                                               <td class="education_national"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -138,46 +152,46 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                <td>
 													<table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2008.8</td>
+                                                            <td class="size-sub-k-2-3 career_period_end"></td>
                                                         </tr>
 													</table>
 											   </td>
-                                               <td>wise-ecommerce</td>
-                                               <td>online service</td>
-                                               <td>intern</td>
-											   <td>Korea</td>
+                                               <td class="career_company"></td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
+											   <td class="career_location"></td>
                                             </tr>
-											<tr>
+                                            <tr>
                                                <td>
 													<table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2008.8</td>
+                                                            <td class="size-sub-k-2-3 career_period_end"></td>
                                                         </tr>
 													</table>
 											   </td>
-                                               <td>wise-ecommerce</td>
-                                               <td>online service</td>
-                                               <td>intern</td>
-											   <td>Korea</td>
+                                               <td class="career_company"></td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
+											   <td class="career_location"></td>
                                             </tr>
-											<tr>
+                                            <tr>
                                                <td>
 													<table>
                                                         <tr>
-                                                            <td class="size-sub-k-2-1">2008.6</td>
+                                                            <td class="size-sub-k-2-1 career_period_start"></td>
                                                             <td class="size-sub-k-2-2">-</td>
-                                                            <td class="size-sub-k-2-3">2008.8</td>
+                                                            <td class="size-sub-k-2-3 career_period_end"></td>
                                                         </tr>
 													</table>
 											   </td>
-                                               <td>wise-ecommerce</td>
-                                               <td>online service</td>
-                                               <td>intern</td>
-											   <td>Korea</td>
+                                               <td class="career_company"></td>
+                                               <td class="career_department"></td>
+                                               <td class="career_detail"></td>
+											   <td class="career_location"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -192,22 +206,22 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="regist-label" style="width:142px">Score/Grade</td>                                             
                                             </tr>
                                             <tr>
-                                               <td>Chinese</td>
-                                               <td>level5</td>
-                                               <td>new HSK</td>
-                                               <td>5</td>
+                                               <td class="language_type"></td>
+                                               <td class="language_level"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
                                             </tr>
-											<tr>
-                                               <td>Chinese</td>
-                                               <td>level5</td>
-                                               <td>new HSK</td>
-                                               <td>5</td>
+                                            <tr>
+                                               <td class="language_type"></td>
+                                               <td class="language_level"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
                                             </tr>
-											<tr>
-                                               <td>Chinese</td>
-                                               <td>level5</td>
-                                               <td>new HSK</td>
-                                               <td>5</td>
+                                            <tr>
+                                               <td class="language_type"></td>
+                                               <td class="language_level"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
                                             </tr>
                                         </table>
 										<table class="regist-table">
@@ -235,21 +249,26 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                                                 <td class="regist-label" style="width:268px">Date of acquisition</td>                                         
                                             </tr>
                                             <tr>
-                                                <td>Make-up</td>
-                                                <td>Korea Make-up Association</td>
-                                                <td>2007.1</td>
+                                                <td class="licence_title"></td>
+                                                <td class="licence_institution"></td>
+                                                <td class="licence_year"></td>
                                             </tr>
-											<tr>
-                                                <td>Make-up</td>
-                                                <td>Korea Make-up Association</td>
-                                                <td>2007.1</td>
+                                            <tr>
+                                                <td class="licence_title"></td>
+                                                <td class="licence_institution"></td>
+                                                <td class="licence_year"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="licence_title"></td>
+                                                <td class="licence_institution"></td>
+                                                <td class="licence_year"></td>
                                             </tr>
                                         </table>
                                     </div>
                                     
                                     <div class="regist-item">
                                         <div class="regist-header">Awards, O/A Ability, Professional Experience  Etc </div>                                
-                                        <textarea class="w100" rows="20" name="award-text">
+                                        <textarea class="w100" rows="20" name="award_text" readonly="readonly">
                                             This is Kim so hyun.
 Those interested should forward a detailed resume and cover letter.
 Those interested should forward a detailed resume and cover letter.
