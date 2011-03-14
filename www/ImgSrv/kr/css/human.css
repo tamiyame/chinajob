@@ -125,12 +125,16 @@
 .search-data .tab li{margin:0 3px 0 0;}
 
 .tab-content{}
-.tab-content table.search-table{width:777px;}
+.tab-content table{width:777px;}
 .tab-content tr{height:33px;}
 .tab-content tr.first{height:22px;}
 .tab-content td{padding:0px;font-size:12px;}
 .tab-content th{font-size:11px;color:#7d7d7d;font-weight:normal;border-bottom:1px solid #dbdbdb;}
-.tab-content td.col1,.tab-content th.col1{padding-left:13px;width:147px;text-align:left;}
+.tab-content th.col1{width:147px;text-align:left;}
+.tab-content th.col2{width:254px;text-align:center;}
+.tab-content th.col3{width:230px;text-align:center;}
+.tab-content th.col4{}
+.tab-content td.col1{padding-left:13px;text-align:left;}
 .tab-content td.col1{font-weight:bold;}
 .tab-content td.col1 .desc{font-weight:normal;font-size:12px;}
 .tab-content td.col2{width:254px;text-align:center;color:#469ed9;}
