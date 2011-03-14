@@ -237,9 +237,9 @@ jQuery(function()
                                     <table>
                                         <tr class="first">
                                             <th class="col1">성명</th>
-                                            <th>희망/관심직종</th>
-                                            <th>희망지역</th>
-                                            <th>참가</th>                                            
+                                            <th class="col2">희망/관심직종</th>
+                                            <th class="col3">희망지역</th>
+                                            <th class="col4">참가</th>                                            
                                         </tr>
  <% foreach(ResumeSearchEntity item in SearchList.Record) { %>
                                         <tr style="cursor:pointer" onclick="location.href='<%=DetailViewer(item.UserNo)%>'">
