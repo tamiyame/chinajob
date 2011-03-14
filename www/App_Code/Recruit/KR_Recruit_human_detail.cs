@@ -167,6 +167,15 @@ public class KR_Recruit_human_detail : SitePage
 			case "AboutMe":
 				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.AboutMe.ToString(); } else { retVal = string.Empty; }
 				break;
+			case "LastestEducation":
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.LastestEducation.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "GraduationYear":
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.GraduationYear.ToString(); } else { retVal = string.Empty; }
+				break;
+			case "MilitaryService":
+				if (ResumeDetail.ResumeDetailNo > 0) { retVal = ResumeDetail.MilitaryService.ToString(); } else { retVal = string.Empty; }
+				break;
 			default:
 				throw new Exception("invalid column name");
 		}

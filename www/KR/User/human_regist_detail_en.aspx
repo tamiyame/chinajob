@@ -29,6 +29,9 @@ var isCareer = '<%= GetDetailValue("IsCareer") %>';
 var address = '<%= GetDetailValue("Address") %>';
 var description = '<%= GetDetailValue("Description") %>';
 var aboutMe = '<%= GetDetailValue("AboutMe") %>';
+var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
+var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
+var militaryService = '<%= GetDetailValue("MilitaryService") %>';
 
 </script>
 </asp:Content>
@@ -68,29 +71,7 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                             <td class="regist-label">Date of Birth</td>
                             <td><%=UserInfo.Birthday.ToString("yyyy.MM.dd") %></td>
                             <td class="regist-label">Military service <span class="require">*</span></td>
-                            <td>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <input id="army1" type="radio" class="radio" name="army" value="1"/>
-                                        </td>
-                                        <td>
-                                            <label for="army1">필</label>
-                                        </td>
-                                        <td>
-                                            <input id="army2" type="radio" class="radio" name="army" value="2"/>
-                                        </td>
-                                        <td>
-                                            <label for="army2">미필</label>
-                                        </td>
-                                        <td>
-                                            <input id="army3" type="radio" class="radio" name="army" value="3"/>
-                                        </td>
-                                        <td>
-                                            <label for="army3">면제</label>
-                                        </td>
-                                    </tr>
-                                </table>
+                            <td><input name="militaryService" type="text" class="w100"/>
                             </td>                                                                                                    
                         </tr>
                         <tr>

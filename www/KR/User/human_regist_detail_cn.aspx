@@ -29,7 +29,9 @@ var isCareer = '<%= GetDetailValue("IsCareer") %>';
 var address = '<%= GetDetailValue("Address") %>';
 var description = '<%= GetDetailValue("Description") %>';
 var aboutMe = '<%= GetDetailValue("AboutMe") %>';
-
+var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
+var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
+var militaryService = '<%= GetDetailValue("MilitaryService") %>';
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
@@ -89,7 +91,7 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                         </tr>
                         <tr>
                             <td class="regist-label">最高学历(学位) <span class="require">*</span></td>
-                            <td><input class="w100" type="text"/></td>
+                            <td><input class="w100" type="text" name="lastestEducation"/></td>
                             <td class="regist-label">毕业学校 <span class="require">*</span></td>
                             <td><input class="w100" type="text" name="education_school"/></td>                                                                                                    
                         </tr>
@@ -97,9 +99,7 @@ var aboutMe = '<%= GetDetailValue("AboutMe") %>';
                             <td class="regist-label">专业 <span class="require">*</span></td>
                             <td><input class="w100" type="text" name="education_major"/></td>
                             <td class="regist-label">毕业时间 <span class="require">*</span></td>
-                            <td><select class="state" name="education_state">
-                                <option value="0">졸업</option>
-                           </select></td>                                                                                                    
+                            <td><input class="w100" type="text" name="graduationYear"/></td>                                                                                                    
                         </tr>                                            
                         <tr>
                             <td class="regist-label">现详细居住地址 <span class="require">*</span></td>

@@ -29,6 +29,9 @@ namespace Com.Library.DB.User
 			AddParameter("Address", SqlDbType.NVarChar, 400, SqlDataInOut.Input);
 			AddParameter("Description", SqlDbType.NVarChar, -1, SqlDataInOut.Input);
 			AddParameter("AboutMe", SqlDbType.NVarChar, -1, SqlDataInOut.Input);
+			AddParameter("LastestEducation", SqlDbType.NVarChar, 200, SqlDataInOut.Input);
+			AddParameter("GraduationYear", SqlDbType.NVarChar, 50, SqlDataInOut.Input);
+			AddParameter("MilitaryService", SqlDbType.NVarChar, 200, SqlDataInOut.Input);
 		}
 	}
 }

@@ -30,6 +30,9 @@ var isCareer = '<%= GetDetailValue("IsCareer") %>';
 var address = '<%= GetDetailValue("Address") %>';
 var description = '<%= GetDetailValue("Description") %>';
 var aboutMe = '<%= GetDetailValue("AboutMe") %>';
+var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
+var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
+var militaryService = '<%= GetDetailValue("MilitaryService") %>';
 
 </script>
 </asp:Content>

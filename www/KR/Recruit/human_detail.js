@@ -36,6 +36,10 @@
 		$("textarea[name=award_text]").val(description);
 		$("textarea[name=introduce]").val(aboutMe);
 
+		$("td.lastestEducation").text(lasteastEducation);
+		$("td.graduationYear").text(graduationYear);
+		$("td.militaryService").text(militaryService);
+
 		$.each(academicAbilities, function(idx, data) {
 			$("td.education_school:eq("+idx+")").text(data.SchoolName);
 			$("td.education_period_start:eq("+idx+")").text(formatDateTime(data.SchoolStartDate));
