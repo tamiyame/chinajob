@@ -26,5 +26,17 @@ namespace Com.Library.DB.Participate
             get { return Convert.ToInt32(GetValue("UserNo", 0)); }
             set { SetValue("UserNo", value); }
         }
+
+        public int PageNo
+        {
+            get { return Convert.ToInt32(GetValue("PageNo", 0)); }
+            set { SetValue("PageNo", value); }
+        }
+
+        public byte PageSize
+        {
+            get { return Convert.ToByte(GetValue("PageSize", (byte)0)); }
+            set { SetValue("PageSize", value); }
+        }
     }
 }

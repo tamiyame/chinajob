@@ -6,16 +6,21 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-CREATE PROCEDURE [dbo].[TSP_ParticipateGetList]
+alter PROCEDURE [dbo].[TSP_ParticipateGetList]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
-,	@CompanyNo	int		 = null
+,	@CompanyNo	int		= null
 ,	@RecruitNo	int		 = null
 
 ,	@UserNo	int	 = null
+
+,	@PageNo	int	= 1	
+,	@PageSize	tinyint	= 10	
+,	@CntRow	int	= NULL	OUTPUT
+,	@CntTotal	int	= NULL	OUTPUT
 )
 as
 Set NOCOUNT ON
@@ -58,41 +63,334 @@ Begin
 End
 
 -- Implementation
+DECLARE @SkipPage INT
+SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
 
 If ( @UserNo Is Not Null )
 BEGIN
-	SELECT
-		SeqNo
-	,	CompanyNo
-	,	RecruitNo
-	,	UserNo
-	,	RecruitType
-	,	ConfirmType
-	,	DateCreated
-	,	DateLastUpdated
-	FROM
-		dbo.TB_Participate with ( nolock )
-	WHERE
-		UserNo = @UserNo
-	ORDER BY
-		UserNo DESC, SeqNo DESC
+	IF ( @PageSize = 0 )
+	BEGIN
+		SELECT
+			P.SeqNo
+		,	P.CompanyNo
+		,	P.CountryNo
+		,	P.Category1No
+		,	P.Category2No
+		,	C.KRName		KRCompanyName
+		,	C.CNName		CNCompanyName
+		,	C.ENGName		ENGCompanyName
+		,	U.KRName		KRUserName
+		,	U.CNName		CNUserName
+		,	U.ENGName		ENGUserName
+		,	R.Age
+		,	R.KoreanAge
+		,	U.Gender
+		,	R.IsCareer
+		,	P.RecruitNo
+		,	P.UserNo
+		,	P.RecruitType
+		,	P.ConfirmType
+		,	P.DateCreated
+		,	P.DateLastUpdated
+		FROM
+			dbo.TB_Participate P with ( nolock )
+		LEFT JOIN	dbo.TB_CompanyDetail C with ( nolock ) 
+		ON	C.CompanyNo = P.CompanyNo
+		LEFT JOIN	dbo.TB_User U with ( nolock )
+		ON	U.UserNo = P.UserNo
+		LEFT JOIN	dbo.TB_ResumeDetail R with ( nolock )
+		ON	R.UserNo = P.UserNo
+		AND	R.CountryNo = P.CountryNo
+		WHERE
+			P.UserNo = @UserNo
+		AND	P.Status = 1
+		ORDER BY
+			P.UserNo DESC, P.Status DESC, P.SeqNo DESC
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount
+		SET @CntTotal = @FrkRowCount
+	END
+	ELSE
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				P.SeqNo
+			,	P.CompanyNo
+			,	P.CountryNo
+			,	P.Category1No
+			,	P.Category2No
+			,	C.KRName		KRCompanyName
+			,	C.CNName		CNCompanyName
+			,	C.ENGName		ENGCompanyName
+			,	U.KRName		KRUserName
+			,	U.CNName		CNUserName
+			,	U.ENGName		ENGUserName
+			,	R.Age
+			,	R.KoreanAge
+			,	U.Gender
+			,	R.IsCareer
+			,	P.RecruitNo
+			,	P.UserNo
+			,	P.RecruitType
+			,	P.ConfirmType
+			,	P.DateCreated
+			,	P.DateLastUpdated
+			FROM
+				dbo.TB_Participate P with ( nolock )
+			LEFT JOIN	dbo.TB_CompanyDetail C with ( nolock ) 
+			ON	C.CompanyNo = P.CompanyNo
+			LEFT JOIN	dbo.TB_User U with ( nolock )
+			ON	U.UserNo = P.UserNo
+			LEFT JOIN	dbo.TB_ResumeDetail R with ( nolock )
+			ON	R.UserNo = P.UserNo
+			AND	R.CountryNo = P.CountryNo
+			WHERE
+				P.UserNo = @UserNo
+			AND	P.Status = 1
+			ORDER BY
+				P.UserNo DESC, P.Status DESC, P.SeqNo DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				P.SeqNo
+			,	P.CompanyNo
+			,	P.CountryNo
+			,	P.Category1No
+			,	P.Category2No
+			,	C.KRName		KRCompanyName
+			,	C.CNName		CNCompanyName
+			,	C.ENGName		ENGCompanyName
+			,	U.KRName		KRUserName
+			,	U.CNName		CNUserName
+			,	U.ENGName		ENGUserName
+			,	R.Age
+			,	R.KoreanAge
+			,	U.Gender
+			,	R.IsCareer
+			,	P.RecruitNo
+			,	P.UserNo
+			,	P.RecruitType
+			,	P.ConfirmType
+			,	P.DateCreated
+			,	P.DateLastUpdated
+			FROM
+			(
+				SELECT
+					SeqNo
+				,	CompanyNo
+				,	RecruitNo
+				,	CountryNo
+				,	Category1No
+				,	Category2No
+				,	UserNo
+				,	RecruitType
+				,	ConfirmType
+				,	DateCreated
+				,	DateLastUpdated
+				,	ROW_NUMBER() OVER ( ORDER BY
+						UserNo DESC, Status DESC, SeqNo DESC
+					) AS ROWNUM
+				FROM
+					dbo.TB_Participate P with ( nolock )
+				WHERE
+					P.UserNo = @UserNo
+				AND	P.Status = 1
+			)	P
+			LEFT JOIN	dbo.TB_CompanyDetail C with ( nolock ) 
+			ON	C.CompanyNo = P.CompanyNo
+			LEFT JOIN	dbo.TB_User U with ( nolock )
+			ON	U.UserNo = P.UserNo
+			LEFT JOIN	dbo.TB_ResumeDetail R with ( nolock )
+			ON	R.UserNo = P.UserNo
+			AND	R.CountryNo = P.CountryNo
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			dbo.TB_Participate P with ( nolock )
+		WHERE
+			P.UserNo = @UserNo
+		AND	P.Status = 1
+	END
 END ELSE BEGIN
-	SELECT
-		SeqNo
-	,	CompanyNo
-	,	RecruitNo
-	,	UserNo
-	,	RecruitType
-	,	ConfirmType
-	,	DateCreated
-	,	DateLastUpdated
-	FROM
-		dbo.TB_Participate with ( nolock )
-	WHERE
-		CompanyNo = @CompanyNo
-	AND	RecruitNo = @RecruitNo
-	ORDER BY
-		CompanyNo DESC, RecruitNo DESC, SeqNo DESC
+	IF ( @PageSize = 0 )
+	BEGIN
+		SELECT
+			P.SeqNo
+		,	P.CompanyNo
+		,	P.CountryNo
+		,	P.Category1No
+		,	P.Category2No
+		,	C.KRName		KRCompanyName
+		,	C.CNName		CNCompanyName
+		,	C.ENGName		ENGCompanyName
+		,	U.KRName		KRUserName
+		,	U.CNName		CNUserName
+		,	U.ENGName		ENGUserName
+		,	R.Age
+		,	R.KoreanAge
+		,	U.Gender
+		,	R.IsCareer
+		,	P.RecruitNo
+		,	P.UserNo
+		,	P.RecruitType
+		,	P.ConfirmType
+		,	P.DateCreated
+		,	P.DateLastUpdated
+		FROM
+			dbo.TB_Participate P with ( nolock )
+		LEFT JOIN	dbo.TB_CompanyDetail C with ( nolock ) 
+		ON	C.CompanyNo = P.CompanyNo
+		LEFT JOIN	dbo.TB_User U with ( nolock )
+		ON	U.UserNo = P.UserNo
+		LEFT JOIN	dbo.TB_ResumeDetail R with ( nolock )
+		ON	R.UserNo = P.UserNo
+		AND	R.CountryNo = P.CountryNo
+		WHERE
+			P.CompanyNo = @CompanyNo
+		AND	RecruitNo = @RecruitNo
+		AND	P.Status = 1
+		ORDER BY
+			P.CompanyNo DESC, P.RecruitNo DESC, P.Status DESC, P.SeqNo DESC
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount
+		SET @CntTotal = @FrkRowCount
+	END
+	ELSE
+	BEGIN
+		IF ( @PageNo = 1 )
+		BEGIN
+			SELECT	Top( @PageSize )
+				P.SeqNo
+			,	P.CompanyNo
+			,	P.CountryNo
+			,	P.Category1No
+			,	P.Category2No
+			,	C.KRName		KRCompanyName
+			,	C.CNName		CNCompanyName
+			,	C.ENGName		ENGCompanyName
+			,	U.KRName		KRUserName
+			,	U.CNName		CNUserName
+			,	U.ENGName		ENGUserName
+			,	R.Age
+			,	R.KoreanAge
+			,	U.Gender
+			,	R.IsCareer
+			,	P.RecruitNo
+			,	P.UserNo
+			,	P.RecruitType
+			,	P.ConfirmType
+			,	P.DateCreated
+			,	P.DateLastUpdated
+			FROM
+				dbo.TB_Participate P with ( nolock )
+			LEFT JOIN	dbo.TB_CompanyDetail C with ( nolock ) 
+			ON	C.CompanyNo = P.CompanyNo
+			LEFT JOIN	dbo.TB_User U with ( nolock )
+			ON	U.UserNo = P.UserNo
+			LEFT JOIN	dbo.TB_ResumeDetail R with ( nolock )
+			ON	R.UserNo = P.UserNo
+			AND	R.CountryNo = P.CountryNo
+			WHERE
+				P.CompanyNo = @CompanyNo
+			AND	RecruitNo = @RecruitNo
+			AND	P.Status = 1
+			ORDER BY
+				CompanyNo DESC, RecruitNo DESC, P.Status DESC, SeqNo DESC
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		ELSE
+		BEGIN
+			SELECT	Top( @PageSize )
+				P.SeqNo
+			,	P.CompanyNo
+			,	P.CountryNo
+			,	P.Category1No
+			,	P.Category2No
+			,	C.KRName		KRCompanyName
+			,	C.CNName		CNCompanyName
+			,	C.ENGName		ENGCompanyName
+			,	U.KRName		KRUserName
+			,	U.CNName		CNUserName
+			,	U.ENGName		ENGUserName
+			,	R.Age
+			,	R.KoreanAge
+			,	U.Gender
+			,	R.IsCareer
+			,	P.RecruitNo
+			,	P.UserNo
+			,	P.RecruitType
+			,	P.ConfirmType
+			,	P.DateCreated
+			,	P.DateLastUpdated
+			FROM
+			(
+				SELECT
+					SeqNo
+				,	CompanyNo
+				,	RecruitNo
+				,	UserNo
+				,	CountryNo
+				,	Category1No
+				,	Category2No
+				,	RecruitType
+				,	ConfirmType
+				,	DateCreated
+				,	DateLastUpdated
+				,	ROW_NUMBER() OVER ( ORDER BY
+						CompanyNo DESC, RecruitNo DESC, Status DESC, SeqNo DESC
+					) AS ROWNUM
+				FROM
+					dbo.TB_Participate P with ( nolock )
+				WHERE
+					P.CompanyNo = @CompanyNo
+				AND	RecruitNo = @RecruitNo
+				AND	P.Status = 1
+			)	P
+			LEFT JOIN	dbo.TB_CompanyDetail C with ( nolock ) 
+			ON	C.CompanyNo = P.CompanyNo
+			LEFT JOIN	dbo.TB_User U with ( nolock )
+			ON	U.UserNo = P.UserNo
+			LEFT JOIN	dbo.TB_ResumeDetail R with ( nolock )
+			ON	R.UserNo = P.UserNo
+			AND	R.CountryNo = P.CountryNo
+			WHERE
+				ROWNUM > @SkipPage
+			AND	ROWNUM <= @SkipPage + @PageSize
+			SELECT
+				@FrkErrorCode = @@ERROR
+			,	@FrkRowCount = @@RowCount
+			SET @CntRow = @FrkRowCount
+		END
+		SELECT
+			@CntTotal = Count( * )
+		FROM
+			dbo.TB_Participate P with ( nolock )
+		WHERE
+			P.CompanyNo = @CompanyNo
+		AND	RecruitNo = @RecruitNo
+		AND	P.Status = 1
+	END
 END
 
 

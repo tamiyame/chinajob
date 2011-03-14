@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="CNMaster.master.cs" Inherits="CN_WebMaster_CNMaster" %>
 <%@ Import Namespace="Com.Library.DB.Company" %>
+<%@ Import Namespace="Com.Library.DB.Participate" %>
+<%@ Import Namespace="Com.Framework.Data" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <title id="siteTitle" runat="server" ><%=PageEntity.CNTitle %></title>
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/css/base.css" />
@@ -71,17 +73,30 @@ function GetURL(url)
 		                    </ul>
 	                    </div>
 <%          } else { %>
-
+<%
+                    int CntParticipate = 0;
+                    {
+                        ParticipateGetCountArguments cntArg = new ParticipateGetCountArguments();
+                        cntArg.UserNo = this.WebCookies.UserNo;
+                        cntArg.IsConfirm = 0;
+                        ParticipateGetCount cnt = new ParticipateGetCount();
+                        cnt.SetArguments(cntArg);
+                        cnt.ExecuteNonQuery();
+                        OutputEntity output = cnt.GetOutput();
+                        CntParticipate = output.CntTotal;
+                    }
+                    
+%>
                         <!-- 개인회원 로그인 -->
 	                    <div class="global-menu">
 		                    <ul>
 			                    <li><b><%=this.WebCookies.UserID %></b><%= this.GetText("CN_WebMaster_CNMaster.master_74")%></li>
 			                    <li class="bar"></li>
-			                    <li><a href="<%=this.GetURL("/user/human_modify.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_76")%></a></li>
+			                    <li><a href="/kr/user/human_modify.aspx")"><%= this.GetText("CN_WebMaster_CNMaster.master_76")%></a></li>
 			                    <li class="bar"></li>
-			                    <li><a href="javascript:;"><%= this.GetText("CN_WebMaster_CNMaster.master_78")%></a></li>
+			                    <li><a href="/kr/user/human_regist_basic.aspx"><%= this.GetText("CN_WebMaster_CNMaster.master_78")%></a></li>
 			                    <li class="bar"></li>
-			                    <li><a href="javascript:;"><%= this.GetText("CN_WebMaster_CNMaster.master_80")%><span class="highlight"><span class="underline">0</span><%= this.GetText("CN_WebMaster_CNMaster.master_80_1")%></span></a></li>
+			                    <li><a href="/kr/user/human_recruit_manage.aspx"><%= this.GetText("CN_WebMaster_CNMaster.master_80")%><span class="highlight"><span class="underline"><%=CntParticipate%></span><%= this.GetText("CN_WebMaster_CNMaster.master_80_1")%></span></a></li>
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(); return false;"></a></li>
 			                    <li class="national">

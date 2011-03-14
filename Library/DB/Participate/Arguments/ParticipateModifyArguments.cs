@@ -20,5 +20,11 @@ namespace Com.Library.DB.Participate
             get { return Convert.ToByte(GetValue("ConfirmType", (byte)0)); }
             set { SetValue("ConfirmType", value); }
         }
+
+        public byte Status
+        {
+            get { return Convert.ToByte(GetValue("Status", (byte)0)); }
+            set { SetValue("Status", value); }
+        }
     }
 }

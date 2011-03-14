@@ -18,6 +18,7 @@ namespace Com.Library.DB.Participate
         {
             AddParameter("SeqNo", SqlDbType.BigInt, 8, SqlDataInOut.Input);
             AddParameter("ConfirmType", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
+            AddParameter("Status", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
         }
     }
 }

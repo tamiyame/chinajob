@@ -18,6 +18,9 @@ namespace Com.Library.DB.Participate
         {
             AddParameter("CompanyNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("RecruitNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+            AddParameter("CountryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+            AddParameter("Category1No", SqlDbType.Int, 4, SqlDataInOut.Input);
+            AddParameter("Category2No", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("UserNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("RecruitType", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
         }

@@ -37,10 +37,10 @@ $(document).ready(function() {
 
 	$("div.tab ul li").removeClass("icon-folder-middle-on").addClass("icon-folder-middle-off").removeClass("select");
 	$("div.tab ul li:eq("+ countryCode +")").removeClass("icon-folder-middle-off").addClass("icon-folder-middle-on").addClass("select");
-	$("div.tab ul li:eq(0)").click(function() { location.href=GetURL("/Recruit/human_detail_basic.aspx?userno=" + userNo); });
-	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/Recruit/human_detail_korean.aspx?userno=" + userNo); });
-	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/Recruit/human_detail_china.aspx?userno=" + userNo); });
-	$("div.tab ul li:eq(3)").click(function() { location.href=GetURL("/Recruit/human_detail_english.aspx?userno=" + userNo); });
+	$("div.tab ul li:eq(0)").click(function() { location.href="<%=GetDetailViewer("human_detail_basic.aspx",this.UserNo)  %>"; });
+	$("div.tab ul li:eq(1)").click(function() { location.href="<%=GetDetailViewer("human_detail_korean.aspx",this.UserNo)  %>"; });
+	$("div.tab ul li:eq(2)").click(function() { location.href="<%=GetDetailViewer("human_detail_china.aspx",this.UserNo)  %>"; });
+	$("div.tab ul li:eq(3)").click(function() { location.href="<%=GetDetailViewer("human_detail_english.aspx",this.UserNo)  %>"; });
 });
 </script>
 </asp:Content>
@@ -145,9 +145,13 @@ $(document).ready(function() {
                                             <br />
                                             <br />
                                             <br />
-                                            <a class="icon icon-human-interview-btn" href="javascript:;"></a>
-                                        </div>                                        
-                                        <div class="regist-tool-right"><a class="icon icon-board-list" href="javascript:;"></a></div>
+                                            <% if ( this.WebCookies.isCompany ) { %>
+                                            <a class="icon icon-human-interview-btn" href=""></a>
+                                            <% } %>
+                                        </div>
+                                        <br /><br />                             
+                                        <div class="regist-tool-right"><a class="icon icon-board-list" href="<%=GetSearch()%>"></a></div>
+                                        
                                     </div>
                                 </div>
                             </div>

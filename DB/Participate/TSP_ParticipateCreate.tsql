@@ -92,6 +92,7 @@ INSERT	TB_Participate
 ,	ConfirmType
 ,	DateCreated
 ,	DateLastUpdated
+,	Status
 )
 SELECT
 	@CompanyNo
@@ -101,6 +102,7 @@ SELECT
 ,	0
 ,	@FrkDateNow
 ,	@FrkDateNow
+,	1
 SELECT
 	@FrkErrorCode = @@ERROR
 ,	@FrkRowCount = @@RowCount
