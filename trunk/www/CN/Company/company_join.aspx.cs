@@ -77,18 +77,46 @@ public partial class CN_Company_company_join : SitePage
             arg.PresidentName = Representative;
             arg.CapitalType = Convert.ToByte(Company_type == "" ? "0" : Company_type);
             arg.FoundYear = build_date;
-            arg.EmployeeCount = Convert.ToInt32(employ_count == "" ? "0" : employ_count);
             try
             {
-                arg.Capital = Convert.ToInt64(fund == "" ? "0" : fund);
+                arg.EmployeeCount = Convert.ToInt32(employ_count == "" ? "0" : employ_count.Replace(",", ""));
+            }
+            catch (Exception ex)
+            {
+                arg.EmployeeCount = 0;
+            }
+            try
+            {
+                arg.Capital = Convert.ToInt64(fund == "" ? "0" : fund.Replace(",", ""));
             }
             catch (Exception ex)
             {
                 arg.Capital = 0;
             }
-            arg.CapitalCurrencyNo = Convert.ToInt32(fundcurrency == "" ? "0" : fundcurrency);
-            arg.Turnover = Convert.ToInt64(investment == "" ? "0" : investment);
-            arg.TurnoverCurrencyNo = Convert.ToInt32(investment_currency == "" ? "0" : investment_currency);
+            try
+            {
+                arg.CapitalCurrencyNo = Convert.ToInt32(fundcurrency == "" ? "0" : fundcurrency.Replace(",", ""));
+            }
+            catch (Exception ex)
+            {
+                arg.CapitalCurrencyNo = 0;
+            }
+            try
+            {
+                arg.Turnover = Convert.ToInt64(investment == "" ? "0" : investment.Replace(",", ""));
+            }
+            catch (Exception ex)
+            {
+                arg.Turnover = 0;
+            }
+            try
+            {
+                arg.TurnoverCurrencyNo = Convert.ToInt32(investment_currency == "" ? "0" : investment_currency.Replace(",", ""));
+            }
+            catch (Exception ex)
+            {
+                arg.TurnoverCurrencyNo = 0;
+            }
             arg.CompanyDescrition = business_description;
             arg.RecruiterName = recruiting_manager;
             arg.PhoneNo = phone;

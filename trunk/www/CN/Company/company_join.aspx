@@ -510,6 +510,11 @@ jQuery(function()
                 return false;
             }
             
+            $("input:[name=employ_count]").val(parseInt($("input:[name=employ_count]").val(), 10 ));
+            $("input:[name=fundcurrency]").val(parseInt($("input:[name=fundcurrency]").val(), 10 ));
+            $("input:[name=fund]").val(parseInt($("input:[name=fund]").val(), 10 ));
+            $("input:[name=investment]").val(parseInt($("input:[name=investment]").val(), 10 ));
+            
             koreaName = $("input:[name=koreaName]").val();
             chinaName = $("input:[name=chinaName]").val();
             englishName = $("input:[name=englishName]").val();
