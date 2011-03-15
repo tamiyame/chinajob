@@ -4,7 +4,7 @@
 body{background:url(../images/admin_side_bg.png);background-repeat: repeat-y;}
 
 ul,li{list-style:none;}
-a,a:hover,a:link,a:visited{text-decoration: none;color:#464646;}
+a,a:hover,a:link,a:visited{text-decoration: none;color:#464646;font-size:9pt;}
 
 select.w7,input.w7{width:126px;}
 select.w6,input.w6{width:47px;}
