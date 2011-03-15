@@ -122,7 +122,9 @@ function GetURL(url)
 			                    <li class="bar"></li>
 			                    <li><a href="<%=this.GetURL("/company/company_modify.aspx")%>">기업정보관리</a></li>
 			                    <li class="bar"></li>								
-			                    <li><a href="<%=this.GetURL("/company/recruit_regist_list.aspx")%>">채용관리<span class="highlight"><span class="underline"><%=companyInfo.RecruitCount%></span>건</span></a></li>
+			                    <li><a href="<%=this.GetURL("/company/recruit_regist_list.aspx")%>">채용등록<span class="highlight"><span class="underline"><%=companyInfo.RecruitCount%></span>건</span></a></li>
+			                    <li class="bar"></li>
+			                    <li><a href="<%=this.GetURL("/company/recruit_manage.aspx")%>">채용관리</a></li>
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>			                    
 			                    <li class="national">

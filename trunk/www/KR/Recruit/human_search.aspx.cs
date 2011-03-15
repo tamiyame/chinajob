@@ -16,6 +16,7 @@ using Site.Web.Page;
 using Com.Framework.Data;
 using Com.Library.DB.User;
 using Com.Library.DB.Category;
+using Site.Web.Util;
 
 public partial class KR_Recruit_human_search : SitePage
 {
@@ -51,6 +52,13 @@ public partial class KR_Recruit_human_search : SitePage
         AreaCategory = Request.QueryString["Area"] == null ? 0 : Convert.ToInt32(Request.QueryString["Area"]);
         Gender = Request.QueryString["Gender"] == null ? (byte)0 : Convert.ToByte(Request.QueryString["Gender"]);
         UserName = Request.QueryString["Name"] == null ? string.Empty : Convert.ToString(Request.QueryString["Name"]);
+
+        if (!isUserCreate)
+        {
+            //Response.Clear();
+            //Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.UserJoinType) + "');</script>");
+            //Response.End();
+        }
 
         CategoryGetList list = new CategoryGetList();
         CategoryGetListArguments arg = new CategoryGetListArguments();
