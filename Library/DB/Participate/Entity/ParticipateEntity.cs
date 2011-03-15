@@ -29,6 +29,7 @@ namespace Com.Library.DB.Participate
         public byte RecruitType { get { return Convert.ToByte(GetData("RecruitType", (byte)0)); } }
         public byte ConfirmType { get { return Convert.ToByte(GetData("ConfirmType", (byte)0)); } }
         public DateTime DateCreated { get { return Convert.ToDateTime(GetData("DateCreated", DateTime.MinValue)); } }
+        public string StrDateCreated { get { return Convert.ToDateTime(GetData("DateCreated", DateTime.MinValue)).ToString("yyyy-MM-dd HH:mm:ss"); } }
         public DateTime DateLastUpdated { get { return Convert.ToDateTime(GetData("DateLastUpdated", DateTime.MinValue)); } }
     }
 }

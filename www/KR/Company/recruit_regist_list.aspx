@@ -58,7 +58,12 @@ jQuery(function()
             if ( _tempCreate == null )
             {
                 _tempCreate = obj;
-                var recrutTitle = $( obj ).closest("tr").find("td.col2 input:[type=text]").val();
+                var recrutTitle = $.trim($( obj ).closest("tr").find("td.col2 input:[type=text]").val());
+                if ( recrutTitle == "" )
+                {
+                    alert( "제목을 입력하세요" );
+                    return false;
+                }
                 Site.Web.Soap.Recruit.MasterCreate(recrutTitle, $.onRecruitCreate, $.onRecruitFailed );
             }
         },
