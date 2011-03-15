@@ -73,7 +73,7 @@ table.board-list tr.search td table td input{width:193px;height:18px;}
 .board-detail .board-content table{}
 .board-detail .board-content table tr{}
 .board-detail .board-content table tr.label td{border-bottom:dotted 1px #dcdad9;}
-.board-detail .board-content table tr.text{font-size:9pt;color:#5c5c5c;line-height:18px;}
+.board-detail .board-content table tr.text td{font-size:12px;color:#5c5c5c;line-height:18px;}
 .board-detail .board-content table td{border:none;}
 .board-detail .board-content table td.col1{color:#999999;font-size:11px;width:44px;}
 .board-detail .board-content table td.col2{width:526px;color:#454545;font-size:14px;font-weight:bold;}
