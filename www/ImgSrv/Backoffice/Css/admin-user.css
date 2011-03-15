@@ -22,7 +22,7 @@
  .user .userTable tr:hover td{background:#efefef;}
  
  /* company */
- .company .companyTable td.col1{width:98px; padding-left:20px;}
+ .company .companyTable td.col1{width:98px; padding-left:20px; font-size:9pt;}
  .company .companyTable td.col2{width:80px;}
  .company .companyTable td.col3{width:280px;font-size:12px;color:#555555;font-weight:bold;}
  .company .companyTable td.col4{width:68px;}
