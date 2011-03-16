@@ -31,15 +31,15 @@ namespace Com.Library.DB.User
 			set { SetValue("CareerCompanyName", value); }
 		}
 
-		public DateTime CareerStartDate
+		public string CareerStartDate
 		{
-			get { return Convert.ToDateTime(GetValue("CareerStartDate", DateTime.MinValue)); }
+			get { return Convert.ToString(GetValue("CareerStartDate", string.Empty)); }
 			set { SetValue("CareerStartDate", value); }
 		}
 
-		public DateTime CareerEndDate
+		public string CareerEndDate
 		{
-			get { return Convert.ToDateTime(GetValue("CareerEndDate", DateTime.MinValue)); }
+			get { return Convert.ToString(GetValue("CareerEndDate", string.Empty)); }
 			set { SetValue("CareerEndDate", value); }
 		}
 

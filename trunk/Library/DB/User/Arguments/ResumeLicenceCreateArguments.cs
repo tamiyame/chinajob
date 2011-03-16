@@ -19,9 +19,9 @@ namespace Com.Library.DB.User
 			set { SetValue("CountryNo", value); }
 		}
 
-        public DateTime LicensedDate
+        public string LicensedDate
         {
-            get { return Convert.ToDateTime(GetValue("LicensedDate",DateTime.MinValue )); }
+            get { return Convert.ToString(GetValue("LicensedDate",string.Empty )); }
             set { SetValue("LicensedDate", value); }
         }
 

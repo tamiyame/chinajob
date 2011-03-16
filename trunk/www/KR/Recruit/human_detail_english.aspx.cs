@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using Com.Library.Translate;
+using Site.Web.Page;
 
 public partial class KR_Recruit_human_detail_english : KR_Recruit_human_detail
 {
