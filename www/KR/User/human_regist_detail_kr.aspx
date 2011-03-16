@@ -69,7 +69,7 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                             </td>
                             <td class="size-k-1-2 regist-label">국문</td>
                             <td class="size-k-1-3"><%=UserInfo.KRName%></td>
-                            <td class="size-k-1-4 regist-label">주민등록번호<span class="require">*</span></td>
+                            <td class="size-k-1-4 regist-label">주민등록번호</td>
                             <td class="size-k-1-5">
                                 <table>
                                     <tr>
@@ -150,6 +150,12 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                                         </td>
                                         <td>
                                             <label for="army3">면제</label>
+                                        </td>
+                                        <td>
+                                            <input id="Radio7" type="radio" class="radio" name="army" value="4"/>
+                                        </td>
+                                        <td>
+                                            <label for="army3">무관</label>
                                         </td>
                                     </tr>
                                 </table>

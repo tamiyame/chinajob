@@ -78,13 +78,13 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                                             <input id="isCareer1" type="radio" class="radio" name="isCareer" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="isCareer1">신입</label>
+                                            <label for="isCareer1">新入职</label>
                                         </td>
                                         <td>
                                             <input id="isCareer2" type="radio" class="radio" name="isCareer" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="isCareer2">경력</label>
+                                            <label for="isCareer2">经验</label>
                                         </td>
                                     </tr>
                                 </table>
@@ -175,19 +175,19 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                                             <input id="level1-1" type="radio" class="radio" name="language_level_1" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="level1-1">上</label>&nbsp;
+                                            <label for="level1-1">上级</label>&nbsp;
                                         </td>
                                         <td>
                                             <input id="level1-2" type="radio" class="radio" name="language_level_1" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="level1-2">中</label>&nbsp;
+                                            <label for="level1-2">中级</label>&nbsp;
                                         </td>
                                         <td>
                                             <input id="level1-3" type="radio" class="radio" name="language_level_1" value="3"/>
                                         </td>
                                         <td>
-                                            <label for="level1-3">下</label>
+                                            <label for="level1-3">下级</label>
                                         </td>
                                     </tr>
                                 </table>
@@ -204,19 +204,19 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                                             <input id="level2-1" type="radio" class="radio" name="language_level_2" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="level2-1">上</label>&nbsp;
+                                            <label for="level2-1">上级</label>&nbsp;
                                         </td>
                                         <td>
                                             <input id="level2-2" type="radio" class="radio" name="language_level_2" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="level2-2">中</label>&nbsp;
+                                            <label for="level2-2">中级</label>&nbsp;
                                         </td>
                                         <td>
                                             <input id="level2-3" type="radio" class="radio" name="language_level_2" value="3"/>
                                         </td>
                                         <td>
-                                            <label for="level2-3">下</label>
+                                            <label for="level2-3">下级</label>
                                         </td>
                                     </tr>
                                 </table>
@@ -233,19 +233,19 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                                             <input id="level3-1" type="radio" class="radio" name="language_level_3" value="1"/>
                                         </td>
                                         <td>
-                                            <label for="level3-1">上</label>&nbsp;
+                                            <label for="level3-1">上级</label>&nbsp;
                                         </td>
                                         <td>
                                             <input id="level3-2" type="radio" class="radio" name="language_level_3" value="2"/>
                                         </td>
                                         <td>
-                                            <label for="level3-2">中</label>&nbsp;
+                                            <label for="level3-2">中级</label>&nbsp;
                                         </td>
                                         <td>
                                             <input id="level3-3" type="radio" class="radio" name="language_level_3" value="3"/>
                                         </td>
                                         <td>
-                                            <label for="level3-3">下</label>
+                                            <label for="level3-3">下级</label>
                                         </td>
                                     </tr>
                                 </table>

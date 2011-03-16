@@ -103,6 +103,7 @@ namespace Site.Web.Page
                     korean_age = "0";
                 }
 
+				DateTime dt = new DateTime();
                 if (ResumeDetail.ResumeDetailNo == 0)
                 {
                     ResumeDetailCreate create = new ResumeDetailCreate();
@@ -188,9 +189,9 @@ namespace Site.Web.Page
                                 UserNo = this.WebCookies.UserNo,
                                 CountryNo = (int)CountryCode,
                                 SchoolCountryName = education_national[i],
-                                SchoolEndDate = Convert.ToDateTime(education_period_end[i]),
+                                SchoolEndDate = education_period_end[i],
                                 SchoolName = education_school[i],
-                                SchoolStartDate = Convert.ToDateTime(education_period_start[i]),
+                                SchoolStartDate = education_period_start[i],
                                 SchoolStatus = Convert.ToByte(education_state[i])
                             });
                         create.ExecuteNonQuery();
@@ -206,8 +207,8 @@ namespace Site.Web.Page
                                 ResumeAcademicAbilityNo = ResumeAcademicAbilities[i].ResumeAcademicAbilityNo,
                                 CountryNo = (int)CountryCode,
                                 SchoolCountryName = education_national[i],
-                                SchoolStartDate = Convert.ToDateTime(education_period_start[i]),
-                                SchoolEndDate = Convert.ToDateTime(education_period_end[i]),
+                                SchoolStartDate = education_period_start[i],
+                                SchoolEndDate = education_period_end[i],
                                 SchoolName = education_school[i],
                                 SchoolStatus = Convert.ToByte(education_state[i])
                             });
@@ -222,7 +223,7 @@ namespace Site.Web.Page
                 career_period_end = Request["career_period_end"] == null ? new string[0] : Request["career_period_end"].Split(','),
                 career_department = Request["career_department"] == null ? new string[0] : Request["career_department"].Split(','),
                 career_detail = Request["career_detail"] == null ? new string[0] : Request["career_detail"].Split(','),
-                career_location = Request["career_location"] == null ? new string[0] : Request["career_location"].Split(',');
+                career_location = Request["career_location"] == null ? new string[]{"","",""} : Request["career_location"].Split(',');
 
                 for (int i = 0; i < career_company.Length; ++i)
                 {
@@ -235,8 +236,8 @@ namespace Site.Web.Page
                             new ResumeCareerCreateArguments()
                             {
                                 CareerCompanyName = career_company[i],
-                                CareerEndDate = Convert.ToDateTime(career_period_end[i]),
-                                CareerStartDate = Convert.ToDateTime(career_period_start[i]),
+                                CareerEndDate = career_period_end[i],
+                                CareerStartDate = career_period_start[i],
                                 CareerJobs = career_department[i],
                                 CareerPosition = career_detail[i],
                                 CareerLocation = career_location[i],
@@ -252,8 +253,8 @@ namespace Site.Web.Page
                             new ResumeCareerModifyArguments()
                             {
                                 CareerCompanyName = career_company[i],
-                                CareerEndDate = Convert.ToDateTime(career_period_end[i]),
-                                CareerStartDate = Convert.ToDateTime(career_period_start[i]),
+                                CareerEndDate = career_period_end[i],
+                                CareerStartDate = career_period_start[i],
                                 CareerJobs = career_department[i],
                                 CareerPosition = career_detail[i],
                                 CareerLocation = career_location[i],
@@ -325,7 +326,7 @@ namespace Site.Web.Page
                         create.SetArguments(
                             new ResumeLicenseCreateArguments()
                             {
-                                LicensedDate = Convert.ToDateTime(licence_year[i]),
+                                LicensedDate = licence_year[i],
                                 LicenseName = licence_title[i],
                                 Organization = licence_institution[i],
                                 UserNo = this.WebCookies.UserNo,
@@ -339,7 +340,7 @@ namespace Site.Web.Page
                         modify.SetArguments(
                             new ResumeLicenseMidifyArguments()
                             {
-                                LicensedDate = Convert.ToDateTime(licence_year[i]),
+                                LicensedDate = licence_year[i],
                                 LicenseName = licence_title[i],
                                 Organization = licence_institution[i],
                                 UserNo = this.WebCookies.UserNo,

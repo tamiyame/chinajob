@@ -33,15 +33,15 @@ namespace Com.Library.DB.User
 			set { SetValue("SchoolName", value); }
 		}
 
-		public DateTime SchoolStartDate
+		public string SchoolStartDate
 		{
-			get { return Convert.ToDateTime(GetValue("SchoolStartDate", DateTime.MinValue)); }
+			get { return Convert.ToString(GetValue("SchoolStartDate", string.Empty)); }
 			set { SetValue("SchoolStartDate", value); }
 		}
 
-		public DateTime SchoolEndDate
+		public string SchoolEndDate
 		{
-			get { return Convert.ToDateTime(GetValue("SchoolEndDate", DateTime.MinValue)); }
+			get { return Convert.ToString(GetValue("SchoolEndDate", string.Empty)); }
 			set { SetValue("SchoolEndDate", value); }
 		}
 

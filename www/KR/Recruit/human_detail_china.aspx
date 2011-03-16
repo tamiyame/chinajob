@@ -167,22 +167,22 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                                                 <td class="regist-label" style="width:143px">会话</td>                                             
                                             </tr>
                                             <tr>
-                                               <td class="language_type">汉语</td>
-                                               <td class="language_testname">新HSK</td>
-                                               <td class="language_score">五级</td>
-                                               <td class="language_level">上</td>
+                                               <td class="language_type"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
+                                               <td class="language_level"></td>
                                             </tr>
                                             <tr>
-                                               <td class="language_type">汉语</td>
-                                               <td class="language_testname">新HSK</td>
-                                               <td class="language_score">五级</td>
-                                               <td class="language_level">上</td>
+                                               <td class="language_type"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
+                                               <td class="language_level"></td>
                                             </tr>
                                             <tr>
-                                               <td class="language_type">汉语</td>
-                                               <td class="language_testname">新HSK</td>
-                                               <td class="language_score">五级</td>
-                                               <td class="language_level">上</td>
+                                               <td class="language_type"></td>
+                                               <td class="language_testname"></td>
+                                               <td class="language_score"></td>
+                                               <td class="language_level"></td>
                                             </tr>
                                         </table>
                                     </div>
