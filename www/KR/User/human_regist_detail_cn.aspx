@@ -43,16 +43,16 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
         <div class="tab">
             <ul>
 	            <li class="icon icon-folder-middle-off">
-		            <div>기본정보</div>
+		            <div><span style="font-family:tahoma;color:#007be3">STEP1 </span>기본정보</div>
 	            </li>
 	            <li class="icon icon-folder-middle-off">
-		            <div>한국어</div>
+		            <div><span style="font-family:tahoma;color:#007be3">STEP2 </span>한국어</div>
 	            </li>	
 	            <li class="select icon icon-folder-middle-on">
-		            <div>中文</div>
+		            <div><span style="font-family:tahoma;color:#007be3">STEP3 </span>中文</div>
 	            </li>
 	            <li class="last icon icon-folder-middle-off">
-		            <div>English</div>
+		            <div><span style="font-family:tahoma;color:#007be3">STEP4 </span>English</div>
 	            </li>												
             </ul>						
         </div>

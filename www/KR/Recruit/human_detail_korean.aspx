@@ -44,16 +44,16 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                             <div class="tab">
 					            <ul>
 						            <li class="icon icon-folder-middle-off">
-							            <div><a href="<%=GetDetailViewer("human_detail_basic.aspx",this.UserNo)  %>">기본정보</a></div>
+							            <div><a href="<%=GetDetailViewer("human_detail_basic.aspx",this.UserNo)  %>"><span style="font-family:tahoma;color:#007be3">STEP1 </span>기본정보</a></div>
 						            </li>
 						            <li class="icon icon-folder-middle-off">
-							            <div><a href="<%=GetDetailViewer("human_detail_korean.aspx",this.UserNo)  %>">한국어</a></div>
+							            <div><a href="<%=GetDetailViewer("human_detail_korean.aspx",this.UserNo)  %>"><span style="font-family:tahoma;color:#007be3">STEP2 </span>한국어</a></div>
 						            </li>	
 						            <li class="select icon icon-folder-middle-on">
-							            <div><a href="<%=GetDetailViewer("human_detail_china.aspx",this.UserNo)  %>">中文</a></div>
+							            <div><a href="<%=GetDetailViewer("human_detail_china.aspx",this.UserNo)  %>"><span style="font-family:tahoma;color:#007be3">STEP3 </span>中文</a></div>
 						            </li>
 						            <li class="last icon icon-folder-middle-off">
-							            <div><a href="<%=GetDetailViewer("human_detail_english.aspx",this.UserNo)  %>">English</a></div>
+							            <div><a href="<%=GetDetailViewer("human_detail_english.aspx",this.UserNo)  %>"><span style="font-family:tahoma;color:#007be3">STEP4 </span>English</a></div>
 						            </li>												
 					            </ul>					
 				            </div>

@@ -16,7 +16,7 @@
 				    <div class="human-title-join"></div>
 				    <table class="join-table">
 				        <tr>
-				            <td class="label">사진<span class="require">*</span></td>
+				            <td class="label">사진</td>
 				            <td>
 				                <table>
 				                    <tr>
@@ -274,8 +274,8 @@ jQuery(function()
             
             if ( UserImage == "" )
             {
-                alert( "사진을 추가하세요");
-                return false;
+                //alert( "사진을 추가하세요");
+                //return false;
             }
             
             if ( UserID == "" )
