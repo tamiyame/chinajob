@@ -125,7 +125,7 @@
 .search-data .tab li{margin:0 3px 0 0;}
 
 .tab-content{}
-.tab-content table{width:777px;}
+.tab-content table{}
 .tab-content tr{height:33px;}
 .tab-content tr.first{height:22px;}
 .tab-content td{padding:0px;font-size:12px;}
