@@ -15,6 +15,7 @@ using Com.Library.Translate;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using Com.Framework.Data;
+using Site.Web.Util;
 
 /// <summary>
 /// KR_Recruit_human_detail의 요약 설명입니다.
@@ -42,6 +43,13 @@ namespace Site.Web.Page
 
 		protected override void OnLoad(EventArgs e)
 		{
+			if (!this.WebCookies.IsLogin)
+			{
+				Response.Clear();
+				Response.Write("<script language='javascript'>;location.href='" + GetURL("/home") + "'; alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
+				Response.End();
+			}
+
 			if (Request["userno"] == null || Request["userno"] == string.Empty)
 			{
 				Response.Write("<script type='text/javascript'>alert('userno가 들어오지 않았습니다..');location.href='" + GetURL("/recruit/human_search.aspx") + "';</script>");
