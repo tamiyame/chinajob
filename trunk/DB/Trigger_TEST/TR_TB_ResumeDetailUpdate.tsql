@@ -1,4 +1,7 @@
-create TRIGGER [TR_TB_ResumeDetailUpdate] ON [dbo].[TB_ResumeDetail]
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[TR_TB_ResumeDetailUpdate] ON [dbo].[TB_ResumeDetail]
 FOR UPDATE
 AS
 
@@ -24,6 +27,7 @@ SELECT
 ,	@CountryNo = CountryNo
 ,	@Age = Age
 ,	@KoreanAge = KoreanAge
+,	@Career = IsCareer
 FROM 
 	INSERTED
 
@@ -50,49 +54,7 @@ FROM
 WHERE
 	UserNo = @UserNo
 
-IF NOT EXISTS (SELECT UserNo FROM dbo.TB_ResumeSearch WITH(NOLOCK) WHERE UserNo = @UserNo AND CountryNo = @CountryNo )
-BEGIN
-	-- 해당 CompnayNo, CountryNo, RecruitNo 값기준으로 Search Data가 없으므로 추가로 필요한 Data TB_CompanyDetail Table 에서 뽑아오고 
-	INSERT	dbo.TB_ResumeSearch
-	(
-		UserNo
-	,	CountryNo
-	,	KRName
-	,	CNName
-	,	ENGName
-	,	UserImage
-	,	JoinType
-	,	Category1No
-	,	Category2No
-	,	CityCategory
-	,	AreaCategory
-	,	KoreanAge
-	,	Age
-	,	Gender
-	,	Career
-	,	RegistryTime
-	)
-	SELECT
-		@UserNo
-	,	@CountryNo
-	,	@KRName
-	,	@CNName
-	,	@ENGName
-	,	@UserImage
-	,	@JoinType
-	,	@Category1No
-	,	@Category2No
-	,	@CityCategory
-	,	@AreaCategory
-	,	@KoreanAge
-	,	@Age
-	,	@Gender
-	,	@Career
-	,	@RegistryTime
-
-		
-END
-ELSE
+IF EXISTS (SELECT UserNo FROM dbo.TB_ResumeSearch WITH(NOLOCK) WHERE UserNo = @UserNo AND CountryNo = @CountryNo )
 BEGIN
 	UPDATE
 		dbo.TB_ResumeSearch
@@ -115,8 +77,5 @@ BEGIN
 		UserNo = @UserNo
 	AND	CountryNo = @CountryNo
 END
-
-
-
 
 
