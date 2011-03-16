@@ -33,7 +33,7 @@
 -->
                                 </div>
                                 <div class="tool-right">
-                                    <a href="<%=PageMove("qna_list.aspx")%>" class="icon icon-board-list"></a>
+                                    <a href="<%=PageMove("notice_list.aspx")%>" class="icon icon-board-list"></a>
                                 </div>
                             </div>
                             <!--
