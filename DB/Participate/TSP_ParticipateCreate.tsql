@@ -15,6 +15,9 @@ alter PROCEDURE [dbo].[TSP_ParticipateCreate]
 ,	@CompanyNo	int	
 ,	@RecruitNo	int	
 ,	@UserNo	int	
+,	@CountryNo int
+,	@Category1No int
+,	@Category2No int
 ,	@RecruitType	tinyint	
 )
 as
@@ -93,6 +96,9 @@ INSERT	TB_Participate
 ,	DateCreated
 ,	DateLastUpdated
 ,	Status
+,	CountryNo
+,	Category1No
+,	Category2No
 )
 SELECT
 	@CompanyNo
@@ -103,6 +109,9 @@ SELECT
 ,	@FrkDateNow
 ,	@FrkDateNow
 ,	1
+,	@CountryNo
+,	@Category1No
+,	@Category2No	
 SELECT
 	@FrkErrorCode = @@ERROR
 ,	@FrkRowCount = @@RowCount
