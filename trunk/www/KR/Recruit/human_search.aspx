@@ -234,7 +234,7 @@ jQuery(function()
 })(jQuery);
 </script>
                                 <div class="tab-content">
-                                    <table>
+                                    <table class="human-search-result">
                                         <tr class="first">
                                             <th class="col1">성명</th>
                                             <th class="col2">희망/관심직종</th>
