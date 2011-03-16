@@ -23,7 +23,7 @@
 
 /*recruit-manage*/
 .main .recruit-manage-title{ background:url('../Images/recruit/recruit_manage_list.png');width:299px;height:24px;margin-bottom:14px;}
-.main .tab-content table.recruit-manage{}
+.main .tab-content table.recruit-manage{ border-bottom: 1px solid #DBDBDB;    border-top: 1px solid #DBDBDB;}
 .main .tab-content table.recruit-manage .smallFont{font-size:11px;color:#969696;}
 .main .tab-content table.recruit-manage .center{text-align:center;}
 .main .tab-content table.recruit-manage tr{height:33px;}
