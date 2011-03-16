@@ -39,3 +39,6 @@ table.board-list tr.search td table td.search_button a{top:-6px;}
 
 .search-btn .icon-recruit-search-btn{position:absolute;margin-left:337px; margin-top:-13px;}
 .search-btn .icon-recruit-request{position:absolute;margin-left:585px; margin-top:-13px;}
+
+.icon-folder-small-off {    background-position: -486px -338px;    height: 32px;    width: 151px;}
+.icon-folder-small-on {    background-position: -333px -338px;    height: 32px;    width: 151px;}
