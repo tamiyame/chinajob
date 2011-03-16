@@ -36,3 +36,6 @@ table.board-list tr.search td table td.search_button a{top:-6px;}
 .icon-info-box-empty{background:url('../images/base/icon.jpg');background-position:-0px -308px; width:189px; height:138px;}
 
 .company_list_ie6fix{left:-16px;}
+
+.search-btn .icon-recruit-search-btn{position:absolute;margin-left:337px; margin-top:-13px;}
+.search-btn .icon-recruit-request{position:absolute;margin-left:585px; margin-top:-13px;}
