@@ -32,9 +32,13 @@
 				            </div>
                             <div class="tab-content">
                                 <div class="regist">
-                                    <div class="comment">
-                                        귀하가 작성하신 이력서는 한국산업인력공단 해외취업국에 등록되어 취업박람회 참가 구인처 및 기타 구인처의 채용과 관련된 정보로만 활용됩니다.<br />  
-                                        제출 후에도 지속적 관리를 통해 채용 연계 예정이오니 수정 및 보충 사항 있을 시, 재 제출하실 경우 교체 등록해드립니다.
+                                    <div class="comment" style="line-height:16px;font-size:12px">
+                                        <b>입력단계</b><br>
+										&nbsp;&nbsp;STEP1 : 기본정보 필수 작성<br>
+										&nbsp;&nbsp;STEP2 : 국문이력서 필수 작성<br>
+										&nbsp;&nbsp;STEP3 or STEP4 : 중문 또는 영문이력서 중 1부 필수 작성<br>
+										&nbsp;&nbsp;<font size="11px">(외국기업 및 중국기업을 위한 외국어이력서 1부를 반드시 작성해주시기 바랍니다.)</font><br>
+										# 주의 : 이력서를 작성하지 않으시면 박람회 참가기업에 지원이 불가능합니다.
                                     </div>
                                     <div class="regist-item">
                                         <div class="regist-header">1.희망지원 회사 코드 및 기타사항 <span class="desc">(채용정보 기업체 코드와 회사명을 확인 후,기입해 주시기 바랍니다.)</span></div>                                
