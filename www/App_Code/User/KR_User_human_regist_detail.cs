@@ -15,6 +15,7 @@ using Com.Library.Translate;
 using System.Collections.Generic;
 using Com.Framework.Data;
 using System.Web.Script.Serialization;
+using Site.Web.Util;
 
 /// <summary>
 /// KR_User_human_regist_detail의 요약 설명입니다.
@@ -43,7 +44,14 @@ namespace Site.Web.Page
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            {
+			if (!this.WebCookies.IsLogin)
+			{
+				Response.Clear();
+				Response.Write("<script language='javascript'>;location.href='" + GetURL("/home") + "'; alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
+				Response.End();
+			}
+
+			{
                 UserGetInfoArguments infoArg = new UserGetInfoArguments();
                 infoArg.UserNo = this.WebCookies.UserNo;
                 UserGetInfo info = new UserGetInfo();
