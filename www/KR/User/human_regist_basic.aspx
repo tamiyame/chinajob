@@ -44,16 +44,6 @@
                                         <div class="regist-header">1.희망지원 회사 코드 및 기타사항 <span class="desc">(채용정보 기업체 코드와 회사명을 확인 후,기입해 주시기 바랍니다.)</span></div>                                
                                         <table class="regist-table">
                                             <tr>
-                                                <td class="size33 regist-label">1지망<span class="require">*</span></td>
-                                                <td class="size33 regist-label">2지망<span class="require">*</span></td>
-                                                <td class="size33 regist-label">3지망<span class="require">*</span></td>
-                                            </tr>
-                                            <tr class="jobcode_select">
-                                                <td><input class="w1" type="text" readonly="true" name="hopejob_1"/></td>
-                                                <td><input class="w1" type="text" readonly="true" name="hopejob_2"/></td>
-                                                <td><input class="w1" type="text" readonly="true" name="hopejob_3"/></td>
-                                            </tr>
-                                            <tr>
                                                 <td class="regist-label">희망급여 (RMB/1개월)<span class="require">*</span></td>
                                                 <td colspan="2"><input class="w1" type="text" name="pay"/> <span class="label">RMB (세후금액)</span></td>                                            
                                             </tr>

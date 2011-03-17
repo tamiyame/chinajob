@@ -62,9 +62,6 @@ public partial class KR_User_human_regist_basic : SitePage
         if (this.IsPostBack)
         {
             string
-            hopejob_1 = Request.Form["hopejob_1"] == null ? String.Empty : Request.Form["hopejob_1"],
-            hopejob_2 = Request.Form["hopejob_2"] == null ? String.Empty : Request.Form["hopejob_2"],
-            hopejob_3 = Request.Form["hopejob_3"] == null ? String.Empty : Request.Form["hopejob_3"],
             pay = Request.Form["pay"] == null ? String.Empty : Request.Form["pay"],
             location1_1 = Request.Form["location1_1"] == null ? String.Empty : Request.Form["location1_1"],
             location2_1 = Request.Form["location2_1"] == null ? String.Empty : Request.Form["location2_1"],
@@ -91,9 +88,6 @@ public partial class KR_User_human_regist_basic : SitePage
 						Category2No = Convert.ToInt32(hope_job_category2_2),
 						CityNo1 = Convert.ToInt32(location1_1),
 						CityNo2 = Convert.ToInt32(location1_2),
-						CompanyNo1 = Convert.ToInt32(hopejob_1),
-						CompanyNo2 = Convert.ToInt32(hopejob_2),
-						CompanyNo3 = Convert.ToInt32(hopejob_3),
 						HopeRecruitDate = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day)),
 						HopeSalary = pay,
 						UserNo = this.WebCookies.UserNo,
@@ -115,9 +109,6 @@ public partial class KR_User_human_regist_basic : SitePage
 						Category2No = Convert.ToInt32(hope_job_category2_2),
 						CityNo1 = Convert.ToInt32(location1_1),
 						CityNo2 = Convert.ToInt32(location1_2),
-						CompanyNo1 = Convert.ToInt32(hopejob_1),
-						CompanyNo2 = Convert.ToInt32(hopejob_2),
-						CompanyNo3 = Convert.ToInt32(hopejob_3),
 						HopeRecruitDate = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day)),
 						HopeSalary = pay,
 						JoinType = Convert.ToByte(isJoin)
