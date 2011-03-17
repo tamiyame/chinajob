@@ -15,19 +15,27 @@
                             <div class="recruit-title-search"></div>
                         </div>
                         <div class="contents">
+                            <div class="tab" style="margin-bottom:20px;">
+				                <ul>
+					                <li class="select icon <%=CountryNo == 1 ? "icon-folder-big-on":"icon-folder-big-off" %>">
+						                <div><a href="recruit_search.aspx?Country=1">한국어</a></div>
+					                </li>
+					                <li class="select icon <%=CountryNo == 2 ? "icon-folder-big-on":"icon-folder-big-off" %>">
+						                <div><a href="recruit_search.aspx?Country=2">中文</a></div>
+					                </li>	
+					                <!--<li class="select icon icon-folder-big-off">
+						                <div>English</div>
+					                </li>-->
+				                </ul>
+                            </div>
                             <div class="search-box">
                                 <div class="search-table">
                                     <table>
                                         <tr>
-                                            <td class="col1 label">언어</td>
+                                            <td class="col1 label">참가</td>
                                             <td class="col2" colspan="3">
-                                                <table style="width:420px;">
+                                                <table>
                                                     <tr>
-                                            		    <td><input class="radio" id="isLang_1" type="radio" value="1" name="CountryNo" <%=CountryNo == 1 ? "checked='checked'":"" %> /></td>
-                                            		    <td><label for="isLang_1">한국어</label></td>
-                                            		    <td><input class="radio" id="isLang_2" type="radio" value="2" name="CountryNo" <%=CountryNo == 2 ? "checked='checked'":"" %>/></td>
-                                            		    <td><label for="isLang_1">中文</label></td>
-                                                        <td class="col1 label" style="padding-left:140px">참가</td>
                                                         <td><input class="radio" id="isJoin_1" type="radio" value="1" name="JoinType" <%=JoinType == 1 ? "checked='checked'":"" %>/></td>
                                                         <td><label for="isJoin_1">참가</label></td>
                                                         <td><input class="radio" id="isJoin_2" type="radio" value="0" name="JoinType" <%=JoinType == 0 ? "checked='checked'":"" %>/></td>
