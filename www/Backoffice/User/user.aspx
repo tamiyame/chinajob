@@ -15,7 +15,7 @@
         <tr onclick="javascript:;">
             <td class="col1"><%=item.UserNo %></td>
             <td class="col2">성명</td>
-            <td class="col3"><span class="name"><%=item.KRName %></span><span class="age-gender">(<%=item.Gender == 1 ? "남" : "여" %>,<%=item.Birthday.ToString("yyyy-MM-dd")%>)</span></td>
+            <td class="col3"><span class="name"><%=item.KRName %></span><span class="age-gender">(<%=item.Gender == 1 ? "남" : "여" %>,<%=item.Birthday.ToString("yyyy")%>)</span></td>
             <td class="col4">연락처</td>
             <td class="col5"><%=item.KRPhoneNo %></td>
             <td class="col6">현재거주국</td>
