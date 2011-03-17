@@ -117,25 +117,25 @@ namespace Site.Web.Page
 			if (dummy is ResumeAcademicAbilityEntity)
 			{
 				arg = new ResumeAcademicAbilityGetListArguments();
-				((ResumeAcademicAbilityGetListArguments)arg).UserNo = WebCookies.UserNo;
+				((ResumeAcademicAbilityGetListArguments)arg).UserNo = UserNo;
 				((ResumeAcademicAbilityGetListArguments)arg).CountryNo = (int)CountryCode;
 			}
 			else if (dummy is ResumeCareerEntity)
 			{
 				arg = new ResumeCareerGetListArguments();
-				((ResumeCareerGetListArguments)arg).UserNo = WebCookies.UserNo;
+				((ResumeCareerGetListArguments)arg).UserNo = UserNo;
 				((ResumeCareerGetListArguments)arg).CountryNo = (int)CountryCode;
 			}
 			else if (dummy is ResumeLanguageEntity)
 			{
 				arg = new ResumeLanguageGetListArguments();
-				((ResumeLanguageGetListArguments)arg).UserNo = WebCookies.UserNo;
+				((ResumeLanguageGetListArguments)arg).UserNo = UserNo;
 				((ResumeLanguageGetListArguments)arg).CountryNo = (int)CountryCode;
 			}
 			else if (dummy is ResumeLicenseEntity)
 			{
 				arg = new ResumeLicenseGetListArguments();
-				((ResumeLicenseGetListArguments)arg).UserNo = WebCookies.UserNo;
+				((ResumeLicenseGetListArguments)arg).UserNo = UserNo;
 				((ResumeLicenseGetListArguments)arg).CountryNo = (int)CountryCode;
 			}
 			return func(arg);

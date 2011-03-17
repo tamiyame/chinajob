@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="resume_view.aspx.cs" Inherits="KR_User_resume_view" %>
+<%@ Import Namespace="Com.Library.Translate" %>
+<%@ Import Namespace="Com.Library.DB.User" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -56,9 +58,9 @@
                               <td class="size33 regist-label">3지망<span class="require">*</span></td>
                           </tr>
                           <tr>
-                              <td><%=GetCompanyName(1, resumeEntity.CompanyNo1)%>(<%=resumeEntity.CompanyNo1%>)</td>
-                              <td><%=GetCompanyName(1, resumeEntity.CompanyNo2)%>(<%=resumeEntity.CompanyNo2%>)</td>
-                              <td><%=GetCompanyName(1, resumeEntity.CompanyNo3)%>(<%=resumeEntity.CompanyNo3%>)</td>
+                              <td><%=GetCompanyName(resumeEntity.CompanyNo1)%>(<%=resumeEntity.CompanyNo1%>)</td>
+                              <td><%=GetCompanyName(resumeEntity.CompanyNo2)%>(<%=resumeEntity.CompanyNo2%>)</td>
+                              <td><%=GetCompanyName(resumeEntity.CompanyNo3)%>(<%=resumeEntity.CompanyNo3%>)</td>
                           </tr>
                           <tr>
                               <td class="regist-label">희망급여 (RMB/1개월)<span class="require">*</span></td>
@@ -71,7 +73,7 @@
                                       <tr>
                                           <td><span class="label">1지망</span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                           <td>
-                                              <%=GetCategoryName(1, resumeEntity.CityNo1)%> > <%=GetSubCategoryName(1, resumeEntity.ArrayNo1)%>
+                                              <%=GetCategoryName(resumeEntity.CityNo1)%> > <%=GetSubCategoryName(resumeEntity.ArrayNo1)%>
                                           </td>
                                       </tr>
                                   </table>
@@ -83,7 +85,7 @@
                                       <tr>
                                           <td><span class="label">2지망</span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                           <td>
-                                              <%=GetCategoryName(1, resumeEntity.CityNo2)%> > <%=GetSubCategoryName(1, resumeEntity.ArrayNo2)%>
+                                              <%=GetCategoryName(resumeEntity.CityNo2)%> > <%=GetSubCategoryName(resumeEntity.ArrayNo2)%>
                                           </td>
                                       </tr>
                                   </table>
@@ -101,11 +103,11 @@
                       <table class="regist-table">
                           <tr>
                               <td class="size33 regist-label">희망/관심 업종<span class="require">*</span></td>
-                              <td colspan="2"><%=GetCategoryName(1, resumeEntity.BusinessCategoryNo)%></td>                                            
+                              <td colspan="2"><%=GetCategoryName(resumeEntity.BusinessCategoryNo)%></td>                                            
                           </tr>
                           <tr>
                               <td class="regist-label">희망/관심 직종<span class="require">*</span></td>
-                              <td colspan="2"><%=GetCategoryName(1, resumeEntity.Category1No)%> > <%=GetSubCategoryName(1, resumeEntity.Category2No)%></td>                                            
+                              <td colspan="2"><%=GetCategoryName(resumeEntity.Category1No)%> > <%=GetSubCategoryName(resumeEntity.Category2No)%></td>                                            
                           </tr>
                       </table>
                   </div>
@@ -140,13 +142,13 @@
                               <td class="regist-label">중문</td>
                               <td><%=UserInfo.CNName %></td>
                               <td class="regist-label">연령</td>
-                              <td><%=resumeDetail_KR.KoreanAge %>세 (만 <%=resumeDetail_KR.Age %>세)</td>                                                    
+                              <td><%=ResumeDetail[1].KoreanAge%>세 (만 <%=ResumeDetail[1].Age%>세)</td>                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">영문</td>
                               <td><%=UserInfo.ENGName %></td>
                               <td class="regist-label">재중경험</td>
-                              <td><%=resumeDetail_KR.ChinaExp.Replace("-", "년 ") %>개월</td>                                                                                                    
+                              <td><%=ResumeDetail[1].ChinaExp.Replace("-", "년")%>개월</td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">한국연락처</td>
@@ -158,17 +160,17 @@
                               <td class="regist-label">거주국가</td>
                               <td><%=UserInfo.ResidanceCountry == 1 ? "한국":"중국"%></td>
                               <td class="regist-label">병역</td>
-                              <td><%=GetMilitaryInfo(resumeDetail_KR.Military)%></td>                                                                                                    
+                              <td><%=ResumeDetail[1].Military == 1 ? "필" : ResumeDetail[1].Military == 2 ? "미필" : ResumeDetail[1].Military == 3 ? "면제" : ResumeDetail[1].Military == 4?"무관":"기타"%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">이메일</td>
                               <td><%=UserInfo.Email%></td>
                               <td class="regist-label">경력여부</td>
-                              <td><%=resumeDetail_KR.IsCareer == 1 ? "신입" : "경력"%></td>                                                                                                    
+                              <td><%=ResumeDetail[1].IsCareer==1?"신입":"경력"%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label" colspan="2">주소(현재 실 거주지)</td>
-                              <td colspan="3"><%=resumeDetail_KR.Address%></td>                                 
+                              <td colspan="3"><%=ResumeDetail[1].Address%></td>                                 
                           </tr>
                       </table>
                   </div>
@@ -183,51 +185,25 @@
                               <td class="size-k-2-4 regist-label">전공/부전공</td>
                               <td class="size-k-2-5 regist-label">소재국가</td>                                                    
                           </tr>
+                          <asp:Repeater ID="rptAcademicAbility_kr" runat="server">
+                          <ItemTemplate>
                           <tr>
-                             <td>서울대학교</td>
+                             <td><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolName%></td>
                              <td>
                                  <table>
                                       <tr>
-                                          <td class="size-sub-k-2-1">2008.2</td>
+                                          <td class="size-sub-k-2-1"><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolStartDate%></td>
                                           <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2011.3</td>
+                                          <td class="size-sub-k-2-3"><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolEndDate%></td>
                                       </tr>
                                  </table>
                              </td>
-                             <td class="v-center">졸업</td>
-                             <td>대외한어과</td>
-                             <td>한국</td>
+                             <td class="v-center"><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolStatus==1?"졸업":((ResumeAcademicAbilityEntity)Container.DataItem).SchoolStatus==0?"":"기타"%></td>
+                             <td><%# ((ResumeAcademicAbilityEntity)Container.DataItem).MajorMinor%></td>
+                             <td><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolCountryName%></td>
                           </tr>
-                          <tr>
-                             <td>서울대학교</td>
-                             <td>
-                                 <table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2008.2</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2011.3</td>
-                                      </tr>
-                                 </table>
-                             </td>
-                             <td class="v-center">졸업</td>
-                             <td>대외한어과</td>
-                             <td>한국</td>
-                          </tr>
-                          <tr>
-                             <td>서울대학교</td>
-                             <td>
-                                 <table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2008.2</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2011.3</td>
-                                      </tr>
-                                 </table>
-                             </td>
-                                 <td class="v-center">졸업</td>
-                             <td>대외한어과</td>
-                             <td>한국</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
@@ -240,48 +216,24 @@
                               <td class="size-k-3-3 regist-label">직종</td>
                               <td class="size-k-3-4 regist-label">직책 및 근무내역</td>                                             
                           </tr>
+                          <asp:Repeater ID="rptCareer_kr" runat="server">
+                          <ItemTemplate>
                           <tr>
-                             <td>대한적십자</td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerCompanyName%></td>
                              <td>
                                  <table>
                                       <tr>
-                                          <td class="size-sub-k-2-1">2008.6</td>
+                                          <td class="size-sub-k-2-1"><%# ((ResumeCareerEntity)Container.DataItem).CareerStartDate%></td>
                                           <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2008.8</td>
+                                          <td class="size-sub-k-2-3"><%# ((ResumeCareerEntity)Container.DataItem).CareerEndDate%></td>
                                       </tr>
                                  </table>
                              </td>
-                             <td>정부기관</td>
-                             <td>인턴,자원봉사</td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerJobs%></td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerPosition%></td>
                           </tr>
-                          <tr>
-                             <td>대한적십자</td>
-                             <td>
-                                 <table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2008.6</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2008.8</td>
-                                      </tr>
-                                 </table>
-                             </td>
-                             <td>정부기관</td>
-                             <td>인턴,자원봉사</td>
-                          </tr>
-                          <tr>
-                             <td>대한적십자</td>
-                             <td>
-                                 <table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2008.6</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2008.8</td>
-                                      </tr>
-                                 </table>
-                             </td>
-                             <td>정부기관</td>
-                             <td>인턴,자원봉사</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
@@ -294,24 +246,16 @@
                               <td class="size-k-4-3 regist-label">시험점수/등급</td>
                               <td class="size-k-4-4 regist-label">회화</td>                                             
                           </tr>
+                          <asp:Repeater ID="rptLanguage_kr" runat="server">
+                          <ItemTemplate>
                           <tr>
-                             <td>중국어</td>
-                             <td>신HSK</td>
-                             <td>5급</td>
-                             <td>고급</td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).LanguageName%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).TestDesc%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).GradeDesc%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).ConversationLevel == 1 ? "고급" : ((ResumeLanguageEntity)Container.DataItem).ConversationLevel == 2 ? "중급" : ((ResumeLanguageEntity)Container.DataItem).ConversationLevel == 3 ? "초급" : ""%></td>
                           </tr>
-                          <tr>
-                             <td>중국어</td>
-                             <td>신HSK</td>
-                             <td>5급</td>
-                             <td>고급</td>
-                          </tr>
-                          <tr>
-                             <td>중국어</td>
-                             <td>신HSK</td>
-                             <td>5급</td>
-                             <td>고급</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
@@ -323,22 +267,26 @@
                               <td class="size-k-4-2 regist-label">자격/면허명</td>
                               <td class="size-k-4-3 regist-label">발급기관</td>                                         
                           </tr>
+                          <asp:Repeater ID="rptLicense_kr" runat="server">
+                          <ItemTemplate>
                           <tr>
-                              <td>2007.4</td>
-                              <td>운전면허 보통1급</td>
-                              <td>서울지방경찰청</td>
+                              <td><%# ((ResumeLicenseEntity)Container.DataItem).LicensedDate%></td>
+                              <td><%# ((ResumeLicenseEntity)Container.DataItem).LicenseName%></td>
+                              <td><%# ((ResumeLicenseEntity)Container.DataItem).Organization%></td>
                           </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
                   <div class="regist-item">
                       <div class="regist-header">6.보유기술 및 특기사항</div>                                
-                      <textarea class="w100" rows="20" name="award-text"><%=resumeDetail_KR.Description %></textarea>
+                      <textarea class="w100" rows="20" name="award-text" readonly="readonly"><%=ResumeDetail[1].Description%></textarea>
                   </div>
                   
                   <div class="regist-item">
                       <div class="regist-header">7.자기소개서</div>                                
-                      <textarea class="w100" rows="20" name="introduce"><%=resumeDetail_KR.AboutMe %></textarea>
+                      <textarea class="w100" rows="20" name="introduce" readonly="readonly"><%=ResumeDetail[1].AboutMe%></textarea>
                   </div>
                   
               	<div class="regist-class">
@@ -358,23 +306,23 @@
                               <td class="regist-label">出生年月</td>
                               <td><%=UserInfo.Birthday.ToString("yyyy年 MM月 dd日") %></td>
                               <td class="regist-label">工作年限</td>
-                              <td><%=resumeDetail_CN.IsCareer == 1 ? "新来" : "阅历"%></td>                                                                                                    
+                              <td><%=ResumeDetail[2].IsCareer == 1 ? "新来" : "阅历"%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">最高学历(学位)</td>
-                              <td><%=resumeDetail_CN.LastestEducation %></td>
+                              <td><%=ResumeDetail[2].LastestEducation%></td>
                               <td class="regist-label">毕业学校</td>
-                              <td></td>                                                                                                    
+                              <td><%=ResumeAcademicAbilities[2][0].SchoolName%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">专业</td>
-                              <td>汉语</td>
+                              <td><%=ResumeAcademicAbilities[2][0].MajorMinor%></td>
                               <td class="regist-label">毕业时间</td>
-                              <td>2010.5</td>                                                                                                    
+                              <td><%=ResumeDetail[2].GraduationYear%></td>                                                                                                    
                           </tr>                                            
                           <tr>
                               <td class="regist-label">现详细居住地址</td>
-                              <td colspan="3"><%=resumeDetail_CN.Address %></td>                                 
+                              <td colspan="3"><%=ResumeDetail[2].Address%></td>                                 
                           </tr>
 													<tr>
                               <td class="regist-label">手机</td>
@@ -395,66 +343,25 @@
                               <td class="regist-label" style="width:130px;">岗位/职务</td>
                               <td class="regist-label" >单位性质</td>                                                    
                           </tr>
+                          <asp:Repeater ID="rptCareer_cn" runat="server">
+                          <ItemTemplate>
                           <tr>
                              <td>
-																<table>
+								<table>
                                       <tr>
-                                          <td class="size-sub-k-2-1">2010.6</td>
+                                          <td class="size-sub-k-2-1"><%# ((ResumeCareerEntity)Container.DataItem).CareerStartDate%></td>
                                           <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2010.8</td>
+                                          <td class="size-sub-k-2-3"><%# ((ResumeCareerEntity)Container.DataItem).CareerEndDate%></td>
                                       </tr>
-															</table>
-													   </td>
-                             <td>上网</td>
-                             <td>门户网站部</td>
-                             <td>经历</td>
-                             <td>无</td>
+								</table>
+							 </td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerCompanyName%></td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerJobs%></td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerPosition%></td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerLocation%></td>
                           </tr>
-													<tr>
-                             <td>
-																<table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2010.6</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2010.8</td>
-                                      </tr>
-																	</table>
-		   												</td>
-                             <td>上网</td>
-                             <td>门户网站部</td>
-                             <td>经历</td>
-                             <td>无</td>
-                          </tr>
-													<tr>
-                             <td>
-																<table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2010.6</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2010.8</td>
-                                      </tr>
-																</table>
-													   </td>
-                             <td>上网</td>
-                             <td>门户网站部</td>
-                             <td>经历</td>
-                             <td>无</td>
-                          </tr>
-													<tr>
-                             <td>
-																<table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2010.6</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2010.8</td>
-                                      </tr>
-																</table>
-													   </td>
-                             <td>上网</td>
-                             <td>门户网站部</td>
-                             <td>经历</td>
-                             <td>无</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
@@ -467,30 +374,22 @@
                               <td class="regist-label" style="width:182px">>分数</td>
                               <td class="regist-label" style="width:143px">>会话</td>                                             
                           </tr>
+                          <asp:Repeater ID="rptLanguage_cn" runat="server">
+                          <ItemTemplate>
                           <tr>
-                             <td>汉语</td>
-                             <td>新HSK</td>
-                             <td>五级</td>
-                             <td>上级</td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).LanguageName%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).TestDesc%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).GradeDesc%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).ConversationLevel == 1 ? "上级" : ((ResumeLanguageEntity)Container.DataItem).ConversationLevel == 2 ? "中级" : ((ResumeLanguageEntity)Container.DataItem).ConversationLevel == 3 ? "下级" : ""%></td>
                           </tr>
-													<tr>
-                             <td>汉语</td>
-                             <td>新HSK</td>
-                             <td>五级</td>
-                             <td>上级</td>
-                          </tr>
-													<tr>
-                             <td>汉语</td>
-                             <td>新HSK</td>
-                             <td>五级</td>
-                             <td>上级</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                                                       
                   <div class="regist-item">
                       <div class="regist-header">自我评价（主要业绩，个人特长，电脑能力等）</div>                                
-                      <textarea class="w100" rows="20">哈哈哈</textarea>
+                      <textarea class="w100" rows="20" readonly="readonly"><%=ResumeDetail[2].Description%></textarea>
                   </div>
                   
               	<div class="regist-class">
@@ -502,25 +401,25 @@
                       <table class="regist-table">                                            
                           <tr>
                               <td class="regist-label">Name</td>
-                              <td>kim kim kim</td>
+                              <td><%=UserInfo.ENGName%></td>
                               <td class="regist-label">Gender</td>
-                              <td>Famle</td>                                                    
+                              <td><%=UserInfo.Gender==1?"Male":"Female" %></td>                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">Date of Birth</td>
-                              <td>2011.8.23</td>
+                              <td><%=UserInfo.Birthday.ToString("yyyy.MM.dd") %></td>
                               <td class="regist-label">Military service</td>
-                              <td>done</td>                                                                                                    
+                              <td><%=ResumeDetail[1].MilitaryService%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">Phone</td>
-                              <td>131-4443-2124</td>
+                              <td><%=UserInfo.CNPhoneNo%></td>
                               <td class="regist-label">E-mail</td>
-                              <td>kimkimkim@hotmail.com</td>                                                                                                    
+                              <td><%=UserInfo.Email%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">Address</td>
-                              <td colspan="3">Room 12323, minhang-qu, Shanghai-city, China</td>                                 
+                              <td colspan="3"><%=ResumeDetail[1].Address%></td>                                 
                           </tr>
                       </table>
                   </div>
@@ -534,34 +433,24 @@
                               <td class="regist-label" style="width:173px;">Period</td>
                               <td class="regist-label" style="width:159px;">Location</td>                                                 
                           </tr>
+                          <asp:Repeater ID="rptAcademicAbility_en" runat="server">
+                          <ItemTemplate>
                           <tr>
-                             <td>Seoul university</td>
-                             <td>Chinese</td>
+                             <td><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolName%></td>
+                             <td><%# ((ResumeAcademicAbilityEntity)Container.DataItem).MajorMinor%></td>
                              <td>
 																<table>
                                       <tr>
-                                          <td class="size-sub-k-2-1">2008.2</td>
+                                          <td class="size-sub-k-2-1"><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolStartDate%></td>
                                           <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2011.3</td>
+                                          <td class="size-sub-k-2-3"><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolEndDate%></td>
                                       </tr>
 																</table>
 													   </td>
-                             <td>Korea</td>
+                             <td><%# ((ResumeAcademicAbilityEntity)Container.DataItem).SchoolCountryName%></td>
                           </tr>
-													<tr>
-                             <td>Seoul university</td>
-                             <td>Chinese</td>
-                             <td>
-																<table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2008.2</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2011.3</td>
-                                      </tr>
-																</table>
-		   											</td>
-                             <td>Korea</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
@@ -575,51 +464,25 @@
                               <td class="regist-label" style="width:130px">Details of duties</td>                                             
 															<td class="regist-label" style="width:143px">Location</td>
                           </tr>
+                          <asp:Repeater ID="rptCareer_en" runat="server">
+                          <ItemTemplate>
                           <tr>
                              <td>
 																<table>
                                       <tr>
-                                          <td class="size-sub-k-2-1">2008.6</td>
+                                          <td class="size-sub-k-2-1"><%# ((ResumeCareerEntity)Container.DataItem).CareerStartDate%></td>
                                           <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2008.8</td>
+                                          <td class="size-sub-k-2-3"><%# ((ResumeCareerEntity)Container.DataItem).CareerEndDate%></td>
                                       </tr>
 																</table>
 		  											 </td>
-                             <td>wise-ecommerce</td>
-                             <td>online service</td>
-                             <td>intern</td>
-		   											 <td>Korea</td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerCompanyName%></td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerJobs%></td>
+                             <td><%# ((ResumeCareerEntity)Container.DataItem).CareerPosition%></td>
+		   					<td><%# ((ResumeCareerEntity)Container.DataItem).CareerLocation%></td>
                           </tr>
-													<tr>
-                             <td>
-																<table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2008.6</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2008.8</td>
-                                      </tr>
-																</table>
-		   											 </td>
-                             <td>wise-ecommerce</td>
-                             <td>online service</td>
-                             <td>intern</td>
-		   											 <td>Korea</td>
-                          </tr>
-													<tr>
-                             <td>
-																<table>
-                                      <tr>
-                                          <td class="size-sub-k-2-1">2008.6</td>
-                                          <td class="size-sub-k-2-2">-</td>
-                                          <td class="size-sub-k-2-3">2008.8</td>
-                                      </tr>
-																</table>
-		   											 </td>
-                             <td>wise-ecommerce</td>
-                             <td>online service</td>
-                             <td>intern</td>
-		  											 <td>Korea</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
@@ -632,24 +495,16 @@
                               <td class="regist-label" style="width:310px">Score of Authenticated Language Test</td>
                               <td class="regist-label" style="width:142px">Score/Grade</td>                                             
                           </tr>
+                          <asp:Repeater ID="rptLanguage_en" runat="server">
+                          <ItemTemplate>
                           <tr>
-                             <td>Chinese</td>
-                             <td>level5</td>
-                             <td>new HSK</td>
-                             <td>5</td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).LanguageName%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).ConversationLevel==0?"":"level"+Convert.ToString(((ResumeLanguageEntity)Container.DataItem).ConversationLevel)%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).TestDesc%></td>
+                             <td><%# ((ResumeLanguageEntity)Container.DataItem).GradeDesc%></td>
                           </tr>
-													<tr>
-                             <td>Chinese</td>
-                             <td>level5</td>
-                             <td>new HSK</td>
-                             <td>5</td>
-                          </tr>
-												<tr>
-                             <td>Chinese</td>
-                             <td>level5</td>
-                             <td>new HSK</td>
-                             <td>5</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
@@ -661,22 +516,21 @@
                               <td class="regist-label" style="width:340px">Issuing Institution</td>
                               <td class="regist-label" style="width:268px">Date of acquisition</td>                                         
                           </tr>
+                          <asp:Repeater ID="rptLicense_en" runat="server">
+                          <ItemTemplate>
                           <tr>
-                              <td>Make-up</td>
-                              <td>Korea Make-up Association</td>
-                              <td>2007.1</td>
+                              <td><%# ((ResumeLicenseEntity)Container.DataItem).LicenseName%></td>
+                              <td><%# ((ResumeLicenseEntity)Container.DataItem).Organization%></td>
+                              <td><%# ((ResumeLicenseEntity)Container.DataItem).LicensedDate%></td>
                           </tr>
-													<tr>
-                              <td>Make-up</td>
-                              <td>Korea Make-up Association</td>
-                              <td>2007.1</td>
-                          </tr>
+                          </ItemTemplate>
+                          </asp:Repeater>
                       </table>
                   </div>
                   
                   <div class="regist-item">
                       <div class="regist-header">Awards, O/A Ability, Professional Experience  Etc </div>                                
-                      <textarea class="w100" rows="20" name="award-text">This is Kim so hyun.</textarea>
+                      <textarea class="w100" rows="20" name="award-text" readonly="readonly"><%=ResumeDetail[1].Description%></textarea>
                   </div>
                                                
                   <!--btn//-->
