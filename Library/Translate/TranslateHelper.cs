@@ -412,6 +412,26 @@ namespace Com.Library.Translate
 				initData.Add(new TranslateEntity("CN_Recruit_recruit_detail.aspx_230", "기타", "其他", ""));
 				initData.Add(new TranslateEntity("CN_Recruit_recruit_detail.aspx_234", "기타자격요건", "其他资格条件", ""));
 				initData.Add(new TranslateEntity("CN_Recruit_recruit_detail.aspx_244", "상기기업의 구인정보에 틀림없음을 확인합니다.", "请确认以上企业招聘信息内容无误", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_recruitTitle", "구인직종", "구인직종c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_regist", "지원자", "지원자c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_male", "남", "男", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_female", "녀", "女", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_age", "세", "세c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_new", "신입", "新入职", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_career", "경력", "经验", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_registDate", "지원일시", "지원일시c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_wait", "대기", "대기c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_show", "보기", "보기c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_approve", "승인", "승인c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_waiting", "대기중", "대기중c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_approved", "승인", "승인c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_denied", "거절", "거절c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_deny", "거절", "거절c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_delete", "삭제", "삭제c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_deleted", "삭제", "삭제c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_approve?", "승인하시겠습니까?", "승인하시겠습니까?c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_deny?", "거절하시겠습니까?", "거절하시겠습니까?c", ""));
+				initData.Add(new TranslateEntity("CN_Company_recruit_manage.aspx_delete?", "삭제하시겠습니까?", "삭제하시겠습니까?c", ""));
 
 				// 인재 정보 상세
 				initData.Add(new TranslateEntity("KR_user_human_regist_detail.aspx_requireSSN", "주민등록번호를 입력해주세요.", "주민등록번호를 입력해주세요.c", "주민등록번호를 입력해주세요.e"));
