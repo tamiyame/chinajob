@@ -32,18 +32,18 @@
 								<table class="sub-table">
 									<tr>
 										<td class="sub-label">국문</td>
-										<td class="sub-input"><input class="w2" type="text" name="koreaName"/></td>
+										<td class="sub-input"><input class="w2" type="text" name="koreaName" maxlength="100"/></td>
 										<td class="description" rowspan="3">
 											사업자등록증(영업집조)에 등록된 정규적인 회사명을 입력하는것을 추천하며,<br/>
 											국문,중문,영문 중 반드시 하나 이상 기입하셔야 합니다.
 										</td>
 									</tr>
 										<td class="sub-label">중문</td>
-										<td class="sub-input"><input class="w2" type="text" name="chinaName"/></td>
+										<td class="sub-input"><input class="w2" type="text" name="chinaName" maxlength="100"/></td>
 									</tr>
 									</tr>
 										<td class="sub-label">영문</td>
-										<td class="sub-input"><input class="w2" type="text" name="englishName"/></td>
+										<td class="sub-input"><input class="w2" type="text" name="englishName" maxlength="100"/></td>
 									</tr>
 								</table>
 							</td>
@@ -53,7 +53,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w3" type="text" name="companyNo"></input></td>
+										<td><input class="w3" type="text" name="companyNo" maxlength="100"></input></td>
 										<td><a href="javascript:;" class="icon icon-duplicate-check" id="aCompanyNo"></a></td>
 										<td class="description"><span id="spCompanyNo"></span></td>
 									</tr>
@@ -65,7 +65,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w3" type="File" name="fiPermit"></input></td>
+										<td><input class="w3" type="File" name="fiPermit" maxlength="100"></input></td>
 									</tr>
 								</table>
 							</td>
@@ -75,7 +75,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w3" type="text" name="companyID"></input></td>
+										<td><input class="w3" type="text" name="companyID" maxlength="20"></input></td>
 										<td><a href="javascript:;" class="icon icon-duplicate-check" id="aCompanyID"></a></td>
 										<td class="description"><span id="spCompanyID"></span></td>
 									</tr>
@@ -87,7 +87,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="password"></input></td>
+										<td><input class="w2" type="text" name="password" maxlength="20"></input></td>
 										<td class="description">영문,숫자 또는 조합 4~12자리</td>
 									</tr>
 								</table>
@@ -109,7 +109,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w3" type="text" name="email"></input></td>
+										<td><input class="w3" type="text" name="email" maxlength="100"></input></td>
 										<td><a href="javascript:;" class="icon icon-duplicate-check" id="aEmail"></a></td>
 										<td class="description"><span id="spEmail">가장 자주 쓰는 이메일 하나만 입력하세요</span></td>
 									</tr>
@@ -133,7 +133,7 @@
 											</select>
 										</td>
 										<td>
-										    <input class="w2 hide" name="jobType_etc" />
+										    <input class="w2 hide" name="jobType_etc"  maxlength="100"/>
 										</td>
 									</tr>
 								</table>
@@ -144,7 +144,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="representative"></input></td>
+										<td><input class="w2" type="text" name="representative" maxlength="100"></input></td>
 									</tr>
 								</table>
 							</td>
@@ -187,7 +187,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="build_date"></input></td>
+										<td><input class="w1" type="text" name="build_date" maxlength="4"></input></td>
 										<td>년</td>
 										<td class="description">숫자만 입력</td>
 									</tr>
@@ -199,7 +199,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="employ_count"></input></td>
+										<td><input class="w1" type="text" name="employ_count" maxlength="10"></input></td>
 										<td>명</td>
 										<td class="description">숫자만 입력</td>
 									</tr>
@@ -211,7 +211,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="fund"></input></td>
+										<td><input class="w1" type="text" name="fund" maxlength="10"></input></td>
 										<td>
 											<select class="w1" name="fundcurrency">
 												<option value="0">화폐단위</option> 
@@ -230,7 +230,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="investment"></input></td>
+										<td><input class="w1" type="text" name="investment" maxlength="10"></input></td>
 										<td>
 											<select class="w1" name="investment_currency">
 												<option value="0">화폐단위</option> 
@@ -262,7 +262,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="recruiting_manager"></input></td>
+										<td><input class="w2" type="text" name="recruiting_manager" maxlength="100"></input></td>
 									</tr>
 								</table>
 							</td>
@@ -272,7 +272,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="phone"></input></td>
+										<td><input class="w2" type="text" name="phone" maxlength="100"></input></td>
 									</tr>
 								</table>
 							</td>
@@ -282,7 +282,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="fax"></input></td>
+										<td><input class="w2" type="text" name="fax" maxlength="100"></input></td>
 									</tr>
 								</table>
 							</td>
@@ -292,7 +292,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w4" type="text" name="address"></input></td>
+										<td><input class="w4" type="text" name="address" maxlength="200"></input></td>
 									</tr>
 								</table>
 							</td>
@@ -302,7 +302,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w3" type="text" name="homepage"></input></td>
+										<td><input class="w3" type="text" name="homepage" maxlength="100"></input></td>
 										<td class="description">예)http://www.chinajobgo.com</td>
 									</tr>
 								</table>
@@ -343,6 +343,11 @@ jQuery(function()
             $("input:[name=email]").bind("keypress", function() {
                 Email = "";
             });
+            
+            NumInput( $("input[name=investment]"));
+            NumInput( $("input[name=fund]"));
+            NumInput( $("input[name=employ_count]"));
+            NumInput( $("input[name=build_date]"));
             
             $("#aCompanyNo").click(function()
             {

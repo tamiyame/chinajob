@@ -74,6 +74,7 @@ public partial class KR_User_human_join : SitePage
             createArg.CNPhoneNo = CNPhoneNo;
             createArg.HomepageUrl = HomepageUrl;
             createArg.ResidanceCountry = ResidanceCountry;
+            createArg.ImageUrl = "/imgsrv/kr/images/base/human-photo.png";
             UserCreate create = new UserCreate();
             create.SetArguments(createArg);
             create.ExecuteNonQuery();

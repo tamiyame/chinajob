@@ -13,30 +13,30 @@ alter PROCEDURE [dbo].[TSP_CompanyDetailModify]
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
 ,	@CompanyNo	int	
-,	@KRName	nvarchar(100)	= NULL	
-,	@CNName	nvarchar(100)	= NULL	
-,	@ENGName	nvarchar(100)	= NULL	
+,	@KRName	nvarchar(200)	= NULL	
+,	@CNName	nvarchar(200)	= NULL	
+,	@ENGName	nvarchar(200)	= NULL	
 ,	@CompanyImage	varchar(200)	= NULL	
-,	@PermitNo	nvarchar(100)	= NULL	
+,	@PermitNo	nvarchar(200)	= NULL	
 ,	@PermitImage	varchar(200)	= NULL	
-,	@Email	nvarchar(100)	= NULL
+,	@Email	nvarchar(200)	= NULL
 ,	@BusinessCategoryNo	int	= NULL
-,	@BusinessCategoryEtc	nvarchar(50)	= NULL
-,	@PresidentName	nvarchar(60)	= NULL	
+,	@BusinessCategoryEtc	nvarchar(200)	= NULL
+,	@PresidentName	nvarchar(200)	= NULL	
 ,	@CapitalType	tinyint	 = NULL
-,	@FoundYear	nvarchar(16)	= NULL	
+,	@FoundYear	nvarchar(20)	= NULL	
 ,	@EmployeeCount	int	= NULL	
 ,	@Capital	bigint	= NULL	
 ,	@CapitalCurrencyNo	int	= NULL	
 ,	@Turnover	bigint	= NULL	
 ,	@TurnoverCurrencyNo	int	= NULL	
 ,	@CompanyDescrition	nvarchar(MAX)	= NULL	
-,	@RecruiterName	nvarchar(60)	= NULL	
-,	@PhoneNo	varchar(30)	= NULL	
-,	@FaxNo	varchar(30)	= NULL	
+,	@RecruiterName	nvarchar(200)	= NULL	
+,	@PhoneNo	varchar(200)	= NULL	
+,	@FaxNo	varchar(200)	= NULL	
 ,	@HeadAddress	nvarchar(400)	= NULL	
 ,	@EmploymentAddress	nvarchar(400)	= NULL	
-,	@HomepageURL	varchar(100)	= NULL	
+,	@HomepageURL	varchar(200)	= NULL	
 )
 as
 Set NOCOUNT ON

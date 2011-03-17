@@ -1048,11 +1048,11 @@ jQuery(function()
                 $.each(results,function(i){
                     if ( _PageLoad_CityCategory )
                     {
-                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.AreaCategory%> ? "selected='selected'" : "" ) + ">"+this.SubCategoryCNName+"</option>"));
+                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.AreaCategory%> ? "selected='selected'" : "" ) + ">"+this.SubCategoryKRName+"</option>"));
                     }
                     else
                     { 
-                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'>"+ this.SubCategoryCNName+"</option>"));
+                        $("select[name=address_2]").append($("<option value='"+this.SubCategoryNo+"'>"+ this.SubCategoryKRName+"</option>"));
                     }
                     
                 })
@@ -1071,11 +1071,11 @@ jQuery(function()
                 $.each(results,function(i){
                     if ( _PageLoad_Category )
                     {
-                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.Category2No%> ? "selected='selected'" : "" ) + ">" + this.SubCategoryCNName + "</option>"));
+                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'" + ( this.SubCategoryNo==<%=RecruitInfo.Category2No%> ? "selected='selected'" : "" ) + ">" + this.SubCategoryKRName + "</option>"));
                     }
                     else
                     { 
-                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'>"+ this.SubCategoryCNName +"</option>"));
+                        $("select[name=jobType2]").append($("<option value='"+this.SubCategoryNo+"'>"+ this.SubCategoryKRName +"</option>"));
                     }
                 })
                 
