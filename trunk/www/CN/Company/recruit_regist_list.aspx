@@ -46,7 +46,7 @@ jQuery(function()
             $tr.append(
                 $('<td class="col1"><%= GetText("CN_Company_recruit_regist_list.aspx_17")%></td>')
             ).append(
-                $('<td class="col2"><input type="text" /></td>')
+                $('<td class="col2"><input type="text" maxlength="200"/></td>')
             ).append(
                 $('<td class="col3"><a class="icon icon-recruit-btn-new" href="javascript:;" onclick="jQuery.RecruitCreate( this ); return false;"></a></td>')
             )
@@ -109,10 +109,13 @@ jQuery(function()
                     ).append(
                         $('<a class="icon icon-recruit-btn-china" href="recruit_regist_cn.aspx?CountryNo=2&RecruitNo=' + this.RecruitNo + '"></a>')
                     ).append(
-                        $('<a class="icon icon-recruit-btn-english" href="recruit_regist_eng.aspx?CountryNo=3&RecruitNo=' + this.RecruitNo + '"></a>')
-                    ).append(
                         $('<a class="icon icon-recruit-btn-delete" href="javascript:;" onclick="jQuery.RecruitRemove(this, ' + this.RecruitNo + '); return false;"></a>')
                     )
+                    /*
+                    .append(
+                        $('<a class="icon icon-recruit-btn-english" href="recruit_regist_eng.aspx?CountryNo=3&RecruitNo=' + this.RecruitNo + '"></a>')
+                    )
+                    */
                 )
                 
                 $( "#tbody_recruitList" ).prepend( $tr);

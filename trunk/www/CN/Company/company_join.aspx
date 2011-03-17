@@ -316,6 +316,10 @@
 <script language="javascript" type="text/javascript">
 jQuery(function()
 {
+    NumInput( $("input[name=investment]"));
+    NumInput( $("input[name=fund]"));
+    NumInput( $("input[name=employ_count]"));
+    NumInput( $("input[name=build_date]"));
     jQuery.CreateInit();
 });
 

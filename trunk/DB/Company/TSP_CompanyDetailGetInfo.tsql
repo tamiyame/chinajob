@@ -13,29 +13,29 @@ alter PROCEDURE [dbo].[TSP_CompanyDetailGetInfo]
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
 ,	@CompanyNo	int	= NULL	OUTPUT--IN
-,	@KRName	nvarchar(100)	= NULL	OUTPUT
-,	@CNName	nvarchar(100)	= NULL	OUTPUT
-,	@ENGName	nvarchar(100)	= NULL	OUTPUT
+,	@KRName	nvarchar(200)	= NULL	OUTPUT
+,	@CNName	nvarchar(200)	= NULL	OUTPUT
+,	@ENGName	nvarchar(200)	= NULL	OUTPUT
 ,	@CompanyImage	varchar(200)	= NULL	OUTPUT
-,	@PermitNo	nvarchar(100)	= NULL	OUTPUT--IN
-,	@Email	nvarchar(100)	= NULL OUTPUT--IN
+,	@PermitNo	nvarchar(200)	= NULL	OUTPUT--IN
+,	@Email	nvarchar(200)	= NULL OUTPUT--IN
 ,	@BusinessCategoryNo	int	= NULL	OUTPUT
-,	@BusinessCategoryEtc	nvarchar(50)	= NULL	OUTPUT
-,	@PresidentName	nvarchar(60)	= NULL	OUTPUT
+,	@BusinessCategoryEtc	nvarchar(200)	= NULL	OUTPUT
+,	@PresidentName	nvarchar(200)	= NULL	OUTPUT
 ,	@CapitalType	tinyint	OUTPUT
-,	@FoundYear	nvarchar(16)	= NULL	OUTPUT
+,	@FoundYear	nvarchar(200)	= NULL	OUTPUT
 ,	@EmployeeCount	int	= NULL	OUTPUT
 ,	@Capital	bigint	= NULL	OUTPUT
 ,	@CapitalCurrencyNo	int	= NULL	OUTPUT
 ,	@Turnover	bigint	= NULL	OUTPUT
 ,	@TurnoverCurrencyNo	int	= NULL	OUTPUT
 ,	@CompanyDescrition	nvarchar(max) = NULL	OUTPUT
-,	@RecruiterName	nvarchar(60)	= NULL	OUTPUT
-,	@PhoneNo	varchar(30)	= NULL	OUTPUT
-,	@FaxNo	varchar(30)	= NULL	OUTPUT
+,	@RecruiterName	nvarchar(200)	= NULL	OUTPUT
+,	@PhoneNo	varchar(200)	= NULL	OUTPUT
+,	@FaxNo	varchar(200)	= NULL	OUTPUT
 ,	@HeadAddress	nvarchar(400)	= NULL	OUTPUT
 ,	@EmploymentAddress	nvarchar(400)	= NULL	OUTPUT
-,	@HomepageURL	varchar(100)	= NULL	OUTPUT
+,	@HomepageURL	varchar(200)	= NULL	OUTPUT
 ,	@RegistyTime	datetime	OUTPUT
 )
 as

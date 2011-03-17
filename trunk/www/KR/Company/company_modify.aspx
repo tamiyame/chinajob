@@ -41,18 +41,18 @@
 								<table class="sub-table">
 									<tr>
 										<td class="sub-label">국문</td>
-										<td class="sub-input"><input class="w2" type="text" name="koreaName" value="<%=CompanyDetailInfo.KRName %>" /></td>
+										<td class="sub-input"><input class="w2" type="text" name="koreaName" value="<%=CompanyDetailInfo.KRName %>" maxlength="100" /></td>
 										<td class="description" rowspan="3">
 											사업자등록증(영업집조)에 등록된 정규적인 회사명을 입력하는것을 추천하며,<br/>
 											국문,중문,영문 중 반드시 하나 이상 기입하셔야 합니다.
 										</td>
 									</tr>
 										<td class="sub-label">중문</td>
-										<td class="sub-input"><input class="w2" type="text" name="chinaName" value="<%=CompanyDetailInfo.CNName %>"/></td>
+										<td class="sub-input"><input class="w2" type="text" name="chinaName" value="<%=CompanyDetailInfo.CNName %>" maxlength="100" /></td>
 									</tr>
 									</tr>
 										<td class="sub-label">영문</td>
-										<td class="sub-input"><input class="w2" type="text" name="englishName" value="<%=CompanyDetailInfo.ENGName %>"/></td>
+										<td class="sub-input"><input class="w2" type="text" name="englishName" value="<%=CompanyDetailInfo.ENGName %>" maxlength="100" /></td>
 									</tr>
 								</table>
 							</td>
@@ -74,7 +74,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="password"></input></td>
+										<td><input class="w2" type="text" name="password" maxlength="20" ></input></td>
 										<td class="description">영문,숫자 또는 조합 4~12자리</td>
 									</tr>
 								</table>
@@ -85,7 +85,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="password_confirm"></input></td>
+										<td><input class="w2" type="text" name="password_confirm" maxlength="20" ></input></td>
 										<td class="description">비밀번호를 다시 한번 입력해 주세요</td>
 									</tr>
 								</table>
@@ -96,7 +96,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w3" type="text" name="email"  value="<%=CompanyDetailInfo.Email %>"/></td>
+										<td><input class="w3" type="text" name="email"  value="<%=CompanyDetailInfo.Email %>" maxlength="100" /></td>
 										<td><a href="javascript:;" class="icon icon-duplicate-check" id="aEmail"></a></td>
 										<td class="description"><span id="spEmail">가장 자주 쓰는 이메일 하나만 입력하세요</span></td>
 									</tr>
@@ -120,7 +120,7 @@
 											</select>
 										</td>
 										<td>
-										    <input class="w2 hide" name="jobType_etc" value="<%= CompanyDetailInfo.BusinessCategoryEtc%>" />
+										    <input class="w2 hide" name="jobType_etc" value="<%= CompanyDetailInfo.BusinessCategoryEtc%>"  maxlength="100" />
 										</td>
 									</tr>
 								</table>
@@ -131,7 +131,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="representative" value="<%=CompanyDetailInfo.PresidentName%>"/></td>
+										<td><input class="w2" type="text" name="representative" value="<%=CompanyDetailInfo.PresidentName%>" maxlength="100" /></td>
 									</tr>
 								</table>
 							</td>
@@ -174,7 +174,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="build_date" value="<%=CompanyDetailInfo.FoundYear %>"></td>
+										<td><input class="w1" type="text" name="build_date" value="<%=CompanyDetailInfo.FoundYear %>" maxlength="4" ></td>
 										<td>년</td>
 										<td class="description">숫자만 입력</td>
 									</tr>
@@ -186,7 +186,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="employ_count" value="<%=CompanyDetailInfo.EmployeeCount %>"></td>
+										<td><input class="w1" type="text" name="employ_count" value="<%=CompanyDetailInfo.EmployeeCount %>" maxlength="10" ></td>
 										<td>명</td>
 										<td class="description">숫자만 입력</td>
 									</tr>
@@ -198,7 +198,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="fund" value="<%=CompanyDetailInfo.Capital %>"></td>
+										<td><input class="w1" type="text" name="fund" value="<%=CompanyDetailInfo.Capital %>" maxlength="10" ></td>
 										<td>
 											<select class="w1" name="fundcurrency">
 												<option value="0" <%=CompanyDetailInfo.CapitalCurrencyNo == 0 ? "selected='selected'":"" %>>화폐단위</option>
@@ -217,7 +217,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="investment" value="<%=CompanyDetailInfo.Turnover %>"></td>
+										<td><input class="w1" type="text" name="investment" value="<%=CompanyDetailInfo.Turnover %>" maxlength="10" ></td>
 										<td>
 											<select class="w1" name="investment_currency">
 												<option value="0" <%=CompanyDetailInfo.TurnoverCurrencyNo == 0 ? "selected='selected'":"" %>>화폐단위</option> 
@@ -249,7 +249,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="recruiting_manager" value="<%=CompanyDetailInfo.RecruiterName %>" /></td>
+										<td><input class="w2" type="text" name="recruiting_manager" value="<%=CompanyDetailInfo.RecruiterName %>"  maxlength="100" /></td>
 									</tr>
 								</table>
 							</td>
@@ -259,7 +259,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="phone" value="<%=CompanyDetailInfo.PhoneNo %>"/></td>
+										<td><input class="w2" type="text" name="phone" value="<%=CompanyDetailInfo.PhoneNo %>" maxlength="100" /></td>
 									</tr>
 								</table>
 							</td>
@@ -269,7 +269,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="fax" value="<%=CompanyDetailInfo.FaxNo %>"/></input></td>
+										<td><input class="w2" type="text" name="fax" value="<%=CompanyDetailInfo.FaxNo %>" maxlength="100" /></input></td>
 									</tr>
 								</table>
 							</td>
@@ -279,7 +279,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w4" type="text" name="address" value="<%=CompanyDetailInfo.HeadAddress %>"/></input></td>
+										<td><input class="w4" type="text" name="address" value="<%=CompanyDetailInfo.HeadAddress %>" maxlength="200" /></input></td>
 									</tr>
 								</table>
 							</td>
@@ -289,7 +289,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w3" type="text" name="homepage"  value="<%=CompanyDetailInfo.HomepageURL %>" /></td>
+										<td><input class="w3" type="text" name="homepage"  value="<%=CompanyDetailInfo.HomepageURL %>"  maxlength="100" /></td>
 										<td class="description">예)http://www.chinajobgo.com</td>
 									</tr>
 								</table>
@@ -303,6 +303,11 @@
 jQuery(function()
 {
     jQuery.CreateInit();
+    
+    NumInput( $("input[name=investment]"));
+    NumInput( $("input[name=fund]"));
+    NumInput( $("input[name=employ_count]"));
+    NumInput( $("input[name=build_date]"));
 });
 
 (function($)

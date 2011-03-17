@@ -1,14 +1,17 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="resume_view.aspx.cs" Inherits="KR_User_resume_view" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"> </script>
 	<script type="text/javascript" src="/js/link.js"></script>			
 	<script type="text/javascript" src="/js/common.js"></script>			    
-    <link rel="stylesheet" type="text/css" href="../html/imgsrv/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="../html/imgsrv/css/icon.css" />
-    <link rel="stylesheet" type="text/css" href="../html/ImgSrv/css/sidemenu.css" />
-    <link rel="stylesheet" type="text/css" href="../html/ImgSrv/Css/human.css" />
+    <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/icon.css" />
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/css/sidemenu.css" />
+    <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
     <!--[if IE 6]>
 		    <link rel="stylesheet" type="text/css" href="../imgsrv/css/base.ie6.css" />
 		    <script src="/js/DD_belatedPNG.js"></script>
@@ -27,9 +30,9 @@
     	border-bottom:1px #cccccc solid;
     }
   	</style>
-    <title></title>
 </head>
 <body>
+    <form id="form1" runat="server">
 
 		<div class="bg-top" style="background:url();">
 			<div class="content">
@@ -53,13 +56,13 @@
                               <td class="size33 regist-label">3지망<span class="require">*</span></td>
                           </tr>
                           <tr>
-                              <td>삼성SDS(3322)</td>
-                              <td>삼성SDS(3322)</td>
-                              <td>삼성SDS(3322)</td>
+                              <td><%=GetCompanyName(1, resumeEntity.CompanyNo1)%>(<%=resumeEntity.CompanyNo1%>)</td>
+                              <td><%=GetCompanyName(1, resumeEntity.CompanyNo2)%>(<%=resumeEntity.CompanyNo2%>)</td>
+                              <td><%=GetCompanyName(1, resumeEntity.CompanyNo3)%>(<%=resumeEntity.CompanyNo3%>)</td>
                           </tr>
                           <tr>
                               <td class="regist-label">희망급여 (RMB/1개월)<span class="require">*</span></td>
-                              <td colspan="2">12,000 <span class="label">RMB (세후금액)</span></td>                                            
+                              <td colspan="2"><%=resumeEntity.HopeSalary%> <span class="label">RMB (세후금액)</span></td>                                            
                           </tr>
                           <tr>
                               <td class="regist-label" rowspan="2">희망지역<span class="require">*</span></td>
@@ -68,7 +71,7 @@
                                       <tr>
                                           <td><span class="label">1지망</span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                           <td>
-                                              흑룡강 > 하얼빈
+                                              <%=GetCategoryName(1, resumeEntity.CityNo1)%> > <%=GetSubCategoryName(1, resumeEntity.ArrayNo1)%>
                                           </td>
                                       </tr>
                                   </table>
@@ -80,7 +83,7 @@
                                       <tr>
                                           <td><span class="label">2지망</span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                           <td>
-                                              흑룡강 > 하얼빈
+                                              <%=GetCategoryName(1, resumeEntity.CityNo2)%> > <%=GetSubCategoryName(1, resumeEntity.ArrayNo2)%>
                                           </td>
                                       </tr>
                                   </table>
@@ -88,7 +91,7 @@
                           </tr>
                           <tr>
                               <td class="regist-label">취업희망시기<span class="require">*</span></td>
-                              <td colspan="2">2011년 5월 4일 <span class="label">이후</span></td>                                            
+                              <td colspan="2"><%=resumeEntity.HopeRecruitDate.ToString("yyyy-MM-dd")%> <span class="label">이후</span></td>                                            
                           </tr>
                       </table>
                   </div>
@@ -98,11 +101,11 @@
                       <table class="regist-table">
                           <tr>
                               <td class="size33 regist-label">희망/관심 업종<span class="require">*</span></td>
-                              <td colspan="2">서비스업 - 학교, 학원, 교육서비스</td>                                            
+                              <td colspan="2"><%=GetCategoryName(1, resumeEntity.BusinessCategoryNo)%></td>                                            
                           </tr>
                           <tr>
                               <td class="regist-label">희망/관심 직종<span class="require">*</span></td>
-                              <td colspan="2">광고기획/제작/구매</td>                                            
+                              <td colspan="2"><%=GetCategoryName(1, resumeEntity.Category1No)%> > <%=GetSubCategoryName(1, resumeEntity.Category2No)%></td>                                            
                           </tr>
                       </table>
                   </div>
@@ -112,7 +115,7 @@
                       <table class="regist-table">
                           <tr>
                               <td class="size33 regist-label">박람회 당일 면접참가여부<span class="require">*</span></td>
-                              <td colspan="2">가능</td>                                            
+                              <td colspan="2"><%=resumeEntity.JoinType == 1 ? "가능" : "불가능"%></td>                                            
                           </tr>
                       </table>
                   </div>
@@ -126,46 +129,46 @@
                       <table class="regist-table">
                           <tr>
                               <td rowspan="6" class="size-k-1-1">
-                                  <img class="picture" width="104px" height="138px" src="/FileServer/Company/10/Company_1024.jpg" />
+                                  <img class="picture" width="104px" height="138px" src="<%=UserInfo.ImageUrl %>" />
                               </td>
                               <td class="size-k-1-2 regist-label">국문</td>
-                              <td class="size-k-1-3">김개똥</td>
+                              <td class="size-k-1-3"><%=UserInfo.KRName %></td>
                               <td class="size-k-1-4 regist-label">주민등록번호</td>
                               <td class="size-k-1-5">*************</td>                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">중문</td>
-                              <td>김개똥</td>
+                              <td><%=UserInfo.CNName %></td>
                               <td class="regist-label">연령</td>
-                              <td>24세 (만 23세)</td>                                                    
+                              <td><%=resumeDetail_KR.KoreanAge %>세 (만 <%=resumeDetail_KR.Age %>세)</td>                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">영문</td>
-                              <td>Kim Kim Kim</td>
+                              <td><%=UserInfo.ENGName %></td>
                               <td class="regist-label">재중경험</td>
-                              <td>3년 3개월</td>                                                                                                    
+                              <td><%=resumeDetail_KR.ChinaExp.Replace("-", "년 ") %>개월</td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">한국연락처</td>
-                              <td>011-1111-1111</td>
+                              <td><%=UserInfo.KRPhoneNo %></td>
                               <td class="regist-label">중국연락처</td>
-                              <td>131-1111-1131</td>                                                                                                    
+                              <td><%=UserInfo.CNPhoneNo %></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">거주국가</td>
-                              <td>중국</td>
+                              <td><%=UserInfo.ResidanceCountry == 1 ? "한국":"중국"%></td>
                               <td class="regist-label">병역</td>
-                              <td>미필</td>                                                                                                    
+                              <td><%=GetMilitaryInfo(resumeDetail_KR.Military)%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">이메일</td>
-                              <td>asdad@asd.com</td>
+                              <td><%=UserInfo.Email%></td>
                               <td class="regist-label">경력여부</td>
-                              <td>신입</td>                                                                                                    
+                              <td><%=resumeDetail_KR.IsCareer == 1 ? "신입" : "경력"%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label" colspan="2">주소(현재 실 거주지)</td>
-                              <td colspan="3">주소주소</td>                                 
+                              <td colspan="3"><%=resumeDetail_KR.Address%></td>                                 
                           </tr>
                       </table>
                   </div>
@@ -330,12 +333,12 @@
                   
                   <div class="regist-item">
                       <div class="regist-header">6.보유기술 및 특기사항</div>                                
-                      <textarea class="w100" rows="20" name="award-text">이쁘고 착합니다</textarea>
+                      <textarea class="w100" rows="20" name="award-text"><%=resumeDetail_KR.Description %></textarea>
                   </div>
                   
                   <div class="regist-item">
                       <div class="regist-header">7.자기소개서</div>                                
-                      <textarea class="w100" rows="20" name="introduce">역시나 이쁘고 착합니다</textarea>
+                      <textarea class="w100" rows="20" name="introduce"><%=resumeDetail_KR.AboutMe %></textarea>
                   </div>
                   
               	<div class="regist-class">
@@ -347,21 +350,21 @@
                       <table class="regist-table">
                           <tr>
                               <td class="regist-label">姓名</td>
-                              <td>金金金</td>
+                              <td><%=UserInfo.CNName%></td>
                               <td class="regist-label">性別</td>
-                              <td>女</td>                                                    
+                              <td><%=UserInfo.Gender==1?"男":"女" %></td>                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">出生年月</td>
-                              <td>2011年 8月 23日</td>
+                              <td><%=UserInfo.Birthday.ToString("yyyy年 MM月 dd日") %></td>
                               <td class="regist-label">工作年限</td>
-                              <td>无</td>                                                                                                    
+                              <td><%=resumeDetail_CN.IsCareer == 1 ? "新来" : "阅历"%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">最高学历(学位)</td>
-                              <td>大学</td>
+                              <td><%=resumeDetail_CN.LastestEducation %></td>
                               <td class="regist-label">毕业学校</td>
-                              <td>复旦大学</td>                                                                                                    
+                              <td></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">专业</td>
@@ -371,13 +374,13 @@
                           </tr>                                            
                           <tr>
                               <td class="regist-label">现详细居住地址</td>
-                              <td colspan="3">上海市民港区古北路5382弄14号1392室</td>                                 
+                              <td colspan="3"><%=resumeDetail_CN.Address %></td>                                 
                           </tr>
 													<tr>
                               <td class="regist-label">手机</td>
-                              <td>131-4443-2124</td>
+                              <td><%=UserInfo.CNPhoneNo %></td>
                               <td class="regist-label">电子邮件</td>
-                              <td>kimkimkim@hotmail.com</td>                                                                                                    
+                              <td><%=UserInfo.Email %></td>                                                                                                    
                           </tr>
                       </table>
                   </div>
@@ -682,12 +685,9 @@
                           <span class="agree">                                                
                               <label for="agree">취업을 희망하여 동 이력서를 작성하였으며 해외취업을 목적으로 한국산업인력공단 월드잡사이트 등록 및 해외 구인기업체에게 제공되는 것에 동의합니다.</label>
                           </span>
-                          <br />
-                          <br />
-                          <br />
-                          <a class="icon icon-human-interview-btn" href="javascript:;"></a>
-                      </div>                                        
-                      <div class="regist-tool-right"><inpu type="button" value="인쇄"></div>
+                          <br><br><br>
+                          <input type="button" value="인쇄" onClick="" style="width:100px;height:30px;font-size:9pt">
+                      </div>
                   </div>
               	
               </div>
@@ -699,5 +699,6 @@
       </div>
 		</div>
 
+    </form>
 </body>
 </html>

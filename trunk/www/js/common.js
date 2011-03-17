@@ -137,3 +137,64 @@
         }
     });
 })(jQuery);
+
+function NukCheck(val)
+{
+    var retValue = true;
+    for( var i = 0; i < val.length; i ++ )
+    {
+        if ( val.charAt( i ) < 48 || val.charAt( i ) > 57 )
+        {
+            return false;
+        }
+    }
+    
+    return retValue;
+}
+
+function NumInput( $name )
+{
+    $name.css("ime-mode", "Disabled" );
+    $name.bind("keypress", function(event)
+    {
+        if (( event.which && ( event.which == 8 || event.which == 9 ) ) || ( event.keyCode && ( event.keyCode == 8 && event.keyCode <= 9 ) ) )
+        {
+            return true;
+        }
+        if (( event.which && ( event.which >= 48 && event.which <= 57 ) ) || ( event.keyCode && ( event.keyCode >= 48 && event.keyCode <= 57 ) ) )
+        {
+            return true;
+        }
+        event.returnValue = false;
+        return false;
+    });
+    
+    $name.bind("keydown", function(event)
+    {
+        if (( event.which && ( event.which == 8 || event.which == 9 ) ) || ( event.keyCode && ( event.keyCode == 8 && event.keyCode <= 9 ) ) )
+        {
+            return true;
+        }
+        if (( event.which && ( event.which >= 48 && event.which <= 57 ) ) || ( event.keyCode && ( event.keyCode >= 48 && event.keyCode <= 57 ) ) )
+        {
+            return true;
+        }
+        
+        event.returnValue = false;
+        return false;
+    });
+    
+    $name.bind("keyup", function(event)
+    {
+        if (( event.which && ( event.which == 8 || event.which == 9 ) ) || ( event.keyCode && ( event.keyCode == 8 && event.keyCode <= 9 ) ) )
+        {
+            return true;
+        }
+        if (( event.which && ( event.which >= 48 && event.which <= 57 ) ) || ( event.keyCode && ( event.keyCode >= 48 && event.keyCode <= 57 ) ) )
+        {
+            return true;
+        }
+        return false;
+    });
+}
+

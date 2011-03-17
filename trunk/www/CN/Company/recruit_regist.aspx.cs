@@ -280,6 +280,7 @@ public partial class CN_Company_recruit_regist : SitePage
 
     public string CategoryLangName(CategoryEntity et)
     {
+        /*
         if (CountryNo == 1)
             return et.CategoryKRName;
         else if (CountryNo == 2)
@@ -287,6 +288,7 @@ public partial class CN_Company_recruit_regist : SitePage
         else if (CountryNo == 3)
             return et.CategoryENGName;
         return string.Empty;
-
+        */
+        return et.CategoryCNName;
     }
 }

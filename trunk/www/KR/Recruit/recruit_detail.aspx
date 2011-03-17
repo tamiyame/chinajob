@@ -163,7 +163,7 @@
                                                 </tr>                          
                                                 <tr>
                                                     <td class="label">연령</td>
-                                                    <td class="text-2"><%=GetCategoryName(RecruitInfo.AgeCategory) %>세</td>
+                                                    <td class="text-2"><%=RecruitInfo.AgeCategory == 0 ? RecruitInfo.AgeEtcValue : GetCategoryName(RecruitInfo.AgeCategory)%>세</td>
                                                 </tr>                       
                                                 <tr>
                                                     <td class="label">학력</td>
