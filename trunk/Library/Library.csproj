@@ -242,10 +242,12 @@
     <Compile Include="DB\Participate\Arguments\ParticipateGetCountArguments.cs" />
     <Compile Include="DB\Participate\Arguments\ParticipateGetListArguments.cs" />
     <Compile Include="DB\Participate\Arguments\ParticipateModifyArguments.cs" />
+    <Compile Include="DB\Participate\Arguments\ParticipateSetArguments.cs" />
     <Compile Include="DB\Participate\DataAccess\ParticipateCreate.cs" />
     <Compile Include="DB\Participate\DataAccess\ParticipateGetCount.cs" />
     <Compile Include="DB\Participate\DataAccess\ParticipateGetList.cs" />
     <Compile Include="DB\Participate\DataAccess\ParticipateModify.cs" />
+    <Compile Include="DB\Participate\DataAccess\ParticipateSet.cs" />
     <Compile Include="DB\Participate\Entity\ParticipateEntity.cs" />
     <Compile Include="DB\Schedule\Arguments\PageSettingSetArguments.cs" />
     <Compile Include="DB\Schedule\Arguments\RecruitScheduleSetArguments.cs" />
