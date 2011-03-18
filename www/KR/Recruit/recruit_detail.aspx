@@ -16,9 +16,9 @@
                                     <li class="<%=CountryNo == 2 ? "select icon icon-folder-big-on" : "icon icon-folder-big-off"%> china">
                                         <div>中文</div>
                                     </li>													
-                                    <li class="<%=CountryNo == 3 ? "select icon icon-folder-big-on" : "icon icon-folder-big-off"%> english">
+                                    <!--<li class="<%=CountryNo == 3 ? "select icon icon-folder-big-on" : "icon icon-folder-big-off"%> english">
                                         <div>english</div>
-                                    </li>				
+                                    </li>				-->
                                 </ul>						
                             </div>
                             <div class="tab-content">
