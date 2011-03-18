@@ -12,7 +12,7 @@
 <div class="user">
     <table class="userTable">
 <% foreach (UserEntity item in UserList.Record) { %>
-        <tr onclick="javascript:;">
+        <tr onclick="window.open('/kr/user/resume_view.aspx?userno=<%=item.UserNo %>');">
             <td class="col1"><%=item.UserNo %></td>
             <td class="col2">성명</td>
             <td class="col3"><span class="name"><%=item.KRName %></span><span class="age-gender">(<%=item.Gender == 1 ? "남" : "여" %>,<%=item.Birthday.ToString("yyyy")%>)</span></td>
