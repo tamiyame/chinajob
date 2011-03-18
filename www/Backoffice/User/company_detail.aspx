@@ -149,6 +149,7 @@
 			</tr>			
 		</table>
 		<div style="margin-top:25px;text-align:center;">
+		    <a href="javascript:;" class="button" onclick="window.print();">ÇÁ¸°Æ®</a>&nbsp;
 		    <a href="javascript:;" class="button" onclick="self.close();">´Ý±â</a>
 		</div>
     </div>
