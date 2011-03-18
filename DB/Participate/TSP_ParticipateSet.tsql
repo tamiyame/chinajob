@@ -6,7 +6,7 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-alter PROCEDURE [dbo].[TSP_ParticipateCreate]
+alter PROCEDURE [dbo].[TSP_ParticipateSet]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
@@ -15,11 +15,11 @@ alter PROCEDURE [dbo].[TSP_ParticipateCreate]
 ,	@CompanyNo	int	
 ,	@RecruitNo	int	
 ,	@UserNo	int	
-,	@UserIDX	int
-,	@CountryNo int
-,	@Category1No int
-,	@Category2No int
-,	@RecruitType	tinyint	
+,	@UserIDX	int = null
+,	@CountryNo int = null
+,	@Category1No int = null
+,	@Category2No int = null
+,	@RecruitType	tinyint = null	
 )
 as
 Set NOCOUNT ON
@@ -63,62 +63,71 @@ End
 
 -- Implementation
 
-DECLARE @SeqNo bigint
 
-SELECT 
-	@SeqNo = SeqNo
-FROM	
-	TB_Participate with ( nolock )
+UPDATE
+	TB_Participate
+SET
+	DateLastUpdated = @FrkDateNow
+,	UserIDX	 = IsNull( UserIDX, @UserIDX )
+,	@CountryNo	 = IsNull( CountryNo, @CountryNo )
+,	@Category1No	 = IsNull( Category1No, @Category1No )
+,	@Category2No	 = IsNull( Category2No, @Category2No )
+,	@RecruitType	 = IsNull( RecruitType, @RecruitType )
 WHERE
 	CompanyNo = @CompanyNo
 AND	RecruitNo = @RecruitNo
 AND	UserNo = @UserNo
-AND	ConfirmType = 0
 
 SELECT
 	@FrkErrorCode = @@ERROR
 ,	@FrkRowCount = @@RowCount
 
-IF ( @SeqNo IS Not Null )
+IF ( @FrkRowCount = 0 )
 BEGIN
-	SET @FrkErrorCode = 1
-	SET @FrkErrorMessage = '이미 면접 요청한 상태입니다.'
-	GOTO ERROR
+	INSERT	TB_Participate
+	(
+		CompanyNo
+	,	RecruitNo
+	,	UserNo
+	,	UserIDX
+	,	RecruitType
+	,	ConfirmType
+	,	DateCreated
+	,	DateLastUpdated
+	,	Status
+	,	CountryNo
+	,	Category1No
+	,	Category2No
+	)
+	SELECT
+		@CompanyNo
+	,	@RecruitNo
+	,	@UserNo
+	,	@UserIDX
+	,	@RecruitType
+	,	0
+	,	@FrkDateNow
+	,	@FrkDateNow
+	,	1
+	,	@CountryNo
+	,	@Category1No
+	,	@Category2No	
+	SELECT
+		@FrkErrorCode = @@ERROR
+	,	@FrkRowCount = @@RowCount
 END
 
-
-INSERT	TB_Participate
-(
-	CompanyNo
-,	RecruitNo
-,	UserNo
-,	UserIDX
-,	RecruitType
-,	ConfirmType
-,	DateCreated
-,	DateLastUpdated
-,	Status
-,	CountryNo
-,	Category1No
-,	Category2No
-)
-SELECT
-	@CompanyNo
-,	@RecruitNo
-,	@UserNo
-,	@UserIDX
-,	@RecruitType
-,	0
-,	@FrkDateNow
-,	@FrkDateNow
-,	1
-,	@CountryNo
-,	@Category1No
-,	@Category2No	
-SELECT
-	@FrkErrorCode = @@ERROR
-,	@FrkRowCount = @@RowCount
-
+IF ( @UserIDX Is Not Null )
+BEGIN
+	UPDATE
+		TB_Resume
+	SET
+		CompanyNo1 = CASE WHEN @UserIDX = 1 THEN @CompanyNo ELSE CompanyNo1 END
+	,	CompanyNo2 = CASE WHEN @UserIDX = 2 THEN @CompanyNo ELSE CompanyNo2 END
+	,	CompanyNo3 = CASE WHEN @UserIDX = 3 THEN @CompanyNo ELSE CompanyNo3 END
+	WHERE
+		UserNo = @UserNo
+END
 
 
 -- Frk Error Check
