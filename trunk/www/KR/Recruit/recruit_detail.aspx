@@ -153,8 +153,12 @@
                                                 <tr>
                                                     <td class="label">구인직종</td>
                                                     <td class="text-2 job-type">
+                                                    <% if ( RecruitInfo.CategoryEtcValue == string.Empty ) { %>
                                                     <%=GetCategoryName(RecruitInfo.Category1No) %>,
                                                     <%=GetSubCategoryName(RecruitInfo.Category2No) %>
+                                                    <% } else { %>
+                                                    <%=RecruitInfo.CategoryEtcValue%>
+                                                    <% } %>
                                                     </td>
                                                 </tr>                                            
                                                 <tr>
