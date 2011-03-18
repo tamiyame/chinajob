@@ -15,6 +15,7 @@ alter PROCEDURE [dbo].[TSP_ParticipateModify]
 ,	@SeqNo	bigint	
 ,	@ConfirmType	tinyint	= null
 ,	@Status	tinyint	= null
+,	@UserIDX	int = null
 )
 as
 Set NOCOUNT ON
@@ -64,6 +65,7 @@ UPDATE
 SET
 	ConfirmType = IsNull( @ConfirmType, ConfirmType )
 ,	Status = IsNull( @Status, Status )
+,	UserIDX = IsNull( @UserIDX, UserIDX )
 ,	DateLastUpdated = @FrkDateNow
 WHERE
 	SeqNo = @SeqNo
