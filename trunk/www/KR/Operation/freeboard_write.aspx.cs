@@ -34,9 +34,9 @@ public partial class KR_Operation_freeboard_write : ArticleWritePage
         }
         if (!this.WebCookies.isCompany)
         {
-            Response.Clear();
-            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/operation/freeboard_list.aspx?PageNo=" + PageNo.ToString()) + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
-            return;
+            //Response.Clear();
+            //Response.Write("<script language='javascript'>location.href='" + this.GetURL("/operation/freeboard_list.aspx?PageNo=" + PageNo.ToString()) + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
+            //return;
         }
     }
 

@@ -259,10 +259,12 @@
                                     <div>
 <% if (!this.WebCookies.isCompany && this.WebCookies.IsLogin) { %>
                                         <a class="icon icon-recruit-supply-btn" href="javascript:;" onclick="onApply(); return false;"></a>
+
 <script language="javascript" type="text/javascript">
 function onApply()
 {
-    document.forms[ 0 ].submit();
+    var url = "recruit_company_select_popup.aspx?companyNo=<%=CompanyNo %>&RecruitNo=<%=RecruitNo %>&CountryNo=<%=CountryNo %>";
+    window.open( url, "_pop_", "width=600, height=400" );
 }
 </script>
 <% } else { %>

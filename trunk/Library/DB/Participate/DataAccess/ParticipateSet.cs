@@ -16,6 +16,7 @@ namespace Com.Library.DB.Participate
 
         protected override void ParameterInitialize()
         {
+            AddParameter("SeqNo", SqlDbType.BigInt, 8, SqlDataInOut.Input);
             AddParameter("CompanyNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("RecruitNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("UserNo", SqlDbType.Int, 4, SqlDataInOut.Input);

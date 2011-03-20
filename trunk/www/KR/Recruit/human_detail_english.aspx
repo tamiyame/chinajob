@@ -291,7 +291,7 @@ thanks
                                             <br />
                                             <br />
                                             <br />
-                                            <a class="icon icon-human-interview-btn" href="javascript:;"></a>
+                                            <!--<a class="icon icon-human-interview-btn" href="javascript:;"></a>-->
                                         </div>                                        
                                         <div class="regist-tool-right"><a class="icon icon-board-list" href="<%=GetSearch()%>"></a></div>
                                     </div>

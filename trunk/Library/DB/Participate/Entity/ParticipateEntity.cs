@@ -26,6 +26,7 @@ namespace Com.Library.DB.Participate
         public byte IsCareer { get { return Convert.ToByte(GetData("IsCareer", (byte)0)); } }
         public int RecruitNo { get { return Convert.ToInt32(GetData("RecruitNo", (int)0)); } }
         public int UserNo { get { return Convert.ToInt32(GetData("UserNo", (int)0)); } }
+        public int UserIDX { get { return Convert.ToInt32(GetData("UserIDX", (int)0)); } }
         public byte RecruitType { get { return Convert.ToByte(GetData("RecruitType", (byte)0)); } }
         public byte ConfirmType { get { return Convert.ToByte(GetData("ConfirmType", (byte)0)); } }
         public DateTime DateCreated { get { return Convert.ToDateTime(GetData("DateCreated", DateTime.MinValue)); } }

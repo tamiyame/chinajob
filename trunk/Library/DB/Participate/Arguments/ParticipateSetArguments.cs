@@ -9,6 +9,12 @@ namespace Com.Library.DB.Participate
 {
     public class ParticipateSetArguments : DBArguments
     {
+        public long SeqNo
+        {
+            get { return Convert.ToInt64(GetValue("SeqNo", (long)0)); }
+            set { SetValue("SeqNo", value); }
+        }
+
         public int CompanyNo
         {
             get { return Convert.ToInt32(GetValue("CompanyNo", 0)); }

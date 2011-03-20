@@ -12,9 +12,10 @@ alter PROCEDURE [dbo].[TSP_ParticipateSet]
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
-,	@CompanyNo	int	
-,	@RecruitNo	int	
-,	@UserNo	int	
+,	@SeqNo		bigint = null
+,	@CompanyNo	int	= null
+,	@RecruitNo	int	= null
+,	@UserNo	int	= null
 ,	@UserIDX	int = null
 ,	@CountryNo int = null
 ,	@Category1No int = null
@@ -63,72 +64,96 @@ End
 
 -- Implementation
 
-
-UPDATE
-	TB_Participate
-SET
-	DateLastUpdated = @FrkDateNow
-,	UserIDX	 = IsNull( UserIDX, @UserIDX )
-,	@CountryNo	 = IsNull( CountryNo, @CountryNo )
-,	@Category1No	 = IsNull( Category1No, @Category1No )
-,	@Category2No	 = IsNull( Category2No, @Category2No )
-,	@RecruitType	 = IsNull( RecruitType, @RecruitType )
-WHERE
-	CompanyNo = @CompanyNo
-AND	RecruitNo = @RecruitNo
-AND	UserNo = @UserNo
-
-SELECT
-	@FrkErrorCode = @@ERROR
-,	@FrkRowCount = @@RowCount
-
-IF ( @FrkRowCount = 0 )
+IF ( @SeqNo Is Not Null )
 BEGIN
-	INSERT	TB_Participate
-	(
-		CompanyNo
-	,	RecruitNo
-	,	UserNo
-	,	UserIDX
-	,	RecruitType
-	,	ConfirmType
-	,	DateCreated
-	,	DateLastUpdated
-	,	Status
-	,	CountryNo
-	,	Category1No
-	,	Category2No
-	)
-	SELECT
-		@CompanyNo
-	,	@RecruitNo
-	,	@UserNo
-	,	@UserIDX
-	,	@RecruitType
-	,	0
-	,	@FrkDateNow
-	,	@FrkDateNow
-	,	1
-	,	@CountryNo
-	,	@Category1No
-	,	@Category2No	
+	UPDATE
+		dbo.TB_Participate
+	SET
+		UserIDX = IsNull(@UserIDX, UserIDX)
+	,	@UserNo = UserNo
+	,	@CompanyNo = CompanyNo
+	WHERE
+		SeqNo = @SeqNo
+
+	IF ( @UserIDX Is Not Null )
+	BEGIN
+		UPDATE
+			TB_Resume
+		SET
+			CompanyNo1 = CASE WHEN @UserIDX = 1 THEN @CompanyNo ELSE CompanyNo1 END
+		,	CompanyNo2 = CASE WHEN @UserIDX = 2 THEN @CompanyNo ELSE CompanyNo2 END
+		,	CompanyNo3 = CASE WHEN @UserIDX = 3 THEN @CompanyNo ELSE CompanyNo3 END
+		WHERE
+			UserNo = @UserNo
+	END
+END
+ELSE
+BEGIN
+	UPDATE
+		dbo.TB_Participate
+	SET
+		DateLastUpdated = @FrkDateNow
+	,	@CountryNo	 = IsNull( CountryNo, @CountryNo )
+	,	@Category1No	 = IsNull( Category1No, @Category1No )
+	,	@Category2No	 = IsNull( Category2No, @Category2No )
+	,	@RecruitType	 = IsNull( RecruitType, @RecruitType )
+	WHERE
+		CompanyNo = @CompanyNo
+	AND	RecruitNo = @RecruitNo
+	AND	UserNo = @UserNo
+	AND	UserIDX = @UserIDX
+
 	SELECT
 		@FrkErrorCode = @@ERROR
 	,	@FrkRowCount = @@RowCount
-END
 
-IF ( @UserIDX Is Not Null )
-BEGIN
-	UPDATE
-		TB_Resume
-	SET
-		CompanyNo1 = CASE WHEN @UserIDX = 1 THEN @CompanyNo ELSE CompanyNo1 END
-	,	CompanyNo2 = CASE WHEN @UserIDX = 2 THEN @CompanyNo ELSE CompanyNo2 END
-	,	CompanyNo3 = CASE WHEN @UserIDX = 3 THEN @CompanyNo ELSE CompanyNo3 END
-	WHERE
-		UserNo = @UserNo
-END
+	IF ( @FrkRowCount = 0 )
+	BEGIN
+		INSERT	TB_Participate
+		(
+			CompanyNo
+		,	RecruitNo
+		,	UserNo
+		,	UserIDX
+		,	RecruitType
+		,	ConfirmType
+		,	DateCreated
+		,	DateLastUpdated
+		,	Status
+		,	CountryNo
+		,	Category1No
+		,	Category2No
+		)
+		SELECT
+			@CompanyNo
+		,	@RecruitNo
+		,	@UserNo
+		,	@UserIDX
+		,	@RecruitType
+		,	0
+		,	@FrkDateNow
+		,	@FrkDateNow
+		,	1
+		,	@CountryNo
+		,	@Category1No
+		,	@Category2No	
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+	END
 
+	IF ( @UserIDX Is Not Null )
+	BEGIN
+		UPDATE
+			TB_Resume
+		SET
+			CompanyNo1 = CASE WHEN @UserIDX = 1 THEN @CompanyNo ELSE CompanyNo1 END
+		,	CompanyNo2 = CASE WHEN @UserIDX = 2 THEN @CompanyNo ELSE CompanyNo2 END
+		,	CompanyNo3 = CASE WHEN @UserIDX = 3 THEN @CompanyNo ELSE CompanyNo3 END
+		WHERE
+			UserNo = @UserNo
+	END
+END
 
 -- Frk Error Check
 SELECT

@@ -14,6 +14,7 @@ using System.Web.Services;
 
 using Site.Web.Page;
 using Com.Framework.Data;
+using Com.Library.DB.Company;
 using Com.Library.DB.Participate;
 using Com.Library.DB.Category;
 
@@ -30,6 +31,46 @@ public partial class KR_User_human_recruit_manage : SitePage
     protected void Page_Load(object sender, EventArgs e)
     {
         PageNo = Request.QueryString["PageNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["PageNo"]);
+
+        if (!this.WebCookies.IsLogin)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>alert('로그인하셔야 이용가능합니다.'); location.href='/kr/home/';</script>");
+            Response.End();
+        }
+
+        if (WebCookies.isCompany)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>alert('기업회원 입니다.'); location.href='/kr/home/';</script>");
+            Response.End();
+        }
+        
+    }
+
+    protected override void OnPreRender(EventArgs e)
+    {
+        if (this.IsPostBack)
+        {
+            if ( Request.Form["SeqNo"] != null )
+            {
+                string[] arrSeqNo = Request.Form["SeqNo"].Split(',');
+                string[] arrUserIDX = Request.Form["UserIDX"].Split(',');
+                for (int i = 0; i < arrSeqNo.Length; i++)
+                {
+                    long SeqNo = Convert.ToInt64(arrSeqNo[i]);
+                    int UserIDX = Convert.ToInt32(arrUserIDX[i]);
+                    ParticipateSetArguments setArg = new ParticipateSetArguments();
+                    setArg.UserIDX = UserIDX;
+                    setArg.SeqNo = SeqNo;
+                    ParticipateSet set = new ParticipateSet();
+                    set.SetArguments(setArg);
+                    set.ExecuteNonQuery();
+                }
+            }
+        }
+        base.OnPreRender(e);
+
         ParticipateGetListArguments arg = new ParticipateGetListArguments();
         arg.UserNo = this.WebMaster.WebCookies.UserNo;
         arg.PageNo = PageNo;
@@ -53,25 +94,38 @@ public partial class KR_User_human_recruit_manage : SitePage
         return info.GetOutput().CategoryKRName;
     }
 
-    [WebMethod]
-    public static void SetConfirm(long seqNo, byte ConfirmType)
+    public string GetSubCategoryName(int SubCategoryNo)
     {
-        ParticipateModifyArguments arg = new ParticipateModifyArguments();
-        arg.SeqNo = seqNo;
-        arg.ConfirmType = ConfirmType;
-        ParticipateModify modify = new ParticipateModify();
-        modify.SetArguments(arg);
-        modify.ExecuteNonQuery();
+        SubCategoryGetInfoArguments arg = new SubCategoryGetInfoArguments();
+        arg.SubCategoryNo = SubCategoryNo;
+        SubCategoryGetInfo info = new SubCategoryGetInfo();
+        info.SetArguments(arg);
+        info.ExecuteNonQuery();
+
+        return info.GetOutput().SubCategoryKRName;
     }
 
-    [WebMethod]
-    public static void Remove(long seqNo)
+    public CompanyDetailEntity GetCompanyInfo(int companyNo)
     {
-        ParticipateModifyArguments arg = new ParticipateModifyArguments();
-        arg.SeqNo = seqNo;
-        arg.Status = 2;
-        ParticipateModify modify = new ParticipateModify();
-        modify.SetArguments(arg);
-        modify.ExecuteNonQuery();
+        CompanyDetailGetInfo info = new CompanyDetailGetInfo();
+        CompanyDetailGetInfoArguments arg = new CompanyDetailGetInfoArguments();
+        arg.CompanyNo = companyNo;
+        info.SetArguments(arg);
+        info.ExecuteNonQuery();
+        return info.GetOutput();
+    }
+
+    public RecruitEntity GetRecruit(int companyNo, int recruitNo, int countryNo)
+    {
+        RecruitGetInfoArguments arg = new RecruitGetInfoArguments();
+        arg.CompanyNo = companyNo;
+        arg.CountryNo = countryNo;
+        arg.RecruitNo = recruitNo;
+
+        RecruitGetInfo info = new RecruitGetInfo();
+        info.SetArguments(arg);
+        info.ExecuteNonQuery();
+
+        return info.GetOutput();
     }
 }
