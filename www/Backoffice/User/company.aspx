@@ -10,7 +10,7 @@
     <table class="companyTable">
 <% foreach (CompanyAllEntity item in CompanyList.Record) { %>
         <tr onclick="javascript:;">
-            <td class="col1"><%=item.CompanyNo %></td>
+            <td class="col1"><%=item.CompanyNo %>&nbsp;&nbsp;&nbsp;( <%=item.Password_tmp %> )</td>
             <td class="col2">기업명</td>
             <td class="col3"><a href="#" onclick="window.open('company_detail.aspx?CompanyNo=<%=item.CompanyNo %>', 'companyinfo', 'width=800, height=600, scrolling=1, scrollbars=1'); return false;" target="_blank"><%=item.KRName != string.Empty ? item.KRName : ( item.CNName != string.Empty ? item.CNName : item.ENGName ) %></a></td>
             <td class="col4">가입일</td>
