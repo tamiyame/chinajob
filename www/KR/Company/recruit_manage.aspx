@@ -60,17 +60,11 @@ function onParticipateGetList(results, methodName, context)
             ).append(
                 jQuery('<td class="col7">대기</td>')
             ).append(
-                jQuery('<td class="col8"><a href="/kr/Recruit/human_detail_basic.aspx?userno=' + this.UserNo + '" target="_blank">보기</a></td>')
+                jQuery('<td class="col8"><a href="/kr/user/resume_view.aspx?userno=' + this.UserNo + '" target="_blank">보기</a></td>')
             ).append(
-                jQuery('<td class="col9">' + ( this.ConfirmType == 1 ? 
-                        ( this.RecruitType == 1 ? "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 2)'>승인</a?" : "대기중" ) : 
-                        ( this.ConfirmType == 2 ? "<b>승인</b>" : "<b>거절</b>") 
-                        ) + '</td>')
+                jQuery('<td class="col9">' + ( this.ConfirmType == 1 ? "<b>승인</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 1)'>승인</a>" ) + '</td>')
             ).append(
-                jQuery('<td class="col10">' + ( this.ConfirmType == 1 ? 
-                ( this.RecruitType == 1 ? "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 3)'>거절</a>" : "<a href='#' onclick='btnRemove(" + this.SeqNo + ")'>삭제</a>") : 
-                "<a href='#' onclick='btnRemove(" + this.SeqNo + ")'>삭제</a>" 
-                ) + '</td>')
+                jQuery('<td class="col10">' + ( this.ConfirmType == 2 ? "<b>거절</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 2)'>거절</a>" ) + '</td>')
             ).append(
                 jQuery('<td class="col11"></td>')
             )

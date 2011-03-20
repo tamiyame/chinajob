@@ -43,12 +43,14 @@ namespace Site.Web.Page
 
 		protected override void OnLoad(EventArgs e)
 		{
-			if (!this.WebCookies.IsLogin)
+			/*
+            if (!this.WebCookies.IsLogin)
 			{
 				Response.Clear();
 				Response.Write("<script language='javascript'>;location.href='" + GetURL("/home") + "'; alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
 				Response.End();
 			}
+            */
 
 			if (Request["userno"] == null || Request["userno"] == string.Empty)
 			{

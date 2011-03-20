@@ -149,6 +149,7 @@ namespace Site.Web.Soap
                 modify.ExecuteNonQuery();
 
                 SendMail(Entity.CompanyID, detailEntity.ENGName, detailEntity.Email, password);
+                SendMail(Entity.CompanyID, detailEntity.ENGName, "master@chinajobgo.com", password);
                 return true;
             }
             else

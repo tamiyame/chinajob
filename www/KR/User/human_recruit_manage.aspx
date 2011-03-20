@@ -1,96 +1,76 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="human_recruit_manage.aspx.cs" Inherits="KR_User_human_recruit_manage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/SiteMaster.master" AutoEventWireup="true" CodeFile="human_recruit_manage.aspx.cs" Inherits="KR_User_human_recruit_manage" %>
 <%@ Import Namespace="Com.Library.DB.Participate" %>
+<%@ Import Namespace="Com.Library.DB.Company" %>
+<%@ Import Namespace="Com.Library.DB.Company" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/css/human.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+<br />
                 <div class="join">
 				    <div class="human-title-recruit-manage"></div>
 				    <table class="recruit-table">
 						<tr>
+							<th>구분</th>
 							<th>구인직종</th>
-							<th>지원가입</th>
+							<th>지원기업</th>
 							<th>지원일시</th>
 							<th>결과</th>
-							<th>관리</th>
 						</tr>
-<%foreach (ParticipateEntity item in ParticiapteList.Record) { %>
-						<tr>
-							<td class="col1"><%=GetCategoryName(item.Category1No)%></td>
-							<td class="col2"><a href="/KR/recruit/recruit_detail.aspx?Country=<%=item.CountryNo %>&CompanyNo=<%=item.CompanyNo %>&RecruitNo=<%=item.RecruitNo %>" target="_blank">
-							<%=item.CountryNo == 1 ? item.KRCompanyName : ( item.CountryNo == 2 ? item.CNCompanyName : item.ENGCompanyName ) %>
-							(<%=item.CompanyNo %>)
-							</a>
+
+<% 
+        for (int i = 0; i < ParticiapteList.Record.Count; i++)
+        {
+            CompanyDetailEntity companyDetail = GetCompanyInfo(ParticiapteList.Record[i].CompanyNo);
+            RecruitEntity recruit = GetRecruit(ParticiapteList.Record[i].CompanyNo, ParticiapteList.Record[i].RecruitNo, ParticiapteList.Record[i].CountryNo);
+%>
+            			<tr>
+							<td class="col0">
+								<select name="UserIDX"><%=(ParticiapteList.Record[i].UserIDX == i+1) ? "selected" : "" %>
+									<option value="1" <%=ParticiapteList.Record[i].UserIDX == 1 ? "selected" : "" %>>1지망</option>
+									<option value="2" <%=ParticiapteList.Record[i].UserIDX == 2 ? "selected" : "" %>>2지망</option>
+									<option value="3" <%=ParticiapteList.Record[i].UserIDX == 3 ? "selected" : "" %>>3지망</option>
+								</select>
+								<input type="hidden" name="SeqNo" value="<%=ParticiapteList.Record[i].SeqNo%>" />
 							</td>
-							<td class="col3"><%=item.DateCreated.ToString("yyyy-MM-dd HH:mm") %></td>
-							<td class="col4">
-							<% if (item.ConfirmType == 0){ %>
-							    대기
-							<% } else if (item.ConfirmType == 1) { %>
-							        승인
-							<% }  else { %>
-							        거절
-							<% } %>
-							</td>
-							<td class="col5">
-							<% if (item.ConfirmType == 0){ %>
-							    <% if (item.RecruitType == 1){ %>
-						            <a href="#" onclick="btnConfirm(<%=item.SeqNo %>, 1); return false;">수락</a> / <a href="" onclick="btnConfirm(<%=item.SeqNo %>, 2); return false;">거절</a>
-						        <% } else { %> 
-						            <a href="#" onclick="btnRemove(<%=item.SeqNo %>); return false;">취소</a>
-						        <% } %>
-							<% } else {%>
-						        <a href="#" onclick="btnRemove(<%=item.SeqNo %>); return false;">취소</a>
-							<% } %>
+							<td class="col1"><%=recruit.Category2No == 360 ? recruit.CategoryEtcValue : (GetCategoryName(recruit.Category1No) + "<br/>" + GetSubCategoryName(recruit.Category2No))%></td>
+							<td class="col2"><%=ParticiapteList.Record[i].CountryNo == 1 ? companyDetail.KRName : (ParticiapteList.Record[i].CountryNo == 2 ? companyDetail.CNName : companyDetail.ENGName)%> (<%=ParticiapteList.Record[i].CompanyNo%>)</td>
+							<td class="col3"><%=ParticiapteList.Record[i].DateLastUpdated.ToString("yyyy-MM-dd HH:mm:ss") %></td>
+							<td class="col4"><%=ParticiapteList.Record[i].ConfirmType== 0 ? "대기" : (ParticiapteList.Record[i].ConfirmType == 1 ? "수락" : "거절") %></td>
 						</tr>
-<% } %>
+<%
+    }
+%>
+                        <tr>
+                            <td colspan="5" class="col2">
+                                <br /><br /><br />
+                                <a href="javascript:;" onclick="onSet(); return false;" class="icon icon-board-confirm"></a>
+                                <br />
+                            </td>
+                        </tr>
+				    </table>
+				</div>
 <script language="javascript" type="text/javascript">
-function btnConfirm(seqno, type)
+function onSet()
 {
-    PageMethods.SetConfirm(seqno, type, function(results, context, methodNames)
+    var arrTest = new Array();
+    var b = false;
+    jQuery("select[name=UserIDX]").each(function()
     {
-        location.href = location.href;
-    }, onFailed );
-}
-
-function btnRemove(seqno)
-{
-    PageMethods.Remove(seqno, function(results, context, methodNames)
+        if ( arrTest[jQuery(this).val()] == undefined )
+            arrTest[jQuery(this).val()] = 1;
+        else
+            b = true;
+    });
+    
+    if ( b )
     {
-        location.href = location.href;
-    }, onFailed );
-}
-
-function onFailed(results, context, methodNames)
-{
-    alert( results.get_message() );
+        alert( "구분에 같은 지원을 선택하실수 없습니다." );
+        return;
+    }
+    jQuery("form:eq(0)").submit();
 }
 </script>
-						<tr class="toolbox">
-							<td colspan="5">
-								<div class="pager">
-<%
-    int TotalPageNo = 1;
-    int StartPageNo = 1;
-    int EndPageNo = StartPageNo + 9;
-    TotalPageNo = ParticiapteList.Output.CntTotal != 0 ? ((ParticiapteList.Output.CntTotal - 1) / 10) + 1 : 1;
-    StartPageNo = (((PageNo - 1) / 10) * 10) + 1;
-    EndPageNo = StartPageNo + 9;
-    EndPageNo = EndPageNo > TotalPageNo ? TotalPageNo : EndPageNo;
-%>
-<%  if (PageNo > 10) { %>
-                                            <a href="human_recruit_manage.aspx?PageNo=<%=StartPageNo-10%>" class="icon icon-board-icon-prev"></a>
-<% } %>
-<%  for (int pageNo = StartPageNo; pageNo <= EndPageNo; pageNo++) { %>
-                                            <a href="human_recruit_manage.aspx?PageNo=<%=pageNo%>" <%=pageNo==PageNo ? "class='select'" : "" %>><%=pageNo %></a>
-<% } %>
-<% if ( EndPageNo < TotalPageNo ) { %>
-                                            <a href="human_recruit_manage.aspx?PageNo=<%=StartPageNo+10%>" class="icon icon-board-icon-next"></a>
-<% } %>
-								</div>                                     
-							</td>
-						</tr>
-				    </table>			
-				</div>
+
 </asp:Content>
 

@@ -106,7 +106,7 @@ BEGIN
 			P.UserNo = @UserNo
 		AND	P.Status = 1
 		ORDER BY
-			P.UserNo DESC, P.Status DESC, P.UserIDX DESC
+			P.UserNo ASC, P.Status ASC, P.UserIDX ASC
 		SELECT
 			@FrkErrorCode = @@ERROR
 		,	@FrkRowCount = @@RowCount
@@ -153,7 +153,7 @@ BEGIN
 				P.UserNo = @UserNo
 			AND	P.Status = 1
 			ORDER BY
-				P.UserNo DESC, P.Status DESC, P.UserIDX DESC
+				P.UserNo ASC, P.Status ASC, P.UserIDX ASC
 			SELECT
 				@FrkErrorCode = @@ERROR
 			,	@FrkRowCount = @@RowCount
@@ -200,7 +200,7 @@ BEGIN
 				,	DateCreated
 				,	DateLastUpdated
 				,	ROW_NUMBER() OVER ( ORDER BY
-						UserNo DESC, Status DESC, UserIDX DESC
+						UserNo ASC, Status ASC, UserIDX ASC
 					) AS ROWNUM
 				FROM
 					dbo.TB_Participate P with ( nolock )

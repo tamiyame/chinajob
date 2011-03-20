@@ -146,7 +146,7 @@ $(document).ready(function() {
                                             <br />
                                             <br />
                                             <% if ( this.WebCookies.isCompany ) { %>
-                                            <a class="icon icon-human-interview-btn" href=""></a>
+                                            <!--<a class="icon icon-human-interview-btn" href=""></a>-->
                                             <% } %>
                                         </div>
                                         <br /><br />                             
