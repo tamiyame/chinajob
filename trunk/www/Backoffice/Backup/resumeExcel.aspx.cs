@@ -21,7 +21,7 @@ public partial class Backoffice_Backup_resumeExcel : System.Web.UI.Page
     public List<ResumeEntity> ResumeList = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.AddHeader("content-disposition", "attachment;filename=recruit.xls");
+        Response.AddHeader("content-disposition", "attachment;filename=resume.xls");
         Response.ContentType = "application/vnd.ms-excel";
 
         ResumeGetList list = new ResumeGetList();
