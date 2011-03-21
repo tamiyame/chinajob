@@ -94,7 +94,7 @@
 									</select>
 								</td>		
 								<td class="vertical-top">
-								    <input type="text" name="jobType_direct" value="<%=RecruitInfo.CategoryEtcValue %>"/>
+								    <input type="text" name="jobType_direct" maxlength="50" value="<%=RecruitInfo.CategoryEtcValue %>"/>
 								</td>																		
 							</tr>
 						</table>
@@ -234,7 +234,7 @@
 									</select>	
 								</td>
 								<td id="AgeEtcValue" class="hide">
-									<input class="w1" name="AgeEtcValue" <%=RecruitInfo.AgeEtcValue %>/>
+									<input class="w1" name="AgeEtcValue" <%=RecruitInfo.AgeEtcValue %> maxlength="10"/>
 								</td>														
 							</tr>
 						</table>
@@ -332,7 +332,7 @@
 								</td>
 
 								<td>
-									<input id="major_direct" type="text" class="w2 hide" name="major_direct" value="<%=RecruitInfo.MajorEtcValue %>"/>
+									<input id="major_direct" type="text" class="w2 hide" name="major_direct" value="<%=RecruitInfo.MajorEtcValue %>" maxlength="20"/>
 								</td>															
 							</tr>
 						</table>
@@ -459,7 +459,7 @@
 									<label for="japanese_0"><%= GetText("CN_Company_recruit_regist.aspx_457")%></label>
 								</td>
 								<td>
-									<input type="text" name="etc_lang" class="w2" value="<%=RecruitInfo.ETCLanguageName%>"/>
+									<input type="text" name="etc_lang" class="w2" value="<%=RecruitInfo.ETCLanguageName%>" maxlength="20"/>
 
 								</td>
 								<td>
@@ -493,7 +493,7 @@
 						<table>
 							<tr>
 								<td>
-									<input type="text" name="main_task" class="w3" value="<%=RecruitInfo.MainWork%>"/>
+									<input type="text" name="main_task" class="w3" value="<%=RecruitInfo.MainWork%>" maxlength="100"/>
 								</td>										
 							</tr>
 						</table>
@@ -523,7 +523,7 @@
 								</td>
 
 								<td>
-									<input type="text" name="address_3" class="w3" value="<%=RecruitInfo.RecruitAddressDetail %>"/>
+									<input type="text" name="address_3" class="w3" value="<%=RecruitInfo.RecruitAddressDetail %>" maxlength="300"/>
 								</td>										
 							</tr>
 						</table>
@@ -671,7 +671,7 @@
 									<label for="working_time_1"><%= GetText("CN_Company_recruit_regist.aspx_669")%></label>
 								</td>
 								<td>
-									<input id="working_time_etc" type="text" class="w2 hide" name="working_time_etc" value="<%=RecruitInfo.WorkingHours %>" />
+									<input id="working_time_etc" type="text" class="w2 hide" name="working_time_etc" value="<%=RecruitInfo.WorkingHours %>" maxlength="20"/>
 								</td>														
 							</tr>
 
@@ -715,7 +715,7 @@
 									<label for="insurance_3"><%= GetText("CN_Company_recruit_regist.aspx_713")%></label>
 								</td>
 								<td>
-									<input id="insurance_etc" type="text" class="w1 hide" name="insurance_etc"  value="<%=RecruitInfo.BenefitsInsuranceEtcValue%>" />
+									<input id="insurance_etc" type="text" class="w1 hide" name="insurance_etc"  value="<%=RecruitInfo.BenefitsInsuranceEtcValue%>" maxlength="40"/>
 								</td>														
 							</tr>
 						</table>
@@ -760,7 +760,7 @@
 								</td>
 
 								<td>
-									<input type="text" class="w1 hide" name="food_etc" id="food_etc" value="<%=RecruitInfo.BenefitsRoomAndBoardEtcValue%>" >
+									<input type="text" class="w1 hide" name="food_etc" id="food_etc" value="<%=RecruitInfo.BenefitsRoomAndBoardEtcValue%>" maxlength="40">
 								</td>														
 							</tr>
 						</table>
@@ -804,7 +804,7 @@
 									<label for="severance_pay_4"><%= GetText("CN_Company_recruit_regist.aspx_713")%></label>
 								</td>
 								<td>
-									<input type="text" class="w1 hide" name="severance_etc" id="severance_etc" value="<%=RecruitInfo.BenefitsSeverancePayEtcValue%>">
+									<input type="text" class="w1 hide" name="severance_etc" id="severance_etc" value="<%=RecruitInfo.BenefitsSeverancePayEtcValue%>" maxlength="40">
 
 								</td>														
 							</tr>
@@ -849,7 +849,7 @@
 									<label for="vacation_4"><%= GetText("CN_Company_recruit_regist.aspx_713")%></label>
 								</td>
 								<td>
-									<input type="text" class="w1 hide" name="vacation_etc" id="vacation_etc" value="<%=RecruitInfo.BenefitsVacationEtcValue%>" />
+									<input type="text" class="w1 hide" name="vacation_etc" id="vacation_etc" value="<%=RecruitInfo.BenefitsVacationEtcValue%>" maxlength="40"/>
 								</td>														
 							</tr>
 						</table>
@@ -860,7 +860,7 @@
 									기타
 								</td>	
 								<td>
-									<input type="text" class="w4" name="benefit_etc" value="<%=RecruitInfo.BenefitsETC%>"/>
+									<input type="text" class="w4" name="benefit_etc" value="<%=RecruitInfo.BenefitsETC%>" maxlength="150"/>
 								</td>														
 							</tr>
 						</table>
