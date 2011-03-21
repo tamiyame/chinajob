@@ -69,7 +69,7 @@ SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
 
 IF ( @PageSize = 0 )
 BEGIN
-	SELECT	Top( @PageSize )
+	SELECT
 			CountryNo
 		,	RecruitNo
 		,	CompanyNo

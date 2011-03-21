@@ -68,7 +68,7 @@ SET	@Status = IsNull( @Status, 1 )
 
 IF ( @PageSize = 0 )
 BEGIN
-	SELECT	Top( @PageSize )
+	SELECT
 		UserNo
 	,	UserID
 	,	UserPWD
