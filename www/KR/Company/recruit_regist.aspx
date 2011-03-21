@@ -935,11 +935,11 @@ jQuery(function()
                 }
             })
             
-            $("input[name=major][value!=5]").click(function(){
+            $("input[name=major][value!=150]").click(function(){
                 $('#major_direct').hide();
             })
 
-            $("input[name=major][value=5]").click(function(){
+            $("input[name=major][value=150]").click(function(){
                 $('#major_direct').show();
             })
             

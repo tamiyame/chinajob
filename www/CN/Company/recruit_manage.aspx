@@ -46,7 +46,7 @@ function onParticipateGetList(results, methodName, context)
             jQuery("<tr class='applicant' />").append(
                 jQuery('<td class="col1">'+$.translateHelper.getText("CN_Company_recruit_manage.aspx_regist")+'</td>')
             ).append(
-                jQuery('<td class="col2"><span class="name">' + this.KRUserName + 
+                jQuery('<td class="col2"><span class="name">' + ( this.CNUserName == "" ? ( this.ENGUserName == "" ? this.KRUserName : this.ENGUserName ) : this.CNUserName ) + 
                     '</span><span class="gender-age">(' + ( this.Gender % 2 == 1 ? $.translateHelper.getText("CN_Company_recruit_manage.aspx_male") : $.translateHelper.getText("CN_Company_recruit_manage.aspx_female") ) + ',' + this.Age + $.translateHelper.getText("CN_Company_recruit_manage.aspx_age") +')</span></td>'
                     )
             ).append(
@@ -62,15 +62,9 @@ function onParticipateGetList(results, methodName, context)
             ).append(
                 jQuery('<td class="col8"><a href="/kr/Recruit/human_detail_basic.aspx?userno=' + this.UserNo + '" target="_blank">'+$.translateHelper.getText("CN_Company_recruit_manage.aspx_show")+'</a></td>')
             ).append(
-                jQuery('<td class="col9">' + ( this.ConfirmType == 1 ? 
-                        ( this.RecruitType == 1 ? "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 2)'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_approve")+"</a>" : $.translateHelper.getText("CN_Company_recruit_manage.aspx_waiting") ) : 
-                        ( this.ConfirmType == 2 ? "<b>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_approved")+"</b>" : "<b>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_denied")+"</b>") 
-                        ) + '</td>')
+                jQuery('<td class="col9">' + ( this.ConfirmType == 1 ? "<b>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_approved")+"</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 1)'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_approved")+"</a>" ) + '</td>')
             ).append(
-                jQuery('<td class="col10">' + ( this.ConfirmType == 1 ? 
-                ( this.RecruitType == 1 ? "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 3)'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_deny")+"</a>" : "<a href='#' onclick='btnRemove(" + this.SeqNo + ")'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_delete")+"</a>") : 
-                "<a href='#' onclick='btnRemove(" + this.SeqNo + ")'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_deleted")+"</a>" 
-                ) + '</td>')
+                jQuery('<td class="col10">' + ( this.ConfirmType == 2 ? "<b>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_deny")+"</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 2)'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_deny")+"</a>" ) + '</td>')
             ).append(
                 jQuery('<td class="col11"></td>')
             )
