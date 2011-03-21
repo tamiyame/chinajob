@@ -66,7 +66,40 @@ DECLARE @SkipPage INT
 SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
 SET	@Status = IsNull( @Status, 1 )
 
-IF ( @Status Is Not Null )
+IF ( @PageSize = 0 )
+BEGIN
+	SELECT	Top( @PageSize )
+		UserNo
+	,	UserID
+	,	UserPWD
+	,	ImageUrl
+	,	KRName
+	,	CNName
+	,	ENGName
+	,	Gender
+	,	Birthday
+	,	Email
+	,	KRPhoneNo
+	,	CNPhoneNo
+	,	ResidanceCountry
+	,	HomepageUrl
+	,	DateCreated
+	,	DateLastLogin
+	,	DatePrevLogin
+	,	Status
+	FROM
+		dbo.TB_User with ( nolock )
+	WHERE
+		Status = 1
+	ORDER BY
+		UserNo DESC
+
+	SELECT
+		@FrkErrorCode = @@ERROR
+	,	@FrkRowCount = @@RowCount
+	SET @CntRow = @FrkRowCount		
+END
+ELSE IF ( @Status Is Not Null )
 BEGIN
 	IF ( @PageNo = 1 )
 	BEGIN
