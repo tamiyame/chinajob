@@ -284,6 +284,7 @@
     <Compile Include="DB\User\DataAccess\AcademicAbilityCreate.cs" />
     <Compile Include="DB\User\DataAccess\AcademicAbilityGetList.cs" />
     <Compile Include="DB\User\DataAccess\AcademicAbilityModify.cs" />
+    <Compile Include="DB\User\DataAccess\ResumeGetList.cs" />
     <Compile Include="DB\User\DataAccess\ResumeSearch.cs" />
     <Compile Include="DB\User\DataAccess\ResumeCareerCreate.cs" />
     <Compile Include="DB\User\DataAccess\ResumeCareerGetList.cs" />
