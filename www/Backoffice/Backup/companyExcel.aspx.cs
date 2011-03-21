@@ -13,15 +13,26 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
 using Com.Framework.Data;
-using Com.Library.DB.User;
+using Com.Library.DB.Company;
 using Com.Library.DB.Category;
 
 public partial class Backoffice_Backup_companyExcel : System.Web.UI.Page
 {
+    public List<CompanyAllEntity> CompanyList = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.AddHeader("content-disposition", "attachment;filename=recruit.xls");
+        Response.AddHeader("content-disposition", "attachment;filename=company.xls");
         Response.ContentType = "application/vnd.ms-excel";
+
+        CompanyGetListArguments arg = new CompanyGetListArguments();
+        arg.PageNo = 1;
+        arg.PageSize = 0;
+        arg.Status = 1;
+
+        CompanyGetList list = new CompanyGetList();
+        list.SetArguments(arg);
+        list.Execute();
+        CompanyList = list.GetRecords();
     }
 
     public string GetCategoryName(int CategoryNo)
