@@ -67,111 +67,14 @@ SET @Status = IsNull( @Status, 1 )
 DECLARE @SkipPage INT
 SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
 
-IF ( @PageNo = 1 )
+IF ( @PageSize = 0 )
 BEGIN
-	SELECT	Top( @PageSize )
-		CountryNo
-	,	RecruitNo
-	,	CompanyNo
-	,	JoinType
-	,	JobFairValue
-	,	JobFairRecruiter
-	,	Category1No
-	,	Category2No
-	,	CategoryEtcValue
-	,	Career
-	,	RecruitCount
-	,	Gender
-	,	AgeType
-	,	AgeCategory
-	,	AgeEtcValue
-	,	AcademicAbility
-	,	Major
-	,	MajorEtcValue
-	,	ChineseLevel
-	,	EnglishLevel
-	,	JapanessLevel
-	,	ETCLanguageName
-	,	ETCLanguageLevel
-	,	MainWork
-	,	CityCategory
-	,	AreaCategory
-	,	RecruitAddressDetail
-	,	RecruitDate
-	,	EtcEligibilityRule
-	,	PayCategory
-	,	ContactPeriod
-	,	WorkingHoursType
-	,	WorkingHours
-	,	BenefitsInsurance
-	,	BenefitsInsuranceEtcValue
-	,	BenefitsRoomAndBoard
-	,	BenefitsRoomAndBoardEtcValue
-	,	BenefitsSeverancePay
-	,	BenefitsVacation
-	,	BenefitsVacationEtcValue
-	,	BenefitsETC
-	,	RegistryTime
-	FROM
-		dbo.TB_Recruit with ( nolock )
-	WHERE
-		CompanyNo = @CompanyNo
-	AND	Status = @Status
-	ORDER BY
-		CompanyNo DESC, Status DESC, CountryNo DESC, RecruitNo DESC
-	SELECT
-		@FrkErrorCode = @@ERROR
-	,	@FrkRowCount = @@RowCount
-	SET @CntRow = @FrkRowCount
 END
 ELSE
 BEGIN
-	SELECT	Top( @PageSize )
-		CountryNo
-	,	RecruitNo
-	,	CompanyNo
-	,	JoinType
-	,	JobFairValue
-	,	JobFairRecruiter
-	,	Category1No
-	,	Category2No
-	,	CategoryEtcValue
-	,	Career
-	,	RecruitCount
-	,	Gender
-	,	AgeType
-	,	AgeCategory
-	,	AgeEtcValue
-	,	AcademicAbility
-	,	Major
-	,	MajorEtcValue
-	,	ChineseLevel
-	,	EnglishLevel
-	,	JapanessLevel
-	,	ETCLanguageName
-	,	ETCLanguageLevel
-	,	MainWork
-	,	CityCategory
-	,	AreaCategory
-	,	RecruitAddressDetail
-	,	RecruitDate
-	,	EtcEligibilityRule
-	,	PayCategory
-	,	ContactPeriod
-	,	WorkingHoursType
-	,	WorkingHours
-	,	BenefitsInsurance
-	,	BenefitsInsuranceEtcValue
-	,	BenefitsRoomAndBoard
-	,	BenefitsRoomAndBoardEtcValue
-	,	BenefitsSeverancePay
-	,	BenefitsVacation
-	,	BenefitsVacationEtcValue
-	,	BenefitsETC
-	,	RegistryTime
-	FROM
-	(
-		SELECT
+	IF ( @PageNo = 1 )
+	BEGIN
+		SELECT	Top( @PageSize )
 			CountryNo
 		,	RecruitNo
 		,	CompanyNo
@@ -214,32 +117,134 @@ BEGIN
 		,	BenefitsVacationEtcValue
 		,	BenefitsETC
 		,	RegistryTime
-		,	ROW_NUMBER() OVER ( ORDER BY
-			CompanyNo DESC, Status DESC, RecruitNo DESC
-		) AS ROWNUM
 		FROM
 			dbo.TB_Recruit with ( nolock )
 		WHERE
 			CompanyNo = @CompanyNo
 		AND	Status = @Status
-	)	A
-	WHERE
-		ROWNUM > @SkipPage
-	AND	ROWNUM <= @SkipPage + @PageSize
+		ORDER BY
+			CompanyNo DESC, Status DESC, CountryNo DESC, RecruitNo DESC
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount
+	END
+	ELSE
+	BEGIN
+		SELECT	Top( @PageSize )
+			CountryNo
+		,	RecruitNo
+		,	CompanyNo
+		,	JoinType
+		,	JobFairValue
+		,	JobFairRecruiter
+		,	Category1No
+		,	Category2No
+		,	CategoryEtcValue
+		,	Career
+		,	RecruitCount
+		,	Gender
+		,	AgeType
+		,	AgeCategory
+		,	AgeEtcValue
+		,	AcademicAbility
+		,	Major
+		,	MajorEtcValue
+		,	ChineseLevel
+		,	EnglishLevel
+		,	JapanessLevel
+		,	ETCLanguageName
+		,	ETCLanguageLevel
+		,	MainWork
+		,	CityCategory
+		,	AreaCategory
+		,	RecruitAddressDetail
+		,	RecruitDate
+		,	EtcEligibilityRule
+		,	PayCategory
+		,	ContactPeriod
+		,	WorkingHoursType
+		,	WorkingHours
+		,	BenefitsInsurance
+		,	BenefitsInsuranceEtcValue
+		,	BenefitsRoomAndBoard
+		,	BenefitsRoomAndBoardEtcValue
+		,	BenefitsSeverancePay
+		,	BenefitsVacation
+		,	BenefitsVacationEtcValue
+		,	BenefitsETC
+		,	RegistryTime
+		FROM
+		(
+			SELECT
+				CountryNo
+			,	RecruitNo
+			,	CompanyNo
+			,	JoinType
+			,	JobFairValue
+			,	JobFairRecruiter
+			,	Category1No
+			,	Category2No
+			,	CategoryEtcValue
+			,	Career
+			,	RecruitCount
+			,	Gender
+			,	AgeType
+			,	AgeCategory
+			,	AgeEtcValue
+			,	AcademicAbility
+			,	Major
+			,	MajorEtcValue
+			,	ChineseLevel
+			,	EnglishLevel
+			,	JapanessLevel
+			,	ETCLanguageName
+			,	ETCLanguageLevel
+			,	MainWork
+			,	CityCategory
+			,	AreaCategory
+			,	RecruitAddressDetail
+			,	RecruitDate
+			,	EtcEligibilityRule
+			,	PayCategory
+			,	ContactPeriod
+			,	WorkingHoursType
+			,	WorkingHours
+			,	BenefitsInsurance
+			,	BenefitsInsuranceEtcValue
+			,	BenefitsRoomAndBoard
+			,	BenefitsRoomAndBoardEtcValue
+			,	BenefitsSeverancePay
+			,	BenefitsVacation
+			,	BenefitsVacationEtcValue
+			,	BenefitsETC
+			,	RegistryTime
+			,	ROW_NUMBER() OVER ( ORDER BY
+				CompanyNo DESC, Status DESC, RecruitNo DESC
+			) AS ROWNUM
+			FROM
+				dbo.TB_Recruit with ( nolock )
+			WHERE
+				CompanyNo = @CompanyNo
+			AND	Status = @Status
+		)	A
+		WHERE
+			ROWNUM > @SkipPage
+		AND	ROWNUM <= @SkipPage + @PageSize
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount
+	END
+
+
 	SELECT
-		@FrkErrorCode = @@ERROR
-	,	@FrkRowCount = @@RowCount
-	SET @CntRow = @FrkRowCount
+		@CntTotal = RecruitCount
+	FROM
+		dbo.TB_Company with ( nolock )
+	WHERE
+		CompanyNo = @CompanyNo
 END
-
-
-SELECT
-	@CntTotal = RecruitCount
-FROM
-	dbo.TB_Company with ( nolock )
-WHERE
-	CompanyNo = @CompanyNo
-
 
 -- Frk Error Check
 SELECT
