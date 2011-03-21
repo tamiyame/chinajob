@@ -46,7 +46,7 @@ function onParticipateGetList(results, methodName, context)
             jQuery("<tr class='applicant' />").append(
                 jQuery('<td class="col1">지원자</td>')
             ).append(
-                jQuery('<td class="col2"><span class="name">' + this.KRUserName + 
+                jQuery('<td class="col2"><span class="name">' + ( this.KRUserName != "" ? this.KRUserName : ( this.ENGUserName != "" ? this.ENGUserName : this.CNUserName ) ) + 
                     '</span><span class="gender-age">(' + ( this.Gender % 2 == 1 ? "남" : "여" ) + ',' + this.Age + '세)</span></td>'
                     )
             ).append(
