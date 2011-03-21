@@ -13,8 +13,8 @@
 
 <div class="backup">
     백업은 엑셀(xls)로만 가능합니다
-    <div>채용정보   <a href="javascript:;" class="button">다운로드</a></div>
-    <div>인재정보   <a href="javascript:;" class="button">다운로드</a></div>
+    <div>채용정보   <a href="RecruitExcel.aspx" target="_blank" class="button">다운로드</a></div>
+    <div>인재정보   <a href="ResumeExcel.aspx" target="_blank" class="button">다운로드</a></div>
     <div>기업회원   <a href="javascript:;" class="button">다운로드</a></div>
     <div>개인회원   <a href="javascript:;" class="button">다운로드</a></div>    
 </div>

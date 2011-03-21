@@ -65,7 +65,61 @@ SET @Status = IsNull( @Status, 1 )
 DECLARE @SkipPage INT
 SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
 
-IF ( @CountryNo Is Null )
+If ( @PageSize = 0 )
+BEGIN
+	SELECT
+		C.CompanyNo
+	,	C.CompanyID
+	,	C.Password_tmp
+	,	C.CountryNo
+	,	C.RegistyTime
+	,	C.Status
+	,	C.Approval
+	,	C.RecruitCount
+	,	C.ParticipateCount
+	,	C.DateLastLogin
+	,	C.DatePrevLogin
+	,	C.MaxRecruitNo
+	,	CD.KRName
+	,	CD.CNName
+	,	CD.ENGName
+	,	CD.CompanyImage
+	,	CD.PermitNo
+	,	CD.PermitImage
+	,	CD.Email
+	,	CD.BusinessCategoryNo
+	,	CD.BusinessCategoryEtc
+	,	CD.PresidentName
+	,	CD.CapitalType
+	,	CD.FoundYear
+	,	CD.EmployeeCount
+	,	CD.Capital
+	,	CD.CapitalCurrencyNo
+	,	CD.Turnover
+	,	CD.TurnoverCurrencyNo
+	,	CD.CompanyDescrition
+	,	CD.RecruiterName
+	,	CD.PhoneNo
+	,	CD.FaxNo
+	,	CD.HeadAddress
+	,	CD.EmploymentAddress
+	,	CD.HomepageURL
+	,	CD.RegistyTime
+	FROM
+		dbo.TB_Company C with ( nolock )
+	LEFT JOIN 	dbo.TB_CompanyDetail CD with ( nolock )
+	ON	CD.CompanyNo = C.CompanyNo
+	WHERE
+		C.Status = @Status
+	ORDER BY
+		Status DESC, CompanyNo DESC
+	SELECT
+		@FrkErrorCode = @@ERROR
+	,	@FrkRowCount = @@RowCount
+	SET @CntRow = @FrkRowCount
+	SET @CntTotal = @FrkRowCount
+END
+ELSE IF ( @CountryNo Is Null )
 BEGIN
 	IF ( @PageNo = 1 )
 	BEGIN
