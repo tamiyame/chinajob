@@ -12,7 +12,7 @@ alter PROCEDURE [dbo].[TSP_RecruitGetList]
 ,	@ErrorCode		int				= 0		OUTPUT
 ,	@ErrorMessage	nvarchar( 1000 )= ''	OUTPUT
 
-,	@CompanyNo	int
+,	@CompanyNo	int	= null
 ,	@Status	tinyint	= null
 
 ,	@PageNo	int	= 1	
@@ -69,6 +69,58 @@ SET @SkipPage = ( ( @PageNo - 1 ) * @PageSize )
 
 IF ( @PageSize = 0 )
 BEGIN
+	SELECT	Top( @PageSize )
+			CountryNo
+		,	RecruitNo
+		,	CompanyNo
+		,	JoinType
+		,	JobFairValue
+		,	JobFairRecruiter
+		,	Category1No
+		,	Category2No
+		,	CategoryEtcValue
+		,	Career
+		,	RecruitCount
+		,	Gender
+		,	AgeType
+		,	AgeCategory
+		,	AgeEtcValue
+		,	AcademicAbility
+		,	Major
+		,	MajorEtcValue
+		,	ChineseLevel
+		,	EnglishLevel
+		,	JapanessLevel
+		,	ETCLanguageName
+		,	ETCLanguageLevel
+		,	MainWork
+		,	CityCategory
+		,	AreaCategory
+		,	RecruitAddressDetail
+		,	RecruitDate
+		,	EtcEligibilityRule
+		,	PayCategory
+		,	ContactPeriod
+		,	WorkingHoursType
+		,	WorkingHours
+		,	BenefitsInsurance
+		,	BenefitsInsuranceEtcValue
+		,	BenefitsRoomAndBoard
+		,	BenefitsRoomAndBoardEtcValue
+		,	BenefitsSeverancePay
+		,	BenefitsSeverancePayEtcValue
+		,	BenefitsVacation
+		,	BenefitsVacationEtcValue
+		,	BenefitsETC
+		,	RegistryTime
+		FROM
+			dbo.TB_Recruit with ( nolock )
+		ORDER BY
+			Status DESC, RegistryTime DESC
+		SELECT
+			@FrkErrorCode = @@ERROR
+		,	@FrkRowCount = @@RowCount
+		SET @CntRow = @FrkRowCount
 END
 ELSE
 BEGIN
@@ -113,6 +165,7 @@ BEGIN
 		,	BenefitsRoomAndBoard
 		,	BenefitsRoomAndBoardEtcValue
 		,	BenefitsSeverancePay
+		,	BenefitsSeverancePayEtcValue
 		,	BenefitsVacation
 		,	BenefitsVacationEtcValue
 		,	BenefitsETC
@@ -170,6 +223,7 @@ BEGIN
 		,	BenefitsRoomAndBoard
 		,	BenefitsRoomAndBoardEtcValue
 		,	BenefitsSeverancePay
+		,	BenefitsSeverancePayEtcValue
 		,	BenefitsVacation
 		,	BenefitsVacationEtcValue
 		,	BenefitsETC
@@ -215,6 +269,7 @@ BEGIN
 			,	BenefitsRoomAndBoard
 			,	BenefitsRoomAndBoardEtcValue
 			,	BenefitsSeverancePay
+			,	BenefitsSeverancePayEtcValue
 			,	BenefitsVacation
 			,	BenefitsVacationEtcValue
 			,	BenefitsETC
