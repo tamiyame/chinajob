@@ -110,7 +110,7 @@ BEGIN
 	LEFT JOIN 	dbo.TB_CompanyDetail CD with ( nolock )
 	ON	CD.CompanyNo = C.CompanyNo
 	WHERE
-		C.Status = @Status
+		C.Status = 1
 	ORDER BY
 		Status DESC, CompanyNo DESC
 	SELECT
