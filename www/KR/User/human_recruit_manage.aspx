@@ -40,16 +40,10 @@
 						</tr>
 <%
     }
-%>
-                        <tr>
-                            <td colspan="5" class="col2">
-                                <br /><br /><br />
-                                <a href="javascript:;" onclick="onSet(); return false;" class="icon icon-board-confirm"></a>
-                                <br />
-                            </td>
-                        </tr>
+%>                        
 				    </table>
-				</div>
+				    <div style="text-align:center;margin-top:30px;"><a href="javascript:;" onclick="onSet(); return false;" class="icon icon-board-confirm"></a></div>
+				</div>				
 <script language="javascript" type="text/javascript">
 function onSet()
 {

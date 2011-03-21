@@ -154,10 +154,10 @@ div.pager a.select{color:#469ed9;}
 .recruit-table tr{}
 .recruit-table tr th{font-weight:normal;text-decoration:none;text-align:center;background-color:#f7f7f7;color:#7d7d7d;font-size:11px;padding:0px;border-top:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb;}
 .recruit-table tr td{text-align:center;padding:0px;border-top:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb;}
-.recruit-table tr td.col0{width:110px;text-align:center;}
+.recruit-table tr td.col0{width:180px;text-align:center;}
 .recruit-table tr td.col0 select{width:60px;}
-.recruit-table tr td.col1{color:#469ed9;font-size:12px;width:113px;}
-.recruit-table tr td.col2{color:#555555;font-size:12px;width:203px;}
+.recruit-table tr td.col1{color:#469ed9;font-size:12px;width:143px;}
+.recruit-table tr td.col2{color:#555555;font-size:12px;width:223px;}
 .recruit-table tr td.col3{color:#999999;font-family:'tahoma'; font-size:9px;width:109px;}
 .recruit-table tr td.col4{color:#ff6600;font-size:11px;width:105px;}
 .recruit-table tr td.col5 a,
