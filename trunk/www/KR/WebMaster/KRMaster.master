@@ -78,7 +78,7 @@ function GetURL(url)
                     {
                         ParticipateGetCountArguments cntArg = new ParticipateGetCountArguments();
                         cntArg.UserNo = this.WebCookies.UserNo;
-                        cntArg.IsConfirm = 0;
+                        cntArg.IsConfirm = 1;
                         ParticipateGetCount cnt = new ParticipateGetCount();
                         cnt.SetArguments(cntArg);
                         cnt.ExecuteNonQuery();
@@ -113,12 +113,19 @@ function GetURL(url)
     companyArg.CompanyNo = this.WebCookies.UserNo;
     company.SetArguments(companyArg);
     company.ExecuteNonQuery();
-    CompanyEntity companyInfo = company.GetOutput();            
+    CompanyEntity companyInfo = company.GetOutput();
+
+    CompanyDetailGetInfo companyDetail = new CompanyDetailGetInfo();
+    CompanyDetailGetInfoArguments detailArg = new CompanyDetailGetInfoArguments();
+    detailArg.CompanyNo = this.WebCookies.UserNo;
+    companyDetail.SetArguments(detailArg);
+    companyDetail.ExecuteNonQuery();
+    CompanyDetailEntity detailInfo = companyDetail.GetOutput();
 %>
 	                    <!-- 기업회원 로그인 --> 
 	                    <div class="global-menu">
 		                    <ul>
-			                    <li><b><%=this.WebCookies.UserName.Split('|')[this.WebCookies.CountryNo == 0 ? 0 : this.WebCookies.CountryNo-1 ]%></b>님</li>
+			                    <li><b><%=detailInfo.KRName != string.Empty ? detailInfo.KRName : ( detailInfo.CNName != string.Empty ? detailInfo.CNName : detailInfo.ENGName ) %></b>님</li>
 			                    <li class="bar"></li>
 			                    <li><a href="<%=this.GetURL("/company/company_modify.aspx")%>">기업정보관리</a></li>
 			                    <li class="bar"></li>								

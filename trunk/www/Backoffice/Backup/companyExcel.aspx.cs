@@ -21,9 +21,6 @@ public partial class Backoffice_Backup_companyExcel : System.Web.UI.Page
     public List<CompanyAllEntity> CompanyList = null;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.AddHeader("content-disposition", "attachment;filename=company.xls");
-        Response.ContentType = "application/vnd.ms-excel";
-
         CompanyGetListArguments arg = new CompanyGetListArguments();
         arg.PageNo = 1;
         arg.PageSize = 0;
@@ -33,6 +30,21 @@ public partial class Backoffice_Backup_companyExcel : System.Web.UI.Page
         list.SetArguments(arg);
         list.Execute();
         CompanyList = list.GetRecords();
+    }
+
+    protected override void OnPreRender(EventArgs e)
+    {
+        base.OnPreRender(e);
+
+        Response.Clear();
+        Response.AddHeader("content-disposition", "attachment;filename=company.xls");
+        Response.ContentType = "application/vnd.ms-excel";
+
+        System.IO.StringWriter stringWrite = new System.IO.StringWriter();
+        System.Web.UI.HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
+        excelContent.RenderControl(htmlWrite);
+        Response.Write(stringWrite.ToString());
+        Response.End();
     }
 
     public string GetCategoryName(int CategoryNo)

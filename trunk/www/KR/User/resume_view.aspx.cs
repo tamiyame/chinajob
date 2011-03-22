@@ -52,7 +52,7 @@ public partial class KR_User_resume_view : System.Web.UI.Page
         resumeGetInfo.SetArguments(resumeGetInfoArguments);
         resumeGetInfo.ExecuteNonQuery();
         resumeEntity = resumeGetInfo.GetOutput();
-
+        /*
         if (resumeEntity.RegistryTime == DateTime.MinValue)
         {
             resumeEntity = null;
@@ -64,7 +64,7 @@ public partial class KR_User_resume_view : System.Web.UI.Page
             Response.Write("<script language='javascript'>alert('유저 정보가 정확하시 않습니다.'); self.close();</script>");
             Response.End();
         }
-
+        */
 
 //        resumeDetail_KR = DetailInfo(UserNo, 1);
 //        resumeDetail_CN = DetailInfo(UserNo, 2);

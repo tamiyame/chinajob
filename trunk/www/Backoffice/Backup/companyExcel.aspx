@@ -6,6 +6,7 @@
 <meta http-equiv=Content-Type content='application/vnd.ms-excel; charset=utf-8'>
 </head>
 <body>
+<div id=excelContent runat="server">
 <table border="1">
 <tr>
     <td>기업번호</td>
@@ -54,5 +55,6 @@
 </tr>
 <% } %>
 </table>
+</div>
 </body>
 </html>
