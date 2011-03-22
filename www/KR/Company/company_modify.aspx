@@ -74,7 +74,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="password" maxlength="20" ></input></td>
+										<td><input class="w2" type="password" name="password" maxlength="20" ></input></td>
 										<td class="description">영문,숫자 또는 조합 4~12자리</td>
 									</tr>
 								</table>
@@ -85,7 +85,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="password_confirm" maxlength="20" ></input></td>
+										<td><input class="w2" type="password" name="password_confirm" maxlength="20" ></input></td>
 										<td class="description">비밀번호를 다시 한번 입력해 주세요</td>
 									</tr>
 								</table>
