@@ -110,7 +110,7 @@
 				            <td>
 				                <table>
 				                    <tr>
-										<td><input class="w2" name="UserPWD" type="text"  maxlength="20"/></td>										
+										<td><input class="w2" name="UserPWD" type="password"  maxlength="20"/></td>										
 										<td class="desc">영문,숫자 조합 또는 4~12자리</td>
 									</tr>
 				                </table>
