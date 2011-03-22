@@ -113,12 +113,20 @@ function GetURL(url)
     companyArg.CompanyNo = this.WebCookies.UserNo;
     company.SetArguments(companyArg);
     company.ExecuteNonQuery();
-    CompanyEntity companyInfo = company.GetOutput();            
+    CompanyEntity companyInfo = company.GetOutput();
+
+
+    CompanyDetailGetInfo companyDetail = new CompanyDetailGetInfo();
+    CompanyDetailGetInfoArguments detailArg = new CompanyDetailGetInfoArguments();
+    detailArg.CompanyNo = this.WebCookies.UserNo;
+    companyDetail.SetArguments(detailArg);
+    companyDetail.ExecuteNonQuery();
+    CompanyDetailEntity detailInfo = companyDetail.GetOutput();
 %>
 	                    <!-- 기업회원 로그인 --> 
 	                    <div class="global-menu">
 		                    <ul>
-			                    <li><b><%=this.WebCookies.UserName.Split('|')[this.WebCookies.CountryNo == 0 ? 0 : this.WebCookies.CountryNo-1 ]%></b><%= this.GetText("CN_WebMaster_CNMaster.master_102")%></li>
+			                    <li><b><%=detailInfo.KRName != string.Empty ? detailInfo.KRName : ( detailInfo.CNName != string.Empty ? detailInfo.CNName : detailInfo.ENGName ) %></b><%= this.GetText("CN_WebMaster_CNMaster.master_102")%></li>
 			                    <li class="bar"></li>
 			                    <li><a href="<%=this.GetURL("/company/company_modify.aspx")%>"><%= this.GetText("CN_WebMaster_CNMaster.master_104")%></a></li>
 			                    <li class="bar"></li>								
