@@ -422,6 +422,10 @@ namespace Site.Web.Page
         public string GetDetailValue(string colName)
         {
             string retVal = string.Empty;
+			if (ResumeDetail == null)
+			{
+				return retVal;
+			}
             switch (colName)
             {
                 case "SSN1":
