@@ -252,15 +252,18 @@ $(document).ready(function() {
 	$("input[name=hopejob_3]").val(companyNo3);
 	$("input[name=pay]").val(hopeSalary);
 	$("select[name=location1_1]").val(cityNo1);
-	$.FillCategory(cityNo1,$("select[name=location2_1]"),function() {setTimeout(function() {$("select[name=location2_1]").val(arrayNo1);}, 100);});
+	if ( cityNo1 != "" )
+		$.FillCategory(cityNo1,$("select[name=location2_1]"),function() {setTimeout(function() {$("select[name=location2_1]").val(arrayNo1);}, 100);});
 	$("select[name=location1_2]").val(cityNo2);
-	$.FillCategory(cityNo2,$("select[name=location2_2]"),function() {setTimeout(function() {$("select[name=location2_2]").val(arrayNo2);}, 100);});
+	if ( cityNo2 != "" )
+		$.FillCategory(cityNo2,$("select[name=location2_2]"),function() {setTimeout(function() {$("select[name=location2_2]").val(arrayNo2);}, 100);});
 	$("select[name=year]").val(hopeRecruitDate.getFullYear());
 	$("select[name=month]").val(hopeRecruitDate.getMonth());
 	$("select[name=day]").val(hopeRecruitDate.getDate());
 	$("select[name=hope_job_category1_1]").val(businessCategoryNo);
 	$("select[name=hope_job_category2_1]").val(category1No);
-	$.FillCategory(category1No,$("select[name=hope_job_category2_2]"),function() {setTimeout(function() {$("select[name=hope_job_category2_2]").val(category2No);}, 100);});
+	if ( category1No != "" )
+		$.FillCategory(category1No,$("select[name=hope_job_category2_2]"),function() {setTimeout(function() {$("select[name=hope_job_category2_2]").val(category2No);}, 100);});
 	
 	$("input[name=isJoin]").each(function() {
 		if ( $(this).val() == joinType )
@@ -272,7 +275,7 @@ $(document).ready(function() {
 			$(this).attr("checked", "");
 		}
 	});
-	
+
 	$("div.tab ul li:eq(0)").click(function() { location.href=GetURL("/user/human_regist_basic.aspx"); });
 	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/user/human_regist_detail_kr.aspx"); });
 	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/user/human_regist_detail_cn.aspx"); });
