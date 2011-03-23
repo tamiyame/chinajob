@@ -88,7 +88,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="password"></input></td>
+										<td><input class="w2" type="password" name="password"></input></td>
 										<td class="description"><%= GetText("CN_Company_company_join.aspx_91")%></td>
 									</tr>
 								</table>
@@ -99,7 +99,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w2" type="text" name="password_confirm"></input></td>
+										<td><input class="w2" type="password" name="password_confirm"></input></td>
 										<td class="description"><%= GetText("CN_Company_company_join.aspx_102")%></td>
 									</tr>
 								</table>
