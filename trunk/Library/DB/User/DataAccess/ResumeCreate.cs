@@ -29,6 +29,7 @@ namespace Com.Library.DB.User
             AddParameter("BusinessCategoryNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("Category1No", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("Category2No", SqlDbType.Int, 4, SqlDataInOut.Input);
+			AddParameter("CategoryEtc", SqlDbType.NVarChar, 200, SqlDataInOut.Input);
 			AddParameter("JoinType", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
         }
     }

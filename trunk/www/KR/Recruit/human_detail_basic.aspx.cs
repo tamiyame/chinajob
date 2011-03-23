@@ -115,7 +115,7 @@ public partial class KR_Recruit_human_detail_basic : SitePage
 				if (resumeEntity == null) { retVal = string.Empty; } else { retVal = GetCategoryName(resumeEntity.Category1No); }
 				break;
 			case "Category2No":
-				if (resumeEntity == null) { retVal = string.Empty; } else { retVal = GetSubCategoryName(resumeEntity.Category2No); }
+				if (resumeEntity == null) { retVal = string.Empty; } else { if (GetSubCategoryName(resumeEntity.Category2No) == "직접입력") { retVal = resumeEntity.CategoryEtc; } else { retVal = GetSubCategoryName(resumeEntity.Category2No); } }
 				break;
 			case "JoinType":
 				if (resumeEntity == null) { retVal = string.Empty; } else { retVal = resumeEntity.JoinType.ToString(); }

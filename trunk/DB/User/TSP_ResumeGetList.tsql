@@ -6,7 +6,7 @@ GO
 ** Writer :
 ** Memo :
 ******************************************************************** */
-CREATE PROCEDURE [dbo].[TSP_ResumeGetList]
+ALTER PROCEDURE [dbo].[TSP_ResumeGetList]
 (
 	@IsTransaction	tinyint			= 0
 ,	@ErrorCode		int				= 0		OUTPUT
@@ -69,6 +69,7 @@ SELECT
 ,	BusinessCategoryNo
 ,	Category1No
 ,	Category2No
+,	CategoryEtc
 ,	JoinType
 ,	RegistryTime
 ,	Status

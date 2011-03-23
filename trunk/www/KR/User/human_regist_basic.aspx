@@ -175,6 +175,9 @@
                                                                 <select name="hope_job_category2_2">
                                                                 </select>
                                                             </td>
+                                                            <td>
+																<input type="text" class="w100" name="hope_job_category_etc" style="display:none"/>
+                                                            </td>
                                                         </tr>
                                                     </table>
                                                 </td>                                            
@@ -245,6 +248,7 @@ $(document).ready(function() {
 	var businessCategoryNo = '<%= GetResumeEntityValue("BusinessCategoryNo") %>';
 	var category1No = '<%= GetResumeEntityValue("Category1No") %>';
 	var category2No = '<%= GetResumeEntityValue("Category2No") %>';
+	var categoryEtc = '<%= GetResumeEntityValue("CategoryEtc") %>'
 	var joinType = '<%= GetResumeEntityValue("JoinType") %>';
 	
 	$("input[name=hopejob_1]").val(companyNo1);
@@ -262,8 +266,9 @@ $(document).ready(function() {
 	$("select[name=day]").val(hopeRecruitDate.getDate());
 	$("select[name=hope_job_category1_1]").val(businessCategoryNo);
 	$("select[name=hope_job_category2_1]").val(category1No);
+	$("input[name=hope_job_category_etc]").val(categoryEtc);
 	if ( category1No != "" )
-		$.FillCategory(category1No,$("select[name=hope_job_category2_2]"),function() {setTimeout(function() {$("select[name=hope_job_category2_2]").val(category2No);}, 100);});
+		$.FillCategory(category1No,$("select[name=hope_job_category2_2]"),function() {setTimeout(function() {$("select[name=hope_job_category2_2]").val(category2No);$("select[name=hope_job_category2_2]").change();}, 100);});
 	
 	$("input[name=isJoin]").each(function() {
 		if ( $(this).val() == joinType )
@@ -313,9 +318,16 @@ $(document).ready(function() {
                     $.FillCategory($(this).val(),$("select[name=location2_2]"));
             }).change();
             
+            $("select[name=hope_job_category2_2]").change(function() {
+				if (this.options[this.selectedIndex].innerHTML == "직접입력")
+					$("input[name=hope_job_category_etc]").show();
+				else
+					$("input[name=hope_job_category_etc]").hide();
+            });
+            
             $("select[name=hope_job_category2_1]").change(function() {
 				if ($(this).val())
-					$.FillCategory($(this).val(),$("select[name=hope_job_category2_2]"));
+					$.FillCategory($(this).val(),$("select[name=hope_job_category2_2]"),function() {$("select[name=hope_job_category2_2]").change();});
             }).change();
             
             $(".jobcode_select input").each(function(i){

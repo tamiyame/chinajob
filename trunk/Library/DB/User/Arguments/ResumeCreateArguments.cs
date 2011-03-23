@@ -87,6 +87,12 @@ namespace Com.Library.DB.User
             set { SetValue("Category2No", value); }
         }
 
+		public string CategoryEtc
+		{
+			get { return Convert.ToString(GetValue("CategoryEtc", string.Empty)); }
+			set { SetValue("CategoryEtc", value); }
+		}
+
 		public byte JoinType
 		{
 			get { return Convert.ToByte(GetValue("JoinType", 0)); }

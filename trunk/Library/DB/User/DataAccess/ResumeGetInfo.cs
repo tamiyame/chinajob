@@ -29,6 +29,7 @@ namespace Com.Library.DB.User
             AddParameter("BusinessCategoryNo", SqlDbType.Int, 4, SqlDataInOut.Output);
             AddParameter("Category1No", SqlDbType.Int, 4, SqlDataInOut.Output);
             AddParameter("Category2No", SqlDbType.Int, 4, SqlDataInOut.Output);
+			AddParameter("CategoryEtc", SqlDbType.NVarChar, 200, SqlDataInOut.Output);
 			AddParameter("JoinType", SqlDbType.TinyInt, 1, SqlDataInOut.Output);
             AddParameter("RegistryTime", SqlDbType.DateTime, 8, SqlDataInOut.Output);
             AddParameter("Status", SqlDbType.TinyInt, 1, SqlDataInOut.Output);

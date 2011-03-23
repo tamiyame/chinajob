@@ -61,19 +61,24 @@ public partial class KR_User_human_regist_basic : SitePage
 
         if (this.IsPostBack)
         {
-            string
-            pay = Request.Form["pay"] == null ? String.Empty : Request.Form["pay"],
-            location1_1 = Request.Form["location1_1"] == null ? String.Empty : Request.Form["location1_1"],
-            location2_1 = Request.Form["location2_1"] == null ? String.Empty : Request.Form["location2_1"],
-            location1_2 = Request.Form["location1_2"] == null ? String.Empty : Request.Form["location1_2"],
-            location2_2 = Request.Form["location2_2"] == null ? String.Empty : Request.Form["location2_2"],
-            year = Request.Form["year"] == null ? String.Empty : Request.Form["year"],
-            month = Request.Form["month"] == null ? String.Empty : Request.Form["month"],
-            day = Request.Form["day"] == null ? String.Empty : Request.Form["day"],
+			string
+			pay = Request.Form["pay"] == null ? String.Empty : Request.Form["pay"],
+			location1_1 = Request.Form["location1_1"] == null ? String.Empty : Request.Form["location1_1"],
+			location2_1 = Request.Form["location2_1"] == null ? String.Empty : Request.Form["location2_1"],
+			location1_2 = Request.Form["location1_2"] == null ? String.Empty : Request.Form["location1_2"],
+			location2_2 = Request.Form["location2_2"] == null ? String.Empty : Request.Form["location2_2"],
+			year = Request.Form["year"] == null ? String.Empty : Request.Form["year"],
+			month = Request.Form["month"] == null ? String.Empty : Request.Form["month"],
+			day = Request.Form["day"] == null ? String.Empty : Request.Form["day"],
 			hope_job_category1_1 = Request.Form["hope_job_category1_1"] == null ? String.Empty : Request.Form["hope_job_category1_1"],
-            hope_job_category2_1 = Request.Form["hope_job_category2_1"] == null ? String.Empty : Request.Form["hope_job_category2_1"],
-            hope_job_category2_2 = Request.Form["hope_job_category2_2"] == null ? String.Empty : Request.Form["hope_job_category2_2"],
-            isJoin = Request.Form["isJoin"] == null ? String.Empty : Request.Form["isJoin"];
+			hope_job_category2_1 = Request.Form["hope_job_category2_1"] == null ? String.Empty : Request.Form["hope_job_category2_1"],
+			hope_job_category2_2 = Request.Form["hope_job_category2_2"] == null ? String.Empty : Request.Form["hope_job_category2_2"],
+			isJoin = Request.Form["isJoin"] == null ? String.Empty : Request.Form["isJoin"],
+			hope_job_category_etc = string.Empty;
+			if (GetSubCategoryName(Convert.ToInt32(hope_job_category2_2)) == "직접입력")
+			{
+				hope_job_category_etc = Request.Form["hope_job_category_etc"];
+			}
 
 			if (resumeEntity == null)
 			{
@@ -86,6 +91,7 @@ public partial class KR_User_human_regist_basic : SitePage
 						BusinessCategoryNo = Convert.ToInt32(hope_job_category1_1),
 						Category1No = Convert.ToInt32(hope_job_category2_1),
 						Category2No = Convert.ToInt32(hope_job_category2_2),
+						CategoryEtc = hope_job_category_etc,
 						CityNo1 = Convert.ToInt32(location1_1),
 						CityNo2 = Convert.ToInt32(location1_2),
 						HopeRecruitDate = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day)),
@@ -107,6 +113,7 @@ public partial class KR_User_human_regist_basic : SitePage
 						BusinessCategoryNo = Convert.ToInt32(hope_job_category1_1),
 						Category1No = Convert.ToInt32(hope_job_category2_1),
 						Category2No = Convert.ToInt32(hope_job_category2_2),
+						CategoryEtc = hope_job_category_etc,
 						CityNo1 = Convert.ToInt32(location1_1),
 						CityNo2 = Convert.ToInt32(location1_2),
 						HopeRecruitDate = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day)),
@@ -184,6 +191,9 @@ public partial class KR_User_human_regist_basic : SitePage
 			case "Category2No":
 				if (resumeEntity == null) { retVal = string.Empty; } else { retVal = resumeEntity.Category2No.ToString(); }
 				break;
+			case "CategoryEtc":
+				if (resumeEntity == null) { retVal = string.Empty; } else { retVal = resumeEntity.CategoryEtc.ToString(); }
+				break;
 			case "JoinType":
 				if (resumeEntity == null) { retVal = string.Empty; } else { retVal = resumeEntity.JoinType.ToString(); }
 				break;
@@ -192,4 +202,19 @@ public partial class KR_User_human_regist_basic : SitePage
 		}
 		return retVal;
 	}
+
+	protected string GetSubCategoryName(int subCategoryNo)
+	{
+		SubCategoryGetInfoArguments arg = new SubCategoryGetInfoArguments();
+		arg.SubCategoryNo = subCategoryNo;
+
+		SubCategoryGetInfo getInfo = new SubCategoryGetInfo();
+		getInfo.SetArguments(arg);
+		getInfo.ExecuteNonQuery();
+
+		SubCategoryEntity entity = getInfo.GetOutput();
+
+		return entity.SubCategoryKRName;
+	}
+
 }
