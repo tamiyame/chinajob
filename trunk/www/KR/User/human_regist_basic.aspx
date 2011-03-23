@@ -41,7 +41,7 @@
 										# 주의 : 이력서를 작성하지 않으시면 박람회 참가기업에 지원이 불가능합니다.
                                     </div>
                                     <div class="regist-item">
-                                        <div class="regist-header">1.희망지원 회사 코드 및 기타사항 <span class="desc">(채용정보 기업체 코드와 회사명을 확인 후,기입해 주시기 바랍니다.)</span></div>                                
+                                        <div class="regist-header">1.희망급여/지역/시기</div>                                
                                         <table class="regist-table">
                                             <tr>
                                                 <td class="regist-label">희망급여 (RMB/1개월)<span class="require">*</span></td>

@@ -409,7 +409,7 @@
                               <td class="regist-label">Date of Birth</td>
                               <td><%=UserInfo.Birthday.ToString("yyyy.MM.dd") %></td>
                               <td class="regist-label">Military service</td>
-                              <td><%=ResumeDetail[1].MilitaryService%></td>                                                                                                    
+                              <td><%=ResumeDetail[3].MilitaryService%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">Phone</td>
@@ -419,7 +419,7 @@
                           </tr>
                           <tr>
                               <td class="regist-label">Address</td>
-                              <td colspan="3"><%=ResumeDetail[1].Address%></td>                                 
+                              <td colspan="3"><%=ResumeDetail[3].Address%></td>                                 
                           </tr>
                       </table>
                   </div>
@@ -530,7 +530,7 @@
                   
                   <div class="regist-item">
                       <div class="regist-header">Awards, O/A Ability, Professional Experience  Etc </div>                                
-                      <textarea class="w100" rows="20" name="award-text" readonly="readonly"><%=ResumeDetail[1].Description%></textarea>
+                      <textarea class="w100" rows="20" name="award-text" readonly="readonly"><%=ResumeDetail[3].Description%></textarea>
                   </div>
                                                
                   <!--btn//-->
