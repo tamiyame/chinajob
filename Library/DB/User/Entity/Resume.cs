@@ -22,6 +22,7 @@ namespace Com.Library.DB.User
         public int BusinessCategoryNo { get { return Convert.ToInt32(GetData("BusinessCategoryNo", (int)0)); } }
         public int Category1No { get { return Convert.ToInt32(GetData("Category1No", (int)0)); } }
         public int Category2No { get { return Convert.ToInt32(GetData("Category2No", (int)0)); } }
+		public string CategoryEtc { get { return Convert.ToString(GetData("CategoryEtc", string.Empty)); } }
 		public byte JoinType { get { return Convert.ToByte(GetData("JoinType", (byte)0)); } }
         public DateTime RegistryTime { get { return Convert.ToDateTime(GetData("RegistryTime", DateTime.MinValue)); } }
         public byte Status { get { return Convert.ToByte(GetData("Status", (byte)0)); } }

@@ -107,7 +107,7 @@
                           </tr>
                           <tr>
                               <td class="regist-label">희망/관심 직종<span class="require">*</span></td>
-                              <td colspan="2"><%=GetCategoryName(resumeEntity.Category1No)%> > <%=GetSubCategoryName(resumeEntity.Category2No)%></td>                                            
+                              <td colspan="2"><%=GetCategoryName(resumeEntity.Category1No)%> > <%= GetSubCategoryName(resumeEntity.Category2No) == "직접입력" ? resumeEntity.CategoryEtc:GetSubCategoryName(resumeEntity.Category2No)%></td>                                            
                           </tr>
                       </table>
                   </div>
