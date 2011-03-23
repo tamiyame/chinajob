@@ -96,5 +96,23 @@ namespace Site.Web.Page
 		{
 			return WebMaster.GetText(transCode);
 		}
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            if (this.Request.Url.ToString().ToLower().IndexOf("/backoffice/") != -1)
+            {
+                if (!this.WebCookies.IsLogin)
+                {
+                    Response.Redirect("/kr/home/");
+                    Response.End();
+                }
+                if (!this.WebCookies.IsAdmin)
+                {
+                    Response.Redirect("/kr/home/");
+                    Response.End();
+                }
+            }
+        }
     }
 }
