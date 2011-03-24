@@ -1,9 +1,8 @@
 set ANSI_NULLS ON
 set QUOTED_IDENTIFIER ON
-go
-
+GO
 -- TB_CompanyDetail 테이블에 Update 시 TB_RecruitSearch 테이블에 필요 Data Update 해주는 Trigger 세팅
-ALTER TRIGGER [TR_CompanyDetailUpdate] ON [dbo].[TB_CompanyDetail]
+ALTER TRIGGER [dbo].[TR_CompanyDetailUpdate] ON [dbo].[TB_CompanyDetail]
 FOR UPDATE
 AS
 
@@ -15,12 +14,12 @@ DECLARE  @CompanyNo INT
 ,	@CapitalType TINYINT
 
 SELECT
-	@CompanyNo
-,	@KRName
-,	@CNName
-,	@ENGName
-,	@CompanyImage
-,	@CapitalType
+	@CompanyNo = CompanyNo
+,	@KRName = KRName
+,	@CNName = CNName
+,	@ENGName = ENGName
+,	@CompanyImage = CompanyImage
+,	@CapitalType = CapitalType
 FROM
 	INSERTED
 
@@ -39,3 +38,5 @@ BEGIN
 		CompanyNo = @CompanyNo
 
 END
+
+
