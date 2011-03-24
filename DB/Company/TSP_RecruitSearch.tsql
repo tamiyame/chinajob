@@ -105,7 +105,7 @@ BEGIN
 			S.CountryNo = @CountryNo
 		AND	1 = CASE WHEN @CompanyName IS Null OR S.KRName like @CompanyName + '%' OR S.CNName like @CompanyName + '%' OR S.EngName like @CompanyName + '%' THEN 1 ELSE 0 END
 		ORDER BY
-			S.CountryNo DESC, RecruitDate DESC
+			S.CountryNo DESC, RecruitNo DESC
 		SELECT
 			@FrkErrorCode = @@ERROR
 		,	@FrkRowCount = @@RowCount
@@ -156,7 +156,7 @@ BEGIN
 			,	S.AgeCategory
 			,	S.RecruitDate
 			,	ROW_NUMBER() OVER ( ORDER BY
-				S.CountryNo DESC, RecruitDate DESC
+				S.CountryNo DESC, RecruitNo DESC
 			) AS ROWNUM
 			FROM
 				TB_RecruitSearch S with ( nolock )
@@ -226,7 +226,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -277,7 +277,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+							S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -358,7 +358,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -409,7 +409,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+							S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -490,7 +490,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -541,7 +541,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+							S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -616,7 +616,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.CityCategory DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.CityCategory DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -667,7 +667,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+							S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -740,7 +740,7 @@ BEGIN
 				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 				ORDER BY
-					S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+					S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Gender DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -791,7 +791,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Gender DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -860,7 +860,7 @@ BEGIN
 				
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 				ORDER BY
-					S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+					S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.AgeCategory DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -911,7 +911,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.AgeCategory DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -977,7 +977,7 @@ BEGIN
 				AND	S.Career = @Career
 				
 				ORDER BY
-					S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Career DESC, RecruitDate DESC
+					S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Career DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -1028,7 +1028,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Career DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, S.Career DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -1091,7 +1091,7 @@ BEGIN
 				AND	S.JoinType = @JoinType
 				
 				ORDER BY
-					S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, RecruitDate DESC
+					S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -1142,7 +1142,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.JoinType DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -1214,7 +1214,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+						S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -1265,7 +1265,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+							S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -1343,7 +1343,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+						S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -1394,7 +1394,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+							S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -1472,7 +1472,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.JoinType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+						S.JoinType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -1523,7 +1523,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.JoinType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+							S.JoinType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -1595,7 +1595,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.JoinType DESC, S.CityCategory DESC, RecruitDate DESC
+						S.JoinType DESC, S.CityCategory DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -1646,7 +1646,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+							S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -1716,7 +1716,7 @@ BEGIN
 				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 				ORDER BY
-					S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+					S.JoinType DESC, S.Gender DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -1767,7 +1767,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+						S.JoinType DESC, S.Gender DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -1833,7 +1833,7 @@ BEGIN
 				
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 				ORDER BY
-					S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+					S.JoinType DESC, S.AgeCategory DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -1884,7 +1884,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+						S.JoinType DESC, S.AgeCategory DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -1947,7 +1947,7 @@ BEGIN
 				AND	S.Career = @Career
 				
 				ORDER BY
-					S.JoinType DESC, S.Career DESC, RecruitDate DESC
+					S.JoinType DESC, S.Career DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -1998,7 +1998,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.JoinType DESC, S.Career DESC, RecruitDate DESC
+						S.JoinType DESC, S.Career DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -2058,7 +2058,7 @@ BEGIN
 				AND	S.JoinType = @JoinType
 				
 				ORDER BY
-					S.JoinType DESC, RecruitDate DESC
+					S.JoinType DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -2109,7 +2109,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.JoinType DESC, RecruitDate DESC
+						S.JoinType DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -2182,7 +2182,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, S.Category2No DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -2233,7 +2233,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+							S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, S.Category2No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -2311,7 +2311,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -2362,7 +2362,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, RecruitDate DESC
+							S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -2440,7 +2440,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -2491,7 +2491,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+							S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -2563,7 +2563,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.CityCategory DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.CityCategory DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -2614,7 +2614,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, RecruitDate DESC
+							S.CountryNo DESC, S.CapitalType DESC, S.Category1No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -2684,7 +2684,7 @@ BEGIN
 				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 				ORDER BY
-					S.CountryNo DESC, S.CapitalType DESC, S.Gender DESC, RecruitDate DESC
+					S.CountryNo DESC, S.CapitalType DESC, S.Gender DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -2735,7 +2735,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.Gender DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.Gender DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -2801,7 +2801,7 @@ BEGIN
 				
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 				ORDER BY
-					S.CountryNo DESC, S.CapitalType DESC, S.AgeCategory DESC, RecruitDate DESC
+					S.CountryNo DESC, S.CapitalType DESC, S.AgeCategory DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -2852,7 +2852,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.AgeCategory DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.AgeCategory DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -2915,7 +2915,7 @@ BEGIN
 				AND	S.Career = @Career
 				
 				ORDER BY
-					S.CountryNo DESC, S.CapitalType DESC, S.Career DESC, RecruitDate DESC
+					S.CountryNo DESC, S.CapitalType DESC, S.Career DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -2966,7 +2966,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, S.Career DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, S.Career DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -3026,7 +3026,7 @@ BEGIN
 				AND	S.CapitalType = @CapitalType
 				
 				ORDER BY
-					S.CountryNo DESC, S.CapitalType DESC, RecruitDate DESC
+					S.CountryNo DESC, S.CapitalType DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -3077,7 +3077,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.CountryNo DESC, S.CapitalType DESC, RecruitDate DESC
+						S.CountryNo DESC, S.CapitalType DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -3146,7 +3146,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+						S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -3197,7 +3197,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitDate DESC
+							S.JoinType DESC, S.Category1No DESC, S.Category2No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -3272,7 +3272,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+						S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -3323,7 +3323,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+							S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -3398,7 +3398,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.JoinType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+						S.JoinType DESC, S.CityCategory DESC, AreaCategory DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -3449,7 +3449,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.JoinType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitDate DESC
+							S.JoinType DESC, S.Category1No DESC, CityCategory DESC, AreaCategory DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -3518,7 +3518,7 @@ BEGIN
 					AND	1 = CASE WHEN @Gender IS Null OR S.Gender = @Gender THEN 1 ELSE 0 END
 					AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 					ORDER BY
-						S.JoinType DESC, S.CityCategory DESC, RecruitDate DESC
+						S.JoinType DESC, S.CityCategory DESC, RecruitNo DESC
 					SELECT
 						@FrkErrorCode = @@ERROR
 					,	@FrkRowCount = @@RowCount
@@ -3569,7 +3569,7 @@ BEGIN
 						,	S.AgeCategory
 						,	S.RecruitDate
 						,	ROW_NUMBER() OVER ( ORDER BY
-							S.JoinType DESC, S.Category1No DESC, RecruitDate DESC
+							S.JoinType DESC, S.Category1No DESC, RecruitNo DESC
 						) AS ROWNUM
 						FROM
 							TB_RecruitSearch S with ( nolock )
@@ -3636,7 +3636,7 @@ BEGIN
 				AND	1 = CASE WHEN @AgeCategory IS Null OR S.AgeCategory = @AgeCategory THEN 1 ELSE 0 END
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 				ORDER BY
-					S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+					S.JoinType DESC, S.Gender DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -3687,7 +3687,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.JoinType DESC, S.Gender DESC, RecruitDate DESC
+						S.JoinType DESC, S.Gender DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -3750,7 +3750,7 @@ BEGIN
 				
 				AND	1 = CASE WHEN @Career IS Null OR S.Career = @Career THEN 1 ELSE 0 END
 				ORDER BY
-					S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+					S.JoinType DESC, S.AgeCategory DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -3801,7 +3801,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.JoinType DESC, S.AgeCategory DESC, RecruitDate DESC
+						S.JoinType DESC, S.AgeCategory DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -3861,7 +3861,7 @@ BEGIN
 				AND	S.Career = @Career
 				
 				ORDER BY
-					S.JoinType DESC, S.Career DESC, RecruitDate DESC
+					S.JoinType DESC, S.Career DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -3912,7 +3912,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.JoinType DESC, S.Career DESC, RecruitDate DESC
+						S.JoinType DESC, S.Career DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )
@@ -3969,7 +3969,7 @@ BEGIN
 					S.CountryNo = @CountryNo
 				
 				ORDER BY
-					S.JoinType DESC, RecruitDate DESC
+					S.JoinType DESC, RecruitNo DESC
 				SELECT
 					@FrkErrorCode = @@ERROR
 				,	@FrkRowCount = @@RowCount
@@ -4020,7 +4020,7 @@ BEGIN
 					,	S.AgeCategory
 					,	S.RecruitDate
 					,	ROW_NUMBER() OVER ( ORDER BY
-						S.JoinType DESC, RecruitDate DESC
+						S.JoinType DESC, RecruitNo DESC
 					) AS ROWNUM
 					FROM
 						TB_RecruitSearch S with ( nolock )

@@ -59,7 +59,7 @@
                                                 <tr>
                                                     <td class="label">업종</td>
                                                     <td colspan="3" class="text-2">
-                                                    <%=CompanyDetailInfo.BusinessCategoryEtc == string.Empty ? (GetCategoryName(CompanyDetailInfo.BusinessCategoryNo) == "직접입력" ? CompanyDetailInfo.BusinessCategoryEtc : GetCategoryName(CompanyDetailInfo.BusinessCategoryNo)) : CompanyDetailInfo.BusinessCategoryEtc%>
+                                                    <%=GetEtcValue(GetCategoryName(CompanyDetailInfo.BusinessCategoryNo), CompanyDetailInfo.BusinessCategoryEtc) %>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -155,12 +155,8 @@
                                                 <tr>
                                                     <td class="label">구인직종</td>
                                                     <td class="text-2 job-type">
-                                                    <% if ( RecruitInfo.CategoryEtcValue == string.Empty ) { %>
                                                     <%=GetCategoryName(RecruitInfo.Category1No) %>,
-                                                    <%=GetSubCategoryName(RecruitInfo.Category2No) == "직접입력" ? RecruitInfo.CategoryEtcValue : GetSubCategoryName(RecruitInfo.Category2No)%>
-                                                    <% } else { %>
-                                                    <%=RecruitInfo.CategoryEtcValue%>
-                                                    <% } %>
+                                                    <%=GetEtcValue( GetSubCategoryName(RecruitInfo.Category2No),RecruitInfo.CategoryEtcValue) %>
                                                     </td>
                                                 </tr>                                            
                                                 <tr>
@@ -212,7 +208,9 @@
                                                 </tr>                       
                                                 <tr>
                                                     <td class="label">전공</td>
-                                                    <td class="text-2"><%=GetCategoryName(RecruitInfo.Major) == "직접입력" ? RecruitInfo.MajorEtcValue : GetCategoryName(RecruitInfo.Major)%></td>
+                                                    <td class="text-2">
+                                                    <%=GetEtcValue(GetCategoryName(RecruitInfo.Major), RecruitInfo.MajorEtcValue)%>
+                                                    </td>
                                                 </tr>                         
                                                 <tr>
                                                     <td class="label">영어</td>

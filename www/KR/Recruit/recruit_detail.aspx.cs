@@ -142,6 +142,17 @@ public partial class KR_Recruit_recruit_detail : SitePage
         return info.GetOutput().SubCategoryKRName;
     }
 
+    public string GetEtcValue(string value, string etcValue)
+    {
+        if (value == "직접입력")
+            return etcValue;
+        if (value == "直接输入")
+            return etcValue;
+        if (value == string.Empty)
+            return etcValue;
+        return value;
+    }
+
     public string ListPage()
     {
         string url = "recruit_search.aspx?Country=" + CountryNo;

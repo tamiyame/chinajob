@@ -62,5 +62,16 @@ public partial class Backoffice_User_company_detail : System.Web.UI.Page
 
         return info.GetOutput().SubCategoryKRName;
     }
+
+    public string GetEtcValue(string value, string etcValue)
+    {
+        if (value == "직접입력")
+            return etcValue;
+        if (value == "直接输入")
+            return etcValue;
+        if (value == string.Empty)
+            return etcValue;
+        return value;
+    }
 }
 
