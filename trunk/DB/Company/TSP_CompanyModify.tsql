@@ -67,7 +67,7 @@ UPDATE
 SET
 	CompanyID = IsNull( @CompanyID, CompanyID )
 ,	Password = CASE WHEN @Password Is Not Null THEN pwdencrypt(@Password) ELSE Password END
-,	Password_tmp = CASE WHEN @Password Is Not Null THEN @Password ELSE Password END
+,	Password_tmp = CASE WHEN @Password Is Not Null THEN @Password ELSE Password_tmp END
 ,	CountryNo = IsNull( @CountryNo, CountryNo )
 ,	Status = IsNull( @Status, Status )
 ,	Approval = IsNull( @Approval, Approval )

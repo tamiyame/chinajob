@@ -91,7 +91,7 @@
 			<tr>
 				<td class="label">พ๗มพ</td>
 				<td class="input">
-				    <%=CompanyDetailInfo.BusinessCategoryEtc == string.Empty ? GetCategoryName(CompanyDetailInfo.BusinessCategoryNo) : CompanyDetailInfo.BusinessCategoryEtc %>
+				<%= GetEtcValue(GetCategoryName(CompanyDetailInfo.BusinessCategoryNo),CompanyDetailInfo.BusinessCategoryEtc) %>
 				</td>
 			</tr>
 			<tr>
