@@ -2,12 +2,12 @@
 <%@ Import Namespace="Com.Library.DB.Board" %>
 <%@ Import Namespace="Com.Library.DB.Banner" %>
 <%@ Import Namespace="Site.Web.Util" %>
+<%@ Import Namespace="Com.Library.DB.Company" %>
+<%@ Import Namespace="Com.Library.DB.User" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
-<script type="text/javascript">
-$(function(){$(".expo-sponsor .expo-folder").click();});
-</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+<% DateTime dateStart = Convert.ToDateTime("2011-03-30"); %>
 <asp:ScriptManagerProxy ID="px" runat="server">
     <Services>
         <asp:ServiceReference Path="~/Soap/Company.asmx"></asp:ServiceReference>
@@ -91,12 +91,110 @@ $(function(){$(".expo-sponsor .expo-folder").click();});
 				</div>
 				<div class="new-recruit">
 					<div class="more">
-						<a href="javascript:;" class="icon icon-more-smth"></a>
+						<a href="/kr/recruit/recruit_search.aspx" class="icon icon-more-smth"></a>
 					</div>
 					<div class="preview-container">
-						<div class="preview-list" id="divCompanyList">
+<% if (DateTime.Now >= dateStart)
+   { %>
+                        <div class="preview-list">
 							<div class="prev">
-								<a href="javascript:;" class="icon icon-prev"></a>
+								<a href="javascript:;" onclick="$.CompanyList.Prev(); return false;" class="icon icon-prev"></a>
+							</div>
+							<div class="info-boxes" id="divCompanyList">
+<% 
+int idx = 0;
+foreach (RecruitSearchEntity item in RecruitSearchList.Record)
+{ 
+ %>
+								<div class="info-box icon icon-info-box" <%= idx < 8 ? "" : "style='display:none'" %>>
+									<% if (item.JoinType == 1)
+            { %><div class="special-tag icon icon-join"></div><% } %>
+									<div>
+										<div class="company-logo"><img src="<%=item.CompanyImage %>" /></div>
+										<div class="company-name"><%=item.KRName%></div>
+										<div class="job-number">
+											<div class="job"><%=GetCategoryName(item.Category1No)%></div>
+										</div>								
+										<div class="link">
+											<a href="/KR/recruit/recruit_detail.aspx?Country=<%=this.WebMaster.CountryCode %>&CompanyNo=<%=item.CompanyNo %>&RecruitNo=<%=item.RecruitNo %>&PageNo=1" class="icon icon-go"></a>
+										</div>
+									</div>
+								</div>
+<%
+idx++;
+} 
+%>
+<% for (int i = RecruitSearchList.Record.Count; i < 32; i++)
+   { %>
+								<div class="info-box icon icon-info-box" <%= i < 8 ? "" : "style='display:none'" %>></div>
+<% } %>
+							</div>
+							<div class="next">
+								<a href="javascript:;" onclick="$.CompanyList.Next(); return false;" class="icon icon-next"></a>
+							</div>
+						</div>
+						<div class="pager" id="CompanyPager">
+							<ul>
+<% for (int i = 0; i < 4; i++)
+   { %>
+								<li><a href="javascript:;" onclick="$.CompanyList.Page(<%=i %>); return false;" class="icon <%=i==0?"icon-pager-select":"icon-pager" %>"></a></li> 	
+<% } %>
+                            </ul>
+                        </div>
+                    </div>
+				</div>
+<script language="javascript" type="text/javascript">
+(function($) {
+    var PageNo = 0;
+    var isIE6 = /msie|MSIE 6/.test(navigator.userAgent);
+    $.CompanyList = $.fn.CompanyList = {
+        Prev: function() {
+            if ( (PageNo - 1 ) < 0) {
+                PageNo = 0;
+                return;
+            }
+            $.CompanyList.Page(PageNo-1);
+        },
+
+        Next: function() {
+            if ( ( PageNo + 1 ) >= 4) {
+                PageNo = PageNo - 1;
+                return;
+            }
+            $.CompanyList.Page(PageNo+1);
+        },
+
+        Page: function(idx) {
+
+            $("#CompanyPager ul li:eq(" + PageNo + ") a").addClass("icon-pager").removeClass("icon-pager-select").parent().removeClass("select");
+            $("#CompanyPager ul li:eq(" + idx + ") a").addClass("icon-pager-select").removeClass("icon-pager");
+            PageNo = idx;
+            $.CompanyList.List();
+            if (isIE6) {
+                if (idx != 0)
+                    $("#divCompanyList").addClass('company_list_ie6fix');
+                else
+                    $("#divCompanyList").removeClass('company_list_ie6fix');
+            }
+        },
+
+        List: function() {
+
+            $("#divCompanyList div.info-box").hide();
+            for (var i = 0 + (PageNo * 8); i < ((PageNo * 8) + 8); i++) {
+                $("#divCompanyList div.info-box:eq(" + i + ")").show();
+            }
+        }
+    }
+})(jQuery);
+</script>
+		
+<% }
+   else
+   { %>
+						<div class="preview-list">
+							<div class="prev">
+								
 							</div>
 							<div class="info-boxes">
 								<div class="info-box icon icon-info-box-empty"></div>
@@ -109,108 +207,127 @@ $(function(){$(".expo-sponsor .expo-folder").click();});
 								<div class="info-box icon icon-info-box-empty"></div>
 							</div>
 							<div class="next">
-								<a href="javascript:;" class="icon icon-next"></a>
+								
 							</div>
 						</div>
-						<div class="pager">
+					</div>
+				</div>
+ <% } %>
+<% if (this.WebCookies.IsLogin)
+   {  %>
+<%  if (this.WebCookies.isCompany)
+    { %>
+<% if (DateTime.Now >= dateStart)
+   { %>
+                <div class="new-human">
+					<div class="more">
+						<a href="/KR/recruit/human_search.aspx" class="icon icon-more-smth"></a>
+					</div>
+					<div class="preview-container">
+						<div class="preview-list">
+							<div class="prev">
+								<a href="javascript:;" onclick="$.UserList.Prev(); return false;" class="icon icon-prev"></a>
+							</div>
+							<div class="info-boxes" id="divUserList">
+<% 
+    int idx = 0;
+    foreach (ResumeSearchEntity item in UserSearchList.Record)
+    { 
+%>
+								<div class="info-box icon icon-info-box" <%= idx < 8 ? "" : "style='display:none'" %>>
+									<div class="special-tag">
+									<% if ( item.JoinType == 1 ) { %>
+										<div class="icon icon-recommend"></div>
+								    <% } %>
+									</div>
+									<div class="profile">
+										<div class="picture-link">
+											<div class="picture"><img src="<%=item.UserImage %>" /></div>
+											<div class="link">
+												<a href="javascript:;" class="icon icon-go"></a>
+											</div>	
+										</div>									
+										<div class="profile-text">
+											<div class="name-birth">
+												<span class="name"><%=item.KRName %></span><span class="birth">(<%=item.Age %>)</span>
+											</div>
+											<div class="career"><%=item.Career == 1 ? " 신입" : "경력" %></div>
+											<div class="job"><%=GetCategoryName(item.Category1No)%></div>
+											<div class="university"><%=GetCategoryName(item.CityCategory)%>/<%=GetCategoryName(item.AreaCategory)%></div>
+										</div>
+									</div>
+								</div>
+<%
+        idx++;
+    } 
+%>
+<%  for (int i = UserSearchList.Record.Count; i < 32; i++)
+    { %>
+								<div class="info-box icon icon-info-box" <%= i < 8 ? "" : "style='display:none'" %>></div>
+<%  } %>
+							</div>
+							<div class="next">
+								<a href="javascript:;" onclick="$.UserList.Next(); return false;" class="icon icon-next"></a>
+							</div>
+						</div>
+						<div class="pager" id="UserPager">
 							<ul>
-								<li><a href="javascript:;" class="icon icon-pager-select"></a></li>								
-								<li><a href="javascript:;" class="icon icon-pager"></a></li>								
-								<li><a href="javascript:;" class="icon icon-pager"></a></li>
-								<li><a href="javascript:;" class="icon icon-pager"></a></li>
+<% for (int i = 0; i < 4; i++)
+   { %>
+								<li><a href="javascript:;" onclick="$.UserList.Page(<%=i %>); return false;" class="icon <%=i==0?"icon-pager-select":"icon-pager" %>"></a></li> 	
+<% } %>
 							</ul>
 						</div>
 					</div>
 				</div>
-<script language="javascript">
-(function($)
-{
-    $.Company = $.fn.Company = 
-    {
-        PageNo : 1,
-        PageSize : 8,
-        TotalPageSize : 1,
-        
-        Init : function()
-        {
-            $.Company.GetList();
-        },
-        
-        Prev : function()
-        {
-            $.Company.PageNo--;
-            if ( $.Company.PageNo < 1 )
-            {
-                $.Company.PageNo = 1;
+<script language="javascript" type="text/javascript">
+(function($) {
+    var PageNo = 0;
+    var isIE6 = /msie|MSIE 6/.test(navigator.userAgent);
+    $.UserList = $.fn.UserList = {
+        Prev: function() {
+            if ( (PageNo - 1 ) < 0) {
+                PageNo = 0;
                 return;
             }
+            $.UserList.Page(PageNo-1);
         },
-        
-        Next : function()
-        {
+
+        Next: function() {
+            if ( ( PageNo + 1 ) >= 4) {
+                PageNo = PageNo - 1;
+                return;
+            }
+            $.UserList.Page(PageNo+1);
         },
-        
-        SetPage : function( pageNo )
-        {
+
+        Page: function(idx) {
+
+            $("#UserPager ul li:eq(" + PageNo + ") a").addClass("icon-pager").removeClass("icon-pager-select").parent().removeClass("select");
+            $("#UserPager ul li:eq(" + idx + ") a").addClass("icon-pager-select").removeClass("icon-pager");
+            PageNo = idx;
+            $.UserList.List();
+            if (isIE6) {
+                if (idx != 0)
+                    $("#divUserList").addClass('company_list_ie6fix');
+                else
+                    $("#divUserList").removeClass('company_list_ie6fix');
+            }
         },
-        
-        GetList : function()
-        {
-            Site.Web.Soap.Company.CompanyList(0, $.Company.PageNo, $.Company.PageSize, $.Company.onGetList, $.Company.onFailed );
-        },
-        
-        onGetList : function(results, methodName, context )
-        {
-            /*
-            var total = results.Output.CntTotal;
-            var cntRow = results.Output.CntRow;
-            var totalPage = 1;
-            totalPage = parseInt( total < $.Company.PageSize ? 1 : ( ( total - 1 ) / $.Company.PageSize ) + 1, 10 );
-            $.Company.TotalPageSize = totalPage;
-            
-            $("#divCompanyList div.info-boxes" ).html( "" );
-            $.each(results.Record, function()
-            {
-                $("#divCompanyList div.info-boxes" ).append(
-                    $('<div class="info-box icon icon-info-box" />').append(
-                        $( '<div class="special-tag icon icon-join"></div>' )
-                    ).append(
-                        $(' <div />' ).append(
-                            $( '<div class="company-logo"><img src="./banner/samsung-bi.jpg" />' )
-                        ).append(
-                            $( '<div class="company-name">삼성SDS 북경지사</div>' )
-                        ).append(
-                            $( '$<div class="job-number" />' ).append(
-                                $( '<div class="job">웹시스템개발자</div>' )
-                            ).append (
-                                $( '<div class="number">2명</div>' )
-                            )
-                        ).append(
-                            $( '<div class="link"/>' ).append(
-                                $( '<a href="javascript:;" class="icon icon-go"></a>' )
-                            )
-                        )
-                    )
-                )
-            });
-            */
-        },
-        
-        onFailed : function(results, methodName, context )
-        {
+
+        List: function() {
+
+            $("#divUserList div.info-box").hide();
+            for (var i = 0 + (PageNo * 8); i < ((PageNo * 8) + 8); i++) {
+                $("#divUserList div.info-box:eq(" + i + ")").show();
+            }
         }
-    };
+    }
 })(jQuery);
-
-jQuery(function(){
-    jQuery.Company.Init();
-    $("div.expo-folder").hide();
-    $("div.expo-content").show();
-});
-
 </script>
-<% if ( this.WebCookies.IsLogin ) {  %>
-<%  if ( this.WebCookies.isCompany ) { %>
+<% }
+   else
+   { %>
 				<div class="new-human">
 					<div class="more">
 						<a href="javascript:;" class="icon icon-more-smth"></a>
@@ -218,7 +335,7 @@ jQuery(function(){
 					<div class="preview-container">
 						<div class="preview-list">
 							<div class="prev">
-								<a href="javascript:;" class="icon icon-prev"></a>
+								
 							</div>
 							<div class="info-boxes">
 								<div class="info-box icon icon-info-box-empty"></div>
@@ -231,19 +348,12 @@ jQuery(function(){
 								<div class="info-box icon icon-info-box-empty"></div>
 							</div>
 							<div class="next">
-								<a href="javascript:;" class="icon icon-next"></a>
+								
 							</div>
-						</div>
-						<div class="pager">
-							<ul>
-								<li><a href="javascript:;" class="icon icon-pager-select"></a></li>								
-								<li><a href="javascript:;" class="icon icon-pager"></a></li>								
-								<li><a href="javascript:;" class="icon icon-pager"></a></li>
-								<li><a href="javascript:;" class="icon icon-pager"></a></li>
-							</ul>
 						</div>
 					</div>
 				</div>
+<% } %>
 <% } %>
 <% } %>
 </asp:Content>

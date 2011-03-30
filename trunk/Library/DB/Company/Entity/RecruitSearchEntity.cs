@@ -22,6 +22,7 @@ namespace Com.Library.DB.Company
         public int RecruitDateDiff { get { return Convert.ToInt32(GetData("RecruitDateDiff", (int)0)); } }
         public int Category1No { get { return Convert.ToInt32(GetData("Category1No", (int)0)); } }
         public int Category2No { get { return Convert.ToInt32(GetData("Category2No", (int)0)); } }
+        public string CategoryEtcValue { get { return Convert.ToString(GetData("CategoryEtcValue", string.Empty)); } }
         public int CityCategory { get { return Convert.ToInt32(GetData("CityCategory", (int)0)); } }
         public int AreaCategory { get { return Convert.ToInt32(GetData("AreaCategory", (int)0)); } }
         public byte Career { get { return Convert.ToByte(GetData("Career", (byte)0)); } }

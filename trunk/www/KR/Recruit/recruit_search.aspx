@@ -284,7 +284,13 @@ jQuery(function()
                                             <td class="col1"><%=item.CompanyNo %></td>
                                             <td class="col2"><img src="<%=item.CompanyImage == string.Empty ? "/ImgSrv/kr/images/recruit/no-logo.png" : item.CompanyImage%>" /></td>
                                             <td class="col3"><%=item.KRName %><br /><%=item.CNName %><br /><%=item.ENGName %></td>
-                                            <td class="col4"><%=GetCategoryName(item.Category1No) %><%=GetSubCategoryName(item.Category2No)%></td>
+                                            <td class="col4">
+                                                <% if (GetCategoryName(item.Category1No) == "직접입력" || GetCategoryName(item.Category2No) == "직접입력" || GetCategoryName(item.Category1No) == "直接输入" || GetCategoryName(item.Category2No) == "直接输入"){  %>
+                                                    <%=item.CategoryEtcValue %>
+                                                <% } else { %>
+                                                    <%=GetCategoryName(item.Category1No) %><%=GetSubCategoryName(item.Category2No)%>
+                                                <% } %>
+                                            </td>
                                             <td class="col5"><%=item.JoinType == 0 ? "불참가" : "참가" %></td>
                                             <td class="col6"><%=item.RecruitDate.ToString("yyyy-MM-dd") %></td>
                                         </tr>
