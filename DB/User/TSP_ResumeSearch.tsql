@@ -75,7 +75,7 @@ BEGIN
 	IF ( @PageNo = 1 )
 	BEGIN
 		SELECT	Top( @PageSize )
-			UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+			UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 		FROM
 			dbo.TB_ResumeSearch with ( nolock )
 		WHERE
@@ -90,11 +90,11 @@ BEGIN
 	END
 	ELSE BEGIN
 		SELECT	Top( @PageSize )
-			UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+			UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 		FROM
 		(
 			SELECT
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			,	ROW_NUMBER() OVER ( ORDER BY
 				CountryNo DESC, RegistryTime DESC
 			) AS ROWNUM
@@ -127,7 +127,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -148,11 +148,11 @@ BEGIN
 		END ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, JoinType DESC, Category1No DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -194,7 +194,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -213,11 +213,11 @@ BEGIN
 		END ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, JoinType DESC, CityCategory DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -256,7 +256,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -274,11 +274,11 @@ BEGIN
 		END ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, JoinType DESC, Gender DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -317,7 +317,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -334,11 +334,11 @@ BEGIN
 		ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, JoinType DESC, Gender DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -371,7 +371,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -387,11 +387,11 @@ BEGIN
 		ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, JoinType DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -425,7 +425,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -445,11 +445,11 @@ BEGIN
 		END ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, Category1No DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -489,7 +489,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -507,11 +507,11 @@ BEGIN
 		END ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, CityCategory DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -547,7 +547,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -564,11 +564,11 @@ BEGIN
 		END ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, Gender DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -604,7 +604,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -619,11 +619,11 @@ BEGIN
 		END ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, Gender DESC, RegistryTime DESC
 				) AS ROWNUM
@@ -653,7 +653,7 @@ BEGIN
 		IF ( @PageNo = 1 )
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 				dbo.TB_ResumeSearch with ( nolock )
 			WHERE
@@ -667,11 +667,11 @@ BEGIN
 		END ELSE 
 		BEGIN
 			SELECT	Top( @PageSize )
-				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+				UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 			FROM
 			(
 				SELECT
-					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
+					UserNo, CountryNo, KRName, CNName, ENGName, UserImage, JoinType, Category1No, Category2No, CategoryEtc, CityCategory, AreaCategory, KoreanAge, Age, Gender, Career, RegistryTime
 				,	ROW_NUMBER() OVER ( ORDER BY
 					CountryNo DESC, RegistryTime DESC
 				) AS ROWNUM

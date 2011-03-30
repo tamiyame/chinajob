@@ -93,6 +93,7 @@ BEGIN
 		,	S.RecruitDateDiff
 		,	S.Category1No
 		,	S.Category2No
+		,	S.CategoryEtcValue
 		,	S.CityCategory
 		,	S.AreaCategory
 		,	S.Career
@@ -127,6 +128,7 @@ BEGIN
 		,	S.RecruitDateDiff
 		,	S.Category1No
 		,	S.Category2No
+		,	S.CategoryEtcValue
 		,	S.CityCategory
 		,	S.AreaCategory
 		,	S.Career
@@ -149,6 +151,7 @@ BEGIN
 			,	S.RecruitDateDiff
 			,	S.Category1No
 			,	S.Category2No
+			,	S.CategoryEtcValue
 			,	S.CityCategory
 			,	S.AreaCategory
 			,	S.Career
@@ -205,6 +208,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -248,6 +252,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -270,6 +275,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -338,6 +344,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -380,6 +387,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -402,6 +410,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -471,6 +480,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -512,6 +522,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -534,6 +545,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -598,6 +610,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -638,6 +651,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -660,6 +674,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -723,6 +738,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -762,6 +778,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -784,6 +801,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -844,6 +862,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -882,6 +901,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -904,6 +924,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -962,6 +983,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -999,6 +1021,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1021,6 +1044,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1077,6 +1101,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1113,6 +1138,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1135,6 +1161,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1194,6 +1221,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1236,6 +1264,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1258,6 +1287,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -1324,6 +1354,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1365,6 +1396,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1387,6 +1419,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -1454,6 +1487,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1494,6 +1528,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1516,6 +1551,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -1578,6 +1614,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1617,6 +1654,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1639,6 +1677,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -1700,6 +1739,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1738,6 +1778,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1760,6 +1801,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1818,6 +1860,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1855,6 +1898,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1877,6 +1921,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -1933,6 +1978,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1969,6 +2015,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -1991,6 +2038,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2045,6 +2093,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -2080,6 +2129,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -2102,6 +2152,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2162,6 +2213,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2204,6 +2256,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2226,6 +2279,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -2292,6 +2346,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2333,6 +2388,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2355,6 +2411,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -2422,6 +2479,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2462,6 +2520,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2484,6 +2543,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -2546,6 +2606,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2585,6 +2646,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2607,6 +2669,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -2668,6 +2731,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -2706,6 +2770,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -2728,6 +2793,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2786,6 +2852,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -2823,6 +2890,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -2845,6 +2913,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -2901,6 +2970,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -2937,6 +3007,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -2959,6 +3030,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3013,6 +3085,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3048,6 +3121,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3070,6 +3144,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3127,6 +3202,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3168,6 +3244,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3190,6 +3267,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -3254,6 +3332,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3294,6 +3373,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3316,6 +3396,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -3381,6 +3462,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3420,6 +3502,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3442,6 +3525,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -3502,6 +3586,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3540,6 +3625,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3562,6 +3648,7 @@ BEGIN
 						,	S.RecruitDateDiff
 						,	S.Category1No
 						,	S.Category2No
+						,	S.CategoryEtcValue
 						,	S.CityCategory
 						,	S.AreaCategory
 						,	S.Career
@@ -3621,6 +3708,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3658,6 +3746,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3680,6 +3769,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3736,6 +3826,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3772,6 +3863,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3794,6 +3886,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3848,6 +3941,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3883,6 +3977,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3905,6 +4000,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
@@ -3957,6 +4053,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -3991,6 +4088,7 @@ BEGIN
 				,	S.RecruitDateDiff
 				,	S.Category1No
 				,	S.Category2No
+				,	S.CategoryEtcValue
 				,	S.CityCategory
 				,	S.AreaCategory
 				,	S.Career
@@ -4013,6 +4111,7 @@ BEGIN
 					,	S.RecruitDateDiff
 					,	S.Category1No
 					,	S.Category2No
+					,	S.CategoryEtcValue
 					,	S.CityCategory
 					,	S.AreaCategory
 					,	S.Career
