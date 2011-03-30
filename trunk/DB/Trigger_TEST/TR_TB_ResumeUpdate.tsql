@@ -1,4 +1,7 @@
-create TRIGGER [TR_TB_ResumeUpdate] ON [dbo].[TB_Resume]
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[TR_TB_ResumeUpdate] ON [dbo].[TB_Resume]
 FOR UPDATE
 AS
 
@@ -8,7 +11,7 @@ DECLARE @Category1No int
 DECLARE @Category2No int
 DECLARE @CityCategory int
 DECLARE @AreaCategory int
-
+declare @CategoryEtc nvarchar( 200 )
 
 SELECT
 	@UserNo = UserNo
@@ -17,6 +20,7 @@ SELECT
 ,	@JoinType = JoinType
 ,	@Category1No = Category1No
 ,	@Category2No = Category2No
+,	@CategoryEtc = CategoryEtc
 FROM
 	INSERTED
 
@@ -30,11 +34,9 @@ BEGIN
 	,	CityCategory = @CityCategory
 	,	AreaCategory = @AreaCategory
 	,	JoinType = @JoinType
+	,	CategoryEtc = @CategoryEtc
 	WHERE
 		UserNo = @UserNo
 END
-
-
-
 
 

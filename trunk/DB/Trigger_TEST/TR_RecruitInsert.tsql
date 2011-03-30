@@ -1,10 +1,4 @@
-set ANSI_NULLS ON
-set QUOTED_IDENTIFIER ON
-go
-
-
--- TB_Recruit 테이블에 Insert 시 TB_RecruitSearch 테이블에 필요 Data Insert 해주는 Trigger 세팅
-ALTER TRIGGER [TR_RecruitInsert] ON [dbo].[TB_Recruit]
+ALTER TRIGGER [dbo].[TR_RecruitInsert] ON [dbo].[TB_Recruit]
 FOR INSERT
 AS
 
@@ -15,6 +9,7 @@ DECLARE @CompanyNo INT
 ,	@JobFairValue TINYINT
 ,	@Category1No INT
 ,	@Category2No INT
+,	@CategoryEtcValue  NVARCHAR(200)
 ,	@CityCategory INT
 ,	@AreaCategory INT
 ,	@Career TINYINT
@@ -38,6 +33,7 @@ SELECT
 ,	@JobFairValue = JobFairValue
 ,	@Category1No = Category1No
 ,	@Category2No = Category2No
+,	@CategoryEtcValue = CategoryEtcValue
 ,	@CityCategory = CityCategory
 ,	@AreaCategory = AreaCategory
 ,	@Career = Career
@@ -76,6 +72,7 @@ BEGIN
 	,	RecruitDateDiff
 	,	Category1No
 	,	Category2No
+	,	CategoryEtcValue
 	,	CityCategory
 	,	AreaCategory
 	,	Career
@@ -97,6 +94,7 @@ BEGIN
 	,	@RecruitDateDiff
 	,	@Category1No
 	,	@Category2No
+	,	@CategoryEtcValue
 	,	@CityCategory
 	,	@AreaCategory
 	,	@Career
@@ -116,6 +114,7 @@ BEGIN
 	,	RecruitDate = IsNull( @RecruitDate, RecruitDate )
 	,	Category1No = IsNull( @Category1No, Category1No )
 	,	Category2No = IsNull( @Category2No, Category2No )
+	,	CategoryEtcValue = IsNull( @CategoryEtcValue, CategoryEtcValue )
 	,	CityCategory = IsNull( @CityCategory, CityCategory )
 	,	AreaCategory = IsNull( @AreaCategory, AreaCategory )
 	,	Career = IsNull( @Career, Career )
@@ -126,8 +125,5 @@ BEGIN
 	AND	RecruitNo = @RecruitNo
 	AND	CompanyNo = @CompanyNo
 END
-
-
-
 
 

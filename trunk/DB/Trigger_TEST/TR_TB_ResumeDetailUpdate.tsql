@@ -14,6 +14,7 @@ DECLARE @UserImage	varchar( 200 )
 DECLARE @JoinType tinyint
 DECLARE @Category1No int
 DECLARE @Category2No int
+declare @CategoryEtc nvarchar( 200 )
 DECLARE @CityCategory int
 DECLARE @AreaCategory int
 DECLARE @Age int
@@ -48,6 +49,7 @@ SELECT
 ,	@JoinType = JoinType
 ,	@Category1No = Category1No
 ,	@Category2No = Category2No
+,	@CategoryEtc = CategoryEtc
 ,	@RegistryTime = RegistryTime
 FROM
 	dbo.TB_Resume with ( nolock )
@@ -66,6 +68,7 @@ BEGIN
 	,	JoinType = @JoinType
 	,	Category1No = @Category1No
 	,	Category2No = @Category2No
+	,	CategoryEtc = @CategoryEtc
 	,	CityCategory = @CityCategory
 	,	AreaCategory = @AreaCategory
 	,	KoreanAge = @KoreanAge
@@ -77,5 +80,6 @@ BEGIN
 		UserNo = @UserNo
 	AND	CountryNo = @CountryNo
 END
+
 
 
