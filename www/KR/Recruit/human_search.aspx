@@ -253,7 +253,13 @@ jQuery(function()
                                             <%=item.Gender == 1 ? "Man" : "Girl"%>
                                             <% } %>
                                             ,<%=item.Age %>)</span></td>
-                                            <td class="col2"><%=GetCategoryName(item.Category1No) %> > <%=GetSubCategoryName(item.Category2No)%></td>
+                                            <td class="col2">
+                                                <% if (GetCategoryName(item.Category1No) == "직접입력" || GetCategoryName(item.Category2No) == "직접입력" || GetCategoryName(item.Category1No) == "直接输入" || GetCategoryName(item.Category2No) == "直接输入"){  %>
+                                                    <%=item.CategoryEtc%>
+                                                <% } else { %>
+                                                    <%=GetCategoryName(item.Category1No) %> > <%=GetSubCategoryName(item.Category2No)%>
+                                                <% } %>
+                                            </td>
                                             <td class="col3"><%=GetCategoryName(item.CityCategory)%> > <%=GetSubCategoryName(item.AreaCategory)%></td>
                                             <td class="col4">
                                             <%if (CountryNo == 1) { %>

@@ -8,7 +8,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
-<% DateTime dateStart = Convert.ToDateTime("2011-04-13"); %>
+<% DateTime dateStart = Convert.ToDateTime("2011-03-30"); %>
 <asp:ScriptManagerProxy ID="px" runat="server">
     <Services>
         <asp:ServiceReference Path="~/Soap/Company.asmx"></asp:ServiceReference>
@@ -118,7 +118,13 @@ foreach (RecruitSearchEntity item in RecruitSearchList.Record)
 										<div class="company-logo"><img src="<%=item.CompanyImage %>" /></div>
 										<div class="company-name"><%=item.KRName%></div>
 										<div class="job-number">
-											<div class="job"><%=GetCategoryName(item.Category1No)%></div>
+											<div class="job">
+											    <% if (GetCategoryName(item.Category1No) == "직접입력" || GetCategoryName(item.Category2No) == "직접입력" || GetCategoryName(item.Category1No) == "直接输入" || GetCategoryName(item.Category2No) == "直接输入"){  %>
+                                                    <%=item.CategoryEtcValue %>
+                                                <% } else { %>
+                                                    <%=GetCategoryName(item.Category1No) %>
+                                                <% } %>
+											</div>
 										</div>								
 										<div class="link">
 											<a href="/KR/recruit/recruit_detail.aspx?Country=<%=this.WebMaster.CountryCode %>&CompanyNo=<%=item.CompanyNo %>&RecruitNo=<%=item.RecruitNo %>&PageNo=1" class="icon icon-go"></a>
@@ -257,7 +263,13 @@ idx++;
 												<span class="name"><%=item.KRName %></span><span class="birth">(<%=item.Age %>)</span>
 											</div>
 											<div class="career"><%=item.Career == 1 ? " 신입" : "경력" %></div>
-											<div class="job"><%=GetCategoryName(item.Category1No)%></div>
+											<div class="job">
+											    <% if (GetCategoryName(item.Category1No) == "직접입력" || GetCategoryName(item.Category2No) == "직접입력" || GetCategoryName(item.Category1No) == "直接输入" || GetCategoryName(item.Category2No) == "直接输入"){  %>
+                                                    <%=item.CategoryEtc%>
+                                                <% } else { %>
+                                                    <%=GetCategoryName(item.Category1No) %>
+                                                <% } %>
+											</div>
 											<div class="university"><%=GetCategoryName(item.CityCategory)%>/<%=GetCategoryName(item.AreaCategory)%></div>
 										</div>
 									</div>

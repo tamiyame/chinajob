@@ -13,8 +13,11 @@ using System.Web.UI.WebControls.WebParts;
 
 using Com.Framework.Data;
 using Com.Library.DB.Board;
-using Com.Library.DB.Schedule;
 using Com.Library.DB.Banner;
+using Com.Library.DB.Schedule;
+using Com.Library.DB.Company;
+using Com.Library.DB.Category;
+using Com.Library.DB.User;
 
 using Site.Web.Page;
 
@@ -29,14 +32,43 @@ public partial class CN_Home_Default : SitePage
     public ListData<BannerEntity, OutputEntity> BannerList_Human;
     public ListData<BannerEntity, OutputEntity> BannerList_Company;
     public PageSettingEntity PageEntity = null;
+    public ListData<RecruitSearchEntity, OutputEntity> RecruitSearchList = null;
+    public ListData<ResumeSearchEntity, OutputEntity> UserSearchList = null;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        {
+            RecruitSearchArguments searchArg = new RecruitSearchArguments();
+            searchArg.CountryNo = this.WebMaster.CountryCode;
+            searchArg.PageNo = 1;
+            searchArg.PageSize = 32;
+            RecruitSearch search = new RecruitSearch();
+            search.SetArguments(searchArg);
+            search.Execute();
+            List<RecruitSearchEntity> record = search.Execute();
+            OutputEntity outputdata = search.GetOutput();
+            RecruitSearchList = new ListData<RecruitSearchEntity, OutputEntity>(record, outputdata);
+        }
+        {
+            ResumeSearchArguments searchArg = new ResumeSearchArguments();
+            searchArg.CountryNo = this.WebMaster.CountryCode;
+            searchArg.PageNo = 1;
+            searchArg.PageSize = 32;
+
+            ResumeSearch search = new ResumeSearch();
+            search.SetArguments(searchArg);
+            search.Execute();
+            List<ResumeSearchEntity> record = search.Execute();
+            OutputEntity outputdata = search.GetOutput();
+
+            UserSearchList = new ListData<ResumeSearchEntity, OutputEntity>(record, outputdata);
+        }
+
         {
             PageSettingGetInfo info = new PageSettingGetInfo();
             info.ExecuteNonQuery();
             PageEntity = info.GetOutput();
         }
-
         {
             ArticleGetListArguments arg = new ArticleGetListArguments();
             arg.PageNo = 1;
@@ -77,5 +109,16 @@ public partial class CN_Home_Default : SitePage
             OutputEntity outputdata = list.GetOutput();
             BannerList_Human = new ListData<BannerEntity, OutputEntity>(record, outputdata);
         }
+    }
+
+    public string GetCategoryName(int CategoryNo)
+    {
+        CategoryGetInfoArguments arg = new CategoryGetInfoArguments();
+        arg.CategoryNo = CategoryNo;
+        CategoryGetInfo info = new CategoryGetInfo();
+        info.SetArguments(arg);
+        info.ExecuteNonQuery();
+
+        return info.GetOutput().CategoryKRName;
     }
 }
