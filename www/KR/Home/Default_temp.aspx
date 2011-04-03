@@ -224,12 +224,6 @@ idx++;
 					</div>
 				</div>
  <% } %>
-<% if (this.WebCookies.IsLogin)
-   {  %>
-<%  if (this.WebCookies.isCompany)
-    { %>
-<% if (DateTime.Now >= dateStart)
-   { %>
                 <div class="new-human">
 					<div class="more">
 						<a href="/KR/recruit/human_search.aspx" class="icon icon-more-smth"></a>
@@ -240,48 +234,32 @@ idx++;
 								<a href="javascript:;" onclick="$.UserList.Prev(); return false;" class="icon icon-prev"></a>
 							</div>
 							<div class="info-boxes" id="divUserList">
-<% 
-    int idx = 0;
-    foreach (ResumeSearchEntity item in UserSearchList.Record)
-    { 
-%>
-								<div class="info-box icon icon-info-box" <%= idx < 8 ? "" : "style='display:none'" %>>
+							<%for (int i = 0; i < 8; ++i)
+                            { %>
+								<div class="info-box icon icon-info-box" >
 									<div class="special-tag">
-									<% if ( item.JoinType == 1 ) { %>
 										<div class="icon icon-recommend"></div>
-								    <% } %>
 									</div>
 									<div class="profile">
 										<div class="picture-link">
-											<div class="picture"><img src="<%=item.UserImage %>" /></div>												
+											<div class="picture"><img src="/ImgSrv/kr/images/banner/khe.jpg" /></div>											
 										</div>									
 										<div class="profile-text">
 											<div class="name-birth">
-												<span class="name"><%=item.KRName %></span><span class="birth">(<%=item.Age %>)</span>
+												<span class="name">김효은</span><span class="birth">(24세)</span>
 											</div>
-											<div class="career"><%=item.Career == 1 ? " 신입" : "경력" %></div>
+											<div class="career">신입</div>
 											<div class="job">
-											    <% if (GetCategoryName(item.Category1No) == "직접입력" || GetCategoryName(item.Category2No) == "직접입력" || GetCategoryName(item.Category1No) == "直接输入" || GetCategoryName(item.Category2No) == "直接输入"){  %>
-                                                    <%=item.CategoryEtc%>
-                                                <% } else { %>
-                                                    <%=GetCategoryName(item.Category1No) %>
-                                                <% } %>
+											    직접입력
 											</div>
-											<div class="university"><%=GetCategoryName(item.CityCategory)%>/<%=GetCategoryName(item.AreaCategory)%></div>
+											<div class="university">어디대학교</div>
 										</div>
 									</div>
 									<div class="link">
 										<a href="javascript:;" class="icon icon-go"></a>
-									</div>
-								</div>
-<%
-        idx++;
-    } 
-%>
-<%  for (int i = UserSearchList.Record.Count; i < 32; i++)
-    { %>
-								<div class="info-box icon icon-info-box" <%= i < 8 ? "" : "style='display:none'" %>></div>
-<%  } %>
+									</div>	
+								</div>					
+							<%} %>			
 							</div>
 							<div class="next">
 								<a href="javascript:;" onclick="$.UserList.Next(); return false;" class="icon icon-next"></a>
@@ -289,88 +267,10 @@ idx++;
 						</div>
 						<div class="pager" id="UserPager">
 							<ul>
-<% for (int i = 0; i < 4; i++)
-   { %>
-								<li><a href="javascript:;" onclick="$.UserList.Page(<%=i %>); return false;" class="icon <%=i==0?"icon-pager-select":"icon-pager" %>"></a></li> 	
-<% } %>
+								<li><a href="javascript:;" class="icon icon-pager"></a></li> 
 							</ul>
 						</div>
 					</div>
 				</div>
-<script language="javascript" type="text/javascript">
-    (function($) {
-        var PageNo = 0;
-        var isIE6 = /msie|MSIE 6/.test(navigator.userAgent);
-        $.UserList = $.fn.UserList = {
-            Prev: function() {
-                if ((PageNo - 1) < 0) {
-                    PageNo = 0;
-                    return;
-                }
-                $.UserList.Page(PageNo - 1);
-            },
-
-            Next: function() {
-                if ((PageNo + 1) >= 4) {
-                    PageNo = PageNo - 1;
-                    return;
-                }
-                $.UserList.Page(PageNo + 1);
-            },
-
-            Page: function(idx) {
-
-                $("#UserPager ul li:eq(" + PageNo + ") a").addClass("icon-pager").removeClass("icon-pager-select").parent().removeClass("select");
-                $("#UserPager ul li:eq(" + idx + ") a").addClass("icon-pager-select").removeClass("icon-pager");
-                PageNo = idx;
-                $.UserList.List();
-                if (isIE6) {
-                    if (idx != 0)
-                        $("#divUserList").addClass('company_list_ie6fix');
-                    else
-                        $("#divUserList").removeClass('company_list_ie6fix');
-                }
-            },
-
-            List: function() {
-
-                $("#divUserList div.info-box").hide();
-                for (var i = 0 + (PageNo * 8); i < ((PageNo * 8) + 8); i++) {
-                    $("#divUserList div.info-box:eq(" + i + ")").show();
-                }
-            }
-        }
-    })(jQuery);
-</script>
-<% }
-   else
-   { %>
-				<div class="new-human">
-					<div class="more">
-						<a href="javascript:;" class="icon icon-more-smth"></a>
-					</div>
-					<div class="preview-container">
-						<div class="preview-list">
-							<div class="prev">
-								
-							</div>
-							<div class="info-boxes">
-								<div class="info-box icon icon-info-box-empty"></div>
-								<div class="info-box icon icon-info-box-empty"></div>
-								<div class="info-box icon icon-info-box-empty"></div>
-								<div class="info-box icon icon-info-box-empty"></div>
-								<div class="info-box icon icon-info-box-empty"></div>
-								<div class="info-box icon icon-info-box-empty"></div>
-								<div class="info-box icon icon-info-box-empty"></div>
-								<div class="info-box icon icon-info-box-empty"></div>
-							</div>
-							<div class="next">
-								
-							</div>
-						</div>
-					</div>
-				</div>
-<% } %>
-<% } %>
-<% } %>
 </asp:Content>
+
