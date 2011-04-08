@@ -4,7 +4,7 @@
     // ready
     $(document).ready(function() {
 		$("div.tab ul li").removeClass("icon-folder-middle-on").addClass("icon-folder-middle-off").removeClass("select");
-		$("div.tab ul li:eq("+ countryCode +")").removeClass("icon-folder-middle-off").addClass("icon-folder-middle-on").addClass("select");
+		$("div.tab ul li:eq("+ ( countryCode -1 ) +")").removeClass("icon-folder-middle-off").addClass("icon-folder-middle-on").addClass("select");
 		
 		$("td.ssn").text(ssn1+"-"+ssn2);
 		$("td.age").text(koreanAge + "세 (만 " + age + "세)");

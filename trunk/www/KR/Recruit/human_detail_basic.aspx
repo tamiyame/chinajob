@@ -37,10 +37,10 @@ $(document).ready(function() {
 
 	$("div.tab ul li").removeClass("icon-folder-middle-on").addClass("icon-folder-middle-off").removeClass("select");
 	$("div.tab ul li:eq("+ countryCode +")").removeClass("icon-folder-middle-off").addClass("icon-folder-middle-on").addClass("select");
-	$("div.tab ul li:eq(0)").click(function() { location.href="<%=GetDetailViewer("human_detail_basic.aspx",this.UserNo)  %>"; });
-	$("div.tab ul li:eq(1)").click(function() { location.href="<%=GetDetailViewer("human_detail_korean.aspx",this.UserNo)  %>"; });
-	$("div.tab ul li:eq(2)").click(function() { location.href="<%=GetDetailViewer("human_detail_china.aspx",this.UserNo)  %>"; });
-	$("div.tab ul li:eq(3)").click(function() { location.href="<%=GetDetailViewer("human_detail_english.aspx",this.UserNo)  %>"; });
+	//$("div.tab ul li:eq(0)").click(function() { location.href="<%=GetDetailViewer("human_detail_basic.aspx",this.UserNo)  %>"; });
+	$("div.tab ul li:eq(0)").click(function() { location.href="<%=GetDetailViewer("human_detail_korean.aspx",this.UserNo)  %>"; });
+	$("div.tab ul li:eq(1)").click(function() { location.href="<%=GetDetailViewer("human_detail_china.aspx",this.UserNo)  %>"; });
+	$("div.tab ul li:eq(2)").click(function() { location.href="<%=GetDetailViewer("human_detail_english.aspx",this.UserNo)  %>"; });
 });
 </script>
 </asp:Content>
@@ -51,18 +51,15 @@ $(document).ready(function() {
                         <div class="contents">
                             <div class="tab">
 					            <ul>
-						            <li class="select icon icon-folder-middle-on">
-							            <div><span style="font-family:tahoma;color:#007be3">STEP1 </span>기본정보</div>
-						            </li>
 						            <li class="icon icon-folder-middle-off">
-							            <div><span style="font-family:tahoma;color:#007be3">STEP2 </span>한국어</div>
+							            <div>한국어</div>
 						            </li>	
 						            <li class="icon icon-folder-middle-off">
-							            <div><span style="font-family:tahoma;color:#007be3">STEP3 </span>中文</div>
+							            <div>中文</div>
 						            </li>
 						            <li class="last icon icon-folder-middle-off">
-							            <div><span style="font-family:tahoma;color:#007be3">STEP4 </span>English</div>
-						            </li>												
+							            <div>English</div>
+						            </li>
 					            </ul>						
 				            </div>
                             <div class="tab-content">
