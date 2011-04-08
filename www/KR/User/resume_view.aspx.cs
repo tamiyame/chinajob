@@ -17,6 +17,7 @@ using Com.Library.DB.Category;
 using Com.Framework.Data;
 using System.Collections.Generic;
 using Com.Library.Translate;
+using Com.Library.Cookie;
 
 public partial class KR_User_resume_view : System.Web.UI.Page
 {
@@ -35,8 +36,10 @@ public partial class KR_User_resume_view : System.Web.UI.Page
 	public Repeater[] RptCareer { get; set; }
 	public Repeater[] RptLanguage { get; set; }
 	public Repeater[] RptLicense { get; set; }
+    public WebCookie webCookie = null;
 	protected void Page_Load(object sender, EventArgs e)
     {
+        webCookie = new WebCookie();
         UserNo = Request.QueryString["UserNo"] == null ? 0 : Convert.ToInt32(Request.QueryString["UserNo"]);
         if (UserNo == 0)
         {

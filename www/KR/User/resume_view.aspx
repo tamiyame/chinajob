@@ -44,7 +44,7 @@
           		
           		<!--Resume(S)//-->
               <div class="regist detail">
-                        	
+<% if ( this.webCookie.IsLogin && (this.webCookie.IsAdmin == true || this.webCookie.UserNo == this.UserNo )) { %>
               	<div class="regist-class">
               		기본정보
               	</div>
@@ -121,7 +121,7 @@
                           </tr>
                       </table>
                   </div>
-                  
+<% } %>
               	<div class="regist-class">
               		한국어
               	</div>
