@@ -111,9 +111,15 @@ foreach (RecruitSearchEntity item in RecruitSearchList.Record)
             { %><div class="special-tag icon icon-join"></div><% } %>
 									<div>
 										<div class="company-logo"><img src="<%=item.CompanyImage %>" /></div>
-										<div class="company-name"><%=item.KRName%></div>
+										<div class="company-name"><%=item.KRName == string.Empty ? item.CNName : item.KRName%></div>
 										<div class="job-number">
-											<div class="job"><%=GetCategoryName(item.Category1No)%></div>
+											<div class="job">
+											    <% if (GetCategoryName(item.Category1No) == "직접입력" || GetCategoryName(item.Category2No) == "직접입력" || GetCategoryName(item.Category1No) == "直接输入" || GetCategoryName(item.Category2No) == "直接输入"){  %>
+                                                    <%=item.CategoryEtcValue %>
+                                                <% } else { %>
+                                                    <%=GetCategoryName(item.Category1No) %>
+                                                <% } %>
+											</div>
 										</div>								
 										<div class="link">
 											<a href="/KR/recruit/recruit_detail.aspx?Country=<%=this.WebMaster.CountryCode %>&CompanyNo=<%=item.CompanyNo %>&RecruitNo=<%=item.RecruitNo %>&PageNo=1" class="icon icon-go"></a>
@@ -249,10 +255,16 @@ idx++;
 										</div>									
 										<div class="profile-text">
 											<div class="name-birth">
-												<span class="name"><%=item.KRName %></span><span class="birth">(<%=item.Age %>)</span>
+												<span class="name"><%=item.KRName == string.Empty ? item.CNName : item.KRName %></span><span class="birth">(<%=item.Age %>)</span>
 											</div>
 											<div class="career"><%=item.Career == 1 ? " 신입" : "경력" %></div>
-											<div class="job"><%=GetCategoryName(item.Category1No)%></div>
+											<div class="job">
+											<% if (GetCategoryName(item.Category1No) == "직접입력" || GetCategoryName(item.Category2No) == "직접입력" || GetCategoryName(item.Category1No) == "直接输入" || GetCategoryName(item.Category2No) == "直接输入"){  %>
+                                                    <%=item.CategoryEtc%>
+                                                <% } else { %>
+                                                    <%=GetCategoryName(item.Category1No) %>
+                                                <% } %>
+											</div>
 											<div class="university"><%=GetCategoryName(item.CityCategory)%>/<%=GetCategoryName(item.AreaCategory)%></div>
 										</div>
 									</div>
