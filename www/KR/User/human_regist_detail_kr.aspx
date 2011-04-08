@@ -73,9 +73,9 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                             <td class="size-k-1-5">
                                 <table>
                                     <tr>
-                                        <td><input style="width:120px;" type="password" name="ssn1" /></td>
+                                        <td><input style="width:120px;" type="password" name="ssn1" maxlength="6"/></td>
                                         <td style="text-align:center;padding:0 2px;">-</td>
-                                        <td><input style="width:120px;" type="password" name="ssn2" /></td>
+                                        <td><input style="width:120px;" type="password" name="ssn2" maxlength="7"/></td>
                                     </tr>
                                 </table>                                
                             </td>                                                    
@@ -87,8 +87,8 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                             <td>
                                 <table>
                                     <tr>
-                                        <td><input type="text" class="w3" name="korean_age"/>세</td>
-                                        <td>(만<input type="text" class="w3" name="age" />세)</td>
+                                        <td><input type="text" class="w3" name="korean_age" maxlength="2"/>세</td>
+                                        <td>(만<input type="text" class="w3" name="age" maxlength="2"/>세)</td>
                                     </tr>
                                 </table>
                             </td>                                                    
