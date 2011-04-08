@@ -240,6 +240,9 @@ idx++;
 									<div class="special-tag">
 										<div class="icon icon-recommend"></div>
 									</div>
+									<div class="link">
+										<a href="javascript:;" class="icon icon-go"></a>
+									</div>	
 									<div class="profile">
 										<div class="picture-link">
 											<div class="picture"><img src="/ImgSrv/kr/images/banner/khe.jpg" /></div>											
@@ -255,9 +258,6 @@ idx++;
 											<div class="university">어디대학교</div>
 										</div>
 									</div>
-									<div class="link">
-										<a href="javascript:;" class="icon icon-go"></a>
-									</div>	
 								</div>					
 							<%} %>			
 							</div>

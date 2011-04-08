@@ -114,6 +114,9 @@ foreach (RecruitSearchEntity item in RecruitSearchList.Record)
 								<div class="info-box icon icon-info-box" <%= idx < 8 ? "" : "style='display:none'" %>>
 									<% if (item.JoinType == 1)
             { %><div class="special-tag icon icon-join"></div><% } %>
+                                    <div class="link">
+										<a class="icon icon-go" href="/KR/recruit/recruit_detail.aspx?Country=1&amp;CompanyNo=1113&amp;RecruitNo=118&amp;PageNo=1"></a>
+									</div>
 									<div>
 										<div class="company-logo"><img src="<%=item.CompanyImage %>" /></div>
 										<div class="company-name"><%=item.KRName == string.Empty ? item.CNName : item.KRName%></div>
@@ -125,11 +128,8 @@ foreach (RecruitSearchEntity item in RecruitSearchList.Record)
                                                     <%=GetCategoryName(item.Category1No) %>
                                                 <% } %>
 											</div>
-										</div>								
-										<div class="link">
-											<a href="/KR/recruit/recruit_detail.aspx?Country=<%=this.WebMaster.CountryCode %>&CompanyNo=<%=item.CompanyNo %>&RecruitNo=<%=item.RecruitNo %>&PageNo=1" class="icon icon-go"></a>
-										</div>
-									</div>
+										</div>	
+									</div>									
 								</div>
 <%
 idx++;
@@ -175,7 +175,7 @@ idx++;
                 $.CompanyList.Page(PageNo + 1);
             },
 
-            Page: function(idx) {
+            Page: function(idx, check) {
 
                 $("#CompanyPager ul li:eq(" + PageNo + ") a").addClass("icon-pager").removeClass("icon-pager-select").parent().removeClass("select");
                 $("#CompanyPager ul li:eq(" + idx + ") a").addClass("icon-pager-select").removeClass("icon-pager");
@@ -186,6 +186,8 @@ idx++;
                         $("#divCompanyList").addClass('company_list_ie6fix');
                     else
                         $("#divCompanyList").removeClass('company_list_ie6fix');
+                    if (check != true)
+                        $.CompanyList.Page(idx, true);
                 }
             },
 
@@ -251,6 +253,9 @@ idx++;
 										<div class="icon icon-recommend"></div>
 								    <% } %>
 									</div>
+									<div class="link">
+										<a href="javascript:;" class="icon icon-go"></a>
+									</div>
 									<div class="profile">
 										<div class="picture-link">
 											<div class="picture"><img src="<%=item.UserImage %>" /></div>												
@@ -269,9 +274,6 @@ idx++;
 											</div>
 											<div class="university"><%=GetCategoryName(item.CityCategory)%>/<%=GetCategoryName(item.AreaCategory)%></div>
 										</div>
-									</div>
-									<div class="link">
-										<a href="javascript:;" class="icon icon-go"></a>
 									</div>
 								</div>
 <%
@@ -318,7 +320,7 @@ idx++;
                 $.UserList.Page(PageNo + 1);
             },
 
-            Page: function(idx) {
+            Page: function(idx, check) {
 
                 $("#UserPager ul li:eq(" + PageNo + ") a").addClass("icon-pager").removeClass("icon-pager-select").parent().removeClass("select");
                 $("#UserPager ul li:eq(" + idx + ") a").addClass("icon-pager-select").removeClass("icon-pager");
@@ -329,6 +331,9 @@ idx++;
                         $("#divUserList").addClass('company_list_ie6fix');
                     else
                         $("#divUserList").removeClass('company_list_ie6fix');
+                    if (check != true) {
+                        $.UserList.Page(idx, check);
+                    }
                 }
             },
 
