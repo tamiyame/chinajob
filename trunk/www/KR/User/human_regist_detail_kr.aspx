@@ -70,7 +70,7 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                             </td>
                             <td class="size-k-1-2 regist-label">국문</td>
                             <td class="size-k-1-3"><%=UserInfo.KRName%></td>
-                            <td class="size-k-1-4 regist-label">주민등록번호</td>
+                            <td class="size-k-1-4 regist-label">주민등록번호<span class="require">*</span></td>
                             <td class="size-k-1-5">
                                 <table>
                                     <tr>
