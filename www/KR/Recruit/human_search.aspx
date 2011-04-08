@@ -115,9 +115,9 @@
 							            <li class="<%if (CountryNo == 2){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
 								            <div><a href="<%=GetCountryType(2)%>">中文</a></div>
 							            </li>	
-							            <li class="<%if (CountryNo == 3){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
+							            <!--<li class="<%if (CountryNo == 3){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
 								            <div><a href="<%=GetCountryType(3)%>">English</a></div>
-							            </li>							
+							            </li>-->
 						            </ul>						
 					            </div>
 <script language="javascript" type="text/javascript">

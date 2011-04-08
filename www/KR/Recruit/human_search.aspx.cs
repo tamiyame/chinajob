@@ -186,7 +186,15 @@ public partial class KR_Recruit_human_search : SitePage
 
     public string DetailViewer(int userNo)
     {
-        string url = "human_detail_basic.aspx?Country=" + CountryNo;
+
+        string url = string.Empty;
+
+        if ( CountryNo == 1 )
+            url = "human_detail_korean.aspx?Country=" + CountryNo;
+        else if ( CountryNo == 2 )
+            url = "human_detail_china.aspx?Country=" + CountryNo;
+        else
+            url = "human_detail_english.aspx?Country=" + CountryNo;
         url += "&userNo=" + userNo.ToString();
         url += "&PageNo=" + PageNo.ToString();
         if (JoinType != 3)

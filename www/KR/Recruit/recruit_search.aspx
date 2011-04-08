@@ -15,19 +15,19 @@
                             <div class="recruit-title-search"></div>
                         </div>
                         <div class="contents">
-                            <div class="tab" style="margin-bottom:20px;">
+                            <!--<div class="tab" style="margin-bottom:20px;">
 				                <ul>
 					                <li class="select icon <%=CountryNo == 1 ? "icon-folder-big-on":"icon-folder-big-off" %>">
 						                <div><a href="recruit_search.aspx?Country=1">한국어</a></div>
 					                </li>
-					                <!--<li class="select icon <%=CountryNo == 2 ? "icon-folder-big-on":"icon-folder-big-off" %>">
+					                <li class="select icon <%=CountryNo == 2 ? "icon-folder-big-on":"icon-folder-big-off" %>">
 						                <div><a href="recruit_search.aspx?Country=2">中文</a></div>
 					                </li>	
 					                <li class="select icon icon-folder-big-off">
 						                <div>English</div>
-					                </li>-->
+					                </li>
 				                </ul>
-                            </div>
+                            </div>-->
                             <div class="search-box">
                                 <div class="search-table">
                                     <table>
