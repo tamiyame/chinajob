@@ -27,13 +27,14 @@ var chinaExp = chinaExpChunk.split("-");
 var military = '<%= GetDetailValue("Military") %>';
 var isCareer = '<%= GetDetailValue("IsCareer") %>';
 var address = '<%= GetDetailValue("Address") %>';
-var description = '<%= GetDetailValue("Description") %>';
-var aboutMe = '<%= GetDetailValue("AboutMe") %>';
+var description = '<%= GetDetailValue("Description").Replace("\r\n", "\\n") %>';
+var aboutMe = '<%= GetDetailValue("AboutMe").Replace("\r\n", "\\n") %>';
 var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
 var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
 var militaryService = '<%= GetDetailValue("MilitaryService") %>';
 
 </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <input type="text" name="ResumeNo" value="" style="display:none;"/>
