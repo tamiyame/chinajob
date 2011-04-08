@@ -200,7 +200,7 @@ function GetURL(url)
 					</div>
 					<div class="expo-content">
 						<img src="/ImgSrv/kr/images/base/expo-sponser.png" usemap="#sponsorLink" border="0"/>
-						<map name="sponsorLink">
+						<!--<map name="sponsorLink">
 							<area shape="rect" coords="27,49,179,107" href="javascript:site.go('gnb');">
 							<area shape="rect" coords="476,48,628,106" href="javascript:site.go('ksi');">
 							<area shape="rect" coords="641,49,793,107" href="javascript:site.go('fesco');">
@@ -210,7 +210,7 @@ function GetURL(url)
 							<area shape="rect" coords="578,174,730,232" href="javascript:site.go('hkg');">
 							<area shape="rect" coords="762,174,914,232" href="javascript:site.go('shk');">
 							<area shape="rect" coords="27,305,179,363" href="javascript:site.go('exc');">
-						</map>
+						</map>-->
 					</div>
 				</div>
             </div>
@@ -220,11 +220,11 @@ function GetURL(url)
 		        <div class="footer">
 			        <img src="/ImgSrv/kr/images/base/footer.png" usemap="#footerLink" border="0"/>
 			        <map name="footerLink">
-				        <area shape="rect" coords="847,16,893,30" href="javascript:site.go('sitemap');">
+				        <area shape="rect" coords="847,16,893,30" href="mailto:help@chinajobgo.com">
 				        <area shape="rect" coords="905,16,941,30" href="mailto:help@chinajobgo.com">
-				        <area shape="rect" coords="0,62,99,75" href="javascript:site.go('ksi');">
+				        <!--<area shape="rect" coords="0,62,99,75" href="javascript:site.go('ksi');">
 				        <area shape="rect" coords="120,62,235,75" href="javascript:site.go('globaljob');">
-				        <area shape="rect" coords="777,62,852,75" href="javascript:site.go('chinajob');">
+				        <area shape="rect" coords="777,62,852,75" href="javascript:site.go('chinajob');">-->
 			        </map>
 		        </div>
 	        </div>
