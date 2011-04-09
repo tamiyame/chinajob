@@ -16,6 +16,8 @@ namespace Com.Library.DB.Company
 
         protected override void ParameterInitialize()
         {
+            AddParameter("CompanyNo", SqlDbType.Int, 4, SqlDataInOut.Input);
+            AddParameter("Status", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
             AddParameter("PageNo", SqlDbType.Int, 4, SqlDataInOut.Input);
             AddParameter("PageSize", SqlDbType.TinyInt, 1, SqlDataInOut.Input);
             AddParameter("CntRow", SqlDbType.Int, 4, SqlDataInOut.Output);

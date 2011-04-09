@@ -115,6 +115,8 @@ BEGIN
 		,	RegistryTime
 		FROM
 			dbo.TB_Recruit with ( nolock )
+		WHERE
+			Status = 1
 		ORDER BY
 			Status DESC, RegistryTime DESC
 		SELECT
