@@ -53,6 +53,13 @@ public partial class KR_Recruit_human_search : SitePage
         Gender = Request.QueryString["Gender"] == null ? (byte)0 : Convert.ToByte(Request.QueryString["Gender"]);
         UserName = Request.QueryString["Name"] == null ? string.Empty : Convert.ToString(Request.QueryString["Name"]);
 
+        if (!this.WebCookies.IsLogin)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
+            Response.End();
+        }
+
         if (!isUserCreate)
         {
             //Response.Clear();

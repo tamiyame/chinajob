@@ -115,7 +115,7 @@ foreach (RecruitSearchEntity item in RecruitSearchList.Record)
 									<% if (item.JoinType == 1)
             { %><div class="special-tag icon icon-join"></div><% } %>
                                     <div class="link">
-										<a class="icon icon-go" href="/KR/recruit/recruit_detail.aspx?Country=1&amp;CompanyNo=1113&amp;RecruitNo=118&amp;PageNo=1"></a>
+										<a class="icon icon-go" href="/KR/recruit/recruit_detail.aspx?Country=<%=item.CountryNo%>&CompanyNo=<%=item.CompanyNo %>&RecruitNo=<%=item.RecruitNo%>"></a>
 									</div>
 									<div>
 										<div class="company-logo"><img src="<%=item.CompanyImage %>" /></div>
@@ -228,10 +228,11 @@ idx++;
  <% } %>
 <% if (this.WebCookies.IsLogin)
    {  %>
-<%  if (this.WebCookies.isCompany)
+<%  if (this.WebCookies.isCompany && false)
     { %>
 <% if (DateTime.Now >= dateStart)
    { %>
+
                 <div class="new-human">
 					<div class="more">
 						<a href="/KR/recruit/human_search.aspx" class="icon icon-more-smth"></a>
@@ -254,11 +255,11 @@ idx++;
 								    <% } %>
 									</div>
 									<div class="link">
-										<a href="javascript:;" class="icon icon-go"></a>
+										<a href="/KR/recruit/human_detail_korean.aspx?Country=<%=item.CountryNo %>&userNo=<%=item.UserNo %>" class="icon icon-go"></a>
 									</div>
 									<div class="profile">
 										<div class="picture-link">
-											<div class="picture"><img src="<%=item.UserImage %>" /></div>												
+											<div class="picture"><img src="<%=item.UserImage %>" width="104" height="138" /></div>												
 										</div>									
 										<div class="profile-text">
 											<div class="name-birth">
