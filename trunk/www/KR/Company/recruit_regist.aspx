@@ -529,7 +529,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">채용예정시기<span class="require">*</span></td>
+					<td class="label">모집마감시기<span class="require">*</span></td>
 
 					<td class="input">
 					    <input type="hidden" name="recruit_day" value="" />

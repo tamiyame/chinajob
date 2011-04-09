@@ -55,9 +55,9 @@ public partial class KR_Recruit_recruit_company_select_popup : System.Web.UI.Pag
 
         if (!IsRecruitApply)
         {
-            Response.Clear();
-            Response.Write("<script language='javascript'>alert('채용지원 가능 기간이 아닙니다.'); self.close();</script>");
-            Response.End();
+            //Response.Clear();
+            //Response.Write("<script language='javascript'>alert('채용지원 가능 기간이 아닙니다.'); self.close();</script>");
+            //Response.End();
         }
 
         if (cookie.isCompany)
