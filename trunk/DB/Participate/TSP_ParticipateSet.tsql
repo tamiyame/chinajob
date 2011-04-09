@@ -93,14 +93,14 @@ BEGIN
 		dbo.TB_Participate
 	SET
 		DateLastUpdated = @FrkDateNow
-	,	@CountryNo	 = IsNull( CountryNo, @CountryNo )
-	,	@Category1No	 = IsNull( Category1No, @Category1No )
-	,	@Category2No	 = IsNull( Category2No, @Category2No )
-	,	@RecruitType	 = IsNull( RecruitType, @RecruitType )
+	,	@CountryNo	 = IsNull( @CountryNo, CountryNo )
+	,	@Category1No	 = IsNull( @Category1No, Category1No )
+	,	@Category2No	 = IsNull( @Category2No, Category2No )
+	,	@RecruitType	 = IsNull( @RecruitType, RecruitType )
+	,	ConfirmType = 0
+	,	Status = 1
 	WHERE
-		CompanyNo = @CompanyNo
-	AND	RecruitNo = @RecruitNo
-	AND	UserNo = @UserNo
+		UserNo = @UserNo
 	AND	UserIDX = @UserIDX
 
 	SELECT
