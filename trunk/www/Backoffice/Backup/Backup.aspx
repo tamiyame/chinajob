@@ -17,6 +17,7 @@
     <div>인재정보   <a href="ResumeExcel.aspx" target="_blank" class="button">다운로드</a></div>
     <div>기업회원   <a href="CompanyExcel.aspx" target="_blank" class="button">다운로드</a></div>
     <div>개인회원   <a href="UserExcel.aspx" target="_blank" class="button">다운로드</a></div>    
+    <div>매칭정보   <a href="matchExcel.aspx" target="_blank" class="button">다운로드</a></div>    
 </div>
 
 </asp:Content>
