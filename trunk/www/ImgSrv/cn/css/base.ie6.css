@@ -1,4 +1,5 @@
-﻿.new-human .preview-list .info-boxes .info-box .profile-text .name-birth{line-height:14px;}
+﻿.preview-container .preview-list .info-boxes{position:absolute;margin-left: 34px;width: 895px;overflow:hidden;}
+.new-human .preview-list .info-boxes .info-box .profile-text .name-birth{line-height:14px;}
 .icon-folder-on{background-position:-260px -102px; width:194px; height:32px;}
 .icon-folder-off{background-position:-260px -137px; width:194px; height:32px;}
 .icon-quick-free-human{background-position:-200px -308px; width:131px; height:56px;}
@@ -27,3 +28,17 @@ table.board-list tr.search td table td.search_button a{top:-6px;}
 .main .regist .regist-item input.w100{width:98%;font-size:12px;}
 
 .icon-recruit-search-btn {    background-position: -454px -208px;    height: 43px;    width: 165px;}
+
+.icon-pager{background:url('../images/base/icon.jpg'); background-position:-143px -62px; width:9px; height:9px;}
+.icon-pager-select{background:url('../images/base/icon.jpg');background-position:-128px -62px; width:9px; height:9px;}
+.icon-sponsor-box{background:url('../images/base/icon.jpg');background-position:-122px -32px; width:44px; height:19px;}
+.icon-info-box{background:url('../images/base/icon.jpg');background-position:-0px -169px; width:189px; height:138px;}
+.icon-info-box-empty{background:url('../images/base/icon.jpg');background-position:-0px -308px; width:189px; height:138px;}
+
+.company_list_ie6fix{left:-16px;}
+
+.search-btn .icon-recruit-search-btn{position:absolute;margin-left:337px; margin-top:-13px;}
+.search-btn .icon-recruit-request{position:absolute;margin-left:585px; margin-top:-13px;}
+
+.icon-folder-small-off {    background-position: -486px -338px;    height: 32px;    width: 151px;}
+.icon-folder-small-on {    background-position: -333px -338px;    height: 32px;    width: 151px;}
