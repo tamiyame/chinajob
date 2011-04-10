@@ -38,9 +38,9 @@
     <form id="form1" runat="server">
 
 		<div class="bg-top" style="background:url();">
-			<div class="content">
+			<div class="content" style="width:777px">
         <div class="sidemenu-main">
-					<div class="main">
+					<div class="main" style="margin-left:0px">
           	<div class="tab-content">
           		
           		<!--Resume(S)//-->
