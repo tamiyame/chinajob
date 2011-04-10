@@ -170,7 +170,7 @@ idx++;
             $.CompanyList.Page(PageNo+1);
         },
 
-        Page: function(idx) {
+        Page: function(idx,check) {
 
             $("#CompanyPager ul li:eq(" + PageNo + ") a").addClass("icon-pager").removeClass("icon-pager-select").parent().removeClass("select");
             $("#CompanyPager ul li:eq(" + idx + ") a").addClass("icon-pager-select").removeClass("icon-pager");
@@ -181,6 +181,8 @@ idx++;
                     $("#divCompanyList").addClass('company_list_ie6fix');
                 else
                     $("#divCompanyList").removeClass('company_list_ie6fix');
+                if (check != true)
+                    $.CompanyList.Page(idx, true);
             }
         },
 
@@ -313,7 +315,7 @@ idx++;
             $.UserList.Page(PageNo+1);
         },
 
-        Page: function(idx) {
+        Page: function(idx,check) {
 
             $("#UserPager ul li:eq(" + PageNo + ") a").addClass("icon-pager").removeClass("icon-pager-select").parent().removeClass("select");
             $("#UserPager ul li:eq(" + idx + ") a").addClass("icon-pager-select").removeClass("icon-pager");
@@ -324,6 +326,9 @@ idx++;
                     $("#divUserList").addClass('company_list_ie6fix');
                 else
                     $("#divUserList").removeClass('company_list_ie6fix');
+                if (check != true) {
+                    $.UserList.Page(idx, check);
+                }
             }
         },
 

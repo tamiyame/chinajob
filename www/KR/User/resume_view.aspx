@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/icon.css" />
     <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/css/sidemenu.css" />
     <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
+    <link rel="Stylesheet" type="text/css" href="/ImgSrv/kr/Css/print.css" />
     <!--[if IE 6]>
 		    <link rel="stylesheet" type="text/css" href="../imgsrv/css/base.ie6.css" />
 		    <script src="/js/DD_belatedPNG.js"></script>
