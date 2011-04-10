@@ -79,6 +79,8 @@ namespace Site.Web.Page
 
             if (this.IsPostBack)
             {
+                Response.Write("<script language='javascript'>alert('정상적으로 등록되었습니다.'); location.href=location.href;</script>");
+
                 //Detail 등록
                 string
                 ssn1 = Request["ssn1"] == null ? String.Empty : Request["ssn1"],
