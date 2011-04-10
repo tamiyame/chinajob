@@ -292,7 +292,7 @@ $(document).ready(function() {
         {            
             Site.Web.Soap.Category.GetSubCategory(category1No, 
             function(results, context, methodNames){
-	            targetCategory.html(''); 
+	            targetCategory.find("option").remove(); 
                 $.each(results,function(i){                     
                     targetCategory.append($("<option value='"+this.SubCategoryNo+"'>"+ $.SubCategoryLangName(this)+"</option>"));                    
                 })
@@ -318,16 +318,29 @@ $(document).ready(function() {
                     $.FillCategory($(this).val(),$("select[name=location2_2]"));
             }).change();
             
+            /*
             $("select[name=hope_job_category2_2]").change(function() {
+                alert( this.options.length );
 				if (this.options[this.selectedIndex].innerHTML == "직접입력")
 					$("input[name=hope_job_category_etc]").show();
 				else
 					$("input[name=hope_job_category_etc]").hide();
             });
+            */
             
             $("select[name=hope_job_category2_1]").change(function() {
 				if ($(this).val())
 					$.FillCategory($(this).val(),$("select[name=hope_job_category2_2]"),function() {$("select[name=hope_job_category2_2]").change();});
+			    if ( this.options[this.selectedIndex].text == "직접입력")
+			    {
+			        $("input[name=hope_job_category_etc]").show();
+			        $("select[name=hope_job_category2_2]").hide();
+			    }
+				else
+				{
+					$("input[name=hope_job_category_etc]").hide();
+					$("select[name=hope_job_category2_2]").show();
+			    }
             }).change();
             
             $(".jobcode_select input").each(function(i){

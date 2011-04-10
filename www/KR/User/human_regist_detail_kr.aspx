@@ -208,6 +208,8 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                            <td><input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/></td>
                            <td><select class="state" name="education_state">
                                 <option value="0">졸업</option>
+                                <option value="1">중퇴</option>
+                                <option value="2">재학</option>
                            </select></td>
                            <td><input class="w100" name="education_major"/></td>
                            <td><input class="w100" name="education_national"/></td>
@@ -217,6 +219,8 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                            <td><input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/></td>
                            <td><select class="state" name="education_state">
                                 <option value="0">졸업</option>
+                                <option value="1">중퇴</option>
+                                <option value="2">재학</option>
                            </select></td>
                            <td><input class="w100" name="education_major"/></td>
                            <td><input class="w100" name="education_national"/></td>
@@ -226,6 +230,8 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                            <td><input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/></td>
                            <td><select class="state" name="education_state">
                                 <option value="0">졸업</option>
+                                <option value="1">중퇴</option>
+                                <option value="2">재학</option>
                            </select></td>
                            <td><input class="w100" name="education_major"/></td>
                            <td><input class="w100" name="education_national"/></td>
