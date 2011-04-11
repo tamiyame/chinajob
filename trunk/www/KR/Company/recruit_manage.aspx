@@ -25,6 +25,7 @@
 <% } %>
                     </tbody>
                 </table>
+
 <script language="javascript" type="text/javascript">
 var _RecruitNo = null;
 function btnRecruit( recruitNo )
@@ -59,7 +60,9 @@ function onParticipateGetList(results, methodName, context)
                 jQuery('<td class="col6">' + this.StrDateCreated + '</td>')
             ).append(
                 jQuery('<td class="col7">대기</td>')
-            ).append(
+            )
+<% if ( this.IsParticipate ) { %>
+            .append(
                 jQuery('<td class="col8"><a href="/kr/user/resume_view.aspx?userno=' + this.UserNo + '" target="_blank">보기</a></td>')
             ).append(
                 jQuery('<td class="col9">' + ( this.ConfirmType == 1 ? "<b>승인</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 1)'>승인</a>" ) + '</td>')
@@ -68,6 +71,7 @@ function onParticipateGetList(results, methodName, context)
             ).append(
                 jQuery('<td class="col11"></td>')
             )
+<% } %>
         );
     });
     jQuery("#tr_hide_" + _RecruitNo + " td").html( "" ).append($table);

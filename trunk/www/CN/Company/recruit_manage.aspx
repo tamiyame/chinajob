@@ -59,7 +59,9 @@ function onParticipateGetList(results, methodName, context)
                 jQuery('<td class="col6">' + this.StrDateCreated + '</td>')
             ).append(
                 jQuery('<td class="col7">'+$.translateHelper.getText("CN_Company_recruit_manage.aspx_wait")+'</td>')
-            ).append(
+            )
+<% if ( this.IsParticipate ) { %>
+            .append(
                 jQuery('<td class="col8"><a href="/kr/Recruit/human_detail_basic.aspx?userno=' + this.UserNo + '" target="_blank">'+$.translateHelper.getText("CN_Company_recruit_manage.aspx_show")+'</a></td>')
             ).append(
                 jQuery('<td class="col9">' + ( this.ConfirmType == 1 ? "<b>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_approved")+"</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 1)'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_approved")+"</a>" ) + '</td>')
@@ -68,6 +70,7 @@ function onParticipateGetList(results, methodName, context)
             ).append(
                 jQuery('<td class="col11"></td>')
             )
+<% } %>
         );
     });
     jQuery("#tr_hide_" + _RecruitNo + " td").html( "" ).append($table);
