@@ -153,9 +153,17 @@
                           </tr>
                           <tr>
                               <td class="regist-label">한국연락처</td>
-                              <td><%=UserInfo.KRPhoneNo %></td>
+                              <td>
+<% if (this.webCookie.IsLogin && (this.webCookie.IsAdmin == true || this.webCookie.UserNo == this.UserNo)) { %>
+                              <%=UserInfo.KRPhoneNo%>
+<% } %>
+                              </td>
                               <td class="regist-label">중국연락처</td>
-                              <td><%=UserInfo.CNPhoneNo %></td>                                                                                                    
+                              <td>
+<% if (this.webCookie.IsLogin && (this.webCookie.IsAdmin == true || this.webCookie.UserNo == this.UserNo)) { %>
+                              <%=UserInfo.CNPhoneNo %>
+<% } %>
+                              </td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">거주국가</td>
@@ -165,7 +173,11 @@
                           </tr>
                           <tr>
                               <td class="regist-label">이메일</td>
-                              <td><%=UserInfo.Email%></td>
+                              <td>
+<% if (this.webCookie.IsLogin && (this.webCookie.IsAdmin == true || this.webCookie.UserNo == this.UserNo)) { %>
+                              <%=UserInfo.Email%>
+<% } %>
+                              </td>
                               <td class="regist-label">경력여부</td>
                               <td><%=ResumeDetail[1].IsCareer==1?"신입":"경력"%></td>                                                                                                    
                           </tr>
@@ -325,12 +337,20 @@
                               <td class="regist-label">现详细居住地址</td>
                               <td colspan="3"><%=ResumeDetail[2].Address%></td>                                 
                           </tr>
+                          <% if (this.webCookie.IsLogin && (this.webCookie.IsAdmin == true || this.webCookie.UserNo == this.UserNo)) { %>
 													<tr>
                               <td class="regist-label">手机</td>
-                              <td><%=UserInfo.CNPhoneNo %></td>
+                              <td>
+                              
+                              <%=UserInfo.CNPhoneNo %>
+                              </td>
                               <td class="regist-label">电子邮件</td>
-                              <td><%=UserInfo.Email %></td>                                                                                                    
+                              <td>
+
+                              <%=UserInfo.Email%>
+                              </td>
                           </tr>
+                                                        <% } %>
                       </table>
                   </div>
                   
@@ -412,12 +432,20 @@
                               <td class="regist-label">Military service</td>
                               <td><%=ResumeDetail[3].MilitaryService%></td>                                                                                                    
                           </tr>
+                          <% if (this.webCookie.IsLogin && (this.webCookie.IsAdmin == true || this.webCookie.UserNo == this.UserNo))
+                             { %>
                           <tr>
                               <td class="regist-label">Phone</td>
-                              <td><%=UserInfo.CNPhoneNo%></td>
+                              <td>
+                              
+                              <%=UserInfo.CNPhoneNo%>
+                              </td>
                               <td class="regist-label">E-mail</td>
-                              <td><%=UserInfo.Email%></td>                                                                                                    
+                              <td>
+                              <%=UserInfo.Email%>
+                              </td>                                                                                                    
                           </tr>
+                          <% } %>
                           <tr>
                               <td class="regist-label">Address</td>
                               <td colspan="3"><%=ResumeDetail[3].Address%></td>                                 
