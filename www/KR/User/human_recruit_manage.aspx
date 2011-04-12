@@ -26,10 +26,11 @@
 %>
             			<tr>
 							<td class="col0">
-								<select name="UserIDX"><%=(ParticiapteList.Record[i].UserIDX == i+1) ? "selected" : "" %>
+								<select name="UserIDX" style="width:100px;"><%=(ParticiapteList.Record[i].UserIDX == i+1) ? "selected" : "" %>
 									<option value="1" <%=ParticiapteList.Record[i].UserIDX == 1 ? "selected" : "" %>>1지망</option>
 									<option value="2" <%=ParticiapteList.Record[i].UserIDX == 2 ? "selected" : "" %>>2지망</option>
 									<option value="3" <%=ParticiapteList.Record[i].UserIDX == 3 ? "selected" : "" %>>3지망</option>
+									<option value="0">지원취소</option>
 								</select>
 								<input type="hidden" name="SeqNo" value="<%=ParticiapteList.Record[i].SeqNo%>" />
 							</td>

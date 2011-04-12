@@ -45,6 +45,13 @@ public partial class CN_Company_recruit_manage : SitePage
 			Response.End();
 		}
 
+        if (!this.IsRecruitCreate)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.CompanyJoinType) + "');</script>");
+            Response.End();
+        }
+
 		RecruitMasterGetListArguments listArg = new RecruitMasterGetListArguments();
 		listArg.CompanyNo = this.WebCookies.UserNo;
 		RecruitMasterGetList list = new RecruitMasterGetList();

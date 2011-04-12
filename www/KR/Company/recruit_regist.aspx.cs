@@ -81,6 +81,15 @@ public partial class KR_Company_recruit_regist : SitePage
             Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.Apply_Company) + "');</script>");
             Response.End();
         }
+
+        if (!this.IsRecruitCreate)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.CompanyJoinType) + "');</script>");
+            Response.End();
+        }
+
+
          
 
         this.Form.Enctype = "multipart/form-data";

@@ -223,7 +223,7 @@ idx++;
  <% } %>
 <% if (this.WebCookies.IsLogin)
    {  %>
-<%  if (this.WebCookies.isCompany)
+<%  if (this.WebCookies.isCompany && false)
     { %>
 <% if (DateTime.Now >= dateStart)
    { %>
