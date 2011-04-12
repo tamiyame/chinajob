@@ -8,11 +8,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <% DateTime dateStart = Convert.ToDateTime("2011-03-30"); %>
-<asp:ScriptManagerProxy ID="px" runat="server">
-    <Services>
-        <asp:ServiceReference Path="~/Soap/Company.asmx"></asp:ServiceReference>
-    </Services>
-</asp:ScriptManagerProxy>
 				<div class="notice"> 
 					<div class="vertical-line"></div>
 					<div class="info-news">
