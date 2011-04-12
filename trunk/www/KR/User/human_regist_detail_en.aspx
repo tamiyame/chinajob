@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
+<script language="javascript" type="text/javascript" src="/js/translateJs_kr_user.js"></script>
 <script language="javascript" type="text/javascript" src="human_regist_detail.js"></script>
 <script language="javascript" type="text/javascript">
 (function($)

@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/login.css" />
+<script language="javascript" src="/js/translateJs_cn_login.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
 <div class="login">

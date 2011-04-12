@@ -6,7 +6,6 @@
 <head id="Head1" runat="server">   
     <title>회사 코드 검색</title> 
 		<script type="text/javascript" src="/js/jquery-1.4.2.min.js"> </script>
-		<script type="text/javascript" src="/js/link.js"></script>			
 		<script type="text/javascript" src="/js/common.js"></script>    
     <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/icon.css" />
 <style>

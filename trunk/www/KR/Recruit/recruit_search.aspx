@@ -112,7 +112,7 @@
                                         <tr>
                                             <td class="col1 label">기업명</td>
                                             <td class="col2">
-                                                <input type="text" class="big" name="CompanyName" maxlength="50"/>
+                                                <input type="text" class="big" name="CompanyName" maxlength="50" onkeypress="if ( event.keyCode == 13 ) { jQuery.onSearch();return false; }"/>
                                             </td>
                                             <td class="col3 label">경력</td>
                                             <td class="col4"><select name="Career">

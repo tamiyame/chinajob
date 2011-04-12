@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/CN/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="freeboard_detail.aspx.cs" Inherits="CN_Operation_freeboard_detail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<script language="javascript" src="/js/translateJs_cn_operation.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
                         <div class="title">

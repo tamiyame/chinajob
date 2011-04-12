@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 		<script type="text/javascript" src="/js/jquery-1.4.2.min.js"> </script>
-		<script type="text/javascript" src="/js/link.js"></script>			
 		<script type="text/javascript" src="/js/common.js"></script>
     <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/base.css" />
     <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/icon.css" />

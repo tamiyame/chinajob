@@ -6,7 +6,7 @@
 <title id="siteTitle" runat="server" ><%=PageEntity.KRTitle %></title>
 <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/icon.css" />
-<script language="javascript" type="text/javascript" src="/js/translateJs.aspx"></script>
+
 <asp:ContentPlaceHolder id="Header" runat="server" />
 <!--[if IE 6]>
 		<link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.ie6.css" />

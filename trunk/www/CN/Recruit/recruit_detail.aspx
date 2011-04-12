@@ -35,9 +35,9 @@
                                                         <img src="<%=CompanyDetailInfo.CompanyImage %>" width="327" height="115" />
                                                     </td>
                                                 </tr>
-                                                <tr class="description">
+                                                <tr class="description" style="height:225px;overflow:auto">
                                                     <td>
-                                                        <%=CompanyDetailInfo.CompanyDescrition %>
+                                                        <%=CompanyDetailInfo.CompanyDescrition.Replace("\n", "<br />")%>
                                                     </td>
                                                 </tr>
                                             </table>

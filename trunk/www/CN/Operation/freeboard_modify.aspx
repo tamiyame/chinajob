@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/cn/Css/editor.css" />
 <script language="javascript" src="/js/HyperTextArea.js" type="text/javascript"></script>
+<script language="javascript" src="/js/translateJs_cn_operation.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
                          <div class="title">

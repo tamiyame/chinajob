@@ -8,7 +8,6 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"> </script>
-	<script type="text/javascript" src="/js/link.js"></script>			
 	<script type="text/javascript" src="/js/common.js"></script>			    
     <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.css" />
     <link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/icon.css" />

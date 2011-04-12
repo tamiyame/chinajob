@@ -45,6 +45,13 @@ public partial class CN_Company_recruit_regist : SitePage
             Response.End();
         }
 
+        if (!this.IsRecruitCreate)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.CompanyJoinType) + "');</script>");
+            Response.End();
+        }
+
         m_CountryNo = Request.QueryString["CountryNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["CountryNo"]);
         m_RecruitNo = Request.QueryString["RecruitNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["RecruitNo"]);
 
