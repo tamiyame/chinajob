@@ -115,7 +115,7 @@ td.v-top{vertical-align:top;}
 .main table.recruit-detail tr.content table tr.picture{}
 .main table.recruit-detail tr.content table tr.picture td{border:none;padding-bottom:12px;}
 .main table.recruit-detail tr.content table tr.picture td img{border:2px solid #dedede;width:327px;height:115px;}
-.main table.recruit-detail tr.content table tr.description td{word-break:break-all;padding:0 5px;}
+.main table.recruit-detail tr.content table tr.description td{word-break:break-all;padding:0 5px;line-height:16px;height:150px;overflow:auto;vertical-align:top;}
 
 
 .main table.recruit-detail tr.content table.company-detail td.label{width:62px;padding:0 5px;font-size:11px;color:#7d7d7d;}
@@ -125,7 +125,7 @@ td.v-top{vertical-align:top;}
 .main table.recruit-detail tr.content table.company-detail td.text-3{width:626px;padding:0 5px;font-size:12px;color:#555555;}
 
 .main table.recruit-detail tr.content table.company-detail td.company-name,
-.main table.recruit-detail tr.content table.company-detail td.job-type{color:#469ed9;}
+.main table.recruit-detail tr.content table.company-detail td.job-type{color:#469ed9;line-height:16px;vertical-align:top;}
 
 .main table.recruit-detail tr.desc-row td{padding:5px 0px;}
 .main table.recruit-detail tr.desc-row td.col1{padding:0px 40px 0px 40px;}
