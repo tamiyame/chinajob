@@ -66,25 +66,53 @@ End
 
 IF ( @SeqNo Is Not Null )
 BEGIN
-	UPDATE
-		dbo.TB_Participate
-	SET
-		UserIDX = IsNull(@UserIDX, UserIDX)
-	,	@UserNo = UserNo
-	,	@CompanyNo = CompanyNo
-	WHERE
-		SeqNo = @SeqNo
-
-	IF ( @UserIDX Is Not Null )
+	IF ( @UserIDX = 0 )
 	BEGIN
+		DECLARE @UserIDX_Temp int
+		SELECT
+			@UserNo = UserNo
+		,	@UserIDX_Temp = UserIDX
+		FROM
+			dbo.TB_Participate
+		WHERE
+			SeqNo = @SeqNo
+
+		DELETE
+			dbo.TB_Participate
+		WHERE
+			SeqNo = @SeqNo
+
 		UPDATE
 			TB_Resume
 		SET
-			CompanyNo1 = CASE WHEN @UserIDX = 1 THEN @CompanyNo ELSE CompanyNo1 END
-		,	CompanyNo2 = CASE WHEN @UserIDX = 2 THEN @CompanyNo ELSE CompanyNo2 END
-		,	CompanyNo3 = CASE WHEN @UserIDX = 3 THEN @CompanyNo ELSE CompanyNo3 END
+			CompanyNo1 = CASE WHEN @UserIDX_Temp = 1 THEN Null ELSE CompanyNo1 END
+		,	CompanyNo2 = CASE WHEN @UserIDX_Temp = 2 THEN Null ELSE CompanyNo2 END
+		,	CompanyNo3 = CASE WHEN @UserIDX_Temp = 3 THEN Null ELSE CompanyNo3 END
 		WHERE
 			UserNo = @UserNo
+	END
+	ELSE
+	BEGIN
+		UPDATE
+			dbo.TB_Participate
+		SET
+			UserIDX = IsNull(@UserIDX, UserIDX)
+		,	@UserNo = UserNo
+		,	@CompanyNo = CompanyNo
+		WHERE
+			SeqNo = @SeqNo
+
+		IF ( @UserIDX Is Not Null )
+		BEGIN
+			UPDATE
+				TB_Resume
+			SET
+				CompanyNo1 = CASE WHEN @UserIDX = 1 THEN @CompanyNo ELSE CompanyNo1 END
+			,	CompanyNo2 = CASE WHEN @UserIDX = 2 THEN @CompanyNo ELSE CompanyNo2 END
+			,	CompanyNo3 = CASE WHEN @UserIDX = 3 THEN @CompanyNo ELSE CompanyNo3 END
+			WHERE
+				UserNo = @UserNo
+		END
 	END
 END
 ELSE
