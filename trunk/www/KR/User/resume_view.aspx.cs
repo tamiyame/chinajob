@@ -282,7 +282,7 @@ public partial class KR_User_resume_view : System.Web.UI.Page
 
 		CompanyDetailEntity comp = getInfo.GetOutput();
 
-		return comp.KRName;
+		return comp.KRName == string.Empty ? ( comp.CNName == string.Empty ? comp.ENGName : comp.CNName ) : comp.KRName;
 	}
 
 	protected string GetCategoryName(int categoryNo)

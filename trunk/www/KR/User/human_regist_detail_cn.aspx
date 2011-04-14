@@ -28,13 +28,14 @@ var chinaExp = chinaExpChunk.split("-");
 var military = '<%= GetDetailValue("Military") %>';
 var isCareer = '<%= GetDetailValue("IsCareer") %>';
 var address = '<%= GetDetailValue("Address") %>';
-var description = '<%= GetDetailValue("Description").Replace("\r\n", "\\n") %>';
-var aboutMe = '<%= GetDetailValue("AboutMe").Replace("\r\n", "\\n") %>';
+var description = '<%= GetDetailValue("Description").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("\"", "\\\"") %>';
+var aboutMe = '<%= GetDetailValue("AboutMe").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("\"", "\\\"") %>';
 var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
 var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
 var militaryService = '<%= GetDetailValue("MilitaryService") %>';
 </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
     <div class="title">
         <div class="human-title-regist"></div>

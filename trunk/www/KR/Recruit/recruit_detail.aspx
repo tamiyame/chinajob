@@ -165,7 +165,7 @@
                                                 </tr>                          
                                                 <tr>
                                                     <td class="label">연령</td>
-                                                    <td class="text-2"><%=RecruitInfo.AgeCategory == 0 ? RecruitInfo.AgeEtcValue : GetCategoryName(RecruitInfo.AgeCategory)%>세</td>
+                                                    <td class="text-2"><%=RecruitInfo.AgeCategory == 0 ? (RecruitInfo.AgeEtcValue == string.Empty ? "" : (RecruitInfo.AgeEtcValue+"세")) : (GetCategoryName(RecruitInfo.AgeCategory) + "세")%></td>
                                                 </tr>                       
                                                 <tr>
                                                     <td class="label">학력</td>
@@ -204,7 +204,7 @@
                                                 </tr>                          
                                                 <tr>
                                                     <td class="label">경력</td>
-                                                    <td class="text-2"><%=RecruitInfo.Career%>년</td>
+                                                    <td class="text-2"><%=RecruitInfo.Career == 0 ? "무관" : (RecruitInfo.Career.ToString() + "년")%></td>
                                                 </tr>                       
                                                 <tr>
                                                     <td class="label">전공</td>
@@ -222,7 +222,7 @@
                                                 </tr>                         
                                                 <tr>
                                                     <td class="label">계약기간</td>
-                                                    <td class="text-2"><%=RecruitInfo.ContactPeriod%>년</td>
+                                                    <td class="text-2"><%=RecruitInfo.ContactPeriod == 0 ? "협의" : (RecruitInfo.ContactPeriod.ToString() + "년")%></td>
                                                 </tr>                         
                                                 <tr>
                                                     <td class="label">근무시</td>
