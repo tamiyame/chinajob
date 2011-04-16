@@ -28,6 +28,8 @@ public partial class KR_Recruit_human_detail_english : KR_Recruit_human_detail
     public byte PageSize = 10;
 	protected void Page_Load(object sender, EventArgs e)
 	{
+        Response.Redirect("/kr/home");
+
 		CountryCode = TranslateHelper.ContryCode.EN;
 
         PageNo = Request.QueryString["PageNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["PageNo"]);

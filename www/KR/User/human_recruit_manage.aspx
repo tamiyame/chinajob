@@ -37,7 +37,7 @@
 							<td class="col1"><%=recruit.Category2No == 360 ? recruit.CategoryEtcValue : (GetCategoryName(recruit.Category1No) + "<br/>" + GetSubCategoryName(recruit.Category2No))%></td>
 							<td class="col2"><%=companyDetail.KRName != string.Empty ? companyDetail.KRName : (companyDetail.CNName == string.Empty ? companyDetail.CNName : companyDetail.ENGName)%> (<%=ParticiapteList.Record[i].CompanyNo%>)</td>
 							<td class="col3"><%=ParticiapteList.Record[i].DateLastUpdated.ToString("yyyy-MM-dd HH:mm:ss") %></td>
-							<td class="col4"><%=ParticiapteList.Record[i].ConfirmType== 0 ? "대기" : (ParticiapteList.Record[i].ConfirmType == 1 ? "수락" : "거절") %></td>
+							<td class="col4"><%=ParticiapteList.Record[i].ConfirmType== 0 ? "대기" : (ParticiapteList.Record[i].ConfirmType == 1 ? "승인" : "거절") %></td>
 						</tr>
 <%
     }

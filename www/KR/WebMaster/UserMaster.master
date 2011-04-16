@@ -10,7 +10,6 @@
 						<div class="line"></div>
 						<div class="link-item">
 							<ul>
-								<li><a href="/KR/recruit/human_search.aspx">중국인재정보</a></li>
 							</ul>
 						</div>
 <UC:LeftBanner id="LeftBanner" runat="server" />

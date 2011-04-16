@@ -16,16 +16,16 @@
                         <div class="contents">
                             <div class="tab">
 					            <ul>
-						            <li class="select icon icon-folder-middle-on">
+						            <li class="select icon icon-folder-middle-on" onclick="location.href='/KR/user/human_regist_basic.aspx'">
 							            <div><span style="font-family:tahoma;color:#007be3">STEP1 </span>기본정보</div>
 						            </li>
-						            <li class="icon icon-folder-middle-off">
+						            <li class="icon icon-folder-middle-off" onclick="location.href='/KR/user/human_regist_detail_kr.aspx'">
 							            <div><span style="font-family:tahoma;color:#007be3">STEP2 </span>한국어</div>
 						            </li>	
-						            <li class="icon icon-folder-middle-off">
+						            <li class="icon icon-folder-middle-off" onclick="location.href='/KR/user/human_regist_detail_cn.aspx'">
 							            <div><span style="font-family:tahoma;color:#007be3">STEP3 </span>中文</div>
 						            </li>
-						            <li class="last icon icon-folder-middle-off">
+						            <li class="last icon icon-folder-middle-off" onclick="location.href='/KR/user/human_regist_detail_en.aspx'">
 							            <div><span style="font-family:tahoma;color:#007be3">STEP4 </span>English</div>
 						            </li>												
 					            </ul>						

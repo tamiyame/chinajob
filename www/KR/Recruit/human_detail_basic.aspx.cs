@@ -43,6 +43,8 @@ public partial class KR_Recruit_human_detail_basic : SitePage
 			return;
 		}
 
+        Response.Redirect("/kr/home");
+
         PageNo = Request.QueryString["PageNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["PageNo"]);
         CountryNo = Request.QueryString["Country"] == null ? 1 : Convert.ToInt32(Request.QueryString["Country"]);
         JoinType = Request.QueryString["Join"] == null ? (byte)3 : Convert.ToByte(Request.QueryString["Join"]);

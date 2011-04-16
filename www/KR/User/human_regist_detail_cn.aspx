@@ -11,7 +11,8 @@
 		return $.translateHelper.getTextCore(<%= (byte)CountryCode %>, transCode);
 	}
 })(jQuery);
-
+</script>
+<script language="javascript" type="text/javascript">
 var countryCode = <%= (byte)CountryCode %>;
 
 var academicAbilities = <%= GetAcademicAbilityJson() %>;
@@ -27,12 +28,12 @@ var chinaExpChunk = '<%= GetDetailValue("ChinaExp") %>';
 var chinaExp = chinaExpChunk.split("-");
 var military = '<%= GetDetailValue("Military") %>';
 var isCareer = '<%= GetDetailValue("IsCareer") %>';
-var address = '<%= GetDetailValue("Address") %>';
-var description = '<%= GetDetailValue("Description").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("\"", "\\\"") %>';
-var aboutMe = '<%= GetDetailValue("AboutMe").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("\"", "\\\"") %>';
-var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
-var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
-var militaryService = '<%= GetDetailValue("MilitaryService") %>';
+var address = '<%= GetDetailValue("Address").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("'", "\\'") %>';
+var description = '<%= GetDetailValue("Description").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("'", "\\'") %>';
+var aboutMe = '<%= GetDetailValue("AboutMe").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("'", "\\'") %>';
+var lasteastEducation = '<%= GetDetailValue("LastestEducation").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("'", "\\'") %>';
+var graduationYear = '<%= GetDetailValue("GraduationYear").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("'", "\\'") %>';
+var militaryService = '<%= GetDetailValue("MilitaryService").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("'", "\\'") %>';
 </script>
 </asp:Content>
 
@@ -44,16 +45,16 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
     <div class="contents">
         <div class="tab">
             <ul>
-	            <li class="icon icon-folder-middle-off">
+	                <li class="icon icon-folder-middle-off" onclick="location.href='/KR/user/human_regist_basic.aspx'">
 		            <div><span style="font-family:tahoma;color:#007be3">STEP1 </span>기본정보</div>
 	            </li>
-	            <li class="icon icon-folder-middle-off">
+	            <li class="icon icon-folder-middle-off" onclick="location.href='/KR/user/human_regist_detail_kr.aspx'">
 		            <div><span style="font-family:tahoma;color:#007be3">STEP2 </span>한국어</div>
 	            </li>	
-	            <li class="select icon icon-folder-middle-on">
+	            <li class="select icon icon-folder-middle-on" onclick="location.href='/KR/user/human_regist_detail_cn.aspx'">
 		            <div><span style="font-family:tahoma;color:#007be3">STEP3 </span>中文</div>
 	            </li>
-	            <li class="last icon icon-folder-middle-off">
+	            <li class="last icon icon-folder-middle-off" onclick="location.href='/KR/user/human_regist_detail_en.aspx'">
 		            <div><span style="font-family:tahoma;color:#007be3">STEP4 </span>English</div>
 	            </li>												
             </ul>						
