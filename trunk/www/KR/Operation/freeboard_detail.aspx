@@ -25,10 +25,12 @@
                                 <div class="bottom"></div>
                             </div>
                             <div class="board-detail-tool">
+                            <%if (this.WebCookies.UserNo == ArticleInfo.UserNo){ %>
                                 <div class="tool-left">
                                     <a href="<%=PageMove("freeboard_modify.aspx")%>&ArticleNo=<%=ArticleNo %>" class="icon icon-board-modify"></a>
                                     <a href="javascript:;" class="icon icon-board-delete"  onclick="if ( confirm('정말로 삭제하시겠습니까?') ) { location.href='<%=PageMove("freeboard_remove.aspx")%>&ArticleNo=<%=ArticleNo %>' } return false;"></a>
                                 </div>
+                            <% } %>
                                 <div class="tool-right">
                                     <a href="<%=PageMove("freeboard_list.aspx")%>" class="icon icon-board-list"></a>
                                 </div>

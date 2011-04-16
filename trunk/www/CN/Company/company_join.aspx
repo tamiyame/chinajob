@@ -213,7 +213,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="fund"></input></td>
+										<td><input class="w1" type="text" name="fund" maxlength="15"></input></td>
 										<td>
 											<select class="w1" name="fundcurrency">
 												<option value="0"><%= GetText("CN_Company_company_join.aspx_currencyUnit")%></option> 
@@ -232,7 +232,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="investment"></input></td>
+										<td><input class="w1" type="text" name="investment" maxlength="15"></input></td>
 										<td>
 											<select class="w1" name="investment_currency">
 												<option value="0"><%= GetText("CN_Company_company_join.aspx_currencyUnit")%></option> 

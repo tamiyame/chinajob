@@ -211,7 +211,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="fund" maxlength="10"></input></td>
+										<td><input class="w1" type="text" name="fund" maxlength="15"></input></td>
 										<td>
 											<select class="w1" name="fundcurrency">
 												<option value="0">화폐단위</option> 
@@ -230,7 +230,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="investment" maxlength="10"></input></td>
+										<td><input class="w1" type="text" name="investment" maxlength="15"></input></td>
 										<td>
 											<select class="w1" name="investment_currency">
 												<option value="0">화폐단위</option> 

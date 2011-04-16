@@ -27,7 +27,7 @@ public partial class CN_Operation_freeboard_list : ArticleListPage
     {
         get
         {
-            return this.WebCookies.UserNo;
+            return this.WebCookies.UserNo == 0 ? Int32.MaxValue : this.WebCookies.UserNo;
         }
     }
 

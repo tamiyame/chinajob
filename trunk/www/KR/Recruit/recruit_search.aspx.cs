@@ -199,7 +199,7 @@ public partial class KR_Recruit_recruit_search : SitePage
         if (Career != 0)
             url += "&Career=" + Career.ToString();
         if (CapitalType != 0)
-            url += "&CapitalType=" + CapitalType.ToString();
+            url += "&Capital=" + CapitalType.ToString();
         if (CompanyName.Trim() != "")
             url += "&Name=" + Server.UrlEncode(CompanyName);
         return url;
@@ -228,7 +228,7 @@ public partial class KR_Recruit_recruit_search : SitePage
         if (Career != 0)
             url += "&Career=" + Career.ToString();
         if (CapitalType != 0)
-            url += "&CapitalType=" + CapitalType.ToString();
+            url += "&Capital=" + CapitalType.ToString();
         if (CompanyName.Trim() != "")
             url += "&Name=" + Server.UrlEncode(CompanyName);
         return url;

@@ -42,6 +42,9 @@ public partial class KR_Recruit_human_search : SitePage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Redirect("/KR/home/");
+        Response.End();
+
         PageNo = Request.QueryString["PageNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["PageNo"]);
         CountryNo = Request.QueryString["Country"] == null ? 1 : Convert.ToInt32(Request.QueryString["Country"]);
         JoinType = Request.QueryString["Join"] == null ? (byte)3 : Convert.ToByte(Request.QueryString["Join"]);

@@ -202,7 +202,7 @@ namespace Site.Web.Page
                                 SchoolEndDate = education_period_end[i],
                                 SchoolName = education_school[i],
                                 SchoolStartDate = education_period_start[i],
-                                SchoolStatus = Convert.ToByte(education_state[i])
+                                SchoolStatus = Convert.ToByte(education_state.Length > i ? education_state[i] : "0")
                             });
                         create.ExecuteNonQuery();
                     }
@@ -220,7 +220,7 @@ namespace Site.Web.Page
                                 SchoolStartDate = education_period_start[i],
                                 SchoolEndDate = education_period_end[i],
                                 SchoolName = education_school[i],
-                                SchoolStatus = Convert.ToByte(education_state[i])
+                                SchoolStatus = Convert.ToByte(education_state.Length > i ? education_state[i] : "0")
                             });
                         modify.ExecuteNonQuery();
                     }

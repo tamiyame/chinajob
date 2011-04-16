@@ -19,7 +19,7 @@
                                     <td class="col1"><%=this.GetCategoryName(item.BoardCategoryNo) %></td>
                                     <td class="col2">
                                         <a href="<%=PageMove("freeboard_detail.aspx") %>&ArticleNo=<%=item.ArticleNo %>"><%=item.ArticleTitle %></a>
-                                        <span class="reply-count">(<%=item.CommentCreate - item.CommentRemove%>)</span>
+                                        <!--<span class="reply-count">(<%=item.CommentCreate - item.CommentRemove%>)</span>-->
                                     </td>
                                     <td class="col3"><%=item.UserName%></td>
                                     <td class="col4"><%=item.DateCreated.ToString("yyyyy.MM.dd")%></td>
@@ -50,6 +50,10 @@
 <% if (this.WebCookies.IsLogin) { %>
                                         <div class="button">
                                             <a href="<%=PageMove("freeboard_write.aspx")%>" class="icon icon-board-confirm-simple"></a>
+                                        </div>                                        
+<% } else {%>
+                                        <div class="button">
+                                            <a href="#" onclick="alert('로그인후 이용하실수 있습니다.'); return false;" class="icon icon-board-confirm-simple"></a>
                                         </div>                                        
 <% } %>
                                     </td>

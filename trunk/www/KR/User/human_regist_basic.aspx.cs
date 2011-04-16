@@ -75,7 +75,8 @@ public partial class KR_User_human_regist_basic : SitePage
 			hope_job_category2_2 = Request.Form["hope_job_category2_2"] == null ? String.Empty : Request.Form["hope_job_category2_2"],
 			isJoin = Request.Form["isJoin"] == null ? String.Empty : Request.Form["isJoin"],
 			hope_job_category_etc = string.Empty;
-			if (GetSubCategoryName(Convert.ToInt32(hope_job_category2_2)) == "직접입력")
+
+            if (GetCategoryName(Convert.ToInt32(hope_job_category2_1)) == "직접입력")
 			{
 				hope_job_category_etc = Request.Form["hope_job_category_etc"];
 			}
@@ -90,7 +91,7 @@ public partial class KR_User_human_regist_basic : SitePage
 						ArrayNo2 = Convert.ToInt32(location2_2),
 						BusinessCategoryNo = Convert.ToInt32(hope_job_category1_1),
 						Category1No = Convert.ToInt32(hope_job_category2_1),
-						Category2No = Convert.ToInt32(hope_job_category2_2),
+                        Category2No = Convert.ToInt32(hope_job_category2_2 == "" ? "0" : hope_job_category2_2),
 						CategoryEtc = hope_job_category_etc,
 						CityNo1 = Convert.ToInt32(location1_1),
 						CityNo2 = Convert.ToInt32(location1_2),
@@ -112,7 +113,7 @@ public partial class KR_User_human_regist_basic : SitePage
 						ArrayNo2 = Convert.ToInt32(location2_2),
 						BusinessCategoryNo = Convert.ToInt32(hope_job_category1_1),
 						Category1No = Convert.ToInt32(hope_job_category2_1),
-						Category2No = Convert.ToInt32(hope_job_category2_2),
+                        Category2No = Convert.ToInt32(hope_job_category2_2 == "" ? "0" : hope_job_category2_2),
 						CategoryEtc = hope_job_category_etc,
 						CityNo1 = Convert.ToInt32(location1_1),
 						CityNo2 = Convert.ToInt32(location1_2),
@@ -216,5 +217,16 @@ public partial class KR_User_human_regist_basic : SitePage
 
 		return entity.SubCategoryKRName;
 	}
+
+    public string GetCategoryName(int CategoryNo)
+    {
+        CategoryGetInfoArguments arg = new CategoryGetInfoArguments();
+        arg.CategoryNo = CategoryNo;
+        CategoryGetInfo info = new CategoryGetInfo();
+        info.SetArguments(arg);
+        info.ExecuteNonQuery();
+
+        return info.GetOutput().CategoryKRName;
+    }
 
 }

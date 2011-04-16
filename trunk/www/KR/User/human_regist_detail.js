@@ -1,13 +1,8 @@
 ﻿jQuery(function()
 {
-    jQuery.CreateInit();
 
 	$("div.tab ul li").removeClass("icon-folder-middle-on").addClass("icon-folder-middle-off").removeClass("select");
 	$("div.tab ul li:eq("+ countryCode +")").removeClass("icon-folder-middle-off").addClass("icon-folder-middle-on").addClass("select");
-	$("div.tab ul li:eq(0)").click(function() { location.href=GetURL("/user/human_regist_basic.aspx"); });
-	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/user/human_regist_detail_kr.aspx"); });
-	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/user/human_regist_detail_cn.aspx"); });
-	$("div.tab ul li:eq(3)").click(function() { location.href=GetURL("/user/human_regist_detail_en.aspx"); });
 
 	$("input[name=ssn1]").val(ssn1);
 	$("input[name=ssn2]").val(ssn2);
