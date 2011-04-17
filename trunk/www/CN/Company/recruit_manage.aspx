@@ -80,7 +80,7 @@ function onParticipateGetList(results, methodName, context)
 
 function btnConfirm(seqno, type)
 {
-    if ( type == 2 )
+    if ( type == 1 )
     {
         if ( !confirm($.translateHelper.getText("CN_Company_recruit_manage.aspx_approve?")) )
         {
