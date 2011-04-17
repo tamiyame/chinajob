@@ -25,6 +25,14 @@ public partial class KR_Operation_freeboard_detail : ArticleDetailPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+    }
 
+    protected override void OnPreRender(EventArgs e)
+    {
+        base.OnPreRender(e);
+        if (this.ArticleInfo.UserNo != this.WebCookies.UserNo)
+        {
+            Response.Redirect("/kr/Operation/freeboard_list.aspx");
+        }
     }
 }
