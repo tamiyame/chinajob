@@ -18,6 +18,7 @@ using Com.Framework.Data;
 using System.Collections.Generic;
 using Com.Library.Translate;
 using Com.Library.Cookie;
+using Com.Library.DB.Participate;
 
 public partial class KR_User_resume_view : System.Web.UI.Page
 {
@@ -37,6 +38,7 @@ public partial class KR_User_resume_view : System.Web.UI.Page
 	public Repeater[] RptLanguage { get; set; }
 	public Repeater[] RptLicense { get; set; }
     public WebCookie webCookie = null;
+    public List<ParticipateEntity> ParticipateList = null;
 	protected void Page_Load(object sender, EventArgs e)
     {
         webCookie = new WebCookie();
@@ -47,6 +49,15 @@ public partial class KR_User_resume_view : System.Web.UI.Page
             Response.Write("<script language='javascript'>alert('유저 정보가 정확하시 않습니다.'); self.close();</script>");
             Response.End();
         }
+
+        ParticipateGetListArguments pListArg = new ParticipateGetListArguments();
+        pListArg.UserNo = UserNo;
+        pListArg.PageNo = 1;
+        pListArg.PageSize = 3;
+        ParticipateGetList pList = new ParticipateGetList();
+        pList.SetArguments(pListArg);
+        pList.Execute();
+        ParticipateList = pList.GetRecords();
 
         ResumeGetInfoArguments resumeGetInfoArguments = new ResumeGetInfoArguments();
         resumeGetInfoArguments.UserNo = UserNo;
@@ -336,83 +347,95 @@ public partial class KR_User_resume_view : System.Web.UI.Page
 		return retVal;
 	}
 
-	/*
-		public string GetMilitaryInfo(byte type)
-		{
-			string retValue = "무관";
-			switch (type)
-			{
-				case 1: retValue = "필"; break;
-				case 2: retValue = "미필"; break;
-				case 3: retValue = "면제"; break;
-				case 4: retValue = "무관"; break;
-			}
-			return retValue;
-		}
+    public string GetCompanyInfo(List<ParticipateEntity> list, int idx)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i].UserIDX == idx)
+            {
+                return GetCompanyName(list[i].CompanyNo) + "(" + list[i].CompanyNo.ToString() + ")";
+            }
+        }
+        return string.Empty;
+    }
 
-		public string GetCompanyName(int CountryNo, int CompanyNo)
-		{
-			CompanyDetailGetInfoArguments arg = new CompanyDetailGetInfoArguments();
-			arg.CompanyNo = CompanyNo;
-			CompanyDetailGetInfo info = new CompanyDetailGetInfo();
-			info.SetArguments(arg);
-			info.ExecuteNonQuery();
-			if (CountryNo == 1)
-			{
-				return info.GetOutput().KRName;
-			}
-			else if (CountryNo == 2)
-			{
-				return info.GetOutput().CNName;
-			}
-			else
-			{
-				return info.GetOutput().ENGName;
-			}
-		}
+    /*
+        public string GetMilitaryInfo(byte type)
+        {
+            string retValue = "무관";
+            switch (type)
+            {
+                case 1: retValue = "필"; break;
+                case 2: retValue = "미필"; break;
+                case 3: retValue = "면제"; break;
+                case 4: retValue = "무관"; break;
+            }
+            return retValue;
+        }
 
-		public string GetCategoryName(int CountryNo, int CategoryNo)
-		{
-			CategoryGetInfoArguments arg = new CategoryGetInfoArguments();
-			arg.CategoryNo = CategoryNo;
-			CategoryGetInfo info = new CategoryGetInfo();
-			info.SetArguments(arg);
-			info.ExecuteNonQuery();
-			if (CountryNo == 1)
-			{
-				return info.GetOutput().CategoryKRName;
-			}
-			else if (CountryNo == 2)
-			{
-				return info.GetOutput().CategoryCNName;
-			}
-			else
-			{
-				return info.GetOutput().CategoryENGName;
-			}
-		}
+        public string GetCompanyName(int CountryNo, int CompanyNo)
+        {
+            CompanyDetailGetInfoArguments arg = new CompanyDetailGetInfoArguments();
+            arg.CompanyNo = CompanyNo;
+            CompanyDetailGetInfo info = new CompanyDetailGetInfo();
+            info.SetArguments(arg);
+            info.ExecuteNonQuery();
+            if (CountryNo == 1)
+            {
+                return info.GetOutput().KRName;
+            }
+            else if (CountryNo == 2)
+            {
+                return info.GetOutput().CNName;
+            }
+            else
+            {
+                return info.GetOutput().ENGName;
+            }
+        }
 
-		public string GetSubCategoryName(int CountryNo, int SubCategoryNo)
-		{
-			SubCategoryGetInfoArguments arg = new SubCategoryGetInfoArguments();
-			arg.SubCategoryNo = SubCategoryNo;
-			SubCategoryGetInfo info = new SubCategoryGetInfo();
-			info.SetArguments(arg);
-			info.ExecuteNonQuery();
+        public string GetCategoryName(int CountryNo, int CategoryNo)
+        {
+            CategoryGetInfoArguments arg = new CategoryGetInfoArguments();
+            arg.CategoryNo = CategoryNo;
+            CategoryGetInfo info = new CategoryGetInfo();
+            info.SetArguments(arg);
+            info.ExecuteNonQuery();
+            if (CountryNo == 1)
+            {
+                return info.GetOutput().CategoryKRName;
+            }
+            else if (CountryNo == 2)
+            {
+                return info.GetOutput().CategoryCNName;
+            }
+            else
+            {
+                return info.GetOutput().CategoryENGName;
+            }
+        }
 
-			if (CountryNo == 1)
-			{
-				return info.GetOutput().SubCategoryKRName;
-			}
-			else if (CountryNo == 2)
-			{
-				return info.GetOutput().SubCategoryCNName;
-			}
-			else
-			{
-				return info.GetOutput().SubCategoryENGName;
-			}
-		}
+        public string GetSubCategoryName(int CountryNo, int SubCategoryNo)
+        {
+            SubCategoryGetInfoArguments arg = new SubCategoryGetInfoArguments();
+            arg.SubCategoryNo = SubCategoryNo;
+            SubCategoryGetInfo info = new SubCategoryGetInfo();
+            info.SetArguments(arg);
+            info.ExecuteNonQuery();
 
-	*/
+            if (CountryNo == 1)
+            {
+                return info.GetOutput().SubCategoryKRName;
+            }
+            else if (CountryNo == 2)
+            {
+                return info.GetOutput().SubCategoryCNName;
+            }
+            else
+            {
+                return info.GetOutput().SubCategoryENGName;
+            }
+        }
+
+    */
 }

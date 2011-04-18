@@ -35,8 +35,46 @@ public partial class KR_Home_Default : SitePage
     public ListData<RecruitSearchEntity, OutputEntity> RecruitSearchList = null;
     public ListData<ResumeSearchEntity, OutputEntity> UserSearchList = null;
 
+    public ResumeEntity resumeEntity;
+    public ResumeDetailEntity detailEntity_cn;
+    public ResumeDetailEntity detailEntity_kr;
+    public ResumeDetailEntity detailEntity_eng;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (this.WebCookies.IsLogin && !this.WebCookies.isCompany)
+        {
+            ResumeGetInfoArguments infoArg = new ResumeGetInfoArguments();
+            infoArg.UserNo = this.WebCookies.UserNo;
+            ResumeGetInfo info_resume = new ResumeGetInfo();
+            info_resume.SetArguments(infoArg);
+            info_resume.ExecuteNonQuery();
+            resumeEntity = info_resume.GetOutput();
+
+            ResumeDetailGetInfoArguments detailArg_kr = new ResumeDetailGetInfoArguments();
+            detailArg_kr.CountryNo = 1;
+            detailArg_kr.UserNo = this.WebCookies.UserNo;
+            ResumeDetailGetInfo detail_kr = new ResumeDetailGetInfo();
+            detail_kr.SetArguments(detailArg_kr);
+            detail_kr.ExecuteNonQuery();
+            detailEntity_kr = detail_kr.GetOutput();
+            ResumeDetailGetInfoArguments detailArg_cn = new ResumeDetailGetInfoArguments();
+            detailArg_cn.CountryNo = 2;
+            detailArg_cn.UserNo = this.WebCookies.UserNo;
+            ResumeDetailGetInfo detail_cn = new ResumeDetailGetInfo();
+            detail_cn.SetArguments(detailArg_cn);
+            detail_cn.ExecuteNonQuery();
+            detailEntity_cn = detail_cn.GetOutput();
+
+            ResumeDetailGetInfoArguments detailArg_eng = new ResumeDetailGetInfoArguments();
+            detailArg_eng.CountryNo = 3;
+            detailArg_eng.UserNo = this.WebCookies.UserNo;
+            ResumeDetailGetInfo detail_eng = new ResumeDetailGetInfo();
+            detail_eng.SetArguments(detailArg_eng);
+            detail_eng.ExecuteNonQuery();
+            detailEntity_eng = detail_eng.GetOutput();
+        }
+
         {
             RecruitSearchArguments searchArg = new RecruitSearchArguments();
             searchArg.CountryNo = this.WebMaster.CountryCode;

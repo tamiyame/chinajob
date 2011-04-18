@@ -19,9 +19,9 @@
                                     <td class="col1"><%=this.GetCategoryName(item.BoardCategoryNo) %></td>
                                     <td class="col2">
                                         <a href="<%=PageMove("freeboard_detail.aspx") %>&ArticleNo=<%=item.ArticleNo %>"><%=item.ArticleTitle %></a>
-                                        <span class="reply-count">(<%=item.CommentCreate - item.CommentRemove%>)</span>
+                                        <!--<span class="reply-count">(<%=item.CommentCreate - item.CommentRemove%>)</span>-->
                                     </td>
-                                    <td class="col3"><%=item.UserCNName%></td>
+                                    <td class="col3"><%=item.UserName.Split('|').Length > 1 ? ( item.UserName.Split('|')[1] == string.Empty ? item.UserName.Split('|')[0] : item.UserName.Split('|')[1] ) : item.UserName%></td>
                                     <td class="col4"><%=item.DateCreated.ToString("yyyyy.MM.dd")%></td>
                                 </tr>
 <% } %>
@@ -51,6 +51,10 @@
                                         <div class="button">
                                             <a href="<%=PageMove("freeboard_write.aspx")%>" class="icon icon-board-confirm-simple"></a>
                                         </div>                                        
+<% } else {%>
+                                        <div class="button">
+                                            <a href="#" onclick="alert('请试用登录之后'); return false;" class="icon icon-board-confirm-simple"></a>
+                                        </div>
 <% } %>
                                     </td>
                                 </tr>

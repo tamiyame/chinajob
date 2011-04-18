@@ -58,9 +58,9 @@
                               <td class="size33 regist-label">3지망<span class="require">*</span></td>
                           </tr>
                           <tr>
-                              <td><%=GetCompanyName(resumeEntity.CompanyNo1)%>(<%=resumeEntity.CompanyNo1%>)</td>
-                              <td><%=GetCompanyName(resumeEntity.CompanyNo2)%>(<%=resumeEntity.CompanyNo2%>)</td>
-                              <td><%=GetCompanyName(resumeEntity.CompanyNo3)%>(<%=resumeEntity.CompanyNo3%>)</td>
+                              <td><%=GetCompanyInfo(ParticipateList, 1 )%></td>
+                              <td><%=GetCompanyInfo(ParticipateList, 2 )%></td>
+                              <td><%=GetCompanyInfo(ParticipateList, 3 )%></td>
                           </tr>
                           <tr>
                               <td class="regist-label">희망급여 (RMB/1개월)<span class="require">*</span></td>
@@ -390,9 +390,9 @@
                       <table class="regist-table">
                           <tr>
                               <td class="regist-label" style="width:141px">语言</td>
-                              <td class="regist-label" style="width:258px">>考试名称</td>
-                              <td class="regist-label" style="width:182px">>分数</td>
-                              <td class="regist-label" style="width:143px">>会话</td>                                             
+                              <td class="regist-label" style="width:258px">考试名称</td>
+                              <td class="regist-label" style="width:182px">分数</td>
+                              <td class="regist-label" style="width:143px">会话</td>                                             
                           </tr>
                           <asp:Repeater ID="rptLanguage_cn" runat="server">
                           <ItemTemplate>

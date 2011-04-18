@@ -16,7 +16,7 @@
                                     <td class="col2">
                                         <select name="BoardCategoryNo">
 <% foreach (BoardCategoryEntity item in BoardCategoryList) { %>
-                                            <option value="<%=item.BoardCategoryNo %>"><%=item.CategoryName%></option>
+                                            <option value="<%=item.BoardCategoryNo %>"><%=item.CategoryCNName%></option>
 <% } %>
                                         </select>
                                     </td>

@@ -23,14 +23,6 @@ public partial class KR_Operation_freeboard_list : ArticleListPage
         }
     }
 
-    public override int UserNo_Search
-    {
-        get
-        {
-            return this.WebCookies.UserNo == 0 ? int.MaxValue : this.WebCookies.UserNo;
-        }
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
 

@@ -52,10 +52,13 @@ function onSet()
     var b = false;
     jQuery("select[name=UserIDX]").each(function()
     {
-        if ( arrTest[jQuery(this).val()] == undefined )
-            arrTest[jQuery(this).val()] = 1;
-        else
-            b = true;
+        if ( jQuery(this).val() != 0 )
+        {
+            if ( arrTest[jQuery(this).val()] == undefined )
+                arrTest[jQuery(this).val()] = 1;
+            else
+                b = true;
+        }
     });
     
     if ( b )

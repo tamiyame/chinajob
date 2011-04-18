@@ -81,9 +81,6 @@
 
 (function($){
     $.extend({
-        CreateInit:function()
-        {
-        },        
         onWrite : function()
         {
             /* resume detail */

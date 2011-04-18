@@ -21,7 +21,7 @@
                                         <a href="<%=PageMove("freeboard_detail.aspx") %>&ArticleNo=<%=item.ArticleNo %>"><%=item.ArticleTitle %></a>
                                         <!--<span class="reply-count">(<%=item.CommentCreate - item.CommentRemove%>)</span>-->
                                     </td>
-                                    <td class="col3"><%=item.UserName%></td>
+                                    <td class="col3"><%=item.UserName.Split('|').Length > 1 ? ( item.UserName.Split('|')[0] == string.Empty ? item.UserName.Split('|')[1] : item.UserName.Split('|')[0] ) : item.UserName%></td>
                                     <td class="col4"><%=item.DateCreated.ToString("yyyyy.MM.dd")%></td>
                                 </tr>
 <% } %>

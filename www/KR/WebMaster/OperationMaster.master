@@ -13,8 +13,8 @@
 						<div class="link-item">
 							<ul>
 								<li><a href="<%=this.GetURL("/operation/notice_list.aspx")%>">공지사항</a></li>
-								<li><a href="<%=this.GetURL("/operation/qna_list.aspx")%>">Q&A</a></li>
-								<li><a href="<%=this.GetURL("/operation/freeboard_list.aspx")%>">자유게시판</a></li>
+								<!--<li><a href="<%=this.GetURL("/operation/qna_list.aspx")%>">Q&A</a></li>-->
+								<li><a href="<%=this.GetURL("/operation/freeboard_list.aspx")%>">문의게시판</a></li>
 							</ul>
 						</div>
 <UC:LeftBanner id="LeftBanner" runat="server" />
