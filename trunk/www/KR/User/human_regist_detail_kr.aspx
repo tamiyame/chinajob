@@ -191,7 +191,7 @@ var militaryService = '<%= GetDetailValue("MilitaryService").Replace("\\", "\\\\
                         <tr>
                             <td class="regist-label" colspan="2">주소(현재 실 거주지)<span class="require">*</span></td>
                             <td colspan="3">
-                                <input type="text" name="address" class="w100"/>
+                                <input type="text" name="address" class="w100" maxlength="100"/>
                             </td>                                 
                         </tr>
                     </table>

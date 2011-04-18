@@ -19,6 +19,7 @@ using Com.Library.DB.Participate;
 using Com.Library.DB.Category;
 using Com.Library.Cookie;
 using Com.Library.DB.Schedule;
+using Com.Library.DB.User;
 
 public partial class KR_Recruit_recruit_company_select_popup : System.Web.UI.Page
 {
@@ -66,6 +67,59 @@ public partial class KR_Recruit_recruit_company_select_popup : System.Web.UI.Pag
             Response.Write("<script language='javascript'>alert('기업회원 입니다.'); self.close();</script>");
             Response.End();
         }
+
+        ResumeGetInfoArguments infoArg = new ResumeGetInfoArguments();
+        infoArg.UserNo = cookie.UserNo;
+        ResumeGetInfo info = new ResumeGetInfo();
+        info.SetArguments(infoArg);
+        info.ExecuteNonQuery();
+        ResumeEntity resumeEntity = info.GetOutput();
+
+        if (resumeEntity.RegistryTime == DateTime.MinValue)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>alert('이력서 등록이 안되었습니다.\\n 이력서를 등록해주세요!!!.'); self.close();</script>");
+            Response.End();
+        }
+
+        ResumeDetailGetInfoArguments detailArg_kr = new ResumeDetailGetInfoArguments();
+        detailArg_kr.CountryNo = 1;
+        detailArg_kr.UserNo = cookie.UserNo;
+        ResumeDetailGetInfo detail_kr = new ResumeDetailGetInfo();
+        detail_kr.SetArguments(detailArg_kr);
+        detail_kr.ExecuteNonQuery();
+        ResumeDetailEntity detailEntity_kr = detail_kr.GetOutput();
+        if (detailEntity_kr.ResumeDetailNo == 0)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>alert('한국어 이력서가 등록이 안되어 있습니다.\\n 이력서를 등록해주세요!!!'); self.close();</script>");
+            Response.End();
+        }
+
+        ResumeDetailGetInfoArguments detailArg_cn = new ResumeDetailGetInfoArguments();
+        detailArg_cn.CountryNo = 2;
+        detailArg_cn.UserNo = cookie.UserNo;
+        ResumeDetailGetInfo detail_cn = new ResumeDetailGetInfo();
+        detail_cn.SetArguments(detailArg_cn);
+        detail_cn.ExecuteNonQuery();
+        ResumeDetailEntity detailEntity_cn = detail_cn.GetOutput();
+
+        ResumeDetailGetInfoArguments detailArg_eng = new ResumeDetailGetInfoArguments();
+        detailArg_eng.CountryNo = 3;
+        detailArg_eng.UserNo = cookie.UserNo;
+        ResumeDetailGetInfo detail_eng= new ResumeDetailGetInfo();
+        detail_eng.SetArguments(detailArg_eng);
+        detail_eng.ExecuteNonQuery();
+        ResumeDetailEntity detailEntity_eng = detail_eng.GetOutput();
+
+        if (detailEntity_eng.ResumeDetailNo == 0 && detailEntity_cn.ResumeDetailNo == 0)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>alert('중국어 또는 영문이력서를 등록하셔야합니다\\n 이력서를 등록해주세요!!!'); self.close();</script>");
+            Response.End();
+        }
+
+
 
         ParticipateGetList list = new ParticipateGetList();
         ParticipateGetListArguments arg = new ParticipateGetListArguments();

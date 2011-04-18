@@ -179,7 +179,7 @@ function GetURL(url)
 			                        <a class="icon icon-menu-operation main-label" href="<%=this.GetURL("/operation/notice_list.aspx")%>"></a>
 			                        <ul class="submenu middle ie6fix">
 			                            <li><a class="icon icon-menu-sub-notice" href="<%=this.GetURL("/operation/notice_list.aspx")%>"></a></li>
-			                            <li><a class="icon icon-menu-sub-qna" href="<%=this.GetURL("/operation/qna_list.aspx")%>"></a></li>
+			                            <!--<li><a class="icon icon-menu-sub-qna" href="<%=this.GetURL("/operation/qna_list.aspx")%>"></a></li>-->
 			                            <li><a class="icon icon-menu-sub-free" href="<%=this.GetURL("/operation/freeboard_list.aspx")%>"></a></li>
 			                        </ul>
 			                    </li>

@@ -23,5 +23,8 @@ namespace Com.Library.DB.Schedule
         public byte ParticipateType { get { return Convert.ToByte(GetData("ParticipateType", (byte)0)); } }
         public DateTime Participate_Start { get { return Convert.ToDateTime(GetData("Participate_Start", DateTime.MinValue)); } }
         public DateTime Participate_End { get { return Convert.ToDateTime(GetData("Participate_End", DateTime.MinValue)); } }
+        public byte UserViewType { get { return Convert.ToByte(GetData("UserViewType", (byte)0)); } }
+        public DateTime UserView_Start { get { return Convert.ToDateTime(GetData("UserView_Start", DateTime.MinValue)); } }
+        public DateTime UserView_End { get { return Convert.ToDateTime(GetData("UserView_End", DateTime.MinValue)); } }
     }
 }

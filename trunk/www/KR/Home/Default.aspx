@@ -374,4 +374,37 @@ idx++;
 <% } %>
 <% } %>
 <% } %>
+
+<% if ( this.WebCookies.IsLogin && !this.WebCookies.isCompany) { %>
+<% if (this.resumeEntity.RegistryTime == DateTime.MinValue) { %>
+<script language="javascript" type="text/javascript">
+setTimeout(function() {
+if ( confirm("이력서가 등록이 안되어 있습니다.\n 이력서를 등록하시겠습니까?") )
+{
+    location.href = "/KR/user/human_regist_basic.aspx";
+}
+}, 1000 );
+</script>
+<% } else { %>
+<%  if (this.detailEntity_kr.ResumeDetailNo == 0) { %>
+<script language="javascript" type="text/javascript">
+setTimeout(function() {
+if ( confirm("한국어 이력서가 등록이 안되어 있습니다.\n 이력서를 등록하시겠습니까?") )
+{
+    location.href = "/KR/user/human_regist_detail_kr.aspx";
+}}, 1000 );
+</script>
+<%  } else { %>
+<%      if ( this.detailEntity_cn.ResumeDetailNo == 0 && this.detailEntity_eng.ResumeDetailNo == 0 ) { %>
+<script language="javascript" type="text/javascript">
+setTimeout(function() {
+if ( confirm("중국어 또는 영문 이력서중 한 이력서를 등록하셔야합니다.\n 이력서를 등록하시겠습니까?") )
+{
+    location.href = "/KR/user/human_regist_detail_cn.aspx";
+}}, 1000 );
+</script>
+<%      } %>
+<%  } %>
+<% } %>
+<% } %>
 </asp:Content>

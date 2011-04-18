@@ -13,7 +13,7 @@
 						<div class="link-item">
 							<ul>
 								<li><a href="<%=this.GetURL("/operation/notice_list.aspx")%>"><%= this.GetText("CN_WebMaster_OperationMaster.master_15") %></a></li>
-								<li><a href="<%=this.GetURL("/operation/qna_list.aspx")%>"><%= this.GetText("CN_WebMaster_OperationMaster.master_16")%></a></li>
+								<!--<li><a href="<%=this.GetURL("/operation/qna_list.aspx")%>"><%= this.GetText("CN_WebMaster_OperationMaster.master_16")%></a></li>-->
 								<li><a href="<%=this.GetURL("/operation/freeboard_list.aspx")%>"><%= this.GetText("CN_WebMaster_OperationMaster.master_17")%></a></li>
 							</ul>
 						</div>

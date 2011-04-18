@@ -50,11 +50,12 @@ namespace Com.Library.Translate
 				initData.Add(new TranslateEntity("CN_WebMaster_CNMaster.master_80_1", "건", "件", ""));
 				initData.Add(new TranslateEntity("CN_WebMaster_CNMaster.master_102", "님", "先生", ""));
 				initData.Add(new TranslateEntity("CN_WebMaster_CNMaster.master_104", "기업정보관리", "企业信息管理", ""));
-				initData.Add(new TranslateEntity("CN_WebMaster_CNMaster.master_106", "채용관리", "招聘管理", ""));
+                initData.Add(new TranslateEntity("CN_WebMaster_CNMaster.master_106", "채용등록", "招聘登录", ""));
 				initData.Add(new TranslateEntity("CN_WebMaster_CNMaster.master_106_1", "건", "件", ""));
+                initData.Add(new TranslateEntity("CN_WebMaster_CNMaster.master_106_2", "채용관리", "招聘管理", ""));
 				initData.Add(new TranslateEntity("CN_WebMaster_OperationMaster.master_15", "공지사항", "公告事项", ""));
-				initData.Add(new TranslateEntity("CN_WebMaster_OperationMaster.master_16", "질문답변", "答疑", ""));
-				initData.Add(new TranslateEntity("CN_WebMaster_OperationMaster.master_17", "자유게시판", "自由讨论区", ""));
+				initData.Add(new TranslateEntity("CN_WebMaster_OperationMaster.master_16", "Q&A", "Q&A", ""));
+                initData.Add(new TranslateEntity("CN_WebMaster_OperationMaster.master_17", "문의게시판", "发问讨论区", ""));
 				initData.Add(new TranslateEntity("CN_WebMaster_ParticipationMaster.master_14", "채용면접관", "招聘面试管理", ""));
 				initData.Add(new TranslateEntity("CN_WebMaster_ParticipationMaster.master_15", "취업정보관", "就业信息管理", ""));
 				initData.Add(new TranslateEntity("CN_WebMaster_ParticipationMaster.master_16", "취업설명회", "就业说明会", ""));
