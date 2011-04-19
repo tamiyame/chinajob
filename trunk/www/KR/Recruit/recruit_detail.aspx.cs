@@ -122,6 +122,10 @@ public partial class KR_Recruit_recruit_detail : SitePage
 
     public string GetCategoryName(int CategoryNo)
     {
+        if (CategoryNo == 0)
+        {
+            return "";
+        }
         CategoryGetInfoArguments arg = new CategoryGetInfoArguments();
         arg.CategoryNo = CategoryNo;
         CategoryGetInfo info = new CategoryGetInfo();

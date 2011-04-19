@@ -165,7 +165,7 @@
                                                 </tr>                          
                                                 <tr>
                                                     <td class="label">연령</td>
-                                                    <td class="text-2"><%=RecruitInfo.AgeCategory == 0 ? (RecruitInfo.AgeEtcValue == string.Empty ? "" : (RecruitInfo.AgeEtcValue+"세")) : (GetCategoryName(RecruitInfo.AgeCategory) + "세")%></td>
+                                                    <td class="text-2"><%=RecruitInfo.AgeCategory == 0 ? (RecruitInfo.AgeEtcValue == string.Empty ? "무관" : (RecruitInfo.AgeEtcValue+"세")) : (GetCategoryName(RecruitInfo.AgeCategory) + "세")%></td>
                                                 </tr>                       
                                                 <tr>
                                                     <td class="label">학력</td>
@@ -173,11 +173,11 @@
                                                 </tr>                         
                                                 <tr>
                                                     <td class="label">중국어</td>
-                                                    <td class="text-2"><%=GetCategoryName(RecruitInfo.ChineseLevel)%></td>
+                                                    <td class="text-2"><%=GetCategoryName(RecruitInfo.ChineseLevel) == string.Empty ? "무관" : GetCategoryName(RecruitInfo.ChineseLevel)%></td>
                                                 </tr>                         
                                                 <tr>
                                                     <td class="label">일본어</td>
-                                                    <td class="text-2"><%=GetCategoryName(RecruitInfo.JapanessLevel)%></td>
+                                                    <td class="text-2"><%=GetCategoryName(RecruitInfo.JapanessLevel) == string.Empty ? "무관" : GetCategoryName(RecruitInfo.JapanessLevel)%></td>
                                                 </tr>                         
                                                 <tr>
                                                     <td class="label">근무지역</td>
@@ -214,7 +214,7 @@
                                                 </tr>                         
                                                 <tr>
                                                     <td class="label">영어</td>
-                                                    <td class="text-2"><%=GetCategoryName(RecruitInfo.EnglishLevel)%></td>
+                                                    <td class="text-2"><%=GetCategoryName(RecruitInfo.EnglishLevel) == string.Empty ? "무관" : GetCategoryName(RecruitInfo.EnglishLevel)%></td>
                                                 </tr>                         
                                                 <tr>
                                                     <td class="label">기타</td>

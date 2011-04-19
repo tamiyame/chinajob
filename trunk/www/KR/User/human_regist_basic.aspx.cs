@@ -117,7 +117,7 @@ public partial class KR_User_human_regist_basic : SitePage
 						CategoryEtc = hope_job_category_etc,
 						CityNo1 = Convert.ToInt32(location1_1),
 						CityNo2 = Convert.ToInt32(location1_2),
-						HopeRecruitDate = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day)),
+						HopeRecruitDate = Convert.ToDateTime(year + "-" +  month + "-" + day),
 						HopeSalary = pay,
 						JoinType = Convert.ToByte(isJoin)
 					});
