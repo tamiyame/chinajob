@@ -234,7 +234,6 @@ function SetJobType(no,value)
 }
 
 $(document).ready(function() {
-    jQuery.CreateInit();
 	// 이력서가 있는 경우 값 세팅
 	var companyNo1 = '<%= GetResumeEntityValue("CompanyNo1") %>';
 	var companyNo2 = '<%= GetResumeEntityValue("CompanyNo2") %>';
@@ -280,11 +279,8 @@ $(document).ready(function() {
 			$(this).attr("checked", "");
 		}
 	});
-
-	$("div.tab ul li:eq(0)").click(function() { location.href=GetURL("/user/human_regist_basic.aspx"); });
-	$("div.tab ul li:eq(1)").click(function() { location.href=GetURL("/user/human_regist_detail_kr.aspx"); });
-	$("div.tab ul li:eq(2)").click(function() { location.href=GetURL("/user/human_regist_detail_cn.aspx"); });
-	$("div.tab ul li:eq(3)").click(function() { location.href=GetURL("/user/human_regist_detail_en.aspx"); });
+	
+	jQuery.CreateInit();
 });
 (function($){
     $.extend({
