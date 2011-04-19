@@ -227,6 +227,21 @@
                             </div>
 						</div>
 <script language="javascript" type="text/javascript">
+var companyNo1 = '<%= GetResumeEntityValue("CompanyNo1") %>';
+var companyNo2 = '<%= GetResumeEntityValue("CompanyNo2") %>';
+var companyNo3 = '<%= GetResumeEntityValue("CompanyNo3") %>';
+var hopeSalary = '<%= GetResumeEntityValue("HopeSalary") %>';
+var cityNo1 = '<%= GetResumeEntityValue("CityNo1") %>';
+var arrayNo1 = '<%= GetResumeEntityValue("ArrayNo1") %>';
+var cityNo2 = '<%= GetResumeEntityValue("CityNo2") %>';
+var arrayNo2 = '<%= GetResumeEntityValue("ArrayNo2") %>';
+var hopeRecruitDate = new Date(<%= GetResumeEntityValue("HopeRecruitDateYear") %>, <%= GetResumeEntityValue("HopeRecruitDateMonth") %>-1, <%= GetResumeEntityValue("HopeRecruitDateDay") %>);
+var businessCategoryNo = '<%= GetResumeEntityValue("BusinessCategoryNo") %>';
+var category1No = '<%= GetResumeEntityValue("Category1No") %>';
+var category2No = '<%= GetResumeEntityValue("Category2No") %>';
+var categoryEtc = '<%= GetResumeEntityValue("CategoryEtc") %>'
+var joinType = '<%= GetResumeEntityValue("JoinType") %>';
+	
 
 function SetJobType(no,value)
 {
@@ -235,21 +250,6 @@ function SetJobType(no,value)
 
 $(document).ready(function() {
 	// 이력서가 있는 경우 값 세팅
-	var companyNo1 = '<%= GetResumeEntityValue("CompanyNo1") %>';
-	var companyNo2 = '<%= GetResumeEntityValue("CompanyNo2") %>';
-	var companyNo3 = '<%= GetResumeEntityValue("CompanyNo3") %>';
-	var hopeSalary = '<%= GetResumeEntityValue("HopeSalary") %>';
-	var cityNo1 = '<%= GetResumeEntityValue("CityNo1") %>';
-	var arrayNo1 = '<%= GetResumeEntityValue("ArrayNo1") %>';
-	var cityNo2 = '<%= GetResumeEntityValue("CityNo2") %>';
-	var arrayNo2 = '<%= GetResumeEntityValue("ArrayNo2") %>';
-	var hopeRecruitDate = new Date(<%= GetResumeEntityValue("HopeRecruitDateYear") %>, <%= GetResumeEntityValue("HopeRecruitDateMonth") %>-1, <%= GetResumeEntityValue("HopeRecruitDateDay") %>);
-	var businessCategoryNo = '<%= GetResumeEntityValue("BusinessCategoryNo") %>';
-	var category1No = '<%= GetResumeEntityValue("Category1No") %>';
-	var category2No = '<%= GetResumeEntityValue("Category2No") %>';
-	var categoryEtc = '<%= GetResumeEntityValue("CategoryEtc") %>'
-	var joinType = '<%= GetResumeEntityValue("JoinType") %>';
-	
 	$("input[name=hopejob_1]").val(companyNo1);
 	$("input[name=hopejob_2]").val(companyNo2);
 	$("input[name=hopejob_3]").val(companyNo3);
@@ -307,12 +307,23 @@ $(document).ready(function() {
             $("select[name=location1_1]").change(function(){
                 if($(this).val())                
                     $.FillCategory($(this).val(),$("select[name=location2_1]"));
-            }).change();
+            });
+            
+            if ( cityNo1 == "" )
+            {
+				$("select[name=location1_1]").change();
+            }
             
             $("select[name=location1_2]").change(function(){
                 if($(this).val())                
                     $.FillCategory($(this).val(),$("select[name=location2_2]"));
-            }).change();
+            });
+
+            if ( cityNo2 == "" )
+            {
+				$("select[name=location1_2]").change();
+            }
+            
             
             /*
             $("select[name=hope_job_category2_2]").change(function() {
@@ -337,8 +348,11 @@ $(document).ready(function() {
 					$("input[name=hope_job_category_etc]").hide();
 					$("select[name=hope_job_category2_2]").show();
 			    }
-            }).change();
+            });
             
+            if ( category1No == "" )
+				$("select[name=hope_job_category2_1]").change();
+
             $(".jobcode_select input").each(function(i){
                 $(this).click(function(){
                     var popup = window.open('./company_search.aspx?no='+(i+1),'','width=380px,height=280px,menubar=no,toolbars=no,scrollbars=no','');                
