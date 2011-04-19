@@ -262,7 +262,7 @@ $(document).ready(function() {
 	if ( cityNo2 != "" )
 		$.FillCategory(cityNo2,$("select[name=location2_2]"),function() {setTimeout(function() {$("select[name=location2_2]").val(arrayNo2);}, 100);});
 	$("select[name=year]").val(hopeRecruitDate.getFullYear());
-	$("select[name=month]").val(hopeRecruitDate.getMonth());
+	$("select[name=month]").val(hopeRecruitDate.getMonth() + 1);
 	$("select[name=day]").val(hopeRecruitDate.getDate());
 	$("select[name=hope_job_category1_1]").val(businessCategoryNo);
 	$("select[name=hope_job_category2_1]").val(category1No);

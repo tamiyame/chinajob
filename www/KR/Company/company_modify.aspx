@@ -198,7 +198,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="fund" value="<%=CompanyDetailInfo.Capital %>" maxlength="10" ></td>
+										<td><input class="w1" type="text" name="fund" value="<%=CompanyDetailInfo.Capital %>" maxlength="15" ></td>
 										<td>
 											<select class="w1" name="fundcurrency">
 												<option value="0" <%=CompanyDetailInfo.CapitalCurrencyNo == 0 ? "selected='selected'":"" %>>화폐단위</option>

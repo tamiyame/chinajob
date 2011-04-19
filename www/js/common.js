@@ -61,7 +61,7 @@
         }
         setInterval(intervalRefresh, 4000);
         $('.expo-folder').click(function() { $(this).addClass('hide'); $('.expo-content').removeClass('hide'); });
-    })
+    });
 
     $.extend({
         CategoryLangName: function(item) {
