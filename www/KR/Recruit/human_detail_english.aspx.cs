@@ -12,6 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using Com.Library.Translate;
 using Site.Web.Page;
+using Site.Web.Util;
 
 public partial class KR_Recruit_human_detail_english : KR_Recruit_human_detail
 {
@@ -28,7 +29,12 @@ public partial class KR_Recruit_human_detail_english : KR_Recruit_human_detail
     public byte PageSize = 10;
 	protected void Page_Load(object sender, EventArgs e)
 	{
-        Response.Redirect("/kr/home");
+        if (!this.IsUserView)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.UserViewType) + "');</script>");
+            Response.End();
+        }
 
 		CountryCode = TranslateHelper.ContryCode.EN;
 

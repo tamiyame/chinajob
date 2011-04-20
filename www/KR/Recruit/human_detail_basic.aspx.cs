@@ -43,7 +43,12 @@ public partial class KR_Recruit_human_detail_basic : SitePage
 			return;
 		}
 
-        Response.Redirect("/kr/home");
+        if (this.IsUserView)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.UserViewType) + "');</script>");
+            Response.End();
+        }
 
         PageNo = Request.QueryString["PageNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["PageNo"]);
         CountryNo = Request.QueryString["Country"] == null ? 1 : Convert.ToInt32(Request.QueryString["Country"]);
