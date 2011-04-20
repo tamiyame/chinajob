@@ -42,9 +42,6 @@ public partial class KR_Recruit_human_search : SitePage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Redirect("/KR/home/");
-        Response.End();
-
         PageNo = Request.QueryString["PageNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["PageNo"]);
         CountryNo = Request.QueryString["Country"] == null ? 1 : Convert.ToInt32(Request.QueryString["Country"]);
         JoinType = Request.QueryString["Join"] == null ? (byte)3 : Convert.ToByte(Request.QueryString["Join"]);
@@ -60,6 +57,13 @@ public partial class KR_Recruit_human_search : SitePage
         {
             Response.Clear();
             Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.User_Login) + "');</script>");
+            Response.End();
+        }
+
+        if (!this.IsUserView)
+        {
+            Response.Clear();
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.UserViewType) + "');</script>");
             Response.End();
         }
 
