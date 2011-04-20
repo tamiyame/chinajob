@@ -30,6 +30,9 @@ namespace Com.Library.DB.Schedule
             AddParameter("ParticipateType", SqlDbType.TinyInt, 1, SqlDataInOut.Output);
             AddParameter("Participate_Start", SqlDbType.DateTime, 8, SqlDataInOut.Output);
             AddParameter("Participate_End", SqlDbType.DateTime, 8, SqlDataInOut.Output);
+            AddParameter("UserViewType", SqlDbType.TinyInt, 1, SqlDataInOut.Output);
+            AddParameter("UserView_Start", SqlDbType.DateTime, 8, SqlDataInOut.Output);
+            AddParameter("UserView_End", SqlDbType.DateTime, 8, SqlDataInOut.Output);
         }
     }
 }
