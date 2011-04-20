@@ -92,5 +92,23 @@ namespace Com.Library.DB.Schedule
             get { return Convert.ToDateTime(GetValue("Participate_End", DateTime.MinValue )); }
             set { SetValue("Participate_End", value); }
         }
+
+        public byte UserViewType
+        {
+            get { return Convert.ToByte(GetValue("UserViewType", (byte)0)); }
+            set { SetValue("UserViewType", value); }
+        }
+
+        public DateTime UserView_Start
+        {
+            get { return Convert.ToDateTime(GetValue("UserView_Start", DateTime.MinValue)); }
+            set { SetValue("UserView_Start", value); }
+        }
+
+        public DateTime UserView_End
+        {
+            get { return Convert.ToDateTime(GetValue("UserView_End", DateTime.MinValue)); }
+            set { SetValue("UserView_End", value); }
+        }
     }
 }
