@@ -62,6 +62,20 @@ namespace Site.Web.Page
             }
         }
 
+        public bool IsUserView
+        {
+            get
+            {
+                ScheduleInfo();
+                if (m_ScheduleInfo.UserViewType == 1)
+                    return true;
+
+                if (m_ScheduleInfo.UserView_Start < DateTime.Now && m_ScheduleInfo.UserView_End > DateTime.Now)
+                    return true;
+                return false;
+            }
+        }
+
         private void ScheduleInfo()
         {
             if (m_ScheduleInfo == null)

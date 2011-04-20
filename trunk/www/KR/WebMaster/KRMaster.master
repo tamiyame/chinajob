@@ -181,6 +181,7 @@ function GetURL(url)
 			                            <li><a class="icon icon-menu-sub-notice" href="<%=this.GetURL("/operation/notice_list.aspx")%>"></a></li>
 			                            <!--<li><a class="icon icon-menu-sub-qna" href="<%=this.GetURL("/operation/qna_list.aspx")%>"></a></li>-->
 			                            <li><a class="icon icon-menu-sub-free" href="<%=this.GetURL("/operation/freeboard_list.aspx")%>"></a></li>
+			                            <li><a class="icon icon-menu-sub-talk" href="<%=this.GetURL("/operation/board_list.aspx")%>"></a></li>
 			                        </ul>
 			                    </li>
 			                    <li class="last">

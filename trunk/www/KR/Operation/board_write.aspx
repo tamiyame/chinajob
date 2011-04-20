@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="board_write.aspx.cs" Inherits="KR_Operation_board_write" Title="제목 없음" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/OperationMaster.master" AutoEventWireup="true" CodeFile="board_write.aspx.cs" Inherits="KR_Operation_board_write" ValidateRequest="false" %>
 <%@ Import Namespace="Com.Library.DB.Board" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/editor.css" />
@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
                          <div class="title">
-                            <div class="operation-title-freeboard"></div>
+                            <div class="operation-title-free"></div>
                         </div>
                         <div class="contents">
                             <table class="board-write">

@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
                         <div class="title">
-                            <div class="operation-title-freeboard"></div>
+                            <div class="operation-title-free"></div>
                         </div>
                         <div class="contents">
                             <table class="board-list">
