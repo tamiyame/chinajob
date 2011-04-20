@@ -26,6 +26,9 @@ CREATE PROCEDURE [dbo].[TSP_RecruitScheduleGetInfo]
 ,	@ParticipateType	tinyint	= NULL	OUTPUT
 ,	@Participate_Start	datetime	= NULL	OUTPUT
 ,	@Participate_End	datetime	= NULL	OUTPUT
+,	@UserViewType	tinyint	= NULL	OUTPUT
+,	@UserView_Start	datetime	= NULL	OUTPUT
+,	@UserView_End	datetime	= NULL	OUTPUT
 )
 as
 Set NOCOUNT ON
@@ -84,6 +87,9 @@ SELECT	Top( 1 )
 ,	@ParticipateType = ParticipateType
 ,	@Participate_Start = Participate_Start
 ,	@Participate_End = Participate_End
+,	@UserViewType = UserViewType
+,	@UserView_Start = UserView_Start
+,	@UserView_End = UserView_End
 FROM
 	dbo.TB_RecruitSchedule WITH (NOLOCK)
 
