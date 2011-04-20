@@ -235,52 +235,52 @@
         <tr>
             <td style="width:120px;">인재정보노출기간</td>
             <td style="width:100px;">
-                <input type="checkbox" name="ParticipateType" value="1" <%=ScheduleInfo.ParticipateType == 1 ? "checked='checked'":"" %>/>&nbsp;해제
+                <input type="checkbox" name="UserViewType" value="1" <%=ScheduleInfo.UserViewType == 1 ? "checked='checked'":"" %>/>&nbsp;해제
             </td>
             <td style="width:60px;text-align:center;">
-                <select name="Participate_Start_Year">
+                <select name="UserView_Start_Year">
                 <% for (int i = DateTime.Now.Year - 1; i <= DateTime.Now.Year + 2; i++) {  %>
-                    <option value="<%=i %>" <%=i==ScheduleInfo.Participate_Start.Year?"selected='selected'":"" %>><%=i %></option>
+                    <option value="<%=i %>" <%=i==ScheduleInfo.UserView_Start.Year?"selected='selected'":"" %>><%=i %></option>
                 <% } %>
                 </select>년
             </td>
             <td style="width:40px;text-align:center;">
-                <select name="Participate_Start_Month">
+                <select name="UserView_Start_Month">
                 <%for (int i = 1; i <= 12; ++i)
                   { %>
-                    <option value="<%=i %>" <%=i==ScheduleInfo.Participate_Start.Month?"selected='selected'":"" %>><%=i %></option>
+                    <option value="<%=i %>" <%=i==ScheduleInfo.UserView_Start.Month?"selected='selected'":"" %>><%=i %></option>
                 <%} %>
                 </select>월
             </td>
             <td style="width:40px;text-align:center;">
-                <select name="Participate_Start_DAy">
+                <select name="UserView_Start_Day">
                 <%for (int i = 1; i <= 31; ++i)
                   { %>
-                    <option value="<%=i %>" <%=i==ScheduleInfo.Participate_Start.Day?"selected='selected'":"" %>><%=i %></option>
+                    <option value="<%=i %>" <%=i==ScheduleInfo.UserView_Start.Day?"selected='selected'":"" %>><%=i %></option>
                 <%} %>
                 </select>일
             </td>
             <td style="width:30px;text-align:center;">-</td>
             <td style="width:60px;text-align:center;">
-                <select name="Participate_End_Year">
+                <select name="UserView_End_Year">
                 <% for (int i = DateTime.Now.Year - 1; i <= DateTime.Now.Year + 2; i++) {  %>
-                    <option value="<%=i %>" <%=i==ScheduleInfo.Participate_End.Year?"selected='selected'":"" %>><%=i %></option>
+                    <option value="<%=i %>" <%=i==ScheduleInfo.UserView_End.Year?"selected='selected'":"" %>><%=i %></option>
                 <% } %>
                 </select>년
             </td>
             <td style="width:40px;text-align:center;">
-                <select name="Participate_End_Month">
+                <select name="UserView_End_Month">
                 <%for (int i = 1; i <= 12; ++i)
                   { %>
-                    <option value="<%=i %>" <%=i==ScheduleInfo.Participate_End.Month?"selected='selected'":"" %>><%=i %></option>
+                    <option value="<%=i %>" <%=i==ScheduleInfo.UserView_End.Month?"selected='selected'":"" %>><%=i %></option>
                 <%} %>
                 </select>월
             </td>
             <td style="width:40px;text-align:center;">
-                <select name="Participate_End_Day">
+                <select name="UserView_End_Day">
                 <%for (int i = 1; i <= 31; ++i)
                   { %>
-                    <option value="<%=i %>" <%=i==ScheduleInfo.Participate_End.Day?"selected='selected'":"" %>><%=i %></option>
+                    <option value="<%=i %>" <%=i==ScheduleInfo.UserView_End.Day?"selected='selected'":"" %>><%=i %></option>
                 <%} %>
                 </select>일
             </td>

@@ -30,6 +30,7 @@ public partial class Backoffice_Setting_Schedule : SitePage
             byte UserJoinType = Request.Form["UserJoinType"] == null ? (byte)0 : Convert.ToByte(Request.Form["UserJoinType"]);
             byte RecruitType = Request.Form["RecruitType"] == null ? (byte)0 : Convert.ToByte(Request.Form["RecruitType"]);
             byte ParticipateType = Request.Form["ParticipateType"] == null ? (byte)0 : Convert.ToByte(Request.Form["ParticipateType"]);
+            byte UserViewType = Request.Form["UserViewType"] == null ? (byte)0 : Convert.ToByte(Request.Form["UserViewType"]);
             
             string CompanyJoin_Start_Year = Request.Form["CompanyJoin_Start_Year"];
             string CompanyJoin_Start_Month = Request.Form["CompanyJoin_Start_Month"];
@@ -59,6 +60,13 @@ public partial class Backoffice_Setting_Schedule : SitePage
             string Participate_End_Month = Request.Form["Participate_End_Month"];
             string Participate_End_Day = Request.Form["Participate_End_Day"];
 
+            string UserView_Start_Year = Request.Form["UserView_Start_Year"];
+            string UserView_Start_Month = Request.Form["UserView_Start_Month"];
+            string UserView_Start_Day = Request.Form["UserView_Start_Day"];
+            string UserView_End_Year = Request.Form["UserView_End_Year"];
+            string UserView_End_Month = Request.Form["UserView_End_Month"];
+            string UserView_End_Day = Request.Form["UserView_End_Day"];
+
             RecruitScheduleSetArguments arg = new RecruitScheduleSetArguments();
             arg.CompanyJoinType = CompanyJoinType;
             arg.CompanyJoin_Start = Convert.ToDateTime(CompanyJoin_Start_Year + "-" + CompanyJoin_Start_Month + "-" + CompanyJoin_Start_Day);
@@ -75,6 +83,10 @@ public partial class Backoffice_Setting_Schedule : SitePage
             arg.ParticipateType = ParticipateType;
             arg.Participate_Start = Convert.ToDateTime(Participate_Start_Year + "-" + Participate_Start_Month + "-" + Participate_Start_Day);
             arg.Participate_End = Convert.ToDateTime(Participate_End_Year + "-" + Participate_End_Month + "-" + Participate_End_Day);
+
+            arg.UserViewType = UserViewType;
+            arg.UserView_Start = Convert.ToDateTime(UserView_Start_Year + "-" + UserView_Start_Month + "-" + UserView_Start_Day);
+            arg.UserView_End = Convert.ToDateTime(UserView_End_Year + "-" + UserView_End_Month + "-" + UserView_End_Day);
 
             RecruitScheduleSet set = new RecruitScheduleSet();
             set.SetArguments(arg);
