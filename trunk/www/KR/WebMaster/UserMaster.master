@@ -10,6 +10,9 @@
 						<div class="line"></div>
 						<div class="link-item">
 							<ul>
+<% if (this.WebPage.IsUserView) { %>
+							    <li><a href="<%=this.GetURL("/recruit/human_search.aspx")%>">인재정보</a></li>
+<% } %>
 							</ul>
 						</div>
 <UC:LeftBanner id="LeftBanner" runat="server" />

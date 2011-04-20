@@ -169,12 +169,14 @@ function GetURL(url)
 			                            <li><a class="icon icon-menu-sub-national-type" href="<%=GetURL("/recruit/recruit_category_city.aspx") %>"></a></li>
 			                        </ul>
 			                    </li>
-			                    <!--<li>
+<% if (this.WebPage.IsUserView) { %>
+			                    <li>
 			                        <a class="icon icon-menu-human main-label" href="<%=this.GetURL("/recruit/human_search.aspx")%>"></a>
 			                        <ul class="submenu">
 			                            <li><a class="icon icon-menu-sub-human" href="<%=this.GetURL("/recruit/human_search.aspx")%>"></a></li>
 			                        </ul>
-			                    </li>-->
+			                    </li>
+<% } %>
 			                    <li>
 			                        <a class="icon icon-menu-operation main-label" href="<%=this.GetURL("/operation/notice_list.aspx")%>"></a>
 			                        <ul class="submenu middle ie6fix">
