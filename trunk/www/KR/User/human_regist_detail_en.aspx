@@ -292,7 +292,7 @@ jQuery(function()
                         </tr>
                         <tr>
                             <td class="regist-label">Address</td>
-                            <td colspan="3"><input name="address" type="text" class="w100"/></td>                                 
+                            <td colspan="3"><input name="address" type="text" class="w100" maxlength="150"/></td>                                 
                         </tr>
                     </table>
                 </div>
@@ -307,28 +307,28 @@ jQuery(function()
                             <td class="regist-label" style="width:159px;">Location</td>                                                 
                         </tr>
                         <tr>
-                           <td><input type="text" class="w100" name="education_school"/></td>
-                           <td><input type="text" class="w100" name="education_major"/></td>
+                           <td><input type="text" class="w100" name="education_school" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="education_major" maxlength="50"/></td>
                            <td>
-								<input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/>
+								<input class="w4" name="education_period_start" maxlength="10"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end" maxlength="10"/>
 						   </td>
-                           <td><input type="text" class="w100" name="education_national"/></td>
+                           <td><input type="text" class="w100" name="education_national" maxlength="50"/></td>
                         </tr>
 						<tr>
-                           <td><input type="text" class="w100" name="education_school"/></td>
-                           <td><input type="text" class="w100" name="education_major"/></td>
+                           <td><input type="text" class="w100" name="education_school" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="education_major" maxlength="50"/></td>
                            <td>
-								<input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/>
+								<input class="w4" name="education_period_start" maxlength="10"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end" maxlength="10"/>
 						   </td>
-                           <td><input type="text" class="w100" name="education_national"/></td>
+                           <td><input type="text" class="w100" name="education_national" maxlength="50"/></td>
                         </tr>
 						<tr>
-                           <td><input type="text" class="w100" name="education_school"/></td>
-                           <td><input type="text" class="w100" name="education_major"/></td>
+                           <td><input type="text" class="w100" name="education_school" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="education_major" maxlength="50"/></td>
                            <td>
-								<input class="w4" name="education_period_start"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end"/>
+								<input class="w4" name="education_period_start" maxlength="10"/>&nbsp;-&nbsp;<input class="w4" name="education_period_end" maxlength="10"/>
 						   </td>
-                           <td><input type="text" class="w100" name="education_national"/></td>
+                           <td><input type="text" class="w100" name="education_national" maxlength="50"/></td>
                         </tr>
                     </table>
                 </div>
@@ -347,28 +347,28 @@ jQuery(function()
                            <td>
 								<input class="w4" name="career_period_start"/>&nbsp;-&nbsp;<input class="w4" name="career_period_end"/>
 						   </td>
-                           <td><input type="text" class="w100" name="career_company"/></td>
-                           <td><input type="text" class="w100" name="career_department"/></td>
-                           <td><input type="text" class="w100" name="career_detail"/></td>
-						   <td><input type="text" class="w100" name="career_location"/></td>
+                           <td><input type="text" class="w100" name="career_company" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="career_department" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="career_detail" maxlength="150"/></td>
+						   <td><input type="text" class="w100" name="career_location" maxlength="50"/></td>
                         </tr>
 						<tr>
                            <td>
 								<input class="w4" name="career_period_start"/>&nbsp;-&nbsp;<input class="w4" name="career_period_end"/>
 						   </td>
-                           <td><input type="text" class="w100" name="career_company"/></td>
-                           <td><input type="text" class="w100" name="career_department"/></td>
-                           <td><input type="text" class="w100" name="career_detail"/></td>
-						   <td><input type="text" class="w100" name="career_location"/></td>
+                           <td><input type="text" class="w100" name="career_company" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="career_department" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="career_detail" maxlength="150"/></td>
+						   <td><input type="text" class="w100" name="career_location" maxlength="50"/></td>
                         </tr>
 						<tr>
                            <td>
 								<input class="w4" name="career_period_start"/>&nbsp;-&nbsp;<input class="w4" name="career_period_end"/>
 						   </td>
-                           <td><input type="text" class="w100" name="career_company"/></td>
-                           <td><input type="text" class="w100" name="career_department"/></td>
-                           <td><input type="text" class="w100" name="career_detail"/></td>
-						   <td><input type="text" class="w100" name="career_location"/></td>
+                           <td><input type="text" class="w100" name="career_company" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="career_department" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="career_detail" maxlength="150"/></td>
+						   <td><input type="text" class="w100" name="career_location" maxlength="50"/></td>
                         </tr>
                     </table>
                 </div>
@@ -383,7 +383,7 @@ jQuery(function()
                             <td class="regist-label" style="width:142px">Score/Grade</td>                                             
                         </tr>
                         <tr>
-                           <td><input type="text" class="w100" name="language_type"/></td>
+                           <td><input type="text" class="w100" name="language_type" maxlength="20"/></td>
                            <td>
                                 <table>
                                     <tr>
@@ -420,11 +420,11 @@ jQuery(function()
                                     </tr>
                                 </table>
                            </td>
-                           <td><input type="text" class="w100" name="language_testname"/></td>
-                           <td><input type="text" class="w100" name="language_score"/></td>
+                           <td><input type="text" class="w100" name="language_testname" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="language_score" maxlength="50"/></td>
                         </tr>
 						<tr>
-                           <td><input type="text" class="w100" name="language_type"/></td>
+                           <td><input type="text" class="w100" name="language_type" maxlength="20"/></td>
                            <td>
                                 <table>
                                     <tr>
@@ -461,11 +461,11 @@ jQuery(function()
                                     </tr>
                                 </table>
                            </td>
-                           <td><input type="text" class="w100" name="language_testname"/></td>
-                           <td><input type="text" class="w100" name="language_score"/></td>
+                           <td><input type="text" class="w100" name="language_testname" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="language_score" maxlength="50"/></td>
                         </tr>
 						<tr>
-                           <td><input type="text" class="w100" name="language_type"/></td>
+                           <td><input type="text" class="w100" name="language_type" maxlength="20"/></td>
                            <td>
                                 <table>
                                     <tr>
@@ -502,8 +502,8 @@ jQuery(function()
                                     </tr>
                                 </table>
                            </td>
-                           <td><input type="text" class="w100" name="language_testname"/></td>
-                           <td><input type="text" class="w100" name="language_score"/></td>
+                           <td><input type="text" class="w100" name="language_testname" maxlength="50"/></td>
+                           <td><input type="text" class="w100" name="language_score" maxlength="50"/></td>
                         </tr>
                     </table>
 					<table class="regist-table">
@@ -531,19 +531,19 @@ jQuery(function()
                             <td class="regist-label" style="width:268px">Date of acquisition</td>                                         
                         </tr>
                         <tr>
-                            <td><input type="text" class="w100" name="licence_title"/></td>
-                            <td><input type="text" class="w100" name="licence_institution"/></td>
-                            <td><input type="text" class="w100" name="licence_year"/></td>
+                            <td><input type="text" class="w100" name="licence_title" maxlength="50"/></td>
+                            <td><input type="text" class="w100" name="licence_institution" maxlength="50"/></td>
+                            <td><input type="text" class="w100" name="licence_year" maxlength="8"/></td>
                         </tr>
 						<tr>
-                            <td><input type="text" class="w100" name="licence_title"/></td>
-                            <td><input type="text" class="w100" name="licence_institution"/></td>
-                            <td><input type="text" class="w100" name="licence_year"/></td>
+                            <td><input type="text" class="w100" name="licence_title"  maxlength="50"/></td>
+                            <td><input type="text" class="w100" name="licence_institution" maxlength="50"/></td>
+                            <td><input type="text" class="w100" name="licence_year" maxlength="8"/></td>
                         </tr>
 						<tr>
-                            <td><input type="text" class="w100" name="licence_title"/></td>
-                            <td><input type="text" class="w100" name="licence_institution"/></td>
-                            <td><input type="text" class="w100" name="licence_year"/></td>
+                            <td><input type="text" class="w100" name="licence_title" maxlength="50"/></td>
+                            <td><input type="text" class="w100" name="licence_institution" maxlength="50"/></td>
+                            <td><input type="text" class="w100" name="licence_year" maxlength="8"/></td>
                         </tr>
                     </table>
                 </div>
