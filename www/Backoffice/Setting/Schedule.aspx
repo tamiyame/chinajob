@@ -180,7 +180,7 @@
             </td>
         </tr>
         <tr>
-            <td style="width:120px;">면접요청가능기간</td>
+            <td style="width:120px;">채용관리가능기간</td>
             <td style="width:100px;">
                 <input type="checkbox" name="ParticipateType" value="1" <%=ScheduleInfo.ParticipateType == 1 ? "checked='checked'":"" %>/>&nbsp;해제
             </td>

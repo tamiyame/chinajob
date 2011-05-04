@@ -26,6 +26,7 @@
                     </tbody>
                 </table>
 
+
 <script language="javascript" type="text/javascript">
 var _RecruitNo = null;
 function btnRecruit( recruitNo )
@@ -64,13 +65,16 @@ function onParticipateGetList(results, methodName, context)
 <% if ( this.IsParticipate ) { %>
             .append(
                 jQuery('<td class="col8"><a href="/kr/user/resume_view.aspx?userno=' + this.UserNo + '" target="_blank">보기</a></td>')
-            ).append(
+            )
+<% if (DateTime.Now > Convert.ToDateTime("2011-05-07 02:00:00")) { %>
+			.append(
                 jQuery('<td class="col9">' + ( this.ConfirmType == 1 ? "<b>승인</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 1)'>승인</a>" ) + '</td>')
             ).append(
                 jQuery('<td class="col10">' + ( this.ConfirmType == 2 ? "<b>거절</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 2)'>거절</a>" ) + '</td>')
             ).append(
                 jQuery('<td class="col11"></td>')
             )
+<% } %>
 <% } %>
         );
     });

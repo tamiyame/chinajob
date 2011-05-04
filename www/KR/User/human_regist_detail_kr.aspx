@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="human_regist_detail_kr.aspx.cs" Inherits="KR_User_human_regist_detail_kr" %>
+﻿<%@ Page Language="C#"  MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="human_regist_detail_kr.aspx.cs" Inherits="KR_User_human_regist_detail_kr" ValidateRequest="false" %>
 <%@ Import Namespace="Com.Library.DB.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
@@ -111,7 +111,8 @@ var militaryService = '<%= GetDetailValue("MilitaryService").Replace("\\", "\\\\
 
 jQuery(function()
 {
-
+    NumInput($("input[name=korean_age]"));
+    NumInput($("input[name=age]"));
 	$("div.tab ul li").removeClass("icon-folder-middle-on").addClass("icon-folder-middle-off").removeClass("select");
 	$("div.tab ul li:eq("+ countryCode +")").removeClass("icon-folder-middle-off").addClass("icon-folder-middle-on").addClass("select");
 

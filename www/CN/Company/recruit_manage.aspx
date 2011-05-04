@@ -63,14 +63,17 @@ function onParticipateGetList(results, methodName, context)
             )
 <% if ( this.IsParticipate ) { %>
             .append(
-                jQuery('<td class="col8"><a href="/kr/Recruit/human_detail_basic.aspx?userno=' + this.UserNo + '" target="_blank">'+$.translateHelper.getText("CN_Company_recruit_manage.aspx_show")+'</a></td>')
-            ).append(
+                jQuery('<td class="col8"><a href="/kr/user/resume_view.aspx?userno=' + this.UserNo + '" target="_blank">'+$.translateHelper.getText("CN_Company_recruit_manage.aspx_show")+'</a></td>')
+            )
+<% if (DateTime.Now > Convert.ToDateTime("2011-05-07 02:00:00")) { %>
+			.append(
                 jQuery('<td class="col9">' + ( this.ConfirmType == 1 ? "<b>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_approved")+"</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 1)'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_approved")+"</a>" ) + '</td>')
             ).append(
                 jQuery('<td class="col10">' + ( this.ConfirmType == 2 ? "<b>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_deny")+"</b>" : "<a href='#' onclick='btnConfirm(" + this.SeqNo + ", 2)'>"+$.translateHelper.getText("CN_Company_recruit_manage.aspx_deny")+"</a>" ) + '</td>')
             ).append(
                 jQuery('<td class="col11"></td>')
             )
+<% } %>
 <% } %>
         );
     });

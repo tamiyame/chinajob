@@ -12,7 +12,6 @@
 		$("div.tab ul li").removeClass("icon-folder-middle-on").addClass("icon-folder-middle-off").removeClass("select");
 		$("div.tab ul li:eq("+ ( countryCode -1 ) +")").removeClass("icon-folder-middle-off").addClass("icon-folder-middle-on").addClass("select");
 		
-		$("td.ssn").text(ssn1+"-"+ssn2);
 		$("td.age").text(koreanAge + "세 (만 " + age + "세)");
 		$("td.inchina").text(chinaExp[0]+"년 " + chinaExp[1] + "개월");
 		$("td.army").text(military==1?"필":military==2?"미필":military==3?"면제":military==4?"무관":"기타");
@@ -82,8 +81,6 @@ var careers = <%= GetCareerJson() %>;
 var languages = <%= GetLanguageJson() %>;
 var licenses = <%= GetLicensesJson() %>;
 
-var ssn1 = '<%= GetDetailValue("SSN1") %>';
-var ssn2 = '<%= GetDetailValue("SSN2") %>';
 var koreanAge = '<%= GetDetailValue("KoreanAge") %>';
 var age = '<%= GetDetailValue("Age") %>';
 var chinaExpChunk = '<%= GetDetailValue("ChinaExp") %>';
@@ -91,8 +88,8 @@ var chinaExp = chinaExpChunk.split("-");
 var military = '<%= GetDetailValue("Military") %>';
 var isCareer = '<%= GetDetailValue("IsCareer") %>';
 var address = '<%= GetDetailValue("Address") %>';
-var description = '<%= GetDetailValue("Description") %>';
-var aboutMe = '<%= GetDetailValue("AboutMe") %>';
+var description = '<%= GetDetailValue("Description").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("'", "\\'") %>';
+var aboutMe = '<%= GetDetailValue("AboutMe").Replace("\\", "\\\\").Replace("\r\n", "\\n").Replace("'", "\\'") %>';
 var lasteastEducation = '<%= GetDetailValue("LastestEducation") %>';
 var graduationYear = '<%= GetDetailValue("GraduationYear") %>';
 var militaryService = '<%= GetDetailValue("MilitaryService") %>';
@@ -124,18 +121,18 @@ var militaryService = '<%= GetDetailValue("MilitaryService") %>';
                                         <table class="regist-table">
                                             <tr>
                                                 <td rowspan="6" class="size-k-1-1">
-                                                    <img class="picture" width="104px" height="138px" src="/FileServer/Company/10/Company_1024.jpg" />
+                                                    <img class="picture" width="104px" height="138px" src="<%=UserInfo.ImageUrl %>" />
                                                 </td>
                                                 <td class="size-k-1-2 regist-label">국문</td>
                                                 <td class="size-k-1-3"><%=UserInfo.KRName%></td>
                                                 <td class="size-k-1-4 regist-label">주민등록번호</td>
-                                                <td class="size-k-1-5 ssn">840924-1846018</td>                                                    
+                                                <td class="size-k-1-5 ssn">*******-********</td>                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">중문</td>
                                                 <td><%=UserInfo.CNName%></td>
                                                 <td class="regist-label">연령</td>
-                                                <td class="age">24세 (만 23세)</td>                                                    
+                                                <td class="age"></td>                                                    
                                             </tr>
                                             <tr>
                                                 <td class="regist-label">영문</td>
