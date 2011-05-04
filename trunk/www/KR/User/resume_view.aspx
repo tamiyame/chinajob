@@ -318,7 +318,7 @@
                               <td class="regist-label">出生年月</td>
                               <td><%=UserInfo.Birthday.ToString("yyyy年 MM月 dd日") %></td>
                               <td class="regist-label">工作年限</td>
-                              <td><%=ResumeDetail[2].IsCareer == 1 ? "新来" : "阅历"%></td>                                                                                                    
+                              <td><%=ResumeDetail[2].IsCareer == 1 ? "新入职" : "经验"%></td>                                                                                                    
                           </tr>
                           <tr>
                               <td class="regist-label">最高学历(学位)</td>

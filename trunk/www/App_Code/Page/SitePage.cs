@@ -15,7 +15,7 @@ namespace Site.Web.Page
                 if ( m_ScheduleInfo.CompanyJoinType == 1 )
                     return true;
 
-                if (m_ScheduleInfo.CompanyJoin_Start < DateTime.Now && m_ScheduleInfo.CompanyJoin_End > DateTime.Now)
+                if (m_ScheduleInfo.CompanyJoin_Start < DateTime.Now.AddHours(-1) && m_ScheduleInfo.CompanyJoin_End > DateTime.Now.AddHours(-1))
                     return true;
                 return false;
             }
@@ -28,7 +28,7 @@ namespace Site.Web.Page
                 if (m_ScheduleInfo.UserJoinType == 1)
                     return true;
 
-                if (m_ScheduleInfo.UserJoin_Start < DateTime.Now && m_ScheduleInfo.UserJoin_End > DateTime.Now)
+                if (m_ScheduleInfo.UserJoin_Start < DateTime.Now.AddHours(-1) && m_ScheduleInfo.UserJoin_End > DateTime.Now.AddHours(-1))
                     return true;
                 return false;
             }
@@ -42,7 +42,7 @@ namespace Site.Web.Page
                 if (m_ScheduleInfo.RecruitType == 1)
                     return true;
 
-                if (m_ScheduleInfo.Recruit_Start < DateTime.Now && m_ScheduleInfo.Recruit_End > DateTime.Now)
+                if (m_ScheduleInfo.Recruit_Start < DateTime.Now.AddHours(-1) && m_ScheduleInfo.Recruit_End > DateTime.Now.AddHours(-1))
                     return true;
                 return false;
             }
@@ -56,7 +56,7 @@ namespace Site.Web.Page
                 if (m_ScheduleInfo.ParticipateType == 1)
                     return true;
 
-                if (m_ScheduleInfo.Participate_Start < DateTime.Now && m_ScheduleInfo.Participate_End > DateTime.Now)
+                if (m_ScheduleInfo.Participate_Start < DateTime.Now.AddHours(-1) && m_ScheduleInfo.Participate_End > DateTime.Now.AddHours(-1))
                     return true;
                 return false;
             }
@@ -70,7 +70,7 @@ namespace Site.Web.Page
                 if (m_ScheduleInfo.UserViewType == 1)
                     return true;
 
-                if (m_ScheduleInfo.UserView_Start < DateTime.Now && m_ScheduleInfo.UserView_End > DateTime.Now)
+                if (m_ScheduleInfo.UserView_Start < DateTime.Now.AddHours(-1) && m_ScheduleInfo.UserView_End > DateTime.Now.AddHours(-1))
                     return true;
                 return false;
             }

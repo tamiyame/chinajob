@@ -46,10 +46,10 @@ public partial class KR_Company_recruit_manage : SitePage
             Response.End();
         }
 
-        if (!this.IsRecruitCreate)
+        if (!this.IsParticipate)
         {
             Response.Clear();
-            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.CompanyJoinType) + "');</script>");
+            Response.Write("<script language='javascript'>location.href='" + this.GetURL("/home/") + "';alert('" + Message.Msg(this.WebMaster.CountryCode, k_MsgType.Recruit_Apply) + "');</script>");
             Response.End();
         }
 

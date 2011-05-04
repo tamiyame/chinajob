@@ -89,6 +89,11 @@ namespace Com.Library.Cookie
             this.m_Email = GetData(m_SC, "Email");
             this.m_IsAdmin = GetData(m_SC, "IsAdmin") == "0" ? false : true;
 
+            if (!this.IsLogin)
+            {
+                m_IsAdmin = false;
+            }
+
             if (m_LoginType == 1)
             {
                 m_isCompany = true;

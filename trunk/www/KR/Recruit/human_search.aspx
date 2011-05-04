@@ -115,9 +115,9 @@
 							            <li class="<%if (CountryNo == 2){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
 								            <div><a href="<%=GetCountryType(2)%>">中文</a></div>
 							            </li>	
-							            <!--<li class="<%if (CountryNo == 3){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
+							            <li class="<%if (CountryNo == 3){ %>select icon icon-folder-big-on<% }else{ %>last icon icon-folder-big-off<%} %>">
 								            <div><a href="<%=GetCountryType(3)%>">English</a></div>
-							            </li>-->
+							            </li>
 						            </ul>						
 					            </div>
 <script language="javascript" type="text/javascript">
@@ -252,7 +252,7 @@ jQuery(function()
                                             <%} else { %>
                                             <%=item.Gender == 1 ? "Man" : "Girl"%>
                                             <% } %>
-                                            ,<%=item.Age %>)</span></td>
+                                            <% if (this.CountryNo == 1) { %>,<%=item.Age%><% } %>)</span></td>
                                             <td class="col2">
                                                 <% if (GetCategoryName(item.Category1No) == "직접입력" || GetCategoryName(item.Category2No) == "직접입력" || GetCategoryName(item.Category1No) == "直接输入" || GetCategoryName(item.Category2No) == "直接输入"){  %>
                                                     <%=item.CategoryEtc%>

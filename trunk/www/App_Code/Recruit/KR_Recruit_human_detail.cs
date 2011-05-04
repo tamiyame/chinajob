@@ -92,7 +92,7 @@ namespace Site.Web.Page
 		{
 			// detail 정보 로드
 			ResumeDetailGetInfoArguments resumeDetailGetInfoArguments = new ResumeDetailGetInfoArguments();
-			resumeDetailGetInfoArguments.UserNo = WebCookies.UserNo;
+			resumeDetailGetInfoArguments.UserNo = UserNo;
 			resumeDetailGetInfoArguments.CountryNo = (int)CountryCode;
 			ResumeDetailGetInfo resumeDetailGetInfo = new ResumeDetailGetInfo();
 			resumeDetailGetInfo.SetArguments(resumeDetailGetInfoArguments);

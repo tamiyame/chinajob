@@ -186,7 +186,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="employ_count" value="<%=CompanyDetailInfo.EmployeeCount %>" maxlength="10" ></td>
+										<td><input class="w1" type="text" name="employ_count" value="<%=CompanyDetailInfo.EmployeeCount %>" maxlength="15" ></td>
 										<td>명</td>
 										<td class="description">숫자만 입력</td>
 									</tr>
@@ -198,7 +198,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="fund" value="<%=CompanyDetailInfo.Capital %>" maxlength="15" ></td>
+										<td><input class="w1" type="text" name="fund" value="<%=CompanyDetailInfo.Capital %>" maxlength="20" ></td>
 										<td>
 											<select class="w1" name="fundcurrency">
 												<option value="0" <%=CompanyDetailInfo.CapitalCurrencyNo == 0 ? "selected='selected'":"" %>>화폐단위</option>
@@ -217,7 +217,7 @@
 							<td class="input">
 								<table>
 									<tr>
-										<td><input class="w1" type="text" name="investment" value="<%=CompanyDetailInfo.Turnover %>" maxlength="10" ></td>
+										<td><input class="w1" type="text" name="investment" value="<%=CompanyDetailInfo.Turnover %>" maxlength="20" ></td>
 										<td>
 											<select class="w1" name="investment_currency">
 												<option value="0" <%=CompanyDetailInfo.TurnoverCurrencyNo == 0 ? "selected='selected'":"" %>>화폐단위</option> 

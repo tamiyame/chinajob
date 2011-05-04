@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="human_regist_detail_en.aspx.cs" Inherits="KR_User_human_regist_detail_en" Title="제목 없음" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/KR/WebMaster/UserMaster.master" AutoEventWireup="true" CodeFile="human_regist_detail_en.aspx.cs" Inherits="KR_User_human_regist_detail_en" ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 <link rel="stylesheet" type="text/css" href="/ImgSrv/kr/Css/human.css" />
@@ -281,7 +281,7 @@ jQuery(function()
                             <td class="regist-label">Date of Birth</td>
                             <td><%=UserInfo.Birthday.ToString("yyyy.MM.dd") %></td>
                             <td class="regist-label">Military service <span class="require">*</span></td>
-                            <td><input name="militaryService" type="text" class="w100"/>
+                            <td><input name="militaryService" type="text" class="w100" maxlength="100"/>
                             </td>                                                                                                    
                         </tr>
                         <tr>
