@@ -215,12 +215,12 @@
                   
                   <div class="regist-item">
                       <div class="regist-header">6.보유기술 및 특기사항</div>                                
-                      <div><%=ResumeDetail[1].Description.Replace("<", "&gtl")%></div>
+                      <div><%=ResumeDetail[1].Description.Replace("<", "&gt;").Replace("\n", "<br/>")%></div>
                   </div>
                   
                   <div class="regist-item">
                       <div class="regist-header">7.자기소개서</div>                                
-                      <div><%=ResumeDetail[1].AboutMe.Replace("<", "&gtl")%></div>
+                      <div><%=ResumeDetail[1].AboutMe.Replace("<", "&gt;").Replace("\n", "<br/>")%></div>
                   </div>
                   
               	<div class="regist-class">
@@ -331,7 +331,7 @@
                                                       
                   <div class="regist-item">
                       <div class="regist-header">自我评价（主要业绩，个人特长，电脑能力等）</div>                                
-                      <%=ResumeDetail[2].Description.Replace("<", "&gtl")%>
+                      <%=ResumeDetail[2].Description.Replace("<", "&gt;").Replace("\n", "<br/>")%>
                   </div>
                   
               	<div class="regist-class">
@@ -480,20 +480,8 @@
                   
                   <div class="regist-item">
                       <div class="regist-header">Awards, O/A Ability, Professional Experience  Etc </div>                                
-                      <div><%=ResumeDetail[3].Description.Replace("<", "&gtl")%><div>
+                      <div><%=ResumeDetail[3].Description.Replace("<", "&gt;").Replace("\n", "<br/>")%><div>
                   </div>
-                                               
-                  <!--btn//-->
-                  <div class="regist-item">
-                      <div class="regist-tool">
-                          <span class="agree">                                                
-                              <label for="agree">취업을 희망하여 동 이력서를 작성하였으며 해외취업을 목적으로 한국산업인력공단 월드잡사이트 등록 및 해외 구인기업체에게 제공되는 것에 동의합니다.</label>
-                          </span>
-                          <br><br><br>
-                          <input type="button" value="인쇄" onClick="window.print()" style="width:100px;height:30px;font-size:9pt">
-                      </div>
-                  </div>
-              	
               </div>
               <!--Resume(E)//-->
                       
