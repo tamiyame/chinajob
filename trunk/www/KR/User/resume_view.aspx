@@ -568,7 +568,7 @@
                               <label for="agree">취업을 희망하여 동 이력서를 작성하였으며 해외취업을 목적으로 한국산업인력공단 월드잡사이트 등록 및 해외 구인기업체에게 제공되는 것에 동의합니다.</label>
                           </span>
                           <br><br><br>
-                          <input type="button" value="인쇄" onClick="window.open('resume_view_print.aspx?UserNo=<%=UserNo%>'); return false;" style="width:100px;height:30px;font-size:9pt">
+                          <input type="button" value="인쇄" onClick="window.print()" style="width:100px;height:30px;font-size:9pt">
                       </div>
                   </div>
               	
