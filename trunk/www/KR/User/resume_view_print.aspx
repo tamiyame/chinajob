@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="resume_view.aspx.cs" Inherits="KR_User_resume_view" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="resume_view_print.aspx.cs" Inherits="KR_User_resume_view_print" %>
 <%@ Import Namespace="Com.Library.Translate" %>
 <%@ Import Namespace="Com.Library.DB.User" %>
 
@@ -44,84 +44,6 @@
           		
           		<!--Resume(S)//-->
               <div class="regist detail">
-<% if ( this.webCookie.IsLogin && (this.webCookie.IsAdmin == true || this.webCookie.UserNo == this.UserNo )) { %>
-              	<div class="regist-class">
-              		기본정보
-              	</div>
-              	
-                  <div class="regist-item">
-                      <div class="regist-header">1.희망지원 회사 코드 및 기타사항 </div>                                
-                      <table class="regist-table">
-                          <tr>
-                              <td class="size33 regist-label">1지망<span class="require">*</span></td>
-                              <td class="size33 regist-label">2지망<span class="require">*</span></td>
-                              <td class="size33 regist-label">3지망<span class="require">*</span></td>
-                          </tr>
-                          <tr>
-                              <td><%=GetCompanyInfo(ParticipateList, 1 )%></td>
-                              <td><%=GetCompanyInfo(ParticipateList, 2 )%></td>
-                              <td><%=GetCompanyInfo(ParticipateList, 3 )%></td>
-                          </tr>
-                          <tr>
-                              <td class="regist-label">희망급여 (RMB/1개월)<span class="require">*</span></td>
-                              <td colspan="2"><%=resumeEntity.HopeSalary%> <span class="label">RMB (세후금액)</span></td>                                            
-                          </tr>
-                          <tr>
-                              <td class="regist-label" rowspan="2">희망지역<span class="require">*</span></td>
-                              <td colspan="2">
-                                  <table>
-                                      <tr>
-                                          <td><span class="label">1지망</span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                          <td>
-                                              <%=GetCategoryName(resumeEntity.CityNo1)%> > <%=GetSubCategoryName(resumeEntity.ArrayNo1)%>
-                                          </td>
-                                      </tr>
-                                  </table>
-                              </td>                                            
-                          </tr>
-                          <tr>
-                              <td colspan="2">
-                                  <table>
-                                      <tr>
-                                          <td><span class="label">2지망</span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                          <td>
-                                              <%=GetCategoryName(resumeEntity.CityNo2)%> > <%=GetSubCategoryName(resumeEntity.ArrayNo2)%>
-                                          </td>
-                                      </tr>
-                                  </table>
-                              </td>                                            
-                          </tr>
-                          <tr>
-                              <td class="regist-label">취업희망시기<span class="require">*</span></td>
-                              <td colspan="2"><%=resumeEntity.HopeRecruitDate.ToString("yyyy-MM-dd")%> <span class="label">이후</span></td>                                            
-                          </tr>
-                      </table>
-                  </div>
-                  
-                   <div class="regist-item">
-                      <div class="regist-header">2.희망/관심 업종 및 직종</div>                                
-                      <table class="regist-table">
-                          <tr>
-                              <td class="size33 regist-label">희망/관심 업종<span class="require">*</span></td>
-                              <td colspan="2"><%=GetCategoryName(resumeEntity.BusinessCategoryNo)%></td>                                            
-                          </tr>
-                          <tr>
-                              <td class="regist-label">희망/관심 직종<span class="require">*</span></td>
-                              <td colspan="2"><%=GetCategoryName(resumeEntity.Category1No)%> > <%= GetSubCategoryName(resumeEntity.Category2No) == "직접입력" ? resumeEntity.CategoryEtc:GetSubCategoryName(resumeEntity.Category2No)%></td>                                            
-                          </tr>
-                      </table>
-                  </div>
-                  
-                  <div class="regist-item">
-                      <div class="regist-header">3.면접참가 가능 여부</div>                                
-                      <table class="regist-table">
-                          <tr>
-                              <td class="size33 regist-label">박람회 당일 면접참가여부<span class="require">*</span></td>
-                              <td colspan="2"><%=resumeEntity.JoinType == 1 ? "가능" : "불가능"%></td>                                            
-                          </tr>
-                      </table>
-                  </div>
-<% } %>
               	<div class="regist-class">
               		한국어
               	</div>
@@ -293,12 +215,12 @@
                   
                   <div class="regist-item">
                       <div class="regist-header">6.보유기술 및 특기사항</div>                                
-                      <textarea class="w100" rows="20" name="award-text" readonly="readonly"><%=ResumeDetail[1].Description%></textarea>
+                      <div><%=ResumeDetail[1].Description.Replace("<", "&gtl")%></div>
                   </div>
                   
                   <div class="regist-item">
                       <div class="regist-header">7.자기소개서</div>                                
-                      <textarea class="w100" rows="20" name="introduce" readonly="readonly"><%=ResumeDetail[1].AboutMe%></textarea>
+                      <div><%=ResumeDetail[1].AboutMe.Replace("<", "&gtl")%></div>
                   </div>
                   
               	<div class="regist-class">
@@ -409,7 +331,7 @@
                                                       
                   <div class="regist-item">
                       <div class="regist-header">自我评价（主要业绩，个人特长，电脑能力等）</div>                                
-                      <textarea class="w100" rows="20" readonly="readonly"><%=ResumeDetail[2].Description%></textarea>
+                      <%=ResumeDetail[2].Description.Replace("<", "&gtl")%>
                   </div>
                   
               	<div class="regist-class">
@@ -558,7 +480,7 @@
                   
                   <div class="regist-item">
                       <div class="regist-header">Awards, O/A Ability, Professional Experience  Etc </div>                                
-                      <textarea class="w100" rows="20" name="award-text" readonly="readonly"><%=ResumeDetail[3].Description%></textarea>
+                      <div><%=ResumeDetail[3].Description.Replace("<", "&gtl")%><div>
                   </div>
                                                
                   <!--btn//-->
@@ -568,7 +490,7 @@
                               <label for="agree">취업을 희망하여 동 이력서를 작성하였으며 해외취업을 목적으로 한국산업인력공단 월드잡사이트 등록 및 해외 구인기업체에게 제공되는 것에 동의합니다.</label>
                           </span>
                           <br><br><br>
-                          <input type="button" value="인쇄" onClick="window.open('resume_view_print.aspx?UserNo=<%=UserNo%>'); return false;" style="width:100px;height:30px;font-size:9pt">
+                          <input type="button" value="인쇄" onClick="window.print()" style="width:100px;height:30px;font-size:9pt">
                       </div>
                   </div>
               	
@@ -580,7 +502,13 @@
 				</div>
       </div>
 		</div>
-
+<script language='javascript'>
+setTimeout(function()
+{
+	window.print();
+	self.close();
+}, 500 );
+</script>
     </form>
 </body>
 </html>
