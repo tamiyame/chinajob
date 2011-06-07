@@ -63,6 +63,8 @@ function GetURL(url)
 		                    <ul>
 		                        <li><b>관리자</b>님</li>
 		                        <li class="bar"></li>
+			                    <li><a href="<%=this.GetURL("/user/human_modify.aspx")%>">관리정보</a></li>
+		                        <li class="bar"></li>
 			                    <li><a href="/Backoffice/">관리하기</a></li>
 			                    <li class="bar"></li>
 			                    <li><a class="icon icon-logout" href="javascript:;" onclick="jQuery.Logout(GetURL('/home/')); return false;"></a></li>
