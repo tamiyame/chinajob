@@ -12,14 +12,18 @@
                         <div class="contents">
                             <table class="board-list">
                                 <tr>
+<% if (this.BoardNo != 6) { %>
                                     <th>분류</td>
+<% } %>
                                     <th>제목</td>
                                     <th>작성자</td>
                                     <th>작성일</td>
                                 </tr>
 <% foreach (ArticleEntity item in ArticleList.Record) { %>
                                 <tr>
+<% if (this.BoardNo != 6) { %>
                                     <td class="col1"><%=this.GetCategoryName(item.BoardCategoryNo) %></td>
+<% } %>
                                     <td class="col2">
                                         <a href="<%=PageMoveWithBoardNo("board_detail.aspx",BoardNo) %>&ArticleNo=<%=item.ArticleNo %>"><%=item.ArticleTitle %></a>
                                         <!--<span class="reply-count">(<%=item.CommentCreate - item.CommentRemove%>)</span>-->

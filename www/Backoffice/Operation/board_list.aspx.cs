@@ -18,7 +18,7 @@ public partial class Backoffice_Operation_list : ArticleListPage
 {
     public override int BoardNo
     {
-        get { return Request.QueryString["BoardNo"] == null ? 1 : Convert.ToInt32(Request.QueryString["BoardNo"]); }
+        get { return Request.QueryString["BoardNo"] == null ? 2 : Convert.ToInt32(Request.QueryString["BoardNo"]); }
     }
 
     public string boardName;
