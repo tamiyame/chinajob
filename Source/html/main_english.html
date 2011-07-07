@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>2010 중국 취업 박람회</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"> </script>
+		<script type="text/javascript" src="./js/link.js"></script>			
+		<script type="text/javascript">
+		<!--
+			function recruitBannerChange(index,link)
+			{
+				$('.recommend-recruit .navigation .pager li').removeClass('select').each(function(i){if(i==index-1)$(this).addClass('select')});
+				$('.recommend-recruit .banner img').animate({'opacity':0.0},function(){$(this).remove()});
+				$('<img src="./banner/bannerSample'+index+'.jpg" />').appendTo($('.recommend-recruit .banner')).css({'opacity':0.0}).animate({'opacity':1.0});
+				$('.recommend-recruit .action').unbind().click(function(){alert(link)});
+			}		
+			
+			$(function(){
+				$('.expo-folder').click(function(){$(this).addClass('hide');$('.expo-content').removeClass('hide');});
+			})
+		-->
+		</script>
+		
+		<link rel="stylesheet" type="text/css" href="http://www.chinajobgo.com/imgsrv/kr/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="http://www.chinajobgo.com/imgsrv/kr/css/icon.css" />
+		<!--[if IE 6]>
+		<link rel="stylesheet" type="text/css" href="./css/base.ie6.css" />
+		<script src="./js/DD_belatedPNG.js"></script>
+		<script>
+		  DD_belatedPNG.fix('.icon');		  
+		</script>
+		<![endif]-->
+		<style>
+			.content .header .logo{background-image:url('./imgsrv/en/logo.png');width:192px;}
+		</style>		
+	</head>
+	<body>		
+		<div>
+			<div class="content">		
+				<div class="guide"></div>
+			</div>
+		</div>
+		<div class="bg-top">			
+			<div class="content">				
+				<div class="header">
+					<div class="logo"></div>
+					<div class="menu">
+						<div class="global-menu">
+							<ul>
+								<li class="national">
+			                        <a href="/kr/home/" class="icon icon-national-kr"></a>
+			                        <a href="/cn/home/" class="icon icon-national-cn"></a>
+									<a href="/cn/home/" class="icon icon-national-en"></a>
+			                    </li>
+							</ul>
+						</div>				
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="english-content" style="text-align:center;">
+			<img src="./imgsrv/en/content.png">
+		</div>
+	</body>
+</html>
