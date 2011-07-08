@@ -13,7 +13,6 @@
                             <table class="board-write">
   
                                 <tr class="top">
-<% if (this.BoardNo != 6) { %>
                                     <td class="col1">분류<span class="require">*</span></td>
                                     <td class="col2">
                                         <select name="BoardCategoryNo">
@@ -22,7 +21,6 @@
 <% } %>
                                         </select>
                                     </td>
-<% } %>
                                     <td class="col3">제목<span class="require">*</span></td>
                                     <td class="col4">
                                         <input type="text" name="ArticleTitle" id="ArticleTitle" />
