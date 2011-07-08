@@ -51,6 +51,7 @@ function GetURL(url)
 			                    <li class="national">
 			                        <a class="icon icon-national-kr" href="/kr/home/"></a>
 			                        <a class="icon icon-national-cn" href="/cn/home/"></a>
+			                        <a class="icon icon-national-en" href="/en/home/"></a>
 			                    </li>
 		                    </ul>
 	                    </div>

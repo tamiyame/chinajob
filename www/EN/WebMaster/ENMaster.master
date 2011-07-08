@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/WebMaster/BaseMaster.master" AutoEventWireup="false" CodeFile="ENMaster.master.cs" Inherits="EN_WebMaster_ENMaster" %>
+<%@ Import Namespace="Com.Library.DB.Company" %>
+<%@ Import Namespace="Com.Library.DB.Participate" %>
+<%@ Import Namespace="Com.Framework.Data" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<title id="siteTitle" runat="server" ><%=PageEntity.ENGTitle %></title>
+<link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/icon.css" />
+
+<asp:ContentPlaceHolder id="Header" runat="server" />
+<!--[if IE 6]>
+		<link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.ie6.css" />
+		<script src="/js/DD_belatedPNG.js"></script>
+		<script>
+		  DD_belatedPNG.fix('.icon');		  
+		</script>
+<![endif]-->
+<!--[if lte IE 7]>
+		<link rel="stylesheet" type="text/css" href="/imgsrv/kr/css/base.ie7.css" />
+<![endif]-->
+<script language="javascript" type="text/javascript">
+var CountryCode = "<%=this.CountryCode %>";
+var CountryLink = "<%=this.CountryLink %>";
+function GetURL(url)
+{
+    return CountryLink + url;
+}
+</script>
+		<style>
+			.content .header .logo{background-image:url('<%=PageEntity.ENGLogo %>');width:252px;}
+		</style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" Runat="Server">
+
+<div>
+			<div class="content">		
+				<div class="guide"></div>
+			</div>
+		</div>
+		<div class="bg-top">			
+			<div class="content">				
+				<div class="header">
+					<div class="logo"></div>
+					<div class="menu">
+						<div class="global-menu">
+							<ul>
+								<li class="national">
+			                        <a href="/kr/home/" class="icon icon-national-kr"></a>
+			                        <a href="/cn/home/" class="icon icon-national-cn"></a>
+									<a href="/en/home/" class="icon icon-national-en"></a>
+			                    </li>
+							</ul>
+						</div>				
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="english-content" style="text-align:center;">
+<asp:ContentPlaceHolder id="Content" runat="server" />
+		</div>
+</asp:Content>
+
